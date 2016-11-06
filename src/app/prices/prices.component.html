@@ -1,88 +1,44 @@
 <div class="container">
-  <div class="row">
-    <div class="col l6">
-      <div class="card medium grey lighten-3">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator"
-               src="http://vignette2.wikia.nocookie.net/kielbasa/images/a/ad/Kurczak.jpg/revision/latest?cb=20130323205029&path-prefix=pl">
+    <div class="row">
+        <div *ngFor="let productPreview of getProducts()" class="col l6">
+            <div class="card medium grey lighten-3">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator"
+                         [src]="productPreview.screenUrl">
+                </div>
+                <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">{{productPreview.productName}}<i
+                  class="material-icons right">more_vert</i></span>
+                    <p>Średnia cena: {{productPreview.average}} zł</p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">{{productPreview.productName}}<i
+                            class="material-icons right">close</i></span>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th data-field="Day">Dzień</th>
+                            <th data-field="Place">Miejsce</th>
+                            <th data-field="Price">Cena</th>
+                        </tr>
+                        </thead>
+                        <tbody >
+                        <tr *ngFor="let price of getProductPrices(productPreview)">
+                            <td>{{price.priceDate | date: "dd-MM-yyyy"}} r.</td>
+                            <td>{{price.place}}</td>
+                            <td>{{price.value}} zł</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Kurczak<i
-            class="material-icons right">more_vert</i></span>
-          <p>Średnia cena: 13,19 zł</p>
+
+        <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+            <a class="btn-floating btn-large waves-effect waves-light blue">
+                <i class="large material-icons">add</i>
+            </a>
         </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Kurczak<i class="material-icons right">close</i></span>
-          <table>
-            <thead>
-            <tr>
-              <th data-field="Day">Dzień</th>
-              <th data-field="Place">Miejsce</th>
-              <th data-field="Price">Cena</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>15.10.2016 r.</td>
-              <td>Auchan</td>
-              <td>14,29 zł</td>
-            </tr>
-            <tr>
-              <td>29.10.2016 r.</td>
-              <td>Auchan</td>
-              <td>12,29 zł</td>
-            </tr>
-            <tr>
-              <td>01.10.2016 r.</td>
-              <td>Makro</td>
-              <td>16,11 zł</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+
     </div>
-    <div class="col l6">
-      <div class="card medium grey lighten-3">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator"
-               src="http://media-cache-ak0.pinimg.com/736x/75/3f/9a/753f9a186a18e67f1820ec56508dccd2.jpg">
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Indyk<i
-            class="material-icons right">more_vert</i></span>
-          <p>Średnia cena: 15,22 zł</p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Indyk<i class="material-icons right">close</i></span>
-          <table>
-            <thead>
-            <tr>
-              <th data-field="Day">Dzień</th>
-              <th data-field="Place">Miejsce</th>
-              <th data-field="Price">Cena</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>15.10.2016 r.</td>
-              <td>Auchan</td>
-              <td>19,29 zł</td>
-            </tr>
-            <tr>
-              <td>29.10.2016 r.</td>
-              <td>Auchan</td>
-              <td>14,29 zł</td>
-            </tr>
-            <tr>
-              <td>01.10.2016 r.</td>
-              <td>Makro</td>
-              <td>12,11 zł</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>

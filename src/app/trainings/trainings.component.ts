@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CYCLES_LIST} from "../shared/entities/mock-data/Cycles";
+import {Cycle} from "../shared/entities/GetEntities";
 
 @Component({
   selector: 'coach-training',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrainingsComponent implements OnInit {
 
-  constructor() { }
+  private showContents: boolean[]
 
-  ngOnInit() {
+  constructor() {
   }
 
+  ngOnInit() {
+    this.showContents = [false, false, true];
+  }
+
+  getCycles(): Cycle[] {
+    return CYCLES_LIST;
+  }
+
+  showContent(index: number): boolean {
+    return this.showContents[index];
+  }
 }

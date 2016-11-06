@@ -1,31 +1,32 @@
 <div class="container">
   <div class="row">
 
-    <div class="col s12">
+    <div *ngFor="let weightPreview of getWeightPreviews(); let i = index" class="col s12">
       <div class="card grey lighten-3">
         <div class="card-content">
-          <span class="card-title">Sierpień 2016r.</span>
+          <span class="card-title">{{weightPreview.month}} {{weightPreview.year}}r.</span>
         </div>
-      </div>
-    </div>
-
-    <div class="col s12">
-      <div class="card grey lighten-3">
-        <div class="card-content">
-          <span class="card-title">Wrzesień 2016r.</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="col s12">
-      <div class="card grey lighten-3">
-        <div class="card-content">
-          <span class="card-title">Październik 2016r.</span>
-        </div>
-        <div class="center card-action">
+        <div *ngIf="showContent(i)" class="center card-action">
+          <table>
+            <thead>
+              <th *ngFor="let day of getAllDays(weightPreview.month)">{{day}}</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td *ngFor="let value of getAllValues(weightPreview.month)">{{value}}</td>
+              </tr>
+            </tbody>
+          </table>
           <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Burn_down_chart.png">
+
         </div>
       </div>
+    </div>
+
+    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+      <a class="btn-floating btn-large waves-effect waves-light blue">
+        <i class="large material-icons">add</i>
+      </a>
     </div>
 
   </div>

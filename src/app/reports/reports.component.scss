@@ -1,0 +1,12 @@
+.card-content {
+  cursor: pointer;
+}
+
+.down-arrow {
+  filter: contrast(0.3);
+}
+
+.left-arrow {
+  filter: contrast(0.3);
+  transform: rotate(90deg);
+}

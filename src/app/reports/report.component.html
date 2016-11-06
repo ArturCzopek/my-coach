@@ -1,0 +1,16 @@
+<div class="card grey lighten-3 hoverable">
+  <div class="card-content" (click)="onReportClick()">
+    <span class="card-title">Raport {{reportPreview.startDate | date: "dd.MM"}} - {{reportPreview.endDate | date: "dd.MM.yyyy"}} r.</span>
+    <img #arrowImg class="right" [ngClass]="arrowImageClass" src="assets/img/arrow_down.png" />
+  </div>
+  <div *ngIf="showReport" class="card-action">
+    <div *ngIf="!isLoadedReport">
+      <div class="progress">
+        <div class="indeterminate"></div>
+      </div>
+    </div>
+    <div *ngIf="isLoadedReport">
+      {{report.content}}
+    </div>
+  </div>
+</div>

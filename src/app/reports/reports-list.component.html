@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+
+    <div *ngFor="let reportPreview of getReportPreviews()" class="col s12">
+      <coach-report [reportPreview]="reportPreview"></coach-report>
+    </div>
+
+    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+      <a class="btn-floating btn-large waves-effect waves-light blue">
+        <i class="large material-icons">add</i>
+      </a>
+    </div>
+
+  </div>
+</div>
