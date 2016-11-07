@@ -1,0 +1,58 @@
+.material-button {
+  display: none;
+  cursor: pointer;
+  filter: contrast(0);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &:hover {
+    filter: contrast(1);
+  }
+}
+
+.card-content {
+  position: relative;
+
+  .card-title {
+    i.edit-button {
+      @extend .material-button;
+      margin-left: 1rem;
+    }
+
+    i.delete-button {
+      @extend .material-button;
+      margin-left: 3rem;
+    }
+  }
+}
+
+.card-content:hover {
+  .card-title {
+    i.edit-button, i.delete-button {
+      display: inline;
+    }
+  }
+}
+
+.arrow {
+  filter: contrast(0);
+  cursor: pointer;
+
+  &:hover {
+    filter: contrast(1);
+  }
+}
+
+.down-arrow {
+  @extend .arrow;
+}
+
+.left-arrow {
+  @extend .arrow;
+  transform: rotate(90deg);
+}
+
+.loading {
+  padding: 0;
+}

@@ -2,36 +2,37 @@ import {Component, OnInit, Input} from "@angular/core";
 import {ReportPreview} from "../shared/entities/preview.entities";
 import {REPORTS_LIST} from "../shared/entities/mock-data/reports.mock-data";
 import {Report} from "../shared/entities/get.entities";
+import {ReportService} from "./report.service";
 
 @Component({
   selector: 'coach-report',
   templateUrl: 'report.component.html',
-  styleUrls: ['./reports.component.scss']
+  styleUrls: ['reports.scss']
 })
 export class ReportComponent implements OnInit {
 
   @Input() reportPreview: ReportPreview;
-  private showReport;
-  private isLoadedReport;
   private report: Report;
+  private errorMessage: string;
+  private showReport: boolean;
+  private isLoading: boolean;
+
   private arrowImageClass: string;
 
-  constructor() {
+  constructor(private reportService: ReportService) {
   }
 
   ngOnInit() {
+
+    //false showReport because at first toggle we want to see true to load data
     this.showReport = false;
-    this.isLoadedReport = false;
+    this.isLoading = true;
+    this.errorMessage = '';
     this.report = null;
     this.arrowImageClass = 'left-arrow';
   }
 
-  getReportForPreview() {
-    this.report = REPORTS_LIST[this.reportPreview.reportId];
-    this.isLoadedReport = true;
-  }
-
-  toggleShow() {
+  private toggleShow() {
     this.showReport = !this.showReport;
 
     if (this.showReport) {
@@ -41,26 +42,34 @@ export class ReportComponent implements OnInit {
     }
   }
 
-  onReportClick() {
+  private onReportClick() {
     this.toggleShow();
 
     if (this.showReport) {
       if (this.report == null) {
-        this.loadReport();
+        this.reportService.getReport(this.reportPreview.reportId)
+          .subscribe(
+            report => {
+              this.errorMessage = '';
+              this.report = report;
+            },
+            error => {
+              this.errorMessage = 'Cannot load report!';
+              console.log(error);
+            },
+            () => {
+              this.isLoading = false;
+            }
+          );
       }
     }
   }
 
-  loadReport() {
-    this.sleep(5000).then(() => {
-      console.log("timeout");
-      this.getReportForPreview();
-    });
+  private isProgressBar() {
+    if (this.isLoading) {
+      return "loading";
+    } else {
+      return "";
+    }
   }
-
-  sleep(time) {
-    //noinspection TypeScriptUnresolvedFunction
-    return new Promise((resolve) => setTimeout(resolve, time));
-  }
-
 }

@@ -1,15 +1,19 @@
 <div class="card grey lighten-3 hoverable">
-  <div class="card-content" (click)="onReportClick()">
-    <span class="card-title">Raport {{reportPreview.startDate | date: "dd.MM"}} - {{reportPreview.endDate | date: "dd.MM.yyyy"}} r.</span>
-    <img #arrowImg class="right" [ngClass]="arrowImageClass" src="assets/img/arrow_down.png" />
+  <div class="card-content">
+    <span class="card-title">
+      Raport {{reportPreview.startDate | date: "dd.MM"}} - {{reportPreview.endDate | date: "dd.MM.yyyy"}} r.
+      <i class="edit-button small material-icons">mode_edit</i>
+      <i class="delete-button small material-icons">delete</i>
+    </span>
+    <img class="right" [ngClass]="arrowImageClass" src="assets/img/arrow_down.png" (click)="onReportClick()"/>
   </div>
-  <div *ngIf="showReport" class="card-action">
-    <div *ngIf="!isLoadedReport">
-      <div class="progress">
-        <div class="indeterminate"></div>
-      </div>
+  <div *ngIf="showReport" class="card-action" [ngClass]="isProgressBar()">
+
+    <div *ngIf="isLoading">
+      <coach-strip-loader></coach-strip-loader>
     </div>
-    <div *ngIf="isLoadedReport">
+
+    <div *ngIf="!isLoading">
       {{report.content}}
     </div>
   </div>

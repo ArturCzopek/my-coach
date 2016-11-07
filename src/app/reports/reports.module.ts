@@ -3,14 +3,21 @@ import {ReportsListComponent} from "./reports-list.component";
 import {CommonModule} from "@angular/common";
 import {HttpModule} from "@angular/http";
 import {ReportComponent} from "./report.component";
+import {ReportService} from "./report.service";
+import {UtilsModule} from "../utils/utils.module";
 
 @NgModule({
+  providers: [
+    ReportService
+  ],
   declarations: [
     ReportsListComponent,
-    ReportComponent],
+    ReportComponent
+  ],
   imports: [
     HttpModule,
-    CommonModule
+    CommonModule,
+    UtilsModule
   ]
 })
 

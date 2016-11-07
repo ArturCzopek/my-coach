@@ -1,29 +1,41 @@
 import {Component, OnInit} from "@angular/core";
-import {REPORT_PREVIEWS_LISTS} from "../shared/entities/mock-data/previews/report-previews.mock-data";
 import {ReportPreview} from "../shared/entities/preview.entities";
+import {ReportService} from "./report.service";
 
 @Component({
   selector: 'coach-reports-list',
   templateUrl: './reports-list.component.html',
-  styleUrls: ['./reports.component.scss']
+  styleUrls: ['reports.scss']
 })
 export class ReportsListComponent implements OnInit {
 
-  private showReports: boolean[];
+  private reportPreviews: ReportPreview[];
+  private isLoading: boolean;
+  private errorMessage: string;
 
-  constructor() { }
+  constructor(private reportService: ReportService) {
+
+  }
 
   ngOnInit() {
-    this.showReports = [ false, true, false ];
+    this.loadReportPreviews();
   }
 
-  getReportPreviews(): ReportPreview[] {
-    return REPORT_PREVIEWS_LISTS;
+  private loadReportPreviews() {
+    this.isLoading = true;
+    this.reportService.getReportPreviews()
+      .subscribe(
+        previews => {
+          this.errorMessage = '';
+          this.reportPreviews = previews;
+        },
+        error => {
+          this.errorMessage = 'Cannot get report previews!!';
+          console.log(error);
+        },
+        () => {
+          this.isLoading = false;
+        }
+      );
   }
-
-
-  showReport(index: number): boolean {
-    return this.showReports[index];
-  }
-
 }

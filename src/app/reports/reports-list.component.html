@@ -1,8 +1,13 @@
 <div class="container">
   <div class="row">
+    <div *ngIf="isLoading">
+      <coach-circle-loader></coach-circle-loader>
+    </div>
 
-    <div *ngFor="let reportPreview of getReportPreviews()" class="col s12">
-      <coach-report [reportPreview]="reportPreview"></coach-report>
+    <div *ngIf="!isLoading">
+      <div *ngFor="let reportPreview of reportPreviews" class="col s12">
+        <coach-report [reportPreview]="reportPreview"></coach-report>
+      </div>
     </div>
 
     <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
