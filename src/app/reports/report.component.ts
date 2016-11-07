@@ -1,10 +1,7 @@
-import {Component, OnInit, Input, EventEmitter} from "@angular/core";
+import {Component, OnInit, Input, EventEmitter, Output} from "@angular/core";
 import {ReportPreview} from "../shared/entities/preview.entities";
 import {Report} from "../shared/entities/get.entities";
 import {ReportService} from "./report.service";
-import {MaterializeAction} from 'angular2-materialize';
-
-declare var Materialize:any;
 
 @Component({
   selector: 'coach-report',
@@ -18,9 +15,9 @@ export class ReportComponent implements OnInit {
   private errorMessage: string;
   private showReport: boolean;
   private isLoading: boolean;
-  private editModalActions = new EventEmitter<string|MaterializeAction>();
-  private deleteModalActions = new EventEmitter<string|MaterializeAction>();
-  private editToastActions = new EventEmitter<string|MaterializeAction>();
+
+  @Output() editReport = new EventEmitter();
+  @Output() deleteReport = new EventEmitter();
 
   private arrowImageClass: string;
 
@@ -68,6 +65,15 @@ export class ReportComponent implements OnInit {
     }
   }
 
+  onEditClick() {
+    console.log("emit: " + this.report);
+    this.editReport.emit(this.report);
+  }
+
+  onDeleteClick() {
+    this.deleteReport.emit(this.reportPreview);
+  }
+
   private toggleShow() {
     this.showReport = !this.showReport;
 
@@ -78,33 +84,5 @@ export class ReportComponent implements OnInit {
     }
   }
 
-  openEditModal() {
 
-    if (this.showReport) {
-      this.editModalActions.emit({action: "modal", params: ['open']});
-    } else {
-      Materialize.toast('Najpierw wczytaj report!', 3000);
-
-    }
-  }
-
-  closeEditModal() {
-    this.editModalActions.emit({action: "modal", params: ['close']});
-  }
-
-  openDeleteModal() {
-    this.deleteModalActions.emit({action: "modal", params: ['open']});
-  }
-
-  closeDeleteModal() {
-    this.deleteModalActions.emit({action: "modal", params: ['close']});
-  }
-
-  editReport() {
-    console.log('Not implemented yet')
-  }
-
-  deleteReport() {
-    console.log('Not implemented yet')
-  }
 }
