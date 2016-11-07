@@ -22,23 +22,36 @@
   </div>
 </div>
 
-<!--MODALS-->
+<!-------------------------------------------------------MODALS-------------------------------------------------------->
 
 
-<!--Edit modal-->
-<div id="report-edit" class="modal bottom-sheet" materialize="modal" [materializeParams]="[{dismissible: false}]"
+<!--------------------------------------------------Edit report modal-------------------------------------------------->
+<div id="report-edit" class="modal bottom-sheet" materialize="modal" [materializeParams]="[modalParams]"
      [materializeActions]="editModalActions">
   <div class="modal-content">
     <div *ngIf="reportForModal">
       <h4>Raport {{reportForModal.startDate | date: "dd.MM"}} - {{reportForModal.endDate | date: "dd.MM.yyyy"}} r.</h4>
-      <p>{{ reportForModal.content }}</p>
+      <div class="row">
+        <!--TODO: Bind it with ngForm-->
+        <form materialize class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">receipt</i>
+              <textarea id="edit-report-content" class="materialize-textarea" [(ngModel)]="reportForModal.content" [ngModelOptions]="{standalone: true}"></textarea>
+              <label for="edit-report-content">Edytuj raport</label>
+            </div>
+          </div>
+        </form>
+      </div>
+
     </div>
   </div>
-  <coach-modal-footer [leftButtonLabel]="'Edytuj'" [rightButtonLabel]="'Zamknij'" (leftButtonAction)="editReport()" (rightButtonAction)="closeEditModal()"></coach-modal-footer>
+  <coach-modal-footer [leftButtonLabel]="'Edytuj'" [rightButtonLabel]="'Zamknij'" (leftButtonAction)="editReport()"
+                      (rightButtonAction)="closeEditModal()"></coach-modal-footer>
 </div>
 
-<!-- Delete modal -->
-<div id="report-delete" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]"
+<!------------------------------------------------ Delete report modal ------------------------------------------------>
+<div id="report-delete" class="modal" materialize="modal" [materializeParams]="[modalParams]"
      [materializeActions]="deleteModalActions">
   <div class="modal-content">
     <div *ngIf="reportForModal">
@@ -47,15 +60,17 @@
       <p>Na pewno chcesz usunąć ten report?</p>
     </div>
   </div>
-  <coach-modal-footer [leftButtonLabel]="'Tak'" [rightButtonLabel]="'Nie'" (leftButtonAction)="deleteReport()" (rightButtonAction)="closeDeleteModal()"></coach-modal-footer>
+  <coach-modal-footer [leftButtonLabel]="'Tak'" [rightButtonLabel]="'Nie'" (leftButtonAction)="deleteReport()"
+                      (rightButtonAction)="closeDeleteModal()"></coach-modal-footer>
 </div>
 
-<!--Add modal-->
-<div id="report-add" class="modal bottom-sheet" materialize="modal" [materializeParams]="[{dismissible: false}]"
+<!--------------------------------------------------Add report modal--------------------------------------------------->
+<div id="report-add" class="modal bottom-sheet" materialize="modal" [materializeParams]="[modalParams]"
      [materializeActions]="addModalActions">
   <div class="modal-content">
     <h4>Dodaj raport</h4>
     <div class="row">
+      <!--TODO: Bind it with ngForm-->
       <form materialize class="col s12">
         <div class="row">
           <div class="input-field col s6">

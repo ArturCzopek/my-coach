@@ -20,6 +20,8 @@ export class ReportsListComponent implements OnInit {
   private editModalActions = new EventEmitter<string|MaterializeAction>();
   private deleteModalActions = new EventEmitter<string|MaterializeAction>();
   private editToastActions = new EventEmitter<string|MaterializeAction>();
+  private modalParams;
+
   private reportForModal: Report|ReportPreview;
 
   constructor(private reportService: ReportService) {
@@ -29,6 +31,11 @@ export class ReportsListComponent implements OnInit {
   ngOnInit() {
     this.loadReportPreviews();
     this.reportForModal = null;
+    this.modalParams = {
+      dismissible: true,
+      in_duration: 900,
+      out_duration: 900
+    };
   }
 
   private loadReportPreviews() {

@@ -6,6 +6,7 @@ import {ReportComponent} from "./report.component";
 import {ReportService} from "./report.service";
 import {UtilsModule} from "../utils/utils.module";
 import {MaterializeDirective} from "angular2-materialize";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   providers: [
@@ -19,6 +20,7 @@ import {MaterializeDirective} from "angular2-materialize";
   imports: [
     HttpModule,
     CommonModule,
+    FormsModule,
     UtilsModule
   ]
 })
