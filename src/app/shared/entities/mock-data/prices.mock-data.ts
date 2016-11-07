@@ -1,4 +1,4 @@
-import {Price} from "../GetEntities";
+import {Price} from "../get.entities";
 
 export let PRICES_LIST: [Price[]] = [
   [null], //don't change function special for mock data so I've added 'padding'

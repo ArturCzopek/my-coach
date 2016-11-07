@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {CYCLES_LIST} from "../shared/entities/mock-data/Cycles";
-import {Cycle} from "../shared/entities/GetEntities";
+import {CYCLES_LIST} from "../shared/entities/mock-data/cycles.mock-data";
+import {Cycle} from "../shared/entities/get.entities";
 
 @Component({
   selector: 'coach-training',

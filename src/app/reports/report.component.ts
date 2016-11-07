@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from "@angular/core";
-import {ReportPreview} from "../shared/entities/PreviewEntites";
-import {REPORTS_LIST} from "../shared/entities/mock-data/Reports";
-import {Report} from "../shared/entities/GetEntities";
+import {ReportPreview} from "../shared/entities/preview.entities";
+import {REPORTS_LIST} from "../shared/entities/mock-data/reports.mock-data";
+import {Report} from "../shared/entities/get.entities";
 
 @Component({
   selector: 'coach-report',

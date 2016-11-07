@@ -1,4 +1,4 @@
-import {ProductPreview} from "../../PreviewEntites";
+import {ProductPreview} from "../../preview.entities";
 
 export let PRODUCT_PREVIEWS_LIST: ProductPreview[] = [
   new ProductPreview(1,

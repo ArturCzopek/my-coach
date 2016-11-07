@@ -1,4 +1,4 @@
-import {WeightPreview} from "../../PreviewEntites";
+import {WeightPreview} from "../../preview.entities";
 
 export let WEIGHT_PREVIEWS_LIST: WeightPreview[] = [
   new WeightPreview(10, 2016),

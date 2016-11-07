@@ -1,4 +1,4 @@
-import {Cycle, Exercise, Set, ExerciseSession, Series, Training} from "../GetEntities";
+import {Cycle, Exercise, Set, ExerciseSession, Series, Training} from "../get.entities";
 
 export let CYCLES_LIST: Cycle[] = [
   null, //padding for test issues

@@ -1,4 +1,4 @@
-import {CyclePreview} from "../../PreviewEntites";
+import {CyclePreview} from "../../preview.entities";
 
 export let CYCLE_PREVIEWS_LIST: CyclePreview[] = [
   new CyclePreview(

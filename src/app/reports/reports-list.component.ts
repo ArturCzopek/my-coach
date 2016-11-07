@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {REPORT_PREVIEWS_LISTS} from "../shared/entities/mock-data/previews/ReportPreviews";
-import {ReportPreview} from "../shared/entities/PreviewEntites";
+import {REPORT_PREVIEWS_LISTS} from "../shared/entities/mock-data/previews/report-previews.mock-data";
+import {ReportPreview} from "../shared/entities/preview.entities";
 
 @Component({
   selector: 'coach-reports-list',

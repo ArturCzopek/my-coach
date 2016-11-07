@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductPreview} from "../shared/entities/PreviewEntites";
-import {PRODUCT_PREVIEWS_LIST} from "../shared/entities/mock-data/previews/ProductPreviews";
-import {Price} from "../shared/entities/GetEntities";
-import {PRICES_LIST} from "../shared/entities/mock-data/Prices";
+import {ProductPreview} from "../shared/entities/preview.entities";
+import {PRODUCT_PREVIEWS_LIST} from "../shared/entities/mock-data/previews/product-previews.mock-data";
+import {Price} from "../shared/entities/get.entities";
+import {PRICES_LIST} from "../shared/entities/mock-data/prices.mock-data";
 
 
 @Component({

@@ -1,4 +1,4 @@
-import {Report} from "../GetEntities";
+import {Report} from "../get.entities";
 
 export let REPORTS_LIST: Report[] = [
   null, //padding for test issues

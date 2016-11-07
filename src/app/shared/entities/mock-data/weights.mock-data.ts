@@ -1,4 +1,4 @@
-import {Weight} from "../GetEntities";
+import {Weight} from "../get.entities";
 
 export let WEIGHT_LIST: [Weight[]] = [
   [

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {WEIGHT_PREVIEWS_LIST} from "../shared/entities/mock-data/previews/WeightPreviews";
-import {WeightPreview} from "../shared/entities/PreviewEntites";
-import {WEIGHT_LIST} from "../shared/entities/mock-data/Weights";
-import {Weight} from "../shared/entities/GetEntities";
+import {WEIGHT_PREVIEWS_LIST} from "../shared/entities/mock-data/previews/weight-previews.mock-data";
+import {WeightPreview} from "../shared/entities/preview.entities";
+import {WEIGHT_LIST} from "../shared/entities/mock-data/weights.mock-data";
+import {Weight} from "../shared/entities/get.entities";
 
 @Component({
   selector: 'coach-weight',

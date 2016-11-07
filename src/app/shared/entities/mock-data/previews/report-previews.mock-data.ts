@@ -1,4 +1,4 @@
-import {ReportPreview} from "../../PreviewEntites";
+import {ReportPreview} from "../../preview.entities";
 
 export let REPORT_PREVIEWS_LISTS: ReportPreview[] = [
   new ReportPreview(1, new Date(2016, 10, 8), new Date(2016, 10, 14)),
