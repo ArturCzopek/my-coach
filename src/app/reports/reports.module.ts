@@ -5,6 +5,7 @@ import {HttpModule} from "@angular/http";
 import {ReportComponent} from "./report.component";
 import {ReportService} from "./report.service";
 import {UtilsModule} from "../utils/utils.module";
+import {MaterializeDirective} from "angular2-materialize";
 
 @NgModule({
   providers: [
@@ -12,7 +13,8 @@ import {UtilsModule} from "../utils/utils.module";
   ],
   declarations: [
     ReportsListComponent,
-    ReportComponent
+    ReportComponent,
+    MaterializeDirective
   ],
   imports: [
     HttpModule,

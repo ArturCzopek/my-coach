@@ -1,6 +1,7 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, EventEmitter} from "@angular/core";
 import {ReportPreview} from "../shared/entities/preview.entities";
 import {ReportService} from "./report.service";
+import {MaterializeAction} from "angular2-materialize";
 
 @Component({
   selector: 'coach-reports-list',
@@ -12,6 +13,7 @@ export class ReportsListComponent implements OnInit {
   private reportPreviews: ReportPreview[];
   private isLoading: boolean;
   private errorMessage: string;
+  private addModalActions = new EventEmitter<string|MaterializeAction>();
 
   constructor(private reportService: ReportService) {
 
@@ -37,5 +39,17 @@ export class ReportsListComponent implements OnInit {
           this.isLoading = false;
         }
       );
+  }
+
+  openAddModal() {
+    this.addModalActions.emit({action: "modal", params: ['open']});
+  }
+
+  closeAddModal() {
+    this.addModalActions.emit({action: "modal", params: ['close']});
+  }
+
+  addReport() {
+    console.log('Not implemented yet');
   }
 }

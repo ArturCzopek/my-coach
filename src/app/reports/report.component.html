@@ -2,12 +2,15 @@
   <div class="card-content">
     <span class="card-title">
       Raport {{reportPreview.startDate | date: "dd.MM"}} - {{reportPreview.endDate | date: "dd.MM.yyyy"}} r.
-      <i class="edit-button small material-icons">mode_edit</i>
-      <i class="delete-button small material-icons">delete</i>
+      <i (click)="openEditModal()" class="edit-button small material-icons tooltipped" materialize="tooltip"
+         data-position="bottom" data-delay="50" data-tooltip="Edytuj">mode_edit</i>
+      <i (click)="openDeleteModal()" class="delete-button small material-icons tooltipped" materialize="tooltip"
+         data-position="bottom" data-delay="50" data-tooltip="Usuń">delete</i>
     </span>
-    <img class="right" [ngClass]="arrowImageClass" src="assets/img/arrow_down.png" (click)="onReportClick()"/>
+    <img class="right tooltipped" [ngClass]="arrowImageClass" src="assets/img/arrow_down.png"
+         (click)="onReportClick()"/>
   </div>
-  <div *ngIf="showReport" class="card-action" [ngClass]="isProgressBar()">
+  <div *ngIf="showReport" class="card-action" [ngClass]="getLoadingStyle()">
 
     <div *ngIf="isLoading">
       <coach-strip-loader></coach-strip-loader>
@@ -15,6 +18,36 @@
 
     <div *ngIf="!isLoading">
       {{report.content}}
+    </div>
+  </div>
+
+  <div *ngIf="showReport && !isLoading">
+
+    <!--Edit modal-->
+    <div id="report-edit" class="modal bottom-sheet" materialize="modal" [materializeParams]="[{dismissible: false}]"
+         [materializeActions]="editModalActions">
+      <div class="modal-content">
+        <h4>Raport {{reportPreview.startDate | date: "dd.MM"}} - {{reportPreview.endDate | date: "dd.MM.yyyy"}} r.</h4>
+        <p>{{ report.content }}</p>
+      </div>
+      <div class="modal-footer">
+        <a class="waves-effect waves-green btn-flat" (click)="closeEditModal()">Zamknij</a>
+        <a class="modal-action modal-close waves-effect waves-green btn-flat" (click)="editReport()">Edytuj</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete modal -->
+  <div id="report-delete" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]"
+       [materializeActions]="deleteModalActions">
+    <div class="modal-content">
+      <h4>Usuń - Raport {{reportPreview.startDate | date: "dd.MM"}} - {{reportPreview.endDate | date: "dd.MM.yyyy"}}
+        r.</h4>
+      <p>Na pewno chcesz usunąć ten report?</p>
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat" (click)="closeDeleteModal()">Nie</a>
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat" (click)="deleteReport()">Tak</a>
     </div>
   </div>
 </div>

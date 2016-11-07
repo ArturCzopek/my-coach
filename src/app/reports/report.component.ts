@@ -1,8 +1,10 @@
-import {Component, OnInit, Input} from "@angular/core";
+import {Component, OnInit, Input, EventEmitter} from "@angular/core";
 import {ReportPreview} from "../shared/entities/preview.entities";
-import {REPORTS_LIST} from "../shared/entities/mock-data/reports.mock-data";
 import {Report} from "../shared/entities/get.entities";
 import {ReportService} from "./report.service";
+import {MaterializeAction} from 'angular2-materialize';
+
+declare var Materialize:any;
 
 @Component({
   selector: 'coach-report',
@@ -16,6 +18,9 @@ export class ReportComponent implements OnInit {
   private errorMessage: string;
   private showReport: boolean;
   private isLoading: boolean;
+  private editModalActions = new EventEmitter<string|MaterializeAction>();
+  private deleteModalActions = new EventEmitter<string|MaterializeAction>();
+  private editToastActions = new EventEmitter<string|MaterializeAction>();
 
   private arrowImageClass: string;
 
@@ -32,17 +37,7 @@ export class ReportComponent implements OnInit {
     this.arrowImageClass = 'left-arrow';
   }
 
-  private toggleShow() {
-    this.showReport = !this.showReport;
-
-    if (this.showReport) {
-      this.arrowImageClass = 'down-arrow';
-    } else {
-      this.arrowImageClass = 'left-arrow';
-    }
-  }
-
-  private onReportClick() {
+  onReportClick() {
     this.toggleShow();
 
     if (this.showReport) {
@@ -65,11 +60,51 @@ export class ReportComponent implements OnInit {
     }
   }
 
-  private isProgressBar() {
+  getLoadingStyle() {
     if (this.isLoading) {
       return "loading";
     } else {
       return "";
     }
+  }
+
+  private toggleShow() {
+    this.showReport = !this.showReport;
+
+    if (this.showReport) {
+      this.arrowImageClass = 'down-arrow';
+    } else {
+      this.arrowImageClass = 'left-arrow';
+    }
+  }
+
+  openEditModal() {
+
+    if (this.showReport) {
+      this.editModalActions.emit({action: "modal", params: ['open']});
+    } else {
+      Materialize.toast('Najpierw wczytaj report!', 3000);
+
+    }
+  }
+
+  closeEditModal() {
+    this.editModalActions.emit({action: "modal", params: ['close']});
+  }
+
+  openDeleteModal() {
+    this.deleteModalActions.emit({action: "modal", params: ['open']});
+  }
+
+  closeDeleteModal() {
+    this.deleteModalActions.emit({action: "modal", params: ['close']});
+  }
+
+  editReport() {
+    console.log('Not implemented yet')
+  }
+
+  deleteReport() {
+    console.log('Not implemented yet')
   }
 }
