@@ -8,7 +8,7 @@ declare var Materialize:any;
 @Component({
   selector: 'coach-reports-list',
   templateUrl: './reports-list.component.html',
-  styleUrls: ['reports.scss']
+  styleUrls: ['./reports.scss', '../shared/materialize-upgrades.scss']
 })
 export class ReportsListComponent implements OnInit {
 

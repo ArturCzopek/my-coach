@@ -10,5 +10,4 @@ import {HttpModule} from "@angular/http";
     CommonModule
   ]
 })
-
 export class TrainingsModule {}

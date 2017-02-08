@@ -4,11 +4,11 @@ import {Report} from "../shared/entities/get.entities";
 import {ReportService} from "./report.service";
 
 @Component({
-  selector: 'coach-report',
-  templateUrl: 'report.component.html',
-  styleUrls: ['reports.scss']
+  selector: 'coach-report-card',
+  templateUrl: 'report-card.component.html',
+  styleUrls: ['./reports.scss', '../shared/materialize-upgrades.scss']
 })
-export class ReportComponent implements OnInit {
+export class ReportCardComponent implements OnInit {
 
   @Input() reportPreview: ReportPreview;
   private report: Report;
@@ -25,7 +25,6 @@ export class ReportComponent implements OnInit {
   }
 
   ngOnInit() {
-
     //false showReport because at first toggle we want to see true to load data
     this.showReport = false;
     this.isLoading = true;
@@ -66,7 +65,6 @@ export class ReportComponent implements OnInit {
   }
 
   onEditClick() {
-    console.log("emit: " + this.report);
     this.editReport.emit(this.report);
   }
 
@@ -83,6 +81,4 @@ export class ReportComponent implements OnInit {
       this.arrowImageClass = 'left-arrow';
     }
   }
-
-
 }

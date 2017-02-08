@@ -3,7 +3,7 @@ import {Component, Input, Output, EventEmitter} from "@angular/core";
 @Component({
   selector: 'coach-modal-footer',
   templateUrl: 'modal-footer.component.html',
-  styleUrls: ['utils.scss']
+  styleUrls: []
 })
 export class ModalFooter {
   @Input() private rightButtonLabel: string;

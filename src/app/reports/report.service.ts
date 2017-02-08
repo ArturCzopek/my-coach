@@ -9,9 +9,7 @@ import {REPORTS_LIST} from "../shared/entities/mock-data/reports.mock-data";
 @Injectable()
 export class ReportService {
 
-  constructor() {
-
-  }
+  constructor() { }
 
   public getReportPreviews(): Observable<ReportPreview[]> {
     return Observable.create(observer => {
@@ -20,11 +18,11 @@ export class ReportService {
         //timeout is simulation of 'getting from http'
         setTimeout(() => {
           observer.next(REPORT_PREVIEWS_LIST);
-        }, 2000);
+        }, 1000);
 
         setTimeout(() => {
           observer.complete();
-        }, 3000);
+        }, 1100);
       }
     });
   }
@@ -36,11 +34,11 @@ export class ReportService {
         //timeout is simulation of 'getting from http'
         setTimeout(() => {
           observer.next(REPORTS_LIST[reportId]);
-        }, 2000);
+        }, 1000);
 
         setTimeout(() => {
           observer.complete();
-        }, 3000);
+        }, 1100);
       }
     })
   }

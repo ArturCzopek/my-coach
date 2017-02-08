@@ -1,6 +1,6 @@
-import {WeightPreview} from "../../preview.entities";
+import {WeightsPreview} from "../../preview.entities";
 
-export let WEIGHT_PREVIEWS_LIST: WeightPreview[] = [
-  new WeightPreview(10, 2016),
-  new WeightPreview(11, 2016)
+export let WEIGHTS_PREVIEWS_LIST: WeightsPreview[] = [
+  new WeightsPreview(10, 2016),
+  new WeightsPreview(11, 2016)
 ];

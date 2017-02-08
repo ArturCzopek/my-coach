@@ -6,8 +6,8 @@
 
     <div *ngIf="!isLoading">
       <div *ngFor="let reportPreview of reportPreviews" class="col s12">
-        <coach-report [reportPreview]="reportPreview" (editReport)="openEditModal($event)"
-                      (deleteReport)="openDeleteModal($event)"></coach-report>
+        <coach-report-card [reportPreview]="reportPreview" (editReport)="openEditModal($event)"
+                           (deleteReport)="openDeleteModal($event)"></coach-report-card>
       </div>
     </div>
 

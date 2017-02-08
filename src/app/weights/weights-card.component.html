@@ -1,0 +1,21 @@
+<div class="card grey lighten-3 hoverable">
+  <div class="card-content">
+    <span class="card-title">
+      {{previewTitle}}
+    <i (click)="onEditClick()" class="edit-button small material-icons tooltipped" materialize="tooltip"
+       data-position="bottom" data-delay="50" data-tooltip="Edytuj pomiary">mode_edit</i>
+      <i (click)="onDeleteClick()" class="delete-button small material-icons tooltipped" materialize="tooltip"
+         data-position="bottom" data-delay="50" data-tooltip="Usuń pomiary">delete</i></span>
+    <img class="right tooltipped" [ngClass]="arrowImageClass" src="assets/img/arrow_down.png"
+         (click)="onWeightsClick()"/>
+  </div>
+  <div *ngIf="showWeights" class="center card-action" [ngClass]="getLoadingStyle()">
+    <div *ngIf="isLoading">
+      <coach-strip-loader></coach-strip-loader>
+    </div>
+
+    <div *ngIf="!isLoading">
+      <coach-line-chart [chartData]="chartData" [chartLabels]="chartLabels"></coach-line-chart>
+    </div>
+  </div>
+</div>

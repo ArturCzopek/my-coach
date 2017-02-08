@@ -23,9 +23,9 @@ export class ReportPreview {
   ) {}
 }
 
-export class WeightPreview {
+export class WeightsPreview {
   constructor (
-    private month: number,
-    private year: number
+    public month: number,
+    public year: number
   ) {}
 }
