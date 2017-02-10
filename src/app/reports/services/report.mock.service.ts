@@ -1,19 +1,18 @@
 import {Injectable} from "@angular/core";
-import {REPORT_PREVIEWS_LIST} from "../shared/entities/mock-data/previews/report-previews.mock-data";
+import {REPORT_PREVIEWS_LIST} from "../../shared/entities/mock-data/previews/report-previews.mock-data";
 import {Observable} from "rxjs";
-import {ReportPreview} from "../shared/entities/preview.entities";
-import {environment} from "../../environments/environment";
-import {Report} from "../shared/entities/get.entities";
-import {REPORTS_LIST} from "../shared/entities/mock-data/reports.mock-data";
+import {ReportPreview} from "../../shared/entities/preview.entities";
+import {Report} from "../../shared/entities/get.entities";
+import {REPORTS_LIST} from "../../shared/entities/mock-data/reports.mock-data";
+import {ReportService} from "./report.service";
 
 @Injectable()
-export class ReportService {
+export class ReportMockService implements ReportService {
 
   constructor() { }
 
   public getReportPreviews(): Observable<ReportPreview[]> {
     return Observable.create(observer => {
-      if (!environment.isBackendServerAvailable) {
 
         //timeout is simulation of 'getting from http'
         setTimeout(() => {
@@ -23,13 +22,11 @@ export class ReportService {
         setTimeout(() => {
           observer.complete();
         }, 1100);
-      }
     });
   }
 
   public getReport(reportId: number): Observable<Report> {
     return Observable.create(observer => {
-      if (!environment.isBackendServerAvailable) {
 
         //timeout is simulation of 'getting from http'
         setTimeout(() => {
@@ -39,7 +36,6 @@ export class ReportService {
         setTimeout(() => {
           observer.complete();
         }, 1100);
-      }
     })
   }
 }

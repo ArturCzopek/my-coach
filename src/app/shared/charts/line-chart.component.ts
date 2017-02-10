@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from "@angular/core";
 
 //TODO fix charts y-axis
 //change label from x
@@ -13,9 +13,9 @@ export class LineChartComponent implements OnInit{
   @Input() private chartData: any[];
   @Input() private chartLabels: any[];
 
-  private minValue: number = 99;
-  private maxValue: number = 0;
-  private dataOffset: number = 5;
+  private minValue = 99;
+  private maxValue = 0;
+  private dataOffset = 5;
 
   private isChartLegend: boolean = false;
   private chartType: string = 'line';
@@ -25,12 +25,12 @@ export class LineChartComponent implements OnInit{
     animation: {
       easing: 'easeInOutExpo'
     },
-    scales: {
-      yAxes: [{
-        // ticks: {min: 74, max: 86},
-        ticks: {min: this.minValue - this.dataOffset, max: this.maxValue + this.dataOffset}
-      }]
-    }
+    // scales: {
+    //   yAxes: [{
+    //     // ticks: {min: 74, max: 86},
+    //     ticks: {min: this.minValue - this.dataOffset, max: this.maxValue + this.dataOffset}
+    //   }]
+    // }
   }
 
   private chartColors: any[] = [

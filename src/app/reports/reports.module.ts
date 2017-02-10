@@ -3,14 +3,12 @@ import {ReportsListComponent} from "./reports-list.component";
 import {CommonModule} from "@angular/common";
 import {HttpModule} from "@angular/http";
 import {ReportCardComponent} from "./report-card.component";
-import {ReportService} from "./report.service";
 import {SharedModule} from "../shared/shared.module";
 import {FormsModule} from "@angular/forms";
+import {ReportBackEndService} from "./services/report.back-end.service";
+import {ReportMockService} from "./services/report.mock.service";
 
 @NgModule({
-  providers: [
-    ReportService
-  ],
   declarations: [
     ReportsListComponent,
     ReportCardComponent,
@@ -20,6 +18,10 @@ import {FormsModule} from "@angular/forms";
     CommonModule,
     FormsModule,
     SharedModule
+  ],
+  providers: [
+    ReportBackEndService,
+    ReportMockService
   ]
 })
 export class ReportsModule {

@@ -1,7 +1,10 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Injector} from "@angular/core";
 import {WeightsPreview} from "../shared/entities/preview.entities";
 import {Weight} from "../shared/entities/get.entities";
-import {WeightsService} from "./weights.service";
+import {WeightsMockService} from "./services/weights.mock.service";
+import {WeightsBackEndService} from "./services/weights.back-end.service";
+import {environment} from "../../environments/environment";
+import {WeightsService} from "./services/wiehgts.service";
 
 @Component({
   selector: 'coach-weights-card',
@@ -11,6 +14,7 @@ import {WeightsService} from "./weights.service";
 export class WeightsCardComponent implements OnInit {
 
   @Input() weightsPreview: WeightsPreview;
+
   private previewTitle: string;
   private weights: Weight[];
   private weightsDays: number[];
@@ -25,7 +29,15 @@ export class WeightsCardComponent implements OnInit {
 
   private arrowImageClass: string;
 
-  constructor(private weightsService: WeightsService) { }
+  private weightsService: WeightsService;
+
+  constructor(private injector: Injector) {
+    if (environment.isBackendServerAvailable) {
+      this.weightsService = this.injector.get(WeightsBackEndService);
+    } else {
+      this.weightsService = this.injector.get(WeightsMockService);
+    }
+  }
 
   ngOnInit() {
     //false showReport because at first toggle we want to see true to load data

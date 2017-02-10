@@ -1,7 +1,10 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, Injector} from "@angular/core";
 import {WeightsPreview} from "../shared/entities/preview.entities";
 import {Weight} from "../shared/entities/get.entities";
-import {WeightsService} from "./weights.service";
+import {WeightsService} from "./services/wiehgts.service";
+import {environment} from "../../environments/environment";
+import {WeightsMockService} from "./services/weights.mock.service";
+import {WeightsBackEndService} from "./services/weights.back-end.service";
 
 @Component({
   selector: 'coach-weights-list',
@@ -17,8 +20,14 @@ export class WeightsListComponent implements OnInit {
 
   private weightForModal: Weight;
 
-  constructor(private weightsService: WeightsService) {
-    this.loadWeightsPreviews();
+  private weightsService: WeightsService;
+
+  constructor(private injector: Injector) {
+    if (environment.isBackendServerAvailable) {
+      this.weightsService = this.injector.get(WeightsBackEndService);
+    } else {
+      this.weightsService = this.injector.get(WeightsMockService);
+    }
   }
 
   ngOnInit() {

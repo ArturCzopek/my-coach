@@ -3,8 +3,9 @@ import {WeightsListComponent} from "./weights-list.component";
 import {CommonModule} from "@angular/common";
 import {HttpModule} from "@angular/http";
 import {WeightsCardComponent} from "./weights-card.component";
-import {WeightsService} from "./weights.service";
 import {SharedModule} from "../shared/shared.module";
+import {WeightsMockService} from "./services/weights.mock.service";
+import {WeightsBackEndService} from "./services/weights.back-end.service";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {SharedModule} from "../shared/shared.module";
     SharedModule
   ],
   providers: [
-    WeightsService
+    WeightsMockService,
+    WeightsBackEndService
   ]
 })
 
