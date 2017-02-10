@@ -1,0 +1,17 @@
+<div id="weights-edit" class="modal fourty-width-modal" materialize="modal" [materializeParams]="[modalParams]"
+     [materializeActions]="deleteModalActions">
+  <div class="modal-content">
+
+    <h3>{{modalTitle}}</h3>
+
+    <form >
+      <p *ngFor="let weight of selectedWeights; let i = index">
+        <input type="checkbox" id="{{formattedDays[i]}}" name="{{formattedDays[i]}}" class="filled-in red-checkbox" [(ngModel)]="checkboxesForWeights[i]"/>
+        <label for="{{formattedDays[i]}}">{{formattedDays[i]}} - {{weight.value}}</label>
+      </p>
+    </form>
+
+    <coach-modal-footer [leftButtonLabel]="'Usuń'" [rightButtonLabel]="'Zamknij'" (leftButtonAction)="onDeleteClick()"
+                        (rightButtonAction)="onCloseModal()"></coach-modal-footer>
+  </div>
+</div>

@@ -1,8 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
 
-//TODO fix charts y-axis
-//change label from x
-
 @Component({
   selector: 'coach-line-chart',
   templateUrl: 'line-chart.component.html',

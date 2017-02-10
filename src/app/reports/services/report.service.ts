@@ -2,9 +2,9 @@ import {ReportPreview} from "../../shared/entities/preview.entities";
 import {Observable} from "rxjs";
 import {Report} from "../../shared/entities/get.entities";
 
-export interface ReportService {
+export abstract class ReportService {
 
-  getReportPreviews(): Observable<ReportPreview[]>;
+  abstract getReportPreviews(): Observable<ReportPreview[]>;
 
-  getReport(reportId: number): Observable<Report>;
+  abstract getReport(reportId: number): Observable<Report>;
 }

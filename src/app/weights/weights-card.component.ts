@@ -4,7 +4,8 @@ import {Weight} from "../shared/entities/get.entities";
 import {WeightsMockService} from "./services/weights.mock.service";
 import {WeightsBackEndService} from "./services/weights.back-end.service";
 import {environment} from "../../environments/environment";
-import {WeightsService} from "./services/wiehgts.service";
+import {WeightsService} from "./services/weights.service";
+import {WeightsModalsService} from "./services/weights-modals.service";
 
 @Component({
   selector: 'coach-weights-card',
@@ -21,7 +22,7 @@ export class WeightsCardComponent implements OnInit {
   private weightsValues: number[];
 
   private chartData: any[] = [];
-  private chartLabels: number[] = [];
+  private chartLabels: string[] = [];
 
   private errorMessage: string;
   private showWeights: boolean;
@@ -31,7 +32,7 @@ export class WeightsCardComponent implements OnInit {
 
   private weightsService: WeightsService;
 
-  constructor(private injector: Injector) {
+  constructor(private injector: Injector, private weightsModalsService: WeightsModalsService) {
     if (environment.isBackendServerAvailable) {
       this.weightsService = this.injector.get(WeightsBackEndService);
     } else {
@@ -46,7 +47,7 @@ export class WeightsCardComponent implements OnInit {
     this.errorMessage = '';
     this.weights = null;
     this.arrowImageClass = 'left-arrow';
-    this.previewTitle = this.getPreviewTitle();
+    this.previewTitle = this.weightsService.getPreviewTitle(this.weightsPreview);
   }
 
   onWeightsClick() {
@@ -64,7 +65,7 @@ export class WeightsCardComponent implements OnInit {
               this.chartData = [
                 {data: this.weightsValues, label: "Weight [kg]: " }
               ];
-              this.chartLabels = this.weightsDays;
+              this.chartLabels = this.weightsService.formatDaysToDisplayingValues(this.weightsDays);
             },
             error => {
               this.errorMessage = 'Cannot load weights!';
@@ -96,15 +97,12 @@ export class WeightsCardComponent implements OnInit {
     }
   }
 
-  private getPreviewTitle() {
-    return `${this.weightsPreview.month} ${this.weightsPreview.year}r.`;
-  }
 
   private onEditClick() {
-    console.log("Not implemented yet");
+    this.weightsModalsService.setEditWeights(this.weights, this.previewTitle);
   }
 
   private onDeleteClick() {
-    console.log("Not implemented yet");
+    this.weightsModalsService.setDeleteWeights(this.weights, this.previewTitle);
   }
 }

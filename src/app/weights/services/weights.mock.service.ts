@@ -4,10 +4,11 @@ import {Observable} from "rxjs";
 import {Weight} from "../../shared/entities/get.entities";
 import {WEIGHT_LIST} from "../../shared/entities/mock-data/weights.mock-data";
 import {WEIGHTS_PREVIEWS_LIST} from "../../shared/entities/mock-data/previews/weight-previews.mock-data";
-import {WeightsService} from "./wiehgts.service";
+import {WeightsService} from "./weights.service";
+import {DOES_NOT_CONTAIN} from "../../shared/global.values";
 
 @Injectable()
-export class WeightsMockService implements WeightsService {
+export class WeightsMockService extends WeightsService {
 
   public getWeightsPreviews(): Observable<WeightsPreview[]> {
     return Observable.create(observer => {
@@ -49,7 +50,7 @@ export class WeightsMockService implements WeightsService {
 
     let days: number[] = [];
 
-    weights.forEach((weight) => {
+    weights.forEach((weight: Weight) => {
       days.push(weight.measurementDate.getDate())
     });
 
@@ -60,10 +61,41 @@ export class WeightsMockService implements WeightsService {
 
     let values: number[] = [];
 
-    weights.forEach((weight) => {
+    weights.forEach((weight: Weight) => {
       values.push(weight.value)
     });
 
     return values;
+  }
+
+
+  public editWeights(weights: Weight[]): void {
+
+    for (let weightToUpdate of weights) {
+      for (let weightList of WEIGHT_LIST) {
+        let weightIndex = weightList.indexOf(weightToUpdate);
+        if (weightIndex === DOES_NOT_CONTAIN) {
+          continue;
+        } else {
+          weightList[weightIndex] = weightToUpdate;
+          break;
+        }
+      }
+    }
+  }
+
+  public deleteWeights(weights: Weight[]): void {
+
+    for (let weightToDelete of weights) {
+      for (let weightList of WEIGHT_LIST) {
+        let weightIndex = weightList.indexOf(weightToDelete);
+        if (weightIndex === DOES_NOT_CONTAIN) {
+          continue;
+        } else {
+          weightList.splice(weightIndex, 1);
+          break;
+        }
+      }
+    }
   }
 }

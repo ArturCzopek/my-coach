@@ -6,6 +6,7 @@ import {environment} from "../../environments/environment";
 import {ReportService} from "./services/report.service";
 import {ReportBackEndService} from "./services/report.back-end.service";
 import {ReportMockService} from "./services/report.mock.service";
+import {MODAL_PARAMS} from "../shared/global.values";
 
 declare var Materialize:any;
 
@@ -40,11 +41,7 @@ export class ReportsListComponent implements OnInit {
   ngOnInit() {
     this.loadReportPreviews();
     this.reportForModal = null;
-    this.modalParams = {
-      dismissible: true,
-      in_duration: 900,
-      out_duration: 900
-    };
+    this.modalParams = MODAL_PARAMS;
   }
 
   private loadReportPreviews() {

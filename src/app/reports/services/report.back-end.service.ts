@@ -5,9 +5,7 @@ import {Report} from "../../shared/entities/get.entities";
 import {ReportService} from "./report.service";
 
 @Injectable()
-export class ReportBackEndService implements ReportService {
-
-  constructor() { }
+export class ReportBackEndService extends ReportService {
 
   public getReportPreviews(): Observable<ReportPreview[]> {
     console.log("ReportBackEndService#getReportPreviews not implemented yet");
