@@ -9,6 +9,7 @@ import {WeightsModule} from "./weights/weights.module";
 import {ReportsModule} from "./reports/reports.module";
 import {TrainingsModule} from "./trainings/tranings.module";
 import {PricesModule} from "./prices/prices.module";
+import {ServiceInjector} from "./shared/service.injector";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import {PricesModule} from "./prices/prices.module";
     WeightsModule,
     MyCoachRoutingModule
   ],
-  providers: [],
+  providers: [ServiceInjector],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,10 @@
-$blue-color: #1976D2;
-$red-color: #FF0000;
+$light-blue-color: #90CAF9; //MATERIAL DESIGN 200
+$blue-color: #1976D2; //MATERIAL DESIGN 700
+$red-color: #B71C1C; //MATERIAL DESIGN 700
+
+$circle-size: 120px;
+
+//BUTTONS
 
 .material-button {
   display: none;
@@ -13,6 +18,26 @@ $red-color: #FF0000;
     filter: contrast(1);
   }
 }
+
+.arrow {
+  filter: contrast(0);
+  cursor: pointer;
+
+  &:hover {
+    filter: contrast(1);
+  }
+}
+
+.down-arrow {
+  @extend .arrow;
+}
+
+.left-arrow {
+  @extend .arrow;
+  transform: rotate(90deg);
+}
+
+//CARDS
 
 .card-content {
   position: relative;
@@ -38,27 +63,7 @@ $red-color: #FF0000;
   }
 }
 
-.arrow {
-  filter: contrast(0);
-  cursor: pointer;
-
-  &:hover {
-    filter: contrast(1);
-  }
-}
-
-.down-arrow {
-  @extend .arrow;
-}
-
-.left-arrow {
-  @extend .arrow;
-  transform: rotate(90deg);
-}
-
-.loading {
-  padding: 0;
-}
+//INPUTS
 
 .input-field input:focus {
   border-bottom: 1px solid $blue-color;
@@ -70,3 +75,29 @@ $red-color: #FF0000;
   border: 2px solid $red-color;
 }
 
+//LOADERS
+
+.loading {
+  padding: 0;
+}
+
+.preloader-wrapper.big {
+  width: $circle-size;
+  height: $circle-size;
+}
+
+.preloader-wrapper {
+  display: block;
+  position: relative;
+  top: 150px;
+  margin: 0 auto;
+}
+
+.progress {
+  margin: 0;
+  background-color: $blue-color;
+
+  .indeterminate {
+    background-color: $light-blue-color;
+  }
+}

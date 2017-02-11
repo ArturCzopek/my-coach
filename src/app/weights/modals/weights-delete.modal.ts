@@ -8,6 +8,7 @@ import {WeightsMockService} from "../services/weights.mock.service";
 import {WeightsBackEndService} from "../services/weights.back-end.service";
 import {environment} from "../../../environments/environment";
 import {MODAL_PARAMS} from "../../shared/global.values";
+import {ServiceInjector} from "../../shared/service.injector";
 
 declare var Materialize:any;
 
@@ -28,12 +29,8 @@ export class WeightsDeleteModal implements OnInit {
 
   private weightsService: WeightsService;
 
-  constructor(private weightsModalsService: WeightsModalsService, private injector: Injector) {
-    if (environment.isBackendServerAvailable) {
-      this.weightsService = this.injector.get(WeightsBackEndService);
-    } else {
-      this.weightsService = this.injector.get(WeightsMockService);
-    }
+  constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector) {
+    this.weightsService = serviceInjector.getWeightsService();
   }
 
   ngOnInit(): void {

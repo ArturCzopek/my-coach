@@ -32,28 +32,28 @@ export class LineChartComponent implements OnInit{
 
   private chartColors: any[] = [
     { // blue
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(25,118,210,1)',
-      pointBackgroundColor: 'rgba(25,118,210,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#000',
-      pointHoverBorderColor: 'rgba(25,118,210,0.8)'
+      backgroundColor: '#BBDEFB', //MATERIAL DESIGN 100
+      borderColor: '#1976D2', //MATERIAL DESIGN 700
+      pointBackgroundColor: '#1976D2', //MATERIAL DESIGN 700
+      pointBorderColor: '#BBDEFB', //MATERIAL DESIGN 100
+      pointHoverBackgroundColor: '#2196F3', //MATERIAL DESIGN 500
+      pointHoverBorderColor: '#1565C0' //MATERIAL DESIGN 800
     },
     { // red
-      backgroundColor: 'rgba(77,83,96,0.2)',
-      borderColor: 'rgba(188,0,0,1)',
-      pointBackgroundColor: 'rgba(188,0,0,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#000',
-      pointHoverBorderColor: 'rgba(188,0,0,0.8)'
+      backgroundColor: '#FFCDD2', //MATERIAL DESIGN 100
+      borderColor: '#D32F2F', //MATERIAL DESIGN 700
+      pointBackgroundColor: '#D32F2F', //MATERIAL DESIGN 700
+      pointBorderColor: '#FFCDD2', //MATERIAL DESIGN 100
+      pointHoverBackgroundColor: '#F44336', //MATERIAL DESIGN 500
+      pointHoverBorderColor: '#C62828' //MATERIAL DESIGN 800
     },
     { // green
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(30,170,0,1)',
-      pointBackgroundColor: 'rgba(30,170,0,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#000',
-      pointHoverBorderColor: 'rgba(30,170,0,0.8)'
+      backgroundColor: '#C8E6C9', //MATERIAL DESIGN 100
+      borderColor: '#388E3C', //MATERIAL DESIGN 700
+      pointBackgroundColor: '#388E3C', //MATERIAL DESIGN 700
+      pointBorderColor: '#C8E6C9', //MATERIAL DESIGN 100
+      pointHoverBackgroundColor: '#4CAF50', //MATERIAL DESIGN 500
+      pointHoverBorderColor: '#2E7D32' //MATERIAL DESIGN 800
     }
   ];
 

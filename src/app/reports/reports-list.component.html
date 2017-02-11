@@ -76,7 +76,7 @@
           <div class="input-field col s6">
             <i class="material-icons prefix">today</i>
             <label for="start-date">Początek okresu</label>
-            <input id="start-date" type="date" class="datepicker" materialize="pickadate">
+            <input id="start-date" type="date" class="datepicker" materialize="pickadate" [materializeParams]="[{disable: [[2015,3,3], [2017, 1,1], [2017,2,2]]}]">
           </div>
           <div class="input-field col s6">
             <i class="material-icons prefix">today</i>

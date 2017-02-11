@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'coach-strip-loader',
   templateUrl: 'strip-loader.component.html',
-  styleUrls: ['loaders.scss']
+  styleUrls: ['../materialize-upgrades.scss']
 })
 export class StripLoaderComponent{
 

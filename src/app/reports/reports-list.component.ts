@@ -1,12 +1,10 @@
-import {Component, OnInit, EventEmitter, Injector} from "@angular/core";
+import {Component, OnInit, EventEmitter} from "@angular/core";
 import {ReportPreview} from "../shared/entities/preview.entities";
 import {MaterializeAction} from "angular2-materialize";
 import {Report} from "../shared/entities/get.entities";
-import {environment} from "../../environments/environment";
 import {ReportService} from "./services/report.service";
-import {ReportBackEndService} from "./services/report.back-end.service";
-import {ReportMockService} from "./services/report.mock.service";
 import {MODAL_PARAMS} from "../shared/global.values";
+import {ServiceInjector} from "../shared/service.injector";
 
 declare var Materialize:any;
 
@@ -30,12 +28,8 @@ export class ReportsListComponent implements OnInit {
   private reportForModal: Report|ReportPreview;
   private reportService: ReportService;
 
-  constructor(private injector: Injector) {
-    if (environment.isBackendServerAvailable) {
-      this.reportService = this.injector.get(ReportBackEndService);
-    } else {
-      this.reportService = this.injector.get(ReportMockService);
-    }
+  constructor(private serviceInjector: ServiceInjector) {
+    this.reportService = serviceInjector.getReportService();
   }
 
   ngOnInit() {

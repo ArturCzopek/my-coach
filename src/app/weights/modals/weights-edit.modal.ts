@@ -1,14 +1,11 @@
-import {Component, OnInit, Injector} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Weight} from "../../shared/entities/get.entities";
 import {WeightsModalsService} from "../services/weights-modals.service";
 import {MaterializeAction} from "angular2-materialize";
 import {EventEmitter} from "@angular/common/src/facade/async";
 import {WeightsService} from "../services/weights.service";
-import {WeightsMockService} from "../services/weights.mock.service";
-import {WeightsBackEndService} from "../services/weights.back-end.service";
-import {environment} from "../../../environments/environment";
-import {WeightsModals} from "./weights.modal";
 import {MODAL_PARAMS, DOES_NOT_CONTAIN} from "../../shared/global.values";
+import {ServiceInjector} from "../../shared/service.injector";
 
 declare var Materialize:any;
 
@@ -27,12 +24,8 @@ export class WeightsEditModal implements OnInit {
   private weightsToEditIndexes: number[] = [];
   private modalTitle: string;
 
-  constructor(private weightsModalsService: WeightsModalsService, private injector: Injector) {
-    if (environment.isBackendServerAvailable) {
-      this.weightsService = this.injector.get(WeightsBackEndService);
-    } else {
-      this.weightsService = this.injector.get(WeightsMockService);
-    }
+  constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector) {
+      this.weightsService = serviceInjector.getWeightsService();
   }
 
   ngOnInit(): void {
