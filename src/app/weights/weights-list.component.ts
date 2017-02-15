@@ -52,15 +52,7 @@ export class WeightsListComponent implements OnInit {
       );
   }
 
-  editWeight() {
-    console.log('Not implemented yet');
-  }
-
-  deleteWeight() {
-    console.log('Not implemented yet');
-  }
-
-  addWeight() {
-    console.log('Not implemented yet');
+  onAddClick() {
+    this.weightsModalsService.callAddWeights();
   }
 }

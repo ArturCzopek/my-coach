@@ -11,6 +11,7 @@ import {WeightsEditModal} from "./modals/weights-edit.modal";
 import {WeightsModals} from "./modals/weights.modal";
 import {FormsModule} from "@angular/forms";
 import {WeightsDeleteModal} from "./modals/weights-delete.modal";
+import {WeightsAddModal} from "./modals/weights-add.modal";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {WeightsDeleteModal} from "./modals/weights-delete.modal";
     WeightsCardComponent,
     WeightsModals,
     WeightsEditModal,
-    WeightsDeleteModal
+    WeightsDeleteModal,
+    WeightsAddModal
   ],
   imports: [
     HttpModule,

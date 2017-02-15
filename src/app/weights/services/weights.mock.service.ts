@@ -6,9 +6,12 @@ import {WEIGHT_LIST} from "../../shared/entities/mock-data/weights.mock-data";
 import {WEIGHTS_PREVIEWS_LIST} from "../../shared/entities/mock-data/previews/weight-previews.mock-data";
 import {WeightsService} from "./weights.service";
 import {DOES_NOT_CONTAIN} from "../../shared/global.values";
+import {NewWeight} from "../../shared/entities/add.entities";
 
 @Injectable()
 export class WeightsMockService extends WeightsService {
+
+  private newId: number = WEIGHT_LIST[0].length + WEIGHT_LIST[1].length;
 
   public getWeightsPreviews(): Observable<WeightsPreview[]> {
     return Observable.create(observer => {
@@ -68,6 +71,14 @@ export class WeightsMockService extends WeightsService {
     return values;
   }
 
+
+  //for mock we add only to second month
+  public addWeight(weightToAdd: NewWeight): void {
+    let weightId: number = this.newId;
+    this.newId++;
+    let weight: Weight = new Weight(weightId, weightToAdd.value, weightToAdd.measurementDate);
+    WEIGHT_LIST[1].push(weight);
+  }
 
   public editWeights(weights: Weight[]): void {
 

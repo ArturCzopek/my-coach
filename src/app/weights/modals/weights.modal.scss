@@ -1,5 +1,7 @@
-.fourty-width-modal {
-  width: 35%
+@media(min-width: 1280px) {
+  .fourty-width-modal {
+    width: 40%
+  }
 }
 
 td.half-width-cell {

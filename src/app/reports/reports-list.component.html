@@ -68,7 +68,7 @@
 <div id="report-add" class="modal bottom-sheet" materialize="modal" [materializeParams]="[modalParams]"
      [materializeActions]="addModalActions">
   <div class="modal-content">
-    <h4>Dodaj raport</h4>
+    <h3>Dodaj raport</h3>
     <div class="row">
       <!--TODO: Bind it with ngForm-->
       <form materialize class="col s12">
@@ -83,6 +83,8 @@
             <label for="end-date">Koniec okresu</label>
             <input id="end-date" type="date" class="datepicker" materialize="pickadate">
           </div>
+        </div>
+        <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">receipt</i>
             <textarea id="report-content" class="materialize-textarea"></textarea>

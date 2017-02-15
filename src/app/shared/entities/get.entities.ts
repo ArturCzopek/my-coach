@@ -60,7 +60,7 @@ export class Training {
 
 export class Weight {
   constructor(public weightId: number,
-              public measurementDate: Date,
-              public value: number) {
+              public value: number,
+              public measurementDate: Date) {
   }
 }

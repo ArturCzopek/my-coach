@@ -3,6 +3,7 @@ import {Injectable} from "@angular/core";
 import {Weight} from "../../shared/entities/get.entities";
 import {Observable} from "rxjs";
 import {WeightsPreview} from "../../shared/entities/preview.entities";
+import {NewWeight} from "../../shared/entities/add.entities";
 
 @Injectable()
 export class WeightsBackEndService extends WeightsService {
@@ -27,13 +28,15 @@ export class WeightsBackEndService extends WeightsService {
     return null;
   }
 
+  addWeight(weightToAdd: NewWeight): void {
+    console.log('WeightsBackEndService#addWeights not implemented yet');
+  }
+
   editWeights(weights: Weight[]): void {
     console.log('WeightsBackEndService#editWeights not implemented yet');
   }
 
-
   deleteWeights(weights: Weight[]): void {
     console.log('WeightsBackEndService#deleteWeights not implemented yet');
-
   }
 }

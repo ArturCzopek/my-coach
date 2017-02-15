@@ -1,6 +1,7 @@
 import {WeightsPreview} from "../../shared/entities/preview.entities";
 import {Observable} from "rxjs";
 import {Weight} from "../../shared/entities/get.entities";
+import {NewWeight} from "../../shared/entities/add.entities";
 
 export abstract class WeightsService {
 
@@ -11,6 +12,8 @@ export abstract class WeightsService {
   abstract getAllDays(weights: Weight[]): number[];
 
   abstract getAllValues(weights: Weight[]): number[];
+
+  abstract addWeight(weightToAdd: NewWeight): void;
 
   abstract editWeights(weights: Weight[]): void;
 

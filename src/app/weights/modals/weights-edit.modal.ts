@@ -70,11 +70,8 @@ export class WeightsEditModal implements OnInit {
   }
 
   private addDayIndexToChanged(dateIndex: number) {
-
-
     if (this.weightsToEditIndexes.indexOf(dateIndex) === DOES_NOT_CONTAIN) {
       this.weightsToEditIndexes.push(dateIndex);
     }
   }
-
 }
