@@ -5,7 +5,7 @@ import {MaterializeAction} from "angular2-materialize";
 import {EventEmitter} from "@angular/common/src/facade/async";
 import {WeightsService} from "../services/weights.service";
 import {MODAL_PARAMS, DOES_NOT_CONTAIN} from "../../shared/global.values";
-import {ServiceInjector} from "../../shared/service.injector";
+import {ServiceInjector} from "../../shared/services/service.injector";
 
 declare var Materialize:any;
 

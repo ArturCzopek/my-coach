@@ -5,6 +5,7 @@ import {ModalFooter} from "./modals/modal-footer.component";
 import {ChartsModule} from "ng2-charts";
 import {LineChartComponent} from "./charts/line-chart.component";
 import {MaterializeDirective} from "angular2-materialize";
+import {DictionaryPipe} from "./pipes/dictionary.pipe";
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import {MaterializeDirective} from "angular2-materialize";
     CircleLoaderComponent,
     StripLoaderComponent,
     ModalFooter,
-    LineChartComponent
+    LineChartComponent,
+    DictionaryPipe
   ],
   imports: [
     ChartsModule
@@ -22,7 +24,8 @@ import {MaterializeDirective} from "angular2-materialize";
     CircleLoaderComponent,
     StripLoaderComponent,
     ModalFooter,
-    LineChartComponent
+    LineChartComponent,
+    DictionaryPipe
   ]
 })
 export class SharedModule {

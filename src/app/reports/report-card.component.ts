@@ -2,7 +2,7 @@ import {Component, OnInit, Input, EventEmitter, Output} from "@angular/core";
 import {ReportPreview} from "../shared/entities/preview.entities";
 import {Report} from "../shared/entities/get.entities";
 import {ReportService} from "./services/report.service";
-import {ServiceInjector} from "../shared/service.injector";
+import {ServiceInjector} from "../shared/services/service.injector";
 
 @Component({
   selector: 'coach-report-card',

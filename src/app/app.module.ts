@@ -9,7 +9,10 @@ import {WeightsModule} from "./weights/weights.module";
 import {ReportsModule} from "./reports/reports.module";
 import {TrainingsModule} from "./trainings/tranings.module";
 import {PricesModule} from "./prices/prices.module";
-import {ServiceInjector} from "./shared/service.injector";
+import {ServiceInjector} from "./shared/services/service.injector";
+import {DictionaryMockService} from "./shared/services/dictionary.mock.service";
+import {DictionaryBackEndService} from "./shared/services/dictionary.back-end.service";
+import {DictionaryPipe} from "./shared/pipes/dictionary.pipe";
 
 @NgModule({
   declarations: [
@@ -26,7 +29,12 @@ import {ServiceInjector} from "./shared/service.injector";
     WeightsModule,
     MyCoachRoutingModule
   ],
-  providers: [ServiceInjector],
+  providers: [
+    ServiceInjector,
+    DictionaryMockService,
+    DictionaryBackEndService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

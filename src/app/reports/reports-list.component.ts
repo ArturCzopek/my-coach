@@ -4,7 +4,7 @@ import {MaterializeAction} from "angular2-materialize";
 import {Report} from "../shared/entities/get.entities";
 import {ReportService} from "./services/report.service";
 import {MODAL_PARAMS} from "../shared/global.values";
-import {ServiceInjector} from "../shared/service.injector";
+import {ServiceInjector} from "../shared/services/service.injector";
 
 declare var Materialize:any;
 

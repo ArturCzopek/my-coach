@@ -3,7 +3,7 @@ import {MaterializeAction} from "angular2-materialize";
 import {WeightsService} from "../services/weights.service";
 import {EventEmitter} from "@angular/common/src/facade/async";
 import {WeightsModalsService} from "../services/weights-modals.service";
-import {ServiceInjector} from "../../shared/service.injector";
+import {ServiceInjector} from "../../shared/services/service.injector";
 import {MODAL_PARAMS} from "../../shared/global.values";
 import {NewWeight} from "../../shared/entities/add.entities";
 

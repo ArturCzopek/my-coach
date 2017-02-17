@@ -3,7 +3,7 @@ import {WeightsPreview} from "../shared/entities/preview.entities";
 import {Weight} from "../shared/entities/get.entities";
 import {WeightsService} from "./services/weights.service";
 import {WeightsModalsService} from "./services/weights-modals.service";
-import {ServiceInjector} from "../shared/service.injector";
+import {ServiceInjector} from "../shared/services/service.injector";
 
 @Component({
   selector: 'coach-weights-card',
