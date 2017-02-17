@@ -7,6 +7,9 @@ import {WeightsModalsService} from "../services/weights-modals.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {MODAL_PARAMS} from "../../shared/global.values";
 import {NewWeight} from "../../shared/entities/add.entities";
+import {DictionaryService} from "../../shared/services/dictionary.service";
+
+declare var $: any;
 
 @Component({
   selector: 'coach-weights-add-modal',
@@ -16,8 +19,11 @@ import {NewWeight} from "../../shared/entities/add.entities";
 export class WeightsAddModal implements OnInit {
 
   private weightsService: WeightsService;
+  private dictionaryService: DictionaryService;
+
   public addModalActions = new EventEmitter<string|MaterializeAction>();
   public modalParams: any;
+  public datePickerParams: any;
 
   public weightValue: number;
   public measurementDate: string;
@@ -27,12 +33,14 @@ export class WeightsAddModal implements OnInit {
 
   constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector) {
     this.weightsService = serviceInjector.getWeightsService();
+    this.dictionaryService = serviceInjector.getDictionaryService();
     this.weightValue = 50;
     this.measurementDate = '';
   }
 
   ngOnInit(): void {
     this.modalParams = MODAL_PARAMS;
+    this.datePickerParams = this.dictionaryService.getDateDictionarySettings();
 
     this.weightsModalsService.addWeights.subscribe(
       () => {

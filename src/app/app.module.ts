@@ -12,7 +12,6 @@ import {PricesModule} from "./prices/prices.module";
 import {ServiceInjector} from "./shared/services/service.injector";
 import {DictionaryMockService} from "./shared/services/dictionary.mock.service";
 import {DictionaryBackEndService} from "./shared/services/dictionary.back-end.service";
-import {DictionaryPipe} from "./shared/pipes/dictionary.pipe";
 
 @NgModule({
   declarations: [

@@ -15,7 +15,7 @@
             <label for="measurementDate">{{'page.weights.modal.add.weight.date' | dictionary}}</label>
             <input id="measurementDate" type="date" class="datepicker" materialize="pickadate"
                    [(ngModel)]="measurementDate" name="measurementDate"
-                   [materializeParams]="[{format: 'dd mmm yyyy', formatSubmit: 'yyyy-mm-dd'}]">
+                   [materializeParams]="[datePickerParams]">
           </div>
         </div>
       </form>

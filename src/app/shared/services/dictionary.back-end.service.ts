@@ -9,9 +9,4 @@ export class DictionaryBackEndService extends DictionaryService {
 
     return {};
   }
-
-  createDateDictionarySettings(): any {
-    console.log('DictionaryBackEndService#createDateDictionarySettings not implemented yet');
-    return {};
-  }
 }
