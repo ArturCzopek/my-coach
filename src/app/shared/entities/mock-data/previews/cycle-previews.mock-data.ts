@@ -16,5 +16,5 @@ export let CYCLE_PREVIEWS_LIST: CyclePreview[] = [
     new Date(2016, 9, 21),
     new Date(2016, 10, 20)
   )
-]
+];
 

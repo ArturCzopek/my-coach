@@ -24,13 +24,13 @@ export abstract class WeightsService {
   }
 
   public formatDaysToDisplayingValuesFromWeights(weights: Weight[]): string[] {
-    let days: number [] = this.getAllDays(weights);
-    let formattedDays: string[] = this.formatDaysToDisplayingValues(days);
+    const days: number [] = this.getAllDays(weights);
+    const formattedDays: string[] = this.formatDaysToDisplayingValues(days);
     return formattedDays;
   }
 
   public formatDaysToDisplayingValues(days: number[]) {
-    let formattedDays: string [] = [];
+    const formattedDays: string [] = [];
 
     days.forEach(day => {
       formattedDays.push(this.formatDay(day));

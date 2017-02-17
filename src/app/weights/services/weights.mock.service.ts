@@ -16,7 +16,7 @@ export class WeightsMockService extends WeightsService {
   public getWeightsPreviews(): Observable<WeightsPreview[]> {
     return Observable.create(observer => {
 
-      //timeout is simulation of 'getting from http'
+      // timeout is simulation of 'getting from http'
       setTimeout(() => {
         observer.next(WEIGHTS_PREVIEWS_LIST);
       }, 1000);
@@ -38,7 +38,7 @@ export class WeightsMockService extends WeightsService {
         weightsToReturn = WEIGHT_LIST[1];
       }
 
-      //timeout is simulation of 'getting from http'
+      // timeout is simulation of 'getting from http'
       setTimeout(() => {
         observer.next(weightsToReturn);
       }, 1000);
@@ -46,15 +46,15 @@ export class WeightsMockService extends WeightsService {
       setTimeout(() => {
         observer.complete();
       }, 1100);
-    })
+    });
   }
 
   public getAllDays(weights: Weight[]): number[] {
 
-    let days: number[] = [];
+    const days: number[] = [];
 
     weights.forEach((weight: Weight) => {
-      days.push(weight.measurementDate.getDate())
+      days.push(weight.measurementDate.getDate());
     });
 
     return days;
@@ -62,29 +62,29 @@ export class WeightsMockService extends WeightsService {
 
   public getAllValues(weights: Weight[]): number[] {
 
-    let values: number[] = [];
+    const values: number[] = [];
 
     weights.forEach((weight: Weight) => {
-      values.push(weight.value)
+      values.push(weight.value);
     });
 
     return values;
   }
 
 
-  //for mock we add only to second month
+  // for mock we add only to second month
   public addWeight(weightToAdd: NewWeight): void {
-    let weightId: number = this.newId;
+    const weightId: number = this.newId;
     this.newId++;
-    let weight: Weight = new Weight(weightId, weightToAdd.value, weightToAdd.measurementDate);
+    const weight: Weight = new Weight(weightId, weightToAdd.value, weightToAdd.measurementDate);
     WEIGHT_LIST[1].push(weight);
   }
 
   public editWeights(weights: Weight[]): void {
 
-    for (let weightToUpdate of weights) {
-      for (let weightList of WEIGHT_LIST) {
-        let weightIndex = weightList.indexOf(weightToUpdate);
+    for (const weightToUpdate of weights) {
+      for (const weightList of WEIGHT_LIST) {
+        const weightIndex = weightList.indexOf(weightToUpdate);
         if (weightIndex === DOES_NOT_CONTAIN) {
           continue;
         } else {
@@ -97,9 +97,9 @@ export class WeightsMockService extends WeightsService {
 
   public deleteWeights(weights: Weight[]): void {
 
-    for (let weightToDelete of weights) {
-      for (let weightList of WEIGHT_LIST) {
-        let weightIndex = weightList.indexOf(weightToDelete);
+    for (const weightToDelete of weights) {
+      for (const weightList of WEIGHT_LIST) {
+        const weightIndex = weightList.indexOf(weightToDelete);
         if (weightIndex === DOES_NOT_CONTAIN) {
           continue;
         } else {

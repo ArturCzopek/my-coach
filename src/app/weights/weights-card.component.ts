@@ -14,19 +14,19 @@ export class WeightsCardComponent implements OnInit {
 
   @Input() weightsPreview: WeightsPreview;
 
-  private previewTitle: string;
-  private weights: Weight[];
-  private weightsDays: number[];
-  private weightsValues: number[];
+  public previewTitle: string;
+  public weights: Weight[];
+  public weightsDays: number[];
+  public weightsValues: number[];
 
-  private chartData: any[] = [];
-  private chartLabels: string[] = [];
+  public chartData: any[] = [];
+  public chartLabels: string[] = [];
 
-  private errorMessage: string;
-  private showWeights: boolean;
-  private isLoading: boolean;
+  public errorMessage: string;
+  public showWeights: boolean;
+  public isLoading: boolean;
 
-  private arrowImageClass: string;
+  public arrowImageClass: string;
 
   private weightsService: WeightsService;
 
@@ -35,7 +35,7 @@ export class WeightsCardComponent implements OnInit {
   }
 
   ngOnInit() {
-    //false showReport because at first toggle we want to see true to load data
+    // false showReport because at first toggle we want to see true to load data
     this.showWeights = false;
     this.isLoading = true;
     this.errorMessage = '';
@@ -81,7 +81,7 @@ export class WeightsCardComponent implements OnInit {
     }
   }
 
-  private toggleShow() {
+  public toggleShow() {
     this.showWeights = !this.showWeights;
 
     if (this.showWeights) {
@@ -92,11 +92,11 @@ export class WeightsCardComponent implements OnInit {
   }
 
 
-  private onEditClick() {
+  public onEditClick() {
     this.weightsModalsService.setEditWeights(this.weights, this.previewTitle);
   }
 
-  private onDeleteClick() {
+  public onDeleteClick() {
     this.weightsModalsService.setDeleteWeights(this.weights, this.previewTitle);
   }
 }

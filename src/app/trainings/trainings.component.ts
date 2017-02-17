@@ -9,7 +9,7 @@ import {Cycle} from "../shared/entities/get.entities";
 })
 export class TrainingsComponent implements OnInit {
 
-  private showContents: boolean[]
+  private showContents: boolean[];
 
   constructor() {
   }

@@ -6,7 +6,7 @@ import {ReportService} from "./services/report.service";
 import {MODAL_PARAMS} from "../shared/global.values";
 import {ServiceInjector} from "../shared/services/service.injector";
 
-declare var Materialize:any;
+declare var Materialize: any;
 
 @Component({
   selector: 'coach-reports-list',
@@ -15,17 +15,18 @@ declare var Materialize:any;
 })
 export class ReportsListComponent implements OnInit {
 
+  public modalParams;
+
   private reportPreviews: ReportPreview[];
   private isLoading: boolean;
-  private errorMessage: string;
 
-  private addModalActions = new EventEmitter<string|MaterializeAction>();
-  private editModalActions = new EventEmitter<string|MaterializeAction>();
-  private deleteModalActions = new EventEmitter<string|MaterializeAction>();
-  private editToastActions = new EventEmitter<string|MaterializeAction>();
-  private modalParams;
+  public errorMessage: string;
+  public addModalActions = new EventEmitter<string|MaterializeAction>();
+  public editModalActions = new EventEmitter<string|MaterializeAction>();
+  public deleteModalActions = new EventEmitter<string|MaterializeAction>();
+  public editToastActions = new EventEmitter<string|MaterializeAction>();
 
-  private reportForModal: Report|ReportPreview;
+  public reportForModal: Report|ReportPreview;
   private reportService: ReportService;
 
   constructor(private serviceInjector: ServiceInjector) {
@@ -38,7 +39,7 @@ export class ReportsListComponent implements OnInit {
     this.modalParams = MODAL_PARAMS;
   }
 
-  private loadReportPreviews() {
+  public loadReportPreviews() {
     this.isLoading = true;
     this.reportService.getReportPreviews()
       .subscribe(
@@ -82,11 +83,11 @@ export class ReportsListComponent implements OnInit {
   }
 
   editReport() {
-    console.log('Not implemented yet')
+    console.log('Not implemented yet');
   }
 
   deleteReport() {
-    console.log('Not implemented yet')
+    console.log('Not implemented yet');
   }
 
   openAddModal() {

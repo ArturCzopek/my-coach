@@ -1,3 +1,4 @@
+/* tslint:disable:component-class-suffix */
 import {OnInit, Component} from "@angular/core";
 import {MaterializeAction} from "angular2-materialize";
 import {WeightsService} from "../services/weights.service";
@@ -15,13 +16,13 @@ import {NewWeight} from "../../shared/entities/add.entities";
 export class WeightsAddModal implements OnInit {
 
   private weightsService: WeightsService;
-  private addModalActions = new EventEmitter<string|MaterializeAction>();
-  private modalParams: any;
+  public addModalActions = new EventEmitter<string|MaterializeAction>();
+  public modalParams: any;
 
-  private weightValue: number;
-  private measurementDate: string;
+  public weightValue: number;
+  public measurementDate: string;
 
-  private weightToAdd: NewWeight;
+  public weightToAdd: NewWeight;
 
 
   constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector) {
@@ -40,24 +41,24 @@ export class WeightsAddModal implements OnInit {
     );
   }
 
-  private openAddModal() {
+  public openAddModal() {
     this.weightValue = 50;
     this.measurementDate = '';
     this.addModalActions.emit({action: "modal", params: ['open']});
   }
 
-  private onAddClick() {
+  public onAddClick() {
       this.weightToAdd = new NewWeight(this.weightValue, new Date(this.measurementDate));
       this.weightsService.addWeight(this.weightToAdd);
       this.weightsModalsService.callRefreshPage();
       this.onCloseModal();
   }
 
-  private onCloseModal() {
+  public onCloseModal() {
     this.addModalActions.emit({action: "modal", params: ['close']});
   }
 
-  private isDataValid(): boolean {
+  public isDataValid(): boolean {
     return this.weightValue > 0 && this.measurementDate !== '';
   }
 }

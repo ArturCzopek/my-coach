@@ -1,3 +1,4 @@
+/* tslint:disable:component-class-suffix */
 import {Component, OnInit} from "@angular/core";
 import {Weight} from "../../shared/entities/get.entities";
 import {WeightsModalsService} from "../services/weights-modals.service";
@@ -7,22 +8,22 @@ import {WeightsService} from "../services/weights.service";
 import {MODAL_PARAMS, DOES_NOT_CONTAIN} from "../../shared/global.values";
 import {ServiceInjector} from "../../shared/services/service.injector";
 
-declare var Materialize:any;
+declare var Materialize: any;
 
 @Component({
   selector: 'coach-weights-edit-modal',
   templateUrl: 'weights-edit.modal.html',
-  styleUrls:['./weights.modal.scss', '../../shared/materialize-upgrades.scss']
+  styleUrls: ['./weights.modal.scss', '../../shared/materialize-upgrades.scss']
 })
 export class WeightsEditModal implements OnInit {
 
   private weightsService: WeightsService;
-  private formattedDays: string[] = [];
-  private selectedWeights: Weight[] = [];
-  private editModalActions = new EventEmitter<string|MaterializeAction>();
-  private modalParams: any;
-  private weightsToEditIndexes: number[] = [];
-  private modalTitle: string;
+  public formattedDays: string[] = [];
+  public selectedWeights: Weight[] = [];
+  public editModalActions = new EventEmitter<string|MaterializeAction>();
+  public modalParams: any;
+  public weightsToEditIndexes: number[] = [];
+  public modalTitle: string;
 
   constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector) {
       this.weightsService = serviceInjector.getWeightsService();
@@ -41,7 +42,7 @@ export class WeightsEditModal implements OnInit {
     );
   }
 
-  private openEditModal() {
+  public openEditModal() {
     if (this.selectedWeights) {
       this.formattedDays = this.weightsService.formatDaysToDisplayingValuesFromWeights(this.selectedWeights);
       this.editModalActions.emit({action: "modal", params: ['open']});
@@ -50,9 +51,9 @@ export class WeightsEditModal implements OnInit {
     }
   }
 
-  private onEditClick() {
+  public onEditClick() {
     if (this.weightsToEditIndexes.length > 0) {
-      let weightsToEdit: Weight[] = [];
+      const weightsToEdit: Weight[] = [];
 
       this.weightsToEditIndexes.forEach(index => {
         weightsToEdit.push(this.selectedWeights[index]);
@@ -65,11 +66,11 @@ export class WeightsEditModal implements OnInit {
     this.onCloseModal();
   }
 
-  private onCloseModal() {
+  public onCloseModal() {
     this.editModalActions.emit({action: "modal", params: ['close']});
   }
 
-  private addDayIndexToChanged(dateIndex: number) {
+  public addDayIndexToChanged(dateIndex: number) {
     if (this.weightsToEditIndexes.indexOf(dateIndex) === DOES_NOT_CONTAIN) {
       this.weightsToEditIndexes.push(dateIndex);
     }

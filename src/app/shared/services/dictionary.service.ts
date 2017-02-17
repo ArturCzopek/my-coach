@@ -26,9 +26,9 @@ export abstract class DictionaryService {
   }
 
   private getFormattedKey(key: string): string {
-    let stack = key.split(".");
-    let last: string = stack.pop();
-    let first: string = stack.pop();
+    const stack = key.split(".");
+    const last: string = stack.pop();
+    const first: string = stack.pop();
 
     return `${first}.${last}`;
   }

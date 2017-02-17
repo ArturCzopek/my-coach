@@ -12,24 +12,24 @@ import {ServiceInjector} from "../shared/services/service.injector";
 export class ReportCardComponent implements OnInit {
 
   @Input() reportPreview: ReportPreview;
-  private report: Report;
-  private errorMessage: string;
-  private showReport: boolean;
-  private isLoading: boolean;
+  public report: Report;
+  public errorMessage: string;
+  public showReport: boolean;
+  public isLoading: boolean;
 
   @Output() editReport = new EventEmitter();
   @Output() deleteReport = new EventEmitter();
 
-  private arrowImageClass: string;
+  public arrowImageClass: string;
 
   private reportService: ReportService;
 
-  constructor(private serviceInjector: ServiceInjector) {
+  constructor(public serviceInjector: ServiceInjector) {
     this.reportService = serviceInjector.getReportService();
   }
 
   ngOnInit() {
-    //false showReport because at first toggle we want to see true to load data
+    // false showReport because at first toggle we want to see true to load data
     this.showReport = false;
     this.isLoading = true;
     this.errorMessage = '';
@@ -37,7 +37,7 @@ export class ReportCardComponent implements OnInit {
     this.arrowImageClass = 'left-arrow';
   }
 
-  onReportClick() {
+  public onReportClick() {
     this.toggleShow();
 
     if (this.showReport) {
@@ -60,7 +60,7 @@ export class ReportCardComponent implements OnInit {
     }
   }
 
-  getLoadingStyle() {
+  public getLoadingStyle() {
     if (this.isLoading) {
       return "loading";
     } else {
@@ -76,7 +76,7 @@ export class ReportCardComponent implements OnInit {
     this.deleteReport.emit(this.reportPreview);
   }
 
-  private toggleShow() {
+  public toggleShow() {
     this.showReport = !this.showReport;
 
     if (this.showReport) {

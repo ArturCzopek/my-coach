@@ -5,12 +5,12 @@ import {Component, Input, Output, EventEmitter} from "@angular/core";
   templateUrl: 'modal-footer.component.html',
   styleUrls: []
 })
-export class ModalFooter {
-  @Input() private rightButtonLabel: string;
-  @Input() private leftButtonLabel: string;
+export class ModalFooterComponent {
+  @Input() public rightButtonLabel: string;
+  @Input() public leftButtonLabel: string;
 
-  @Output() private rightButtonAction = new EventEmitter();
-  @Output() private leftButtonAction = new EventEmitter();
+  @Output() public rightButtonAction = new EventEmitter();
+  @Output() public leftButtonAction = new EventEmitter();
 
   onRightButtonClick() {
     this.rightButtonAction.emit(null);

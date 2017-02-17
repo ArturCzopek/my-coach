@@ -1,7 +1,7 @@
 import {Cycle, Exercise, Set, ExerciseSession, Series, Training} from "../get.entities";
 
 export let CYCLES_LIST: Cycle[] = [
-  null, //padding for test issues
+  null, // padding for test issues
   new Cycle(
     1,
     [
@@ -939,4 +939,4 @@ export let CYCLES_LIST: Cycle[] = [
     ],
     new Date(2016, 10, 1)
   )
-]
+];

@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: 'strip-loader.component.html',
   styleUrls: ['../materialize-upgrades.scss']
 })
-export class StripLoaderComponent{
+export class StripLoaderComponent {
 
 }

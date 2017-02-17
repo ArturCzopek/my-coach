@@ -12,7 +12,7 @@ export class ReportMockService extends ReportService {
   public getReportPreviews(): Observable<ReportPreview[]> {
     return Observable.create(observer => {
 
-      //timeout is simulation of 'getting from http'
+      // timeout is simulation of 'getting from http'
       setTimeout(() => {
         observer.next(REPORT_PREVIEWS_LIST);
       }, 1000);
@@ -26,7 +26,7 @@ export class ReportMockService extends ReportService {
   public getReport(reportId: number): Observable<Report> {
     return Observable.create(observer => {
 
-      //timeout is simulation of 'getting from http'
+      // timeout is simulation of 'getting from http'
       setTimeout(() => {
         observer.next(REPORTS_LIST[reportId]);
       }, 1000);
@@ -34,6 +34,6 @@ export class ReportMockService extends ReportService {
       setTimeout(() => {
         observer.complete();
       }, 1100);
-    })
+    });
   }
 }
