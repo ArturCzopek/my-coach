@@ -1,12 +1,17 @@
 import {WeightsService} from "./weights.service";
-import {Injectable} from "@angular/core";
+import {Injectable, Injector} from "@angular/core";
 import {Weight} from "../../shared/entities/get.entities";
 import {Observable} from "rxjs";
 import {WeightsPreview} from "../../shared/entities/preview.entities";
 import {NewWeight} from "../../shared/entities/add.entities";
+import {ServiceInjector} from "../../shared/services/service.injector";
 
 @Injectable()
 export class WeightsBackEndService extends WeightsService {
+
+  constructor(private injector: Injector) {
+    super(injector.get(ServiceInjector));
+  }
 
   getWeightsPreviews(): Observable<WeightsPreview[]> {
     console.log('WeightsBackEndService#getWeightsPreviews not implemented yet');

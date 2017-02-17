@@ -63,6 +63,7 @@ export class DictionaryMockService extends DictionaryService {
       'calendar.day.fri.letter': 'P',
       'calendar.day.sat.letter': 'S',
       'calendar.day.sun.letter': 'N',
+      'calendar.day': 'Dzień',
       'calendar.format': 'dd mmm yyyy',
       'calendar.format.submit': 'yyyy-mm-dd'
     };

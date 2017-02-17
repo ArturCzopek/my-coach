@@ -5,8 +5,8 @@
     <table class="striped">
       <thead>
       <tr>
-        <th data-field="day">Dzień</th>
-        <th data-field="measurement">Pomiar</th>
+        <th data-field="day">{{'page.weights.modal.edit.day.label' | dictionary}}</th>
+        <th data-field="measurement">{{'page.weights.modal.edit.measurement.label' | dictionary}}</th>
       </tr>
       </thead>
 
@@ -22,6 +22,6 @@
       </tbody>
     </table>
   </div>
-  <coach-modal-footer [leftButtonLabel]="'Edytuj'" [rightButtonLabel]="'Zamknij'" (leftButtonAction)="onEditClick()"
+  <coach-modal-footer leftButtonLabel="{{'global.edit.label' | dictionary}}" rightButtonLabel="{{'global.close.label' | dictionary}}" (leftButtonAction)="onEditClick()"
                       (rightButtonAction)="onCloseModal()"></coach-modal-footer>
 </div>

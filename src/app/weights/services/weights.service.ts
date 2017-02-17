@@ -1,9 +1,18 @@
+import {Inject} from "@angular/core";
 import {WeightsPreview} from "../../shared/entities/preview.entities";
 import {Observable} from "rxjs";
 import {Weight} from "../../shared/entities/get.entities";
 import {NewWeight} from "../../shared/entities/add.entities";
+import {DictionaryService} from "../../shared/services/dictionary.service";
+import {ServiceInjector} from "../../shared/services/service.injector";
 
 export abstract class WeightsService {
+
+  private dictionaryService: DictionaryService;
+
+  constructor(@Inject(ServiceInjector) serviceInjector: ServiceInjector) {
+    this.dictionaryService = serviceInjector.getDictionaryService();
+  }
 
   abstract getWeightsPreviews(): Observable<WeightsPreview[]>;
 
@@ -20,7 +29,7 @@ export abstract class WeightsService {
   abstract deleteWeights(weights: Weight[]): void;
 
   public getPreviewTitle(weightsPreview: WeightsPreview): string {
-    return `${weightsPreview.month} ${weightsPreview.year}r.`;
+    return `${this.dictionaryService.getDateDictionarySettings().monthsFull[weightsPreview.month - 1]} ${weightsPreview.year}r.`;
   }
 
   public formatDaysToDisplayingValuesFromWeights(weights: Weight[]): string[] {
@@ -41,9 +50,9 @@ export abstract class WeightsService {
 
   private formatDay(day: number): string {
     if (day > 0 && day < 10) {
-      return `Day 0${day}`;
+      return `${this.dictionaryService.getDictionaryValue('calendar.day')} 0${day}`;
     } else {
-      return `Day ${day}`;
+      return `${this.dictionaryService.getDictionaryValue('calendar.day')}  ${day}`;
     }
   }
 }

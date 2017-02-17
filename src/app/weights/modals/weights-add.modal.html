@@ -12,7 +12,7 @@
           </div>
           <div class="input-field col s6">
             <i class="material-icons prefix">today</i>
-            <label for="measurementDate">{{'page.weights.modal.add.weight.date' | dictionary}}</label>
+            <label for="measurementDate">{{'page.weights.modal.add.date.label' | dictionary}}</label>
             <input id="measurementDate" type="date" class="datepicker" materialize="pickadate"
                    [(ngModel)]="measurementDate" name="measurementDate"
                    [materializeParams]="[datePickerParams]">
@@ -23,8 +23,8 @@
   </div>
 
   <div class="modal-footer">
-    <a class="modal-action modal-close waves-effect waves-red btn-flat" (click)="onCloseModal()">Zamknij</a>
-    <a class="modal-action modal-close waves-effect waves-teal btn-flat" [class.disabled]="!isDataValid()" (click)="onAddClick()">Dodaj</a>
+    <a class="modal-action modal-close waves-effect waves-red btn-flat" (click)="onCloseModal()">{{'global.close.label' | dictionary}}</a>
+    <a class="modal-action modal-close waves-effect waves-teal btn-flat" [class.disabled]="!isDataValid()" (click)="onAddClick()">{{'global.add.label' | dictionary}}</a>
   </div>
 
 </div>

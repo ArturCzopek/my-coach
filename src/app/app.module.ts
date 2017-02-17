@@ -12,6 +12,7 @@ import {PricesModule} from "./prices/prices.module";
 import {ServiceInjector} from "./shared/services/service.injector";
 import {DictionaryMockService} from "./shared/services/dictionary.mock.service";
 import {DictionaryBackEndService} from "./shared/services/dictionary.back-end.service";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -26,12 +27,13 @@ import {DictionaryBackEndService} from "./shared/services/dictionary.back-end.se
     ReportsModule,
     TrainingsModule,
     WeightsModule,
+    SharedModule,
     MyCoachRoutingModule
   ],
   providers: [
     ServiceInjector,
     DictionaryMockService,
-    DictionaryBackEndService
+    DictionaryBackEndService,
   ],
   bootstrap: [AppComponent]
 })

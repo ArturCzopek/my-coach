@@ -7,6 +7,7 @@ import {EventEmitter} from "@angular/common/src/facade/async";
 import {WeightsService} from "../services/weights.service";
 import {MODAL_PARAMS, DOES_NOT_CONTAIN} from "../../shared/global.values";
 import {ServiceInjector} from "../../shared/services/service.injector";
+import {DictionaryService} from "../../shared/services/dictionary.service";
 
 declare var Materialize: any;
 
@@ -17,7 +18,6 @@ declare var Materialize: any;
 })
 export class WeightsEditModal implements OnInit {
 
-  private weightsService: WeightsService;
   public formattedDays: string[] = [];
   public selectedWeights: Weight[] = [];
   public editModalActions = new EventEmitter<string|MaterializeAction>();
@@ -25,8 +25,12 @@ export class WeightsEditModal implements OnInit {
   public weightsToEditIndexes: number[] = [];
   public modalTitle: string;
 
+  private weightsService: WeightsService;
+  private dictionaryService: DictionaryService;
+
   constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector) {
-      this.weightsService = serviceInjector.getWeightsService();
+    this.weightsService = serviceInjector.getWeightsService();
+    this.dictionaryService = serviceInjector.getDictionaryService();
   }
 
   ngOnInit(): void {
@@ -47,7 +51,7 @@ export class WeightsEditModal implements OnInit {
       this.formattedDays = this.weightsService.formatDaysToDisplayingValuesFromWeights(this.selectedWeights);
       this.editModalActions.emit({action: "modal", params: ['open']});
     } else {
-      Materialize.toast('Najpierw wczytaj wagi!', 3000);
+      Materialize.toast(this.dictionaryService.getDictionaryValue('page.weights.loadFirst.tooltip'), 3000);
     }
   }
 

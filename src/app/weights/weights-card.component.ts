@@ -4,6 +4,7 @@ import {Weight} from "../shared/entities/get.entities";
 import {WeightsService} from "./services/weights.service";
 import {WeightsModalsService} from "./services/weights-modals.service";
 import {ServiceInjector} from "../shared/services/service.injector";
+import {DictionaryService} from "../shared/services/dictionary.service";
 
 @Component({
   selector: 'coach-weights-card',
@@ -22,23 +23,23 @@ export class WeightsCardComponent implements OnInit {
   public chartData: any[] = [];
   public chartLabels: string[] = [];
 
-  public errorMessage: string;
   public showWeights: boolean;
   public isLoading: boolean;
 
   public arrowImageClass: string;
 
   private weightsService: WeightsService;
+  private dictionaryService: DictionaryService;
 
   constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector) {
     this.weightsService = serviceInjector.getWeightsService();
+    this.dictionaryService = serviceInjector.getDictionaryService();
   }
 
   ngOnInit() {
     // false showReport because at first toggle we want to see true to load data
     this.showWeights = false;
     this.isLoading = true;
-    this.errorMessage = '';
     this.weights = null;
     this.arrowImageClass = 'left-arrow';
     this.previewTitle = this.weightsService.getPreviewTitle(this.weightsPreview);
@@ -52,19 +53,15 @@ export class WeightsCardComponent implements OnInit {
         this.weightsService.getWeights(this.weightsPreview)
           .subscribe(
             weights => {
-              this.errorMessage = '';
               this.weights = weights;
               this.weightsDays = this.weightsService.getAllDays(this.weights);
               this.weightsValues = this.weightsService.getAllValues(this.weights);
               this.chartData = [
-                {data: this.weightsValues, label: "Weight [kg]: " }
+                { data: this.weightsValues, label: this.dictionaryService.getDictionaryValue('page.weights.chart.point.label') }
               ];
               this.chartLabels = this.weightsService.formatDaysToDisplayingValues(this.weightsDays);
             },
-            error => {
-              this.errorMessage = 'Cannot load weights!';
-              console.log(error);
-            },
+            error => {},
             () => {
               this.isLoading = false;
             }

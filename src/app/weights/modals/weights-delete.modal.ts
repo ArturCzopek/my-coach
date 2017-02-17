@@ -7,6 +7,7 @@ import {EventEmitter} from "@angular/common/src/facade/async";
 import {WeightsService} from "../services/weights.service";
 import {MODAL_PARAMS} from "../../shared/global.values";
 import {ServiceInjector} from "../../shared/services/service.injector";
+import {DictionaryService} from "../../shared/services/dictionary.service";
 
 declare var Materialize: any;
 
@@ -26,9 +27,11 @@ export class WeightsDeleteModal implements OnInit {
   public modalTitle: string;
 
   private weightsService: WeightsService;
+  private dictionaryService: DictionaryService;
 
   constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector) {
     this.weightsService = serviceInjector.getWeightsService();
+    this.dictionaryService = serviceInjector.getDictionaryService();
   }
 
   ngOnInit(): void {
@@ -51,7 +54,7 @@ export class WeightsDeleteModal implements OnInit {
       this.formattedDays = this.weightsService.formatDaysToDisplayingValuesFromWeights(this.selectedWeights);
       this.deleteModalActions.emit({action: "modal", params: ['open']});
     } else {
-      Materialize.toast('Najpierw wczytaj wagi!', 3000);
+      Materialize.toast(this.dictionaryService.getDictionaryValue('page.weights.loadFirst.tooltip'), 3000);
     }
   }
 

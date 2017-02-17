@@ -15,6 +15,6 @@
     </form>
   </div>
 
-  <coach-modal-footer [leftButtonLabel]="'Usuń'" [rightButtonLabel]="'Zamknij'" (leftButtonAction)="onDeleteClick()"
+  <coach-modal-footer leftButtonLabel="{{'global.delete.label' | dictionary}}" rightButtonLabel="{{'global.close.label' | dictionary}}" (leftButtonAction)="onDeleteClick()"
                       (rightButtonAction)="onCloseModal()"></coach-modal-footer>
 </div>

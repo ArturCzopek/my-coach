@@ -13,8 +13,7 @@ import {ServiceInjector} from "../shared/services/service.injector";
 })
 export class WeightsListComponent implements OnInit {
 
-  private isLoading: boolean;
-  private errorMessage: string;
+  public isLoading: boolean;
   private weightsPreviews: WeightsPreview[];
   private modalParams;
 
@@ -39,13 +38,9 @@ export class WeightsListComponent implements OnInit {
     this.weightsService.getWeightsPreviews()
       .subscribe(
         previews => {
-          this.errorMessage = '';
           this.weightsPreviews = previews;
         },
-        error => {
-          this.errorMessage = 'Cannot get report previews!!';
-          console.log(error);
-        },
+        () => {},
         () => {
           this.isLoading = false;
         }
