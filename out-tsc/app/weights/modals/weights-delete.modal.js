@@ -57,8 +57,8 @@ var WeightsDeleteModal = (function () {
             var weightsToDelete_1 = [];
             this.weightsToDeleteIndexes.forEach(function (index) {
                 weightsToDelete_1.push(_this.selectedWeights[index]);
-                _this.weightsService.deleteWeights(weightsToDelete_1);
             });
+            this.weightsService.deleteWeights(weightsToDelete_1);
             this.weightsModalsService.callRefreshPage();
         }
         this.onCloseModal();

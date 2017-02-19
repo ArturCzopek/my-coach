@@ -100,13 +100,11 @@ var WeightsMockService = (function (_super) {
             var weightToDelete = weights_2[_i];
             for (var _a = 0, WEIGHT_LIST_2 = WEIGHT_LIST; _a < WEIGHT_LIST_2.length; _a++) {
                 var weightList = WEIGHT_LIST_2[_a];
-                var weightIndex = weightList.indexOf(weightToDelete);
-                if (weightIndex === DOES_NOT_CONTAIN) {
-                    continue;
-                }
-                else {
-                    weightList.splice(weightIndex, 1);
-                    break;
+                for (var i = 0; i < weightList.length; i++) {
+                    if (weightList[i].weightId === weightToDelete.weightId) {
+                        weightList.splice(i, 1);
+                        break;
+                    }
                 }
             }
         }

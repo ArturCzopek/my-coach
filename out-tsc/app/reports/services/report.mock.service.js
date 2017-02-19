@@ -63,9 +63,11 @@ var ReportMockService = (function (_super) {
         REPORT_PREVIEWS_LIST.push(reportPreview);
     };
     ReportMockService.prototype.deleteReport = function (reportToDelete) {
-        var reportIndex = REPORTS_LIST.indexOf(reportToDelete);
-        if (reportIndex !== DOES_NOT_CONTAIN) {
-            REPORTS_LIST.splice(reportIndex, 1);
+        for (var i = 0; i < REPORTS_LIST.length; i++) {
+            if (REPORTS_LIST[i].reportId === reportToDelete.reportId) {
+                REPORTS_LIST.splice(i, 1);
+                break;
+            }
         }
         for (var i = 0; i < REPORT_PREVIEWS_LIST.length; i++) {
             if (REPORT_PREVIEWS_LIST[i].reportId === reportToDelete.reportId) {
