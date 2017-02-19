@@ -14,7 +14,7 @@ declare var Materialize: any;
 @Component({
   selector: 'coach-weights-edit-modal',
   templateUrl: 'weights-edit.modal.html',
-  styleUrls: ['./weights.modal.scss', '../../shared/materialize-upgrades.scss']
+  styleUrls: ['weights.modals.scss', '../../shared/materialize-upgrades.scss']
 })
 export class WeightsEditModal implements OnInit {
 

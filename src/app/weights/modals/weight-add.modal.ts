@@ -1,22 +1,20 @@
 /* tslint:disable:component-class-suffix */
-import {OnInit, Component} from "@angular/core";
+import {OnInit, Component, EventEmitter} from "@angular/core";
 import {MaterializeAction} from "angular2-materialize";
 import {WeightsService} from "../services/weights.service";
-import {EventEmitter} from "@angular/common/src/facade/async";
 import {WeightsModalsService} from "../services/weights-modals.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {MODAL_PARAMS} from "../../shared/global.values";
 import {NewWeight} from "../../shared/entities/add.entities";
 import {DictionaryService} from "../../shared/services/dictionary.service";
-
-declare var $: any;
+import {DateService} from "../../shared/services/date.service";
 
 @Component({
-  selector: 'coach-weights-add-modal',
-  templateUrl: 'weights-add.modal.html',
-  styleUrls: ['./weights.modal.scss', '../../shared/materialize-upgrades.scss']
+  selector: 'coach-weight-add-modal',
+  templateUrl: 'weight-add.modal.html',
+  styleUrls: ['weights.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class WeightsAddModal implements OnInit {
+export class WeightAddModal implements OnInit {
 
   private weightsService: WeightsService;
   private dictionaryService: DictionaryService;
@@ -31,7 +29,7 @@ export class WeightsAddModal implements OnInit {
   public weightToAdd: NewWeight;
 
 
-  constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector) {
+  constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector, private dateService: DateService) {
     this.weightsService = serviceInjector.getWeightsService();
     this.dictionaryService = serviceInjector.getDictionaryService();
     this.weightValue = 50;
@@ -42,7 +40,7 @@ export class WeightsAddModal implements OnInit {
     this.modalParams = MODAL_PARAMS;
     this.datePickerParams = this.dictionaryService.getDateDictionarySettings();
 
-    this.weightsModalsService.addWeights.subscribe(
+    this.weightsModalsService.addWeight.subscribe(
       () => {
         this.openAddModal();
       }
@@ -56,7 +54,7 @@ export class WeightsAddModal implements OnInit {
   }
 
   public onAddClick() {
-      this.weightToAdd = new NewWeight(this.weightValue, new Date(this.measurementDate));
+      this.weightToAdd = new NewWeight(this.weightValue, this.dateService.parseStringToDate(this.measurementDate));
       this.weightsService.addWeight(this.weightToAdd);
       this.weightsModalsService.callRefreshPage();
       this.onCloseModal();
@@ -67,6 +65,6 @@ export class WeightsAddModal implements OnInit {
   }
 
   public isDataValid(): boolean {
-    return this.weightValue > 0 && this.measurementDate !== '';
+    return this.weightValue > 0 && this.dateService.isDateValid(this.measurementDate);
   }
 }

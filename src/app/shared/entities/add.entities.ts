@@ -28,9 +28,9 @@ export class NewProduct {
 }
 
 export class NewReport {
-  constructor(private content: string,
-              private startDate: Date,
-              private endDate?: Date) {
+  constructor(public content: string,
+              public startDate: Date,
+              public endDate?: Date) {
   }
 }
 

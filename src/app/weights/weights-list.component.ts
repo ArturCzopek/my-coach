@@ -1,9 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {WeightsPreview} from "../shared/entities/preview.entities";
-import {Weight} from "../shared/entities/get.entities";
 import {WeightsService} from "./services/weights.service";
 import {WeightsModalsService} from "./services/weights-modals.service";
-import {MODAL_PARAMS} from "../shared/global.values";
 import {ServiceInjector} from "../shared/services/service.injector";
 
 @Component({
@@ -15,10 +13,6 @@ export class WeightsListComponent implements OnInit {
 
   public isLoading: boolean;
   private weightsPreviews: WeightsPreview[];
-  private modalParams;
-
-  private weightForModal: Weight;
-
   private weightsService: WeightsService;
 
   constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector) {
@@ -27,9 +21,6 @@ export class WeightsListComponent implements OnInit {
 
   ngOnInit() {
     this.loadWeightsPreviews();
-    this.weightForModal = null;
-    this.modalParams = MODAL_PARAMS;
-
     this.weightsModalsService.refreshPage.subscribe(() => this.ngOnInit());
   }
 
@@ -48,6 +39,6 @@ export class WeightsListComponent implements OnInit {
   }
 
   onAddClick() {
-    this.weightsModalsService.callAddWeights();
+    this.weightsModalsService.callAddWeight();
   }
 }

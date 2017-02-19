@@ -5,19 +5,29 @@
     </div>
 
     <div *ngIf="!isLoading">
-      <div *ngFor="let weightsPreview of weightsPreviews; let i = index" class="col s12">
+      <div *ngFor="let weightsPreview of weightsPreviews.reverse()" class="col s12">
         <coach-weights-card [weightsPreview]="weightsPreview"></coach-weights-card>
+      </div>
+
+      <div *ngIf="weightsPreviews.length === 0" class="col s12 center no-data">
+        <div class="row">
+          <i class="large material-icons">info_outline</i>
+        </div>
+        <div class="row">
+          <p>{{'page.weights.list.noData.info' | dictionary}} <a (click)="onAddClick()">{{'page.weights.list.noData.click.info'
+            | dictionary}}</a></p>
+        </div>
       </div>
     </div>
 
     <div class="fixed-action-btn tooltipped" materialize="tooltip"
-         data-position="left" data-delay="50" [attr.data-tooltip]="'page.weights.add.tooltip' | dictionary" style="bottom: 45px; right: 24px;"
+         data-position="left" data-delay="50" [attr.data-tooltip]="'page.weights.add.tooltip' | dictionary"
+         style="bottom: 45px; right: 24px;"
          (click)="onAddClick()">
       <a class="btn-floating btn-large waves-effect waves-light blue">
         <i class="large material-icons">add</i>
       </a>
     </div>
-
   </div>
 </div>
 

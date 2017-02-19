@@ -1,4 +1,4 @@
-import {Injectable, Injector} from "@angular/core";
+import {Injector, Injectable} from "@angular/core";
 import {WeightsPreview} from "../../shared/entities/preview.entities";
 import {Observable} from "rxjs";
 import {Weight} from "../../shared/entities/get.entities";
@@ -103,7 +103,7 @@ export class WeightsMockService extends WeightsService {
 
     for (const weightToDelete of weights) {
       for (const weightList of WEIGHT_LIST) {
-        const weightIndex = weightList.indexOf(weightToDelete);
+        const weightIndex: number = weightList.indexOf(weightToDelete);
         if (weightIndex === DOES_NOT_CONTAIN) {
           continue;
         } else {

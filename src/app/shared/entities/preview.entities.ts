@@ -18,8 +18,8 @@ export class ProductPreview {
 export class ReportPreview {
   constructor (
     public reportId: number,
-    private startDate: Date,
-    private endDate: Date
+    public startDate: Date,
+    public endDate: Date
   ) {}
 }
 

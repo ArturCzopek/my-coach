@@ -8,10 +8,10 @@ import {WeightsMockService} from "./services/weights.mock.service";
 import {WeightsBackEndService} from "./services/weights.back-end.service";
 import {WeightsModalsService} from "./services/weights-modals.service";
 import {WeightsEditModal} from "./modals/weights-edit.modal";
-import {WeightsModals} from "./modals/weights.modal";
+import {WeightsModals} from "./modals/weights.modals";
 import {FormsModule} from "@angular/forms";
 import {WeightsDeleteModal} from "./modals/weights-delete.modal";
-import {WeightsAddModal} from "./modals/weights-add.modal";
+import {WeightAddModal} from "./modals/weight-add.modal";
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import {WeightsAddModal} from "./modals/weights-add.modal";
     WeightsModals,
     WeightsEditModal,
     WeightsDeleteModal,
-    WeightsAddModal
+    WeightAddModal
   ],
   imports: [
     HttpModule,
@@ -34,5 +34,5 @@ import {WeightsAddModal} from "./modals/weights-add.modal";
     WeightsModalsService
   ]
 })
-
-export class WeightsModule {}
+export class WeightsModule {
+}

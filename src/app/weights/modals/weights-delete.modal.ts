@@ -14,7 +14,7 @@ declare var Materialize: any;
 @Component({
   selector: 'coach-weights-delete-modal',
   templateUrl: 'weights-delete.modal.html',
-  styleUrls: ['./weights.modal.scss', '../../shared/materialize-upgrades.scss']
+  styleUrls: ['weights.modals.scss', '../../shared/materialize-upgrades.scss']
 })
 export class WeightsDeleteModal implements OnInit {
 

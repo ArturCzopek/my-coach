@@ -29,10 +29,10 @@ export class Price {
 }
 
 export class Report {
-  constructor(private reportId: number,
-              private content: string,
-              private startDate: Date,
-              private endDate: Date) {
+  constructor(public reportId: number,
+              public content: string,
+              public startDate: Date,
+              public endDate: Date) {
   }
 }
 

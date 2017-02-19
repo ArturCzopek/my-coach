@@ -13,6 +13,7 @@ import {ServiceInjector} from "./shared/services/service.injector";
 import {DictionaryMockService} from "./shared/services/dictionary.mock.service";
 import {DictionaryBackEndService} from "./shared/services/dictionary.back-end.service";
 import {SharedModule} from "./shared/shared.module";
+import {DateService} from "./shared/services/date.service";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {SharedModule} from "./shared/shared.module";
   ],
   providers: [
     ServiceInjector,
+    DateService,
     DictionaryMockService,
     DictionaryBackEndService,
   ],

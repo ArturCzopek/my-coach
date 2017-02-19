@@ -9,11 +9,10 @@
     <img class="right tooltipped" [ngClass]="arrowImageClass" src="assets/img/arrow_down.png"
          (click)="onWeightsClick()"/>
   </div>
-  <div *ngIf="showWeights" class="center card-action" [ngClass]="getLoadingStyle()">
+  <div *ngIf="showData" class="center card-action" [ngClass]="getLoadingStyle()">
     <div *ngIf="isLoading">
       <coach-strip-loader></coach-strip-loader>
     </div>
-
     <div *ngIf="!isLoading">
       <coach-line-chart [chartData]="chartData" [chartLabels]="chartLabels"></coach-line-chart>
     </div>

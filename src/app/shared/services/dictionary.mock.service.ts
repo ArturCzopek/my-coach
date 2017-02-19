@@ -10,7 +10,6 @@ export class DictionaryMockService extends DictionaryService {
   getDictionaryFromDb(): any {
     return {
       'page.weights.modal.add.title': 'Add weight',
-
       'calendar.nextDay.label': 'Następny',
       'calendar.prevDay.label': 'Poprzedni',
       'calendar.monthSelect.label': 'Wybierz miesiąc',
@@ -65,7 +64,7 @@ export class DictionaryMockService extends DictionaryService {
       'calendar.day.sun.letter': 'N',
       'calendar.day': 'Dzień',
       'calendar.format': 'dd mmm yyyy',
-      'calendar.format.submit': 'yyyy-mm-dd'
+      'calendar.format.momentjs': 'DD MMM YYYY'
     };
   }
 }

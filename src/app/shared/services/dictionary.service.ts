@@ -1,8 +1,11 @@
 export abstract class DictionaryService {
 
   protected dictionary: any = null;
-
   protected dateDictionarySettings: any = null;
+
+  constructor() {
+    this.loadDictionary();
+  }
 
   public getDictionaryValue(key: string): string {
     if (this.dictionary == null) {
@@ -13,15 +16,6 @@ export abstract class DictionaryService {
   }
 
   public getDateDictionarySettings(): any {
-
-    if (this.dateDictionarySettings == null) {
-      if (this.dictionary == null) {
-        this.dictionary = this.getDictionaryFromDb();
-      }
-
-      this.dateDictionarySettings = this.createDateDictionarySettings();
-    }
-
     return this.dateDictionarySettings;
   }
 
@@ -90,8 +84,13 @@ export abstract class DictionaryService {
       clear: this.getDictionaryValue('calendar.clear.label'),
       close: this.getDictionaryValue('calendar.close.label'),
       format: this.getDictionaryValue('calendar.format'),
-      formatSubmit: this.getDictionaryValue('calendar.format.submit')
+      max: true
     };
+  }
+
+  private loadDictionary(): void {
+    this.dictionary = this.getDictionaryFromDb();
+    this.dateDictionarySettings = this.createDateDictionarySettings();
   }
 
   private getFormattedKey(key: string): string {

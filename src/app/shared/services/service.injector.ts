@@ -1,4 +1,4 @@
-import {Injectable, Injector} from "@angular/core";
+import {Injector, Injectable} from "@angular/core";
 import {WeightsService} from "../../weights/services/weights.service";
 import {WeightsBackEndService} from "../../weights/services/weights.back-end.service";
 import {WeightsMockService} from "../../weights/services/weights.mock.service";
