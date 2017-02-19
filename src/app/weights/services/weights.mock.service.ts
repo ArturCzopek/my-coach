@@ -103,12 +103,11 @@ export class WeightsMockService extends WeightsService {
 
     for (const weightToDelete of weights) {
       for (const weightList of WEIGHT_LIST) {
-        const weightIndex: number = weightList.indexOf(weightToDelete);
-        if (weightIndex === DOES_NOT_CONTAIN) {
-          continue;
-        } else {
-          weightList.splice(weightIndex, 1);
-          break;
+        for (let i = 0; i < weightList.length; i++) {
+          if (weightList[i].weightId === weightToDelete.weightId) {
+            weightList.splice(i, 1);
+            break;
+          }
         }
       }
     }

@@ -71,9 +71,9 @@ export class WeightsDeleteModal implements OnInit {
 
       this.weightsToDeleteIndexes.forEach(index => {
         weightsToDelete.push(this.selectedWeights[index]);
-        this.weightsService.deleteWeights(weightsToDelete);
       });
 
+      this.weightsService.deleteWeights(weightsToDelete);
       this.weightsModalsService.callRefreshPage();
     }
 

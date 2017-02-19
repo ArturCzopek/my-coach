@@ -63,9 +63,11 @@ export class ReportMockService extends ReportService {
 
   public deleteReport(reportToDelete: Report): void {
 
-    const reportIndex: number = REPORTS_LIST.indexOf(reportToDelete);
-    if (reportIndex !== DOES_NOT_CONTAIN) {
-      REPORTS_LIST.splice(reportIndex, 1);
+    for (let i = 0; i < REPORTS_LIST.length; i++) {
+      if (REPORTS_LIST[i].reportId === reportToDelete.reportId) {
+        REPORTS_LIST.splice(i, 1);
+        break;
+      }
     }
 
     for (let i = 0; i < REPORT_PREVIEWS_LIST.length; i++) {
