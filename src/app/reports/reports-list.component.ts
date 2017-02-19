@@ -29,7 +29,7 @@ export class ReportsListComponent implements OnInit {
     this.reportService.getReportPreviews()
       .subscribe(
         previews => {
-          this.reportPreviews = previews;
+          this.reportPreviews = previews.reverse();
         },
         () => {
         },

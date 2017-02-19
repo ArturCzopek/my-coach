@@ -5,7 +5,7 @@
     </div>
 
     <div *ngIf="!isLoading">
-      <div *ngFor="let reportPreview of reportPreviews.reverse()" class="col s12">
+      <div *ngFor="let reportPreview of reportPreviews" class="col s12">
         <coach-report-card [reportPreview]="reportPreview"></coach-report-card>
       </div>
 

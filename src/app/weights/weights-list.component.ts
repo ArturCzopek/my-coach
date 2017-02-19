@@ -29,7 +29,7 @@ export class WeightsListComponent implements OnInit {
     this.weightsService.getWeightsPreviews()
       .subscribe(
         previews => {
-          this.weightsPreviews = previews;
+          this.weightsPreviews = previews.reverse();
         },
         () => {},
         () => {
