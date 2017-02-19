@@ -26,7 +26,7 @@ var ReportsListComponent = (function () {
         this.isLoading = true;
         this.reportService.getReportPreviews()
             .subscribe(function (previews) {
-            _this.reportPreviews = previews;
+            _this.reportPreviews = previews.reverse();
         }, function () {
         }, function () {
             _this.isLoading = false;

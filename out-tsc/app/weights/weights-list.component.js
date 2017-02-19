@@ -26,7 +26,7 @@ var WeightsListComponent = (function () {
         this.isLoading = true;
         this.weightsService.getWeightsPreviews()
             .subscribe(function (previews) {
-            _this.weightsPreviews = previews;
+            _this.weightsPreviews = previews.reverse();
         }, function () { }, function () {
             _this.isLoading = false;
         });
