@@ -5,7 +5,6 @@ import {Weight} from "../../shared/entities/get.entities";
 import {WEIGHT_LIST} from "../../shared/entities/mock-data/weights.mock-data";
 import {WEIGHTS_PREVIEWS_LIST} from "../../shared/entities/mock-data/previews/weight-previews.mock-data";
 import {WeightsService} from "./weights.service";
-import {DOES_NOT_CONTAIN} from "../../shared/global.values";
 import {NewWeight} from "../../shared/entities/add.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
 
@@ -24,11 +23,11 @@ export class WeightsMockService extends WeightsService {
       // timeout is simulation of 'getting from http'
       setTimeout(() => {
         observer.next(WEIGHTS_PREVIEWS_LIST);
-      }, 1000);
+      }, 500);
 
       setTimeout(() => {
         observer.complete();
-      }, 1100);
+      }, 600);
     });
   };
 
@@ -58,9 +57,9 @@ export class WeightsMockService extends WeightsService {
 
     const days: number[] = [];
 
-    weights.forEach((weight: Weight) => {
-      days.push(weight.measurementDate.getDate());
-    });
+    for (let weight of weights) {
+        days.push(weight.measurementDate.getDate());
+    }
 
     return days;
   }
@@ -69,9 +68,9 @@ export class WeightsMockService extends WeightsService {
 
     const values: number[] = [];
 
-    weights.forEach((weight: Weight) => {
-      values.push(weight.value);
-    });
+    for (let weight of weights) {
+        values.push(weight.value);
+    }
 
     return values;
   }
@@ -88,12 +87,11 @@ export class WeightsMockService extends WeightsService {
 
     for (const weightToUpdate of weights) {
       for (const weightList of WEIGHT_LIST) {
-        const weightIndex = weightList.indexOf(weightToUpdate);
-        if (weightIndex === DOES_NOT_CONTAIN) {
-          continue;
-        } else {
-          weightList[weightIndex] = weightToUpdate;
-          break;
+        for (let i = 0; i < weightList.length; i++) {
+          if (weightList[i].weightId == weightToUpdate.weightId) {
+            weightList[i] = weightToUpdate;
+            break;
+          }
         }
       }
     }

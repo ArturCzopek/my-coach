@@ -19,11 +19,11 @@ export class ReportMockService extends ReportService {
       // timeout is simulation of 'getting from http'
       setTimeout(() => {
         observer.next(REPORT_PREVIEWS_LIST);
-      }, 1000);
+      }, 500);
 
       setTimeout(() => {
         observer.complete();
-      }, 1100);
+      }, 600);
     });
   }
 

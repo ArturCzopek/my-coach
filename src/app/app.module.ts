@@ -4,7 +4,7 @@ import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
 import {MyCoachRoutingModule} from "./app-routing.module";
-import {HeaderComponent} from "./header/header.component";
+import {HeaderComponent} from "./header.component";
 import {WeightsModule} from "./weights/weights.module";
 import {ReportsModule} from "./reports/reports.module";
 import {TrainingsModule} from "./trainings/tranings.module";
@@ -14,11 +14,13 @@ import {DictionaryMockService} from "./shared/services/dictionary.mock.service";
 import {DictionaryBackEndService} from "./shared/services/dictionary.back-end.service";
 import {SharedModule} from "./shared/shared.module";
 import {DateService} from "./shared/services/date.service";
+import {AboutComponent} from "./about.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

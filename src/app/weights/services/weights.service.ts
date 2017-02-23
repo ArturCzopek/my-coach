@@ -52,7 +52,7 @@ export abstract class WeightsService {
     if (day > 0 && day < 10) {
       return `${this.dictionaryService.getDictionaryValue('calendar.day')} 0${day}`;
     } else {
-      return `${this.dictionaryService.getDictionaryValue('calendar.day')}  ${day}`;
+      return `${this.dictionaryService.getDictionaryValue('calendar.day')} ${day}`;
     }
   }
 }

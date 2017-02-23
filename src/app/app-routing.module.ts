@@ -1,16 +1,18 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from "@angular/core";
+import {Routes, RouterModule} from "@angular/router";
 import {WeightsListComponent} from "./weights/weights-list.component";
 import {TrainingsComponent} from "./trainings/trainings.component";
 import {ReportsListComponent} from "./reports/reports-list.component";
 import {PricesComponent} from "./prices/prices.component";
+import {AboutComponent} from "./about.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/weights', pathMatch: 'full'},
   {path: 'weights', component: WeightsListComponent},
   {path: 'prices', component: PricesComponent},
   {path: 'reports', component: ReportsListComponent},
-  {path: 'trainings', component: TrainingsComponent}
+  {path: 'trainings', component: TrainingsComponent},
+  {path: 'about', component: AboutComponent}
 ];
 
 @NgModule({
@@ -18,4 +20,5 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class MyCoachRoutingModule { }
+export class MyCoachRoutingModule {
+}

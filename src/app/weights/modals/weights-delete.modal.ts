@@ -42,7 +42,9 @@ export class WeightsDeleteModal implements OnInit {
         this.selectedWeights = data.weights;
         this.weightsToDeleteIndexes = [];
         this.checkboxesForWeights = [];
-        data.weights.forEach(() => this.checkboxesForWeights.push(false));
+        if (data.weights) {
+          this.selectedWeights.forEach(() => this.checkboxesForWeights.push(false));
+        }
         this.modalTitle = data.modalTitle;
         this.openDeleteModal();
       }
