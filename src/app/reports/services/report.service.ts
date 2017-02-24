@@ -26,7 +26,11 @@ export abstract class ReportService {
 
   public getPreviewTitle(reportPreview: ReportPreview): string {
     return `${this.dictionaryService.getDictionaryValue('page.reports.card.title')} ` +
-      `${reportPreview.startDate.getUTCDate() + 1} ${this.dictionaryService.getDateDictionarySettings().monthsShort[reportPreview.startDate.getUTCMonth()]} ${reportPreview.startDate.getUTCFullYear()} ` +
-      `- ${reportPreview.endDate.getUTCDate() + 1} ${this.dictionaryService.getDateDictionarySettings().monthsShort[reportPreview.endDate.getUTCMonth()]} ${reportPreview.endDate.getUTCFullYear()}`
+      `${reportPreview.startDate.getUTCDate() + 1} ` +
+      `${this.dictionaryService.getDateDictionarySettings().monthsShort[reportPreview.startDate.getUTCMonth()]} ` +
+      `${reportPreview.startDate.getUTCFullYear()} ` +
+      `- ${reportPreview.endDate.getUTCDate() + 1} ` +
+      `${this.dictionaryService.getDateDictionarySettings().monthsShort[reportPreview.endDate.getUTCMonth()]} ` +
+      `${reportPreview.endDate.getUTCFullYear()}`;
   }
 }

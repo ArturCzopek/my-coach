@@ -6,15 +6,6 @@ export class CyclePreview {
   ) {}
 }
 
-export class ProductPreview {
-  constructor (
-    public productId: number,
-    private productName: string,
-    private screenUrl: string,
-    private average: number
-  ) {}
-}
-
 export class ReportPreview {
   constructor (
     public reportId: number,

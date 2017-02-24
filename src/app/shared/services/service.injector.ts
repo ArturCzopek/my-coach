@@ -9,12 +9,14 @@ import {ReportMockService} from "../../reports/services/report.mock.service";
 import {DictionaryService} from "./dictionary.service";
 import {DictionaryMockService} from "./dictionary.mock.service";
 import {DictionaryBackEndService} from "./dictionary.back-end.service";
+import {PricesService} from "../../prices/services/prices.service";
+import {PricesBackEndService} from "../../prices/services/prices.back-end.service";
+import {PricesMockService} from "../../prices/services/prices.mock.service";
 
 @Injectable()
 export class ServiceInjector {
 
   constructor(private injector: Injector) {
-
   }
 
   public getWeightsService(): WeightsService {
@@ -30,6 +32,14 @@ export class ServiceInjector {
       return this.injector.get(ReportBackEndService);
     } else {
       return this.injector.get(ReportMockService);
+    }
+  }
+
+  public getPricesService(): PricesService {
+    if (environment.isBackendServerAvailable) {
+      return this.injector.get(PricesBackEndService);
+    } else {
+      return this.injector.get(PricesMockService);
     }
   }
 

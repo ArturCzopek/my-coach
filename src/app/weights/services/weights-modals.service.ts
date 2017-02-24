@@ -1,6 +1,8 @@
 import {Subject} from "rxjs";
 import {Weight} from "../../shared/entities/get.entities";
+import {Injectable} from "@angular/core";
 
+@Injectable()
 export class WeightsModalsService {
 
   addWeight: Subject<any> = new Subject<any>();

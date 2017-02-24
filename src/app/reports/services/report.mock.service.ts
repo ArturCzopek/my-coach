@@ -51,11 +51,10 @@ export class ReportMockService extends ReportService {
     });
   }
 
-
   public addReport(reportToAdd: NewReport): void {
     this.newId++;
     const reportId: number = this.newId;
-    const report: Report = new Report(reportId, reportToAdd.content, reportToAdd.startDate, reportToAdd.endDate)
+    const report: Report = new Report(reportId, reportToAdd.content, reportToAdd.startDate, reportToAdd.endDate);
     const reportPreview: ReportPreview = new ReportPreview(reportId, reportToAdd.startDate, reportToAdd.endDate);
     REPORTS_LIST.push(report);
     REPORT_PREVIEWS_LIST.push(reportPreview);

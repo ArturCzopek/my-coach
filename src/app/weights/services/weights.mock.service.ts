@@ -57,7 +57,7 @@ export class WeightsMockService extends WeightsService {
 
     const days: number[] = [];
 
-    for (let weight of weights) {
+    for (const weight of weights) {
         days.push(weight.measurementDate.getDate());
     }
 
@@ -68,7 +68,7 @@ export class WeightsMockService extends WeightsService {
 
     const values: number[] = [];
 
-    for (let weight of weights) {
+    for (const weight of weights) {
         values.push(weight.value);
     }
 
@@ -88,7 +88,7 @@ export class WeightsMockService extends WeightsService {
     for (const weightToUpdate of weights) {
       for (const weightList of WEIGHT_LIST) {
         for (let i = 0; i < weightList.length; i++) {
-          if (weightList[i].weightId == weightToUpdate.weightId) {
+          if (weightList[i].weightId === weightToUpdate.weightId) {
             weightList[i] = weightToUpdate;
             break;
           }

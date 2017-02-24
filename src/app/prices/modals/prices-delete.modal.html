@@ -1,0 +1,19 @@
+<div id="prices-delete" class="modal" materialize="modal" [materializeParams]="[modalParams]"
+     [materializeActions]="deleteModalActions">
+  <div class="modal-content">
+
+    <h3>{{modalTitle}}</h3>
+
+    <form materialize class="col s12">
+      <div class="row">
+        <p *ngFor="let price of selectedPrices; let i = index">
+          <input type="checkbox" id="{{i}}" name="{{i}}" class="filled-in red-checkbox" [(ngModel)]="checkboxesForPrices[i]"/>
+          <label for="{{i}}">{{getDateAsString(price.priceDate)}} - {{price.quantity}} x {{price.value}} {{'global.currency.label' | dictionary}}</label>
+        </p>
+      </div>
+    </form>
+  </div>
+
+  <coach-modal-footer leftButtonLabel="{{'global.delete.label' | dictionary}}" rightButtonLabel="{{'global.close.label' | dictionary}}" (leftButtonAction)="onDeleteClick()"
+                      (rightButtonAction)="onCloseModal()"></coach-modal-footer>
+</div>

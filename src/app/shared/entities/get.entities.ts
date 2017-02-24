@@ -20,13 +20,24 @@ export class ExerciseSession {
 }
 
 export class Price {
-  constructor(private priceId: number,
-              private priceDate: Date,
-              private place: string,
-              private quantity: number,
-              private value: number) {
+  constructor(public priceId: number,
+              public priceDate: Date,
+              public place: string,
+              public quantity: number,
+              public value: number,
+              public productId: number) {
   }
 }
+
+export class Product {
+  constructor (
+    public productId: number,
+    public productName: string,
+    public screenUrl: string,
+    public average: number
+  ) {}
+}
+
 
 export class Report {
   constructor(public reportId: number,

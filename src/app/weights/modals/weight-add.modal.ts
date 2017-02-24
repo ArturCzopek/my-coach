@@ -29,7 +29,8 @@ export class WeightAddModal implements OnInit {
   public weightToAdd: NewWeight;
 
 
-  constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector, private dateService: DateService) {
+  constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector,
+              private dateService: DateService) {
     this.weightsService = serviceInjector.getWeightsService();
     this.dictionaryService = serviceInjector.getDictionaryService();
     this.weightValue = 50;

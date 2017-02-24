@@ -12,7 +12,7 @@ import {BaseCardComponent} from "../shared/components/base-card.component";
   templateUrl: 'weights-card.component.html',
   styleUrls: ['./weights.scss', '../shared/materialize-upgrades.scss']
 })
-export class WeightsCardComponent extends BaseCardComponent{
+export class WeightsCardComponent extends BaseCardComponent {
 
   @Input() weightsPreview: WeightsPreview;
 
@@ -50,11 +50,15 @@ export class WeightsCardComponent extends BaseCardComponent{
               this.weightsDays = this.weightsService.getAllDays(this.weights);
               this.weightsValues = this.weightsService.getAllValues(this.weights);
               this.chartData = [
-                { data: this.weightsValues, label: this.dictionaryService.getDictionaryValue('page.weights.chart.point.label') }
+                {
+                  data: this.weightsValues,
+                  label: this.dictionaryService.getDictionaryValue('page.weights.chart.point.label')
+                }
               ];
               this.chartLabels = this.weightsService.formatDaysToDisplayingValues(this.weightsDays);
             },
-            () => {},
+            () => {
+            },
             () => {
               this.isLoading = false;
             }

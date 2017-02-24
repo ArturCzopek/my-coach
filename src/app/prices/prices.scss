@@ -1,0 +1,51 @@
+.card-content {
+  position: relative;
+
+  &:hover {
+    .row.icons-container i {
+      display: inline;
+    }
+  }
+
+  .row.icons-container {
+    cursor: default;
+    margin-top: 25px;
+
+    i {
+      display: none;
+      margin: 0 10px;
+      filter: contrast(0);
+
+      &:hover {
+        filter: contrast(1);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.card-reveal {
+
+  &:hover {
+    .row.icons-container i {
+      display: inline;
+    }
+  }
+
+  .row.icons-container {
+    cursor: default;
+    margin-top: 25px;
+
+    i {
+      display: none;
+      margin: 0 10px;
+      filter: contrast(0);
+
+      &:hover {
+        filter: contrast(1);
+        cursor: pointer;
+      }
+    }
+  }
+}
+

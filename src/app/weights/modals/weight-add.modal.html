@@ -1,7 +1,9 @@
-<div id="weights-add" class="modal bottom-sheet" materialize="modal" [materializeParams]="[modalParams]"
+<div id="weight-add" class="modal bottom-sheet" materialize="modal" [materializeParams]="[modalParams]"
      [materializeActions]="addModalActions">
   <div class="modal-content">
+
     <h3>{{'page.weights.modal.add.title' | dictionary}}</h3>
+
     <div class="row">
       <form materialize class="col s12">
         <div class="row">
@@ -12,8 +14,8 @@
           </div>
           <div class="input-field col s6">
             <i class="material-icons prefix">today</i>
-            <label for="measurementDate">{{'page.weights.modal.add.date.label' | dictionary}}</label>
-            <input id="measurementDate" type="date" class="datepicker" materialize="pickadate"
+            <label for="measurement-date">{{'page.weights.modal.add.date.label' | dictionary}}</label>
+            <input id="measurement-date" type="date" class="datepicker" materialize="pickadate"
                    [(ngModel)]="measurementDate" name="measurementDate"
                    [materializeParams]="[datePickerParams]">
           </div>

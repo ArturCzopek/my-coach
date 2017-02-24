@@ -1,3 +1,4 @@
+/* tslint:disable:component-class-suffix */
 import {Component, OnInit, EventEmitter} from "@angular/core";
 import {ReportService} from "../services/report.service";
 import {DictionaryService} from "../../shared/services/dictionary.service";
@@ -28,7 +29,8 @@ export class ReportAddModal implements OnInit {
 
   public reportToAdd: NewReport;
 
-  constructor(private reportModalsService: ReportModalsService, private serviceInjector: ServiceInjector, private dateService: DateService) {
+  constructor(private reportModalsService: ReportModalsService, private serviceInjector: ServiceInjector,
+              private dateService: DateService) {
     this.reportService = serviceInjector.getReportService();
     this.dictionaryService = serviceInjector.getDictionaryService();
     this.reportContent  = '';
@@ -55,7 +57,8 @@ export class ReportAddModal implements OnInit {
   }
 
   public onAddClick() {
-    this.reportToAdd = new NewReport(this.reportContent, this.dateService.parseStringToDate(this.startDate), this.dateService.parseStringToDate(this.endDate));
+    this.reportToAdd = new NewReport(this.reportContent, this.dateService.parseStringToDate(this.startDate),
+                        this.dateService.parseStringToDate(this.endDate));
     this.reportService.addReport(this.reportToAdd);
     this.reportModalsService.callRefreshPage();
     this.onCloseModal();

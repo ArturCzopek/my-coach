@@ -39,7 +39,7 @@ export class ReportDeleteModal implements OnInit {
         this.modalTitle = data.modalTitle;
         this.openDeleteModal();
       }
-    )
+    );
   };
 
   public openDeleteModal() {

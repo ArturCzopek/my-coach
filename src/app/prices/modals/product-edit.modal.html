@@ -1,0 +1,36 @@
+<div id="product-edit" class="modal" materialize="modal" [materializeParams]="[modalParams]"
+     [materializeActions]="editModalActions">
+  <div class="modal-content">
+
+    <h3>{{'page.prices.modal.edit.title' | dictionary}}</h3>
+
+    <div class="row">
+      <form materialize class="col s12">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">receipt</i>
+          <label for="product-name">{{'page.prices.modal.add.productName.label' | dictionary}}</label>
+          <input id="product-name" type="text" [(ngModel)]="productName" name="productName"/>
+        </div>
+        <div *ngIf="!canStoreFiles()" class="input-field col s12">
+          <i class="material-icons prefix">perm_media</i>
+          <label for="screen-url">Screen link</label>
+          <input id="screen-url" type="text" [(ngModel)]="screen" name="screen"/>
+        </div>
+        <div *ngIf="canStoreFiles()" class="file-field input-field col s12">
+          <div class="btn blue">
+            <span>{{'page.prices.modal.add.selectPhoto.label' | dictionary}}</span>
+            <input type="file">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path" type="text" [(ngModel)]="screen" name="screen">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <a class="modal-action modal-close waves-effect waves-red btn-flat" (click)="onCloseModal()">{{'global.close.label' | dictionary}}</a>
+    <a class="modal-action modal-close waves-effect waves-teal btn-flat" [class.disabled]="!isDataValid()" (click)="onEditClick()">{{'global.edit.label' | dictionary}}</a>
+  </div>
+</div>

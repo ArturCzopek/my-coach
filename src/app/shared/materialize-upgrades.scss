@@ -104,6 +104,7 @@ $circle-size: 120px;
 
 .no-data {
   margin-top: 150px;
+
   i.large.material-icons {
     color: $blue-color;
     margin-bottom: 100px;
@@ -115,6 +116,20 @@ $circle-size: 120px;
     a:hover {
       text-decoration: underline;
       cursor: pointer;
+    }
+  }
+
+  &.small {
+    margin-top: 30px;
+
+    i.medium.material-icons {
+      color: $blue-color;
+      margin-bottom: 30px;
+      font-size: 12rem;
+    }
+
+    p {
+      margin-bottom: 0px;
     }
   }
 }

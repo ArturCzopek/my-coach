@@ -24,14 +24,15 @@ export class ReportEditModal implements OnInit, AfterViewChecked {
   public datePickerParams: any;
   public modalTitle: string;
 
-  private reportContent: string = '';
-  private startDate: string = '';
-  private endDate: string = '';
+  public reportContent: string = '';
+  public startDate: string = '';
+  public endDate: string = '';
 
   private reportService: ReportService;
   private dictionaryService: DictionaryService;
 
-  constructor(private reportModalsService: ReportModalsService, private serviceInjector: ServiceInjector, private dateService: DateService) {
+  constructor(private reportModalsService: ReportModalsService, private serviceInjector: ServiceInjector,
+              private dateService: DateService) {
     this.reportService = serviceInjector.getReportService();
     this.dictionaryService = serviceInjector.getDictionaryService();
   }

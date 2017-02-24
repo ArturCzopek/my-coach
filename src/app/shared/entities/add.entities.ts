@@ -13,17 +13,18 @@ export class NewExerciseSession {
 }
 
 export class NewPrice {
-  constructor(private productId: number,
-              private value: number,
-              private quantity: number,
-              private place?: string,
-              private priceDate?: Date) {
+  constructor(public productId: number,
+              public value: number,
+              public quantity: number,
+              public place?: string,
+              public priceDate?: Date) {
   }
 }
 
+// screen can be file or string, not sure how sending files will be implemented
 export class NewProduct {
-  constructor(private productName: string,
-              private screenUrl?: string) {
+  constructor(public productName: string,
+              public screen?: any) {
   }
 }
 
