@@ -7,19 +7,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component } from "@angular/core";
-var HeaderComponent = (function () {
-    function HeaderComponent() {
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+import { ServiceInjector } from "../../shared/services/service.injector";
+import { Inject } from "@angular/core";
+var PricesService = (function () {
+    function PricesService(serviceInjector) {
+        this.dictionaryService = serviceInjector.getDictionaryService();
     }
-    return HeaderComponent;
+    return PricesService;
 }());
-HeaderComponent = __decorate([
-    Component({
-        selector: 'coach-header',
-        templateUrl: './header.component.html',
-        styleUrls: []
-    }),
-    __metadata("design:paramtypes", [])
-], HeaderComponent);
-export { HeaderComponent };
-//# sourceMappingURL=/home/arturczopek/Projects/MyCoach/front/src/app/header/header.component.js.map
+PricesService = __decorate([
+    __param(0, Inject(ServiceInjector)),
+    __metadata("design:paramtypes", [ServiceInjector])
+], PricesService);
+export { PricesService };
+//# sourceMappingURL=/home/arturczopek/Projects/MyCoach/front/src/app/prices/services/prices.service.js.map

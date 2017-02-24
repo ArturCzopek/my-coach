@@ -58,7 +58,8 @@ WeightAddModal = __decorate([
         templateUrl: 'weight-add.modal.html',
         styleUrls: ['weights.modals.scss', '../../shared/materialize-upgrades.scss']
     }),
-    __metadata("design:paramtypes", [WeightsModalsService, ServiceInjector, DateService])
+    __metadata("design:paramtypes", [WeightsModalsService, ServiceInjector,
+        DateService])
 ], WeightAddModal);
 export { WeightAddModal };
 //# sourceMappingURL=/home/arturczopek/Projects/MyCoach/front/src/app/weights/modals/weight-add.modal.js.map

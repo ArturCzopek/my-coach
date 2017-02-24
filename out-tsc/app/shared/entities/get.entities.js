@@ -26,16 +26,27 @@ var ExerciseSession = (function () {
 }());
 export { ExerciseSession };
 var Price = (function () {
-    function Price(priceId, priceDate, place, quantity, value) {
+    function Price(priceId, priceDate, place, quantity, value, productId) {
         this.priceId = priceId;
         this.priceDate = priceDate;
         this.place = place;
         this.quantity = quantity;
         this.value = value;
+        this.productId = productId;
     }
     return Price;
 }());
 export { Price };
+var Product = (function () {
+    function Product(productId, productName, screenUrl, average) {
+        this.productId = productId;
+        this.productName = productName;
+        this.screenUrl = screenUrl;
+        this.average = average;
+    }
+    return Product;
+}());
+export { Product };
 var Report = (function () {
     function Report(reportId, content, startDate, endDate) {
         this.reportId = reportId;

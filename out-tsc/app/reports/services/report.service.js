@@ -6,8 +6,12 @@ var ReportService = (function () {
     }
     ReportService.prototype.getPreviewTitle = function (reportPreview) {
         return this.dictionaryService.getDictionaryValue('page.reports.card.title') + " " +
-            (reportPreview.startDate.getUTCDate() + 1 + " " + this.dictionaryService.getDateDictionarySettings().monthsShort[reportPreview.startDate.getUTCMonth()] + " " + reportPreview.startDate.getUTCFullYear() + " ") +
-            ("- " + (reportPreview.endDate.getUTCDate() + 1) + " " + this.dictionaryService.getDateDictionarySettings().monthsShort[reportPreview.endDate.getUTCMonth()] + " " + reportPreview.endDate.getUTCFullYear());
+            (reportPreview.startDate.getUTCDate() + 1 + " ") +
+            (this.dictionaryService.getDateDictionarySettings().monthsShort[reportPreview.startDate.getUTCMonth()] + " ") +
+            (reportPreview.startDate.getUTCFullYear() + " ") +
+            ("- " + (reportPreview.endDate.getUTCDate() + 1) + " ") +
+            (this.dictionaryService.getDateDictionarySettings().monthsShort[reportPreview.endDate.getUTCMonth()] + " ") +
+            ("" + reportPreview.endDate.getUTCFullYear());
     };
     return ReportService;
 }());

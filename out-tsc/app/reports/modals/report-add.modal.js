@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/* tslint:disable:component-class-suffix */
 import { Component, EventEmitter } from "@angular/core";
 import { NewReport } from "../../shared/entities/add.entities";
 import { ReportModalsService } from "../services/report-modals.service";
@@ -59,7 +60,8 @@ ReportAddModal = __decorate([
         templateUrl: 'report-add.modal.html',
         styleUrls: ['report.modals.scss', '../../shared/materialize-upgrades.scss']
     }),
-    __metadata("design:paramtypes", [ReportModalsService, ServiceInjector, DateService])
+    __metadata("design:paramtypes", [ReportModalsService, ServiceInjector,
+        DateService])
 ], ReportAddModal);
 export { ReportAddModal };
 //# sourceMappingURL=/home/arturczopek/Projects/MyCoach/front/src/app/reports/modals/report-add.modal.js.map

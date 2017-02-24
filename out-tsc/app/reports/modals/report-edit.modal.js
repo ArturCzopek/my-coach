@@ -76,7 +76,8 @@ ReportEditModal = __decorate([
         templateUrl: 'report-edit.modal.html',
         styleUrls: ['report.modals.scss', '../../shared/materialize-upgrades.scss']
     }),
-    __metadata("design:paramtypes", [ReportModalsService, ServiceInjector, DateService])
+    __metadata("design:paramtypes", [ReportModalsService, ServiceInjector,
+        DateService])
 ], ReportEditModal);
 export { ReportEditModal };
 //# sourceMappingURL=/home/arturczopek/Projects/MyCoach/front/src/app/reports/modals/report-edit.modal.js.map

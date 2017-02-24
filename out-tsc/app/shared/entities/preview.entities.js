@@ -7,16 +7,6 @@ var CyclePreview = (function () {
     return CyclePreview;
 }());
 export { CyclePreview };
-var ProductPreview = (function () {
-    function ProductPreview(productId, productName, screenUrl, average) {
-        this.productId = productId;
-        this.productName = productName;
-        this.screenUrl = screenUrl;
-        this.average = average;
-    }
-    return ProductPreview;
-}());
-export { ProductPreview };
 var ReportPreview = (function () {
     function ReportPreview(reportId, startDate, endDate) {
         this.reportId = reportId;

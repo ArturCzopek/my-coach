@@ -45,10 +45,14 @@ var WeightsCardComponent = (function (_super) {
                     _this.weightsDays = _this.weightsService.getAllDays(_this.weights);
                     _this.weightsValues = _this.weightsService.getAllValues(_this.weights);
                     _this.chartData = [
-                        { data: _this.weightsValues, label: _this.dictionaryService.getDictionaryValue('page.weights.chart.point.label') }
+                        {
+                            data: _this.weightsValues,
+                            label: _this.dictionaryService.getDictionaryValue('page.weights.chart.point.label')
+                        }
                     ];
                     _this.chartLabels = _this.weightsService.formatDaysToDisplayingValues(_this.weightsDays);
-                }, function () { }, function () {
+                }, function () {
+                }, function () {
                     _this.isLoading = false;
                 });
             }

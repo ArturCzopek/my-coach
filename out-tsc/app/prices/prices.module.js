@@ -5,9 +5,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { NgModule } from "@angular/core/src/metadata/ng_module";
-import { PricesComponent } from "./prices.component";
+import { PricesListComponent } from "./prices-list.component";
 import { CommonModule } from "@angular/common";
 import { HttpModule } from "@angular/http";
+import { PricesMockService } from "./services/prices.mock.service";
+import { PricesBackEndService } from "./services/prices.back-end.service";
+import { SharedModule } from "../shared/shared.module";
+import { FormsModule } from "@angular/forms";
+import { PricesModalsService } from "./services/prices-modals.service";
+import { PricesCardComponent } from "./prices-card.component";
+import { PricesModals } from "./modals/prices.modals";
+import { ProductAddModal } from "./modals/product-add.modal";
+import { PriceAddModal } from "./modals/price-add.modal";
+import { PricesEditModal } from "./modals/prices-edit.modal";
+import { ProductEditModal } from "./modals/product-edit.modal";
+import { ProductDeleteModal } from "./modals/product-delete.modal";
+import { PricesDeleteModal } from "./modals/prices-delete.modal";
 var PricesModule = (function () {
     function PricesModule() {
     }
@@ -15,10 +28,27 @@ var PricesModule = (function () {
 }());
 PricesModule = __decorate([
     NgModule({
-        declarations: [PricesComponent],
+        declarations: [
+            PricesListComponent,
+            PricesCardComponent,
+            PricesModals,
+            PriceAddModal,
+            PricesDeleteModal,
+            PricesEditModal,
+            ProductAddModal,
+            ProductDeleteModal,
+            ProductEditModal
+        ],
         imports: [
             HttpModule,
-            CommonModule
+            CommonModule,
+            FormsModule,
+            SharedModule
+        ],
+        providers: [
+            PricesMockService,
+            PricesBackEndService,
+            PricesModalsService
         ]
     })
 ], PricesModule);

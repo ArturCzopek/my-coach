@@ -32,7 +32,9 @@ var WeightsDeleteModal = (function () {
             _this.selectedWeights = data.weights;
             _this.weightsToDeleteIndexes = [];
             _this.checkboxesForWeights = [];
-            data.weights.forEach(function () { return _this.checkboxesForWeights.push(false); });
+            if (data.weights) {
+                _this.selectedWeights.forEach(function () { return _this.checkboxesForWeights.push(false); });
+            }
             _this.modalTitle = data.modalTitle;
             _this.openDeleteModal();
         });

@@ -18,7 +18,6 @@ import { Weight } from "../../shared/entities/get.entities";
 import { WEIGHT_LIST } from "../../shared/entities/mock-data/weights.mock-data";
 import { WEIGHTS_PREVIEWS_LIST } from "../../shared/entities/mock-data/previews/weight-previews.mock-data";
 import { WeightsService } from "./weights.service";
-import { DOES_NOT_CONTAIN } from "../../shared/global.values";
 import { ServiceInjector } from "../../shared/services/service.injector";
 var WeightsMockService = (function (_super) {
     __extends(WeightsMockService, _super);
@@ -33,10 +32,10 @@ var WeightsMockService = (function (_super) {
             // timeout is simulation of 'getting from http'
             setTimeout(function () {
                 observer.next(WEIGHTS_PREVIEWS_LIST);
-            }, 1000);
+            }, 500);
             setTimeout(function () {
                 observer.complete();
-            }, 1100);
+            }, 600);
         });
     };
     ;
@@ -60,16 +59,18 @@ var WeightsMockService = (function (_super) {
     };
     WeightsMockService.prototype.getAllDays = function (weights) {
         var days = [];
-        weights.forEach(function (weight) {
+        for (var _i = 0, weights_1 = weights; _i < weights_1.length; _i++) {
+            var weight = weights_1[_i];
             days.push(weight.measurementDate.getDate());
-        });
+        }
         return days;
     };
     WeightsMockService.prototype.getAllValues = function (weights) {
         var values = [];
-        weights.forEach(function (weight) {
+        for (var _i = 0, weights_2 = weights; _i < weights_2.length; _i++) {
+            var weight = weights_2[_i];
             values.push(weight.value);
-        });
+        }
         return values;
     };
     // for mock we add only to second month
@@ -80,24 +81,22 @@ var WeightsMockService = (function (_super) {
         WEIGHT_LIST[1].push(weight);
     };
     WeightsMockService.prototype.editWeights = function (weights) {
-        for (var _i = 0, weights_1 = weights; _i < weights_1.length; _i++) {
-            var weightToUpdate = weights_1[_i];
+        for (var _i = 0, weights_3 = weights; _i < weights_3.length; _i++) {
+            var weightToUpdate = weights_3[_i];
             for (var _a = 0, WEIGHT_LIST_1 = WEIGHT_LIST; _a < WEIGHT_LIST_1.length; _a++) {
                 var weightList = WEIGHT_LIST_1[_a];
-                var weightIndex = weightList.indexOf(weightToUpdate);
-                if (weightIndex === DOES_NOT_CONTAIN) {
-                    continue;
-                }
-                else {
-                    weightList[weightIndex] = weightToUpdate;
-                    break;
+                for (var i = 0; i < weightList.length; i++) {
+                    if (weightList[i].weightId === weightToUpdate.weightId) {
+                        weightList[i] = weightToUpdate;
+                        break;
+                    }
                 }
             }
         }
     };
     WeightsMockService.prototype.deleteWeights = function (weights) {
-        for (var _i = 0, weights_2 = weights; _i < weights_2.length; _i++) {
-            var weightToDelete = weights_2[_i];
+        for (var _i = 0, weights_4 = weights; _i < weights_4.length; _i++) {
+            var weightToDelete = weights_4[_i];
             for (var _a = 0, WEIGHT_LIST_2 = WEIGHT_LIST; _a < WEIGHT_LIST_2.length; _a++) {
                 var weightList = WEIGHT_LIST_2[_a];
                 for (var i = 0; i < weightList.length; i++) {

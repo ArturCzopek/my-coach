@@ -37,7 +37,7 @@ var WeightsService = (function () {
             return this.dictionaryService.getDictionaryValue('calendar.day') + " 0" + day;
         }
         else {
-            return this.dictionaryService.getDictionaryValue('calendar.day') + "  " + day;
+            return this.dictionaryService.getDictionaryValue('calendar.day') + " " + day;
         }
     };
     return WeightsService;

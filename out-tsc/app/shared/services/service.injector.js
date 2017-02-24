@@ -15,6 +15,8 @@ import { ReportBackEndService } from "../../reports/services/report.back-end.ser
 import { ReportMockService } from "../../reports/services/report.mock.service";
 import { DictionaryMockService } from "./dictionary.mock.service";
 import { DictionaryBackEndService } from "./dictionary.back-end.service";
+import { PricesBackEndService } from "../../prices/services/prices.back-end.service";
+import { PricesMockService } from "../../prices/services/prices.mock.service";
 var ServiceInjector = (function () {
     function ServiceInjector(injector) {
         this.injector = injector;
@@ -33,6 +35,14 @@ var ServiceInjector = (function () {
         }
         else {
             return this.injector.get(ReportMockService);
+        }
+    };
+    ServiceInjector.prototype.getPricesService = function () {
+        if (environment.isBackendServerAvailable) {
+            return this.injector.get(PricesBackEndService);
+        }
+        else {
+            return this.injector.get(PricesMockService);
         }
     };
     ServiceInjector.prototype.getDictionaryService = function () {

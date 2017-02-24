@@ -25,10 +25,11 @@ var NewPrice = (function () {
     return NewPrice;
 }());
 export { NewPrice };
+// screen can be file or string, not sure how sending files will be implemented
 var NewProduct = (function () {
-    function NewProduct(productName, screenUrl) {
+    function NewProduct(productName, screen) {
         this.productName = productName;
-        this.screenUrl = screenUrl;
+        this.screen = screen;
     }
     return NewProduct;
 }());

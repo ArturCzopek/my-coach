@@ -29,10 +29,10 @@ var ReportMockService = (function (_super) {
             // timeout is simulation of 'getting from http'
             setTimeout(function () {
                 observer.next(REPORT_PREVIEWS_LIST);
-            }, 1000);
+            }, 500);
             setTimeout(function () {
                 observer.complete();
-            }, 1100);
+            }, 600);
         });
     };
     ReportMockService.prototype.getReport = function (reportId) {

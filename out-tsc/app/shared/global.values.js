@@ -1,5 +1,5 @@
 export var MODAL_PARAMS = {
-    dismissible: true,
+    dismissible: false,
     in_duration: 900,
     out_duration: 900
 };
