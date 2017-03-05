@@ -7,12 +7,9 @@ $circle-size: 120px;
 //BUTTONS
 
 .material-button {
-  display: none;
+  display: inline;
   cursor: pointer;
   filter: contrast(0);
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
 
   &:hover {
     filter: contrast(1);
@@ -40,25 +37,48 @@ $circle-size: 120px;
 //CARDS
 
 .card-content {
-  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
 
-  .card-title {
-    i.edit-button {
-      @extend .material-button;
-      margin-left: 1rem;
+  span.card-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    align-self: center;
+    order: 1;
+
+    p {
+      margin-right: 15px;
     }
 
-    i.delete-button {
-      @extend .material-button;
-      margin-left: 3rem;
+    .card-title-icons {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: baseline;
+      align-self: center;
+      order: 99;
+      visibility: hidden;
+
+      i {
+        @extend .material-button;
+        margin-right: 5px;
+      }
     }
+  }
+
+  img.right {
+    order: 99;
+    flex-basis: 40px;
   }
 }
 
 .card-content:hover {
-  .card-title {
-    i.edit-button, i.delete-button {
-      display: inline;
+  span.card-title {
+    .card-title-icons {
+      visibility: visible;
     }
   }
 }

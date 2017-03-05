@@ -1,11 +1,16 @@
 <div class="card grey lighten-3 hoverable">
   <div class="card-content">
     <span class="card-title">
-      {{previewTitle}}
-    <i (click)="onEditClick()" class="edit-button small material-icons tooltipped" materialize="tooltip"
-       data-position="bottom" data-delay="50" [attr.data-tooltip]="'page.weights.edit.tooltip' | dictionary">mode_edit</i>
-      <i (click)="onDeleteClick()" class="delete-button small material-icons tooltipped" materialize="tooltip"
-         data-position="bottom" data-delay="50" [attr.data-tooltip]="'page.weights.delete.tooltip' | dictionary">delete</i></span>
+      <p>{{previewTitle}}</p>
+      <div class="card-title-icons">
+        <i (click)="onEditClick()" class="small material-icons tooltipped" materialize="tooltip"
+           data-position="bottom" data-delay="50"
+           [attr.data-tooltip]="'page.weights.edit.tooltip' | dictionary">mode_edit</i>
+        <i (click)="onDeleteClick()" class="small material-icons tooltipped" materialize="tooltip"
+           data-position="bottom" data-delay="50"
+           [attr.data-tooltip]="'page.weights.delete.tooltip' | dictionary">delete</i>
+      </div>
+    </span>
     <img class="right tooltipped" [ngClass]="arrowImageClass" src="assets/img/arrow_down.png"
          (click)="onWeightsClick()"/>
   </div>

@@ -9,7 +9,7 @@ import {DateService} from "../shared/services/date.service";
 @Component({
   selector: 'coach-prices-card',
   templateUrl: 'prices-card.component.html',
-  styleUrls: ['./prices.scss', '../shared/materialize-upgrades.scss']
+  styleUrls: ['./prices.scss']
 })
 export class PricesCardComponent extends BaseCardComponent {
 

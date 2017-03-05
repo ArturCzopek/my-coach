@@ -2,16 +2,19 @@
   <div class="card-image waves-effect waves-block waves-light">
     <img class="activator" [src]="productPreview.screenUrl">
   </div>
-  <div class="card-content">
-    <span class="card-title grey-text activator text-darken-4">{{productPreview.productName}}
+  <div class="card-content prices-card-content">
+    <span class="card-title grey-text activator text-darken-4">
+      <p>{{productPreview.productName}}</p>
       <i class="material-icons right">more_vert</i>
     </span>
-    <p>{{'page.prices.avgPrice.label' | dictionary}} {{productPreview.average}} {{'global.currency.label' | dictionary}}</p>
-    <div class="row icons-container">
-      <i (click)="onEditProductClick()" class="edit-button small material-icons tooltipped"
+    <span class="card-subtitle">
+      <p>{{'page.prices.avgPrice.label' | dictionary}} {{productPreview.average}} {{'global.currency.label' | dictionary}}</p>
+    </span>
+    <div class="card-title-icons">
+      <i (click)="onEditProductClick()" class="small material-icons tooltipped"
          materialize="tooltip" data-position="bottom" data-delay="50"
          [attr.data-tooltip]="'page.prices.editProduct.tooltip' | dictionary">mode_edit</i>
-      <i (click)="onDeleteProductClick()" class="delete-button small material-icons tooltipped"
+      <i (click)="onDeleteProductClick()" class="small material-icons tooltipped"
          materialize="tooltip" data-position="bottom" data-delay="50"
          [attr.data-tooltip]="'page.prices.deleteProduct.tooltip' | dictionary">delete</i>
     </div>
@@ -60,7 +63,8 @@
         <i class="medium material-icons">info_outline</i>
       </div>
       <div class="row">
-        <p>{{'page.prices.productPrices.noData.info' | dictionary}} <a (click)="onAddPriceClick()">{{'page.prices.productPrices.noData.click.info' | dictionary}}</a></p>
+        <p>{{'page.prices.productPrices.noData.info' | dictionary}} <a (click)="onAddPriceClick()">{{'page.prices.productPrices.noData.click.info'
+          | dictionary}}</a></p>
       </div>
     </div>
   </div>
