@@ -29,8 +29,9 @@
     </div>
   </div>
 
-  <div class="modal-footer">
-    <a class="modal-action modal-close waves-effect waves-red btn-flat" (click)="onCloseModal()">{{'global.close.label' | dictionary}}</a>
-    <a class="modal-action modal-close waves-effect waves-teal btn-flat" [class.disabled]="!isDataValid()" (click)="onEditClick()">{{'global.edit.label' | dictionary}}</a>
-  </div>
+  <coach-modal-footer leftButtonLabel="{{'global.edit.label' | dictionary}}"
+                      rightButtonLabel="{{'global.close.label' | dictionary}}"
+                      (leftButtonAction)="onEditClick()"
+                      (rightButtonAction)="onCloseModal()"
+                      [isDataValid]="isDataValid()"></coach-modal-footer>
 </div>

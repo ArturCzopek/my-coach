@@ -21,8 +21,8 @@ export class PricesModalsService {
     this.addPrice.next(product);
   }
 
-  public callAddShoppingList() {
-    this.addShoppingList.next(null);
+  public callAddShoppingList(products: Product[]) {
+    this.addShoppingList.next(products);
   }
 
   public callEditProduct(product: Product) {

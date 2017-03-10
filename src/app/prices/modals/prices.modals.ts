@@ -10,6 +10,7 @@ import {Component} from "@angular/core";
     <coach-product-add-modal></coach-product-add-modal>
     <coach-product-delete-modal></coach-product-delete-modal>
     <coach-product-edit-modal></coach-product-edit-modal>
+    <coach-shopping-list-modal></coach-shopping-list-modal>
   `
 })
 export class PricesModals {

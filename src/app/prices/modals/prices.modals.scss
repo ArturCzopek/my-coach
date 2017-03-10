@@ -1,0 +1,21 @@
+#shopping-list {
+  table {
+    margin-bottom: 20px;
+
+    th.icons {
+      text-align: center;
+    }
+
+    td {
+      vertical-align: top;
+      &.icons {
+        padding-top: 35px;
+        text-align: center;
+      }
+    }
+  }
+
+  a {
+    cursor: pointer;
+  }
+}

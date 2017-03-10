@@ -8,6 +8,7 @@ import {Component, Input, Output, EventEmitter} from "@angular/core";
 export class ModalFooterComponent {
   @Input() public rightButtonLabel: string;
   @Input() public leftButtonLabel: string;
+  @Input() public isDataValid: boolean;
 
   @Output() public rightButtonAction = new EventEmitter();
   @Output() public leftButtonAction = new EventEmitter();
@@ -19,4 +20,5 @@ export class ModalFooterComponent {
   onLeftButtonClick() {
     this.leftButtonAction.emit(null);
   }
+
 }

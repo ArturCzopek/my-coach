@@ -88,6 +88,20 @@ $circle-size: 120px;
 .input-field input:focus {
   border-bottom: 1px solid $blue-color;
   box-shadow: 0 1px 0 0 $blue-color;
+
+  + label {
+    color: $blue-color;
+  }
+}
+
+.input-field{
+  .dropdown-content li > span {
+    color: black;
+  }
+
+  .autocomplete-content li .highlight {
+    color: $blue-color;
+  }
 }
 
 .red-checkbox[type="checkbox"].filled-in:checked + label:after {

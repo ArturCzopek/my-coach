@@ -26,6 +26,18 @@
   color: #1976D2;
 }
 
+.dropdown-content li > span {
+  color: black;
+}
+
+.dropdown-content {
+  z-index: 1000;
+}
+
+.autocomplete-content li .highlight {
+  color: #1976D2;
+}
+
 /* label focus color textarea */
 textarea.materialize-textarea:focus:not([readonly]) + label {
   color: #1976D2;

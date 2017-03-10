@@ -3,7 +3,7 @@ import {PricesService} from "./prices.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {Observable} from "rxjs";
 import {Product, Price} from "../../shared/entities/get.entities";
-import {NewProduct, NewPrice} from "../../shared/entities/add.entities";
+import {NewProduct, NewPrice, ShoppingList} from "../../shared/entities/add.entities";
 
 @Injectable()
 export class PricesBackEndService extends PricesService {
@@ -30,7 +30,7 @@ export class PricesBackEndService extends PricesService {
     console.log('PricesBackEndService#addPrice not implemented yet');
   }
 
-  addShoppingList(shoppingList: NewPrice[]): void {
+  addShoppingList(shoppingList: ShoppingList): void {
     console.log('PricesBackEndService#addShopping list not implemented yet');
   }
 

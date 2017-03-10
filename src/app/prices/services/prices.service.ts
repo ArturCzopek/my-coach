@@ -3,7 +3,7 @@ import {ServiceInjector} from "../../shared/services/service.injector";
 import {Inject} from "@angular/core";
 import {Observable} from "rxjs";
 import {Product, Price} from "../../shared/entities/get.entities";
-import {NewProduct, NewPrice} from "../../shared/entities/add.entities";
+import {NewProduct, NewPrice, ShoppingList} from "../../shared/entities/add.entities";
 
 export abstract class PricesService {
   private dictionaryService: DictionaryService;
@@ -20,7 +20,7 @@ export abstract class PricesService {
 
   abstract addPrice(priceToAdd: NewPrice): void;
 
-  abstract addShoppingList(shoppingList: NewPrice[], place: string, date: Date): void;
+  abstract addShoppingList(shoppingList: ShoppingList): void;
 
   abstract editPrices(pricesToEdit: Price[]): void;
 

@@ -15,6 +15,7 @@ import {PricesEditModal} from "./modals/prices-edit.modal";
 import {ProductEditModal} from "./modals/product-edit.modal";
 import {ProductDeleteModal} from "./modals/product-delete.modal";
 import {PricesDeleteModal} from "./modals/prices-delete.modal";
+import {ShoppingListModal} from "./modals/shopping-list.modal";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {PricesDeleteModal} from "./modals/prices-delete.modal";
     PricesEditModal,
     ProductAddModal,
     ProductDeleteModal,
-    ProductEditModal
+    ProductEditModal,
+    ShoppingListModal
   ],
   imports: [
     HttpModule,

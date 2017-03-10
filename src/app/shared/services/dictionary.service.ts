@@ -84,7 +84,8 @@ export abstract class DictionaryService {
       clear: this.getDictionaryValue('calendar.clear.label'),
       close: this.getDictionaryValue('calendar.close.label'),
       format: this.getDictionaryValue('calendar.format'),
-      max: true
+      max: true,
+      container: 'body'
     };
   }
 

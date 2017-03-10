@@ -62,9 +62,8 @@ export class NewWeight {
 }
 
 export class ShoppingList {
-  constructor(private place: string,
-              private prices: NewPrice[],
-              shoppingDate?: Date) {
-
+  constructor(public place: string,
+              public prices: NewPrice[],
+              public shoppingDate?: Date) {
   }
 }

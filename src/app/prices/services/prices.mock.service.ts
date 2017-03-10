@@ -4,7 +4,7 @@ import {PRODUCTS_LIST} from "../../shared/entities/mock-data/products.mock-data"
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {Observable} from "rxjs";
 import {Product, Price} from "../../shared/entities/get.entities";
-import {NewProduct, NewPrice} from "../../shared/entities/add.entities";
+import {NewProduct, NewPrice, ShoppingList} from "../../shared/entities/add.entities";
 import {PRICES_LIST} from "../../shared/entities/mock-data/prices.mock-data";
 
 @Injectable()
@@ -85,8 +85,12 @@ export class PricesMockService extends PricesService {
     PRICES_LIST[prodIdInArray].push(price);
   }
 
-  addShoppingList(shoppingList: NewPrice[], place: string, date: Date): void {
-    console.log('PricesMockService#addShoppingList not implemented yet');
+  addShoppingList(shoppingList: ShoppingList): void {
+    for (let price of shoppingList.prices) {
+      price.priceDate = shoppingList.shoppingDate;
+      price.place = shoppingList.place;
+      this.addPrice(price);
+    }
   }
 
   editPrices(pricesToEdit: Price[]): void {

@@ -41,7 +41,7 @@ export class PricesListComponent implements OnInit {
   }
 
   onAddShoppingListClick() {
-    this.pricesModalsService.callAddShoppingList();
+    this.pricesModalsService.callAddShoppingList(this.productPreviews);
   }
 
   onAddProductClick() {
