@@ -1,5 +1,5 @@
 <div id="reports-delete" class="modal" materialize="modal" [materializeParams]="[modalParams]"
-     [materializeActions]="deleteModalActions">
+     [materializeActions]="modalActions">
   <div class="modal-content">
 
     <h3>{{modalTitle}}</h3>
@@ -12,6 +12,8 @@
   </div>
 
   <coach-modal-footer leftButtonLabel="{{'global.delete.label' | dictionary}}"
-                      rightButtonLabel="{{'global.close.label' | dictionary}}" (leftButtonAction)="onDeleteClick()"
-                      (rightButtonAction)="onCloseModal()"></coach-modal-footer>
+                      rightButtonLabel="{{'global.close.label' | dictionary}}"
+                      (leftButtonAction)="onDeleteClick()"
+                      (rightButtonAction)="onCloseModal()"
+                      [isDataValid]="isDataValid()"></coach-modal-footer>
 </div>

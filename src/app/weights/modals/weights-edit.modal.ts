@@ -1,13 +1,11 @@
 /* tslint:disable:component-class-suffix */
-import {Component, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
 import {Weight} from "../../shared/entities/get.entities";
 import {WeightsModalsService} from "../services/weights-modals.service";
-import {MaterializeAction} from "angular2-materialize";
-import {EventEmitter} from "@angular/common/src/facade/async";
 import {WeightsService} from "../services/weights.service";
-import {MODAL_PARAMS, DOES_NOT_CONTAIN} from "../../shared/global.values";
+import {DOES_NOT_CONTAIN} from "../../shared/global.values";
 import {ServiceInjector} from "../../shared/services/service.injector";
-import {DictionaryService} from "../../shared/services/dictionary.service";
+import {BaseModal} from "../../shared/components/base.modal";
 
 declare var Materialize: any;
 
@@ -16,62 +14,60 @@ declare var Materialize: any;
   templateUrl: 'weights-edit.modal.html',
   styleUrls: ['weights.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class WeightsEditModal implements OnInit {
+export class WeightsEditModal extends BaseModal {
 
   public formattedDays: string[] = [];
   public selectedWeights: Weight[] = [];
-  public editModalActions = new EventEmitter<string|MaterializeAction>();
-  public modalParams: any;
   public weightsToEditIndexes: number[] = [];
   public modalTitle: string;
 
   private weightsService: WeightsService;
-  private dictionaryService: DictionaryService;
 
   constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector) {
+    super(serviceInjector);
     this.weightsService = serviceInjector.getWeightsService();
-    this.dictionaryService = serviceInjector.getDictionaryService();
   }
 
-  ngOnInit(): void {
-    this.modalParams = MODAL_PARAMS;
+  public ngOnInit(): void {
+    super.ngOnInit();
 
     this.weightsModalsService.editWeights.subscribe(
       (data: any) => {
         this.selectedWeights = data.weights;
-        this.weightsToEditIndexes = [];
         this.modalTitle = data.modalTitle;
-        this.openEditModal();
+        this.openModal();
       }
     );
   }
 
-  public openEditModal() {
-    if (this.selectedWeights) {
-      this.formattedDays = this.weightsService.formatDaysToDisplayingValuesFromWeights(this.selectedWeights);
-      this.editModalActions.emit({action: "modal", params: ['open']});
-    } else {
+  public initDataBeforeOpenModal() {
+    this.weightsToEditIndexes = [];
+    this.formattedDays = this.weightsService.formatDaysToDisplayingValuesFromWeights(this.selectedWeights);
+  }
+
+  public canModalBeOpened(): boolean {
+    if (!this.selectedWeights) {
       Materialize.toast(this.dictionaryService.getDictionaryValue('page.weights.loadFirst.tooltip'), 3000);
+      return false;
     }
+
+    return true;
+  }
+
+  public isDataValid(): boolean {
+    return this.weightsToEditIndexes.length > 0
   }
 
   public onEditClick() {
-    if (this.weightsToEditIndexes.length > 0) {
-      const weightsToEdit: Weight[] = [];
+    const weightsToEdit: Weight[] = [];
 
-      this.weightsToEditIndexes.forEach(index => {
-        weightsToEdit.push(this.selectedWeights[index]);
-        this.weightsService.editWeights(weightsToEdit);
-      });
+    this.weightsToEditIndexes.forEach(index => {
+      weightsToEdit.push(this.selectedWeights[index]);
+      this.weightsService.editWeights(weightsToEdit);
+    });
 
-      this.weightsModalsService.callRefreshPage();
-    }
-
-    this.onCloseModal();
-  }
-
-  public onCloseModal() {
-    this.editModalActions.emit({action: "modal", params: ['close']});
+    this.weightsModalsService.callRefreshPage();
+    this.closeModal();
   }
 
   public addDayIndexToChanged(dateIndex: number) {

@@ -1,74 +1,58 @@
 /* tslint:disable:component-class-suffix */
-import {Component, OnInit, EventEmitter} from "@angular/core";
+import {Component} from "@angular/core";
 import {ReportService} from "../services/report.service";
-import {DictionaryService} from "../../shared/services/dictionary.service";
-import {MaterializeAction} from "angular2-materialize";
 import {NewReport} from "../../shared/entities/add.entities";
 import {ReportModalsService} from "../services/report-modals.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
-import {MODAL_PARAMS} from "../../shared/global.values";
 import {DateService} from "../../shared/services/date.service";
+import {BaseModal} from "../../shared/components/base.modal";
 
 @Component({
   selector: 'coach-report-add-modal',
   templateUrl: 'report-add.modal.html',
   styleUrls: ['report.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class ReportAddModal implements OnInit {
+export class ReportAddModal extends BaseModal {
 
-  private reportService: ReportService;
-  private dictionaryService: DictionaryService;
-
-  public addModalActions = new EventEmitter<string|MaterializeAction>();
-  public modalParams: any;
-  public datePickerParams: any;
-
-  public reportContent: string;
-  public startDate: string;
-  public endDate: string;
+  public reportContent: string = '';
+  public startDate: string = '';
+  public endDate: string = '';
 
   public reportToAdd: NewReport;
 
+  private reportService: ReportService;
+
   constructor(private reportModalsService: ReportModalsService, private serviceInjector: ServiceInjector,
               private dateService: DateService) {
+    super(serviceInjector);
     this.reportService = serviceInjector.getReportService();
-    this.dictionaryService = serviceInjector.getDictionaryService();
-    this.reportContent  = '';
-    this.startDate = '';
-    this.endDate = '';
   }
 
-  ngOnInit(): void {
-    this.modalParams = MODAL_PARAMS;
-    this.datePickerParams = this.dictionaryService.getDateDictionarySettings();
+  public ngOnInit(): void {
+    super.ngOnInit();
 
     this.reportModalsService.addReport.subscribe(
       () => {
-        this.openReportModal();
+        this.openModal();
       }
     );
   }
 
-  public openReportModal() {
+  public initDataBeforeOpenModal() {
     this.reportContent = '';
     this.startDate = '';
     this.endDate = '';
-    this.addModalActions.emit({action: "modal", params: ['open']});
-  }
-
-  public onAddClick() {
-    this.reportToAdd = new NewReport(this.reportContent, this.dateService.parseStringToDate(this.startDate),
-                        this.dateService.parseStringToDate(this.endDate));
-    this.reportService.addReport(this.reportToAdd);
-    this.reportModalsService.callRefreshPage();
-    this.onCloseModal();
-  }
-
-  public onCloseModal() {
-    this.addModalActions.emit({action: "modal", params: ['close']});
   }
 
   public isDataValid(): boolean {
     return this.reportContent.length > 0 && this.dateService.isSecondDateLater(this.startDate, this.endDate);
+  }
+
+  public onAddClick() {
+    this.reportToAdd = new NewReport(this.reportContent, this.dateService.parseStringToDate(this.startDate),
+      this.dateService.parseStringToDate(this.endDate));
+    this.reportService.addReport(this.reportToAdd);
+    this.reportModalsService.callRefreshPage();
+    this.closeModal();
   }
 }

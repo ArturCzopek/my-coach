@@ -1,49 +1,48 @@
 /* tslint:disable:component-class-suffix */
-import {Component, OnInit, EventEmitter} from "@angular/core";
+import {Component} from "@angular/core";
 import {Price} from "../../shared/entities/get.entities";
-import {MaterializeAction} from "angular2-materialize";
 import {PricesService} from "../services/prices.service";
-import {DictionaryService} from "../../shared/services/dictionary.service";
 import {PricesModalsService} from "../services/prices-modals.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
-import {MODAL_PARAMS, DOES_NOT_CONTAIN} from "../../shared/global.values";
+import {DOES_NOT_CONTAIN} from "../../shared/global.values";
+import {BaseModal} from "../../shared/components/base.modal";
 
 @Component({
   selector: 'coach-prices-edit-modal',
   templateUrl: 'prices-edit.modal.html',
   styleUrls: ['prices.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class PricesEditModal implements OnInit {
+export class PricesEditModal extends BaseModal {
 
   public selectedPrices: Price[] = [];
-  public editModalActions = new EventEmitter<string|MaterializeAction>();
-  public modalParams: any;
   public pricesToEditIndexes: number[] = [];
   public modalTitle: string;
 
   private pricesService: PricesService;
-  private dictionaryService: DictionaryService;
 
   constructor(private pricesModalsService: PricesModalsService, private serviceInjector: ServiceInjector) {
+    super(serviceInjector);
     this.pricesService = serviceInjector.getPricesService();
-    this.dictionaryService = serviceInjector.getDictionaryService();
   }
 
-  ngOnInit(): void {
-    this.modalParams = MODAL_PARAMS;
+  public ngOnInit(): void {
+    super.ngOnInit();
 
     this.pricesModalsService.editPrices.subscribe(
       (data: any) => {
         this.selectedPrices = data.prices;
-        this.pricesToEditIndexes = [];
         this.modalTitle = data.modalTitle;
-        this.openEditModal();
+        this.openModal();
       }
     );
   }
 
-  public openEditModal() {
-    this.editModalActions.emit({action: "modal", params: ['open']});
+  public initDataBeforeOpenModal() {
+    this.pricesToEditIndexes = [];
+  }
+
+  public isDataValid(): boolean {
+    return this.pricesToEditIndexes.length > 0;
   }
 
   public onEditClick() {
@@ -58,11 +57,7 @@ export class PricesEditModal implements OnInit {
       this.pricesModalsService.callRefreshPage();
     }
 
-    this.onCloseModal();
-  }
-
-  public onCloseModal() {
-    this.editModalActions.emit({action: "modal", params: ['close']});
+    this.closeModal();
   }
 
   public addPriceIndexToChanged(price: number) {

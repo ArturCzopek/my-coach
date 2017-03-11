@@ -1,13 +1,11 @@
 /* tslint:disable:component-class-suffix */
-import {Component, EventEmitter, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
 import {PricesService} from "../services/prices.service";
-import {DictionaryService} from "../../shared/services/dictionary.service";
-import {MaterializeAction} from "angular2-materialize";
 import {NewProduct} from "../../shared/entities/add.entities";
 import {PricesModalsService} from "../services/prices-modals.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
-import {MODAL_PARAMS} from "../../shared/global.values";
 import {environment} from "../../../environments/environment";
+import {BaseModal} from "../../shared/components/base.modal";
 
 declare var $: any;
 
@@ -16,44 +14,40 @@ declare var $: any;
   templateUrl: 'product-add.modal.html',
   styleUrls: ['prices.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class ProductAddModal implements OnInit {
+export class ProductAddModal extends BaseModal {
 
-  public addModalActions = new EventEmitter<string|MaterializeAction>();
-  public modalParams: any;
-
-  public productName: string;
-  public screen: any;
-
+  public productName: string = '';
+  public screen: any = '';
   public productToAdd: NewProduct;
 
   private pricesService: PricesService;
-  private dictionaryService: DictionaryService;
 
   constructor(private pricesModalsService: PricesModalsService, private serviceInjector: ServiceInjector) {
+    super(serviceInjector);
     this.pricesService = serviceInjector.getPricesService();
-    this.dictionaryService = serviceInjector.getDictionaryService();
-    this.productName = '';
-    this.screen = '';
   }
 
-  ngOnInit(): void {
-    this.modalParams = MODAL_PARAMS;
+  public ngOnInit(): void {
+    super.ngOnInit();
 
     this.pricesModalsService.addProduct.subscribe(
       () => {
-        this.openAddModal();
+        this.openModal();
       }
     );
   }
 
-  public openAddModal() {
+  public initDataBeforeOpenModal() {
     this.productName = '';
     this.screen = '';
-    this.addModalActions.emit({action: "modal", params: ['open']});
 
     if ($('#fab').hasClass('active')) {
       $('#fab a').click();
     }
+  }
+
+  public isDataValid(): boolean {
+    return this.productName.length > 0;
   }
 
   public onAddClick() {
@@ -61,14 +55,6 @@ export class ProductAddModal implements OnInit {
     this.pricesService.addProduct(this.productToAdd);
     this.pricesModalsService.callRefreshPage();
     this.onCloseModal();
-  }
-
-  public onCloseModal() {
-    this.addModalActions.emit({action: "modal", params: ['close']});
-  }
-
-  public isDataValid(): boolean {
-    return this.productName.length > 0;
   }
 
   public canStoreFiles() {

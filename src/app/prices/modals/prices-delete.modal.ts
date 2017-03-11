@@ -1,56 +1,62 @@
 /* tslint:disable:component-class-suffix */
-import {OnInit, Component, EventEmitter} from "@angular/core";
+import {Component} from "@angular/core";
 import {Price} from "../../shared/entities/get.entities";
 import {PricesService} from "../services/prices.service";
-import {DictionaryService} from "../../shared/services/dictionary.service";
 import {PricesModalsService} from "../services/prices-modals.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {DateService} from "../../shared/services/date.service";
-import {MODAL_PARAMS} from "../../shared/global.values";
-import {MaterializeAction} from "angular2-materialize";
+import {BaseModal} from "../../shared/components/base.modal";
 
 @Component({
   selector: 'coach-prices-delete-modal',
   templateUrl: 'prices-delete.modal.html',
   styleUrls: ['prices.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class PricesDeleteModal implements OnInit {
+export class PricesDeleteModal extends BaseModal{
 
   public selectedPrices: Price[] = [];
   public checkboxesForPrices: boolean[] = [];
-  public deleteModalActions = new EventEmitter<string|MaterializeAction>();
-  public modalParams: any;
   public pricesToDeleteIndexes: number[] = [];
   public modalTitle: string;
 
   private pricesService: PricesService;
-  private dictionaryService: DictionaryService;
 
   constructor(private pricesModalsService: PricesModalsService, private serviceInjector: ServiceInjector,
               private dateService: DateService) {
+    super(serviceInjector);
     this.pricesService = serviceInjector.getPricesService();
-    this.dictionaryService = serviceInjector.getDictionaryService();
   }
 
-  ngOnInit(): void {
-    this.modalParams = MODAL_PARAMS;
+  public ngOnInit(): void {
+    super.ngOnInit();
 
     this.pricesModalsService.deletePrices.subscribe(
       (data: any) => {
         this.selectedPrices = data.prices;
-        this.pricesToDeleteIndexes = [];
-        this.checkboxesForPrices = [];
-        if (this.selectedPrices) {
-          this.selectedPrices.forEach(() => this.checkboxesForPrices.push(false));
-        }
         this.modalTitle = data.modalTitle;
-        this.openDeleteModal();
+
+        this.openModal();
       }
     );
   }
 
-  public openDeleteModal() {
-    this.deleteModalActions.emit({action: "modal", params: ['open']});
+  public initDataBeforeOpenModal() {
+    this.pricesToDeleteIndexes = [];
+    this.checkboxesForPrices = [];
+
+    if (this.selectedPrices) {
+      this.selectedPrices.forEach(() => this.checkboxesForPrices.push(false));
+    }
+  }
+
+  public isDataValid(): boolean {
+    for (let checkbox of this.checkboxesForPrices) {
+      if (checkbox) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   public onDeleteClick() {
@@ -72,11 +78,7 @@ export class PricesDeleteModal implements OnInit {
       this.pricesModalsService.callRefreshPage();
     }
 
-    this.onCloseModal();
-  }
-
-  public onCloseModal() {
-    this.deleteModalActions.emit({action: "modal", params: ['close']});
+    this.closeModal();
   }
 
   public getDateAsString(date: Date): string {

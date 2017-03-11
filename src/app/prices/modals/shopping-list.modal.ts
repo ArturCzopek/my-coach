@@ -1,67 +1,47 @@
 /* tslint:disable:component-class-suffix */
-import {Component, EventEmitter, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
 import {PricesService} from "../services/prices.service";
-import {DictionaryService} from "../../shared/services/dictionary.service";
 import {NewPrice, ShoppingList} from "../../shared/entities/add.entities";
-import {MaterializeAction} from "angular2-materialize";
 import {PricesModalsService} from "../services/prices-modals.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
-import {MODAL_PARAMS, DOES_NOT_CONTAIN} from "../../shared/global.values";
+import {DOES_NOT_CONTAIN} from "../../shared/global.values";
 import {DateService} from "../../shared/services/date.service";
 import {Product} from "../../shared/entities/get.entities";
+import {BaseModal} from "../../shared/components/base.modal";
 
-// TODO REFACTOR THIS SHIT
-// TODO add modal super class for closing workaround - $('.lean-overlay').remove(), also for modalactions param
+declare var $: any;
 
 @Component({
   selector: 'coach-shopping-list-modal',
   templateUrl: 'shopping-list.modal.html',
   styleUrls: ['prices.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class ShoppingListModal implements OnInit {
-
-  public addShoppingListModalActions = new EventEmitter<string|MaterializeAction>();
-  public modalParams: any;
-  public datePickerParams: any;
+export class ShoppingListModal extends BaseModal {
 
   public shoppingDate: string = '';
   public place: string = '';
-
   public products: Product[];
-
   public shoppingListToAdd: ShoppingList;
-
   public autoCompleteData: any = {data: {}};
-
   public productNamesForPrices: any = [];
 
   private pricesService: PricesService;
-  private dictionaryService: DictionaryService;
 
   constructor(private pricesModalsService: PricesModalsService, private serviceInjector: ServiceInjector,
               private dateService: DateService) {
+    super(serviceInjector);
     this.pricesService = serviceInjector.getPricesService();
-    this.dictionaryService = serviceInjector.getDictionaryService();
     this.products = [];
     this.shoppingListToAdd = new ShoppingList('', []);
   }
 
-  ngOnInit(): void {
-    this.modalParams = MODAL_PARAMS;
-    this.datePickerParams = this.dictionaryService.getDateDictionarySettings();
+  public ngOnInit(): void {
+    super.ngOnInit();
 
     this.pricesModalsService.addShoppingList.subscribe(
       products => {
-        this.shoppingListToAdd = new ShoppingList('', []);
         this.products = products;
-        this.autoCompleteData = {data: {}};
-
-        for (let product of this.products) {
-          this.autoCompleteData.data[product.productName] = product.screenUrl;
-        }
-
-        this.addNewEmptyPriceToList();
-        this.openShoppingListModal();
+        this.openModal();
       }
     );
 
@@ -69,11 +49,27 @@ export class ShoppingListModal implements OnInit {
 
   }
 
-  public openShoppingListModal() {
+  public initDataBeforeOpenModal() {
+    this.shoppingListToAdd = new ShoppingList('', []);
+    this.addNewEmptyPriceToList();
     this.shoppingDate = '';
     this.place = '';
     this.productNamesForPrices = [];
-    this.addShoppingListModalActions.emit({action: "modal", params: ['open']});
+    this.autoCompleteData = {data: {}};
+
+    for (let product of this.products) {
+      this.autoCompleteData.data[product.productName] = product.screenUrl;
+    }
+
+    if ($('#fab').hasClass('active')) {
+      $('#fab a').click();
+    }
+  }
+
+  public isDataValid(): boolean {
+    return this.products.length > 0 && this.hasEveryProductValidPriceAndQuantity()
+      && this.hasEveryProductValidName() && this.dateService.isDateValid(this.shoppingDate)
+      && this.place.length > 0;
   }
 
   public onAddShoppingListClick() {
@@ -87,21 +83,32 @@ export class ShoppingListModal implements OnInit {
     this.pricesService.addShoppingList(this.shoppingListToAdd);
 
     this.pricesModalsService.callRefreshPage();
-    this.onCloseModal();
+    this.closeModal();
   }
 
-  public onCloseModal() {
-    this.addShoppingListModalActions.emit({action: "modal", params: ['close']});
-  }
-
-  public isDataValid(): boolean {
-    return this.products.length > 0 && this.hasEveryProductValidPriceAndQuantity() && this.dateService.isDateValid(this.shoppingDate) && this.place.length > 0;
+  public onAddProductClick() {
+    this.pricesModalsService.callAddProduct();
   }
 
   public addNewEmptyPriceToList() {
     this.shoppingListToAdd.prices.push(new NewPrice(-1, 0, 0));
     this.productNamesForPrices.push('');
   };
+
+  public onDeletePrice(index: number) {
+    this.shoppingListToAdd.prices.splice(index, 1);
+    this.productNamesForPrices.splice(index, 1);
+  }
+
+  private getProductIdForName(productName: string): number {
+    for (let product of this.products) {
+      if (product.productName === productName) {
+        return product.productId;
+      }
+    }
+
+    return DOES_NOT_CONTAIN;
+  }
 
   private hasEveryProductValidPriceAndQuantity(): boolean {
 
@@ -118,22 +125,14 @@ export class ShoppingListModal implements OnInit {
     return true;
   }
 
-  public onDeletePrice(index: number) {
-    this.shoppingListToAdd.prices.splice(index, 1);
-    this.productNamesForPrices.splice(index, 1);
-  }
+  private hasEveryProductValidName(): boolean {
 
-  public onAddProductClick() {
-    this.pricesModalsService.callAddProduct();
-  }
-
-  public getProductIdForName(productName: string): number {
-    for (let product of this.products) {
-      if (product.productName === productName) {
-        return product.productId;
+    for (let productName of this.productNamesForPrices) {
+      if (this.getProductIdForName(productName) === DOES_NOT_CONTAIN) {
+        return false;
       }
     }
 
-    return DOES_NOT_CONTAIN;
+    return true;
   }
 }

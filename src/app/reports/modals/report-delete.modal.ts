@@ -1,12 +1,10 @@
 /* tslint:disable:component-class-suffix */
-import {OnInit, Component, EventEmitter} from "@angular/core";
+import {Component} from "@angular/core";
 import {Report} from "../../shared/entities/get.entities";
-import {MaterializeAction} from "angular2-materialize";
 import {ReportService} from "../services/report.service";
-import {DictionaryService} from "../../shared/services/dictionary.service";
 import {ReportModalsService} from "../services/report-modals.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
-import {MODAL_PARAMS} from "../../shared/global.values";
+import {BaseModal} from "../../shared/components/base.modal";
 
 declare var Materialize: any;
 
@@ -15,48 +13,49 @@ declare var Materialize: any;
   templateUrl: 'report-delete.modal.html',
   styleUrls: ['report.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class ReportDeleteModal implements OnInit {
+export class ReportDeleteModal extends BaseModal {
 
   public selectedReport: Report = null;
-  public deleteModalActions = new EventEmitter<string|MaterializeAction>();
-  public modalParams: any;
   public modalTitle: string;
 
   private reportService: ReportService;
-  private dictionaryService: DictionaryService;
 
   constructor(private reportModalsService: ReportModalsService, private serviceInjector: ServiceInjector) {
+    super(serviceInjector);
     this.reportService = serviceInjector.getReportService();
-    this.dictionaryService = serviceInjector.getDictionaryService();
   }
 
-  ngOnInit(): void {
-    this.modalParams = MODAL_PARAMS;
+  public ngOnInit(): void {
+    super.ngOnInit();
 
     this.reportModalsService.deleteReport.subscribe(
       (data: any) => {
         this.selectedReport = data.report;
         this.modalTitle = data.modalTitle;
-        this.openDeleteModal();
+        this.openModal();
       }
     );
   };
 
-  public openDeleteModal() {
-    if (this.selectedReport) {
-      this.deleteModalActions.emit({action: "modal", params: ['open']});
-    } else {
+  public initDataBeforeOpenModal() {
+  }
+
+  public canModalBeOpened(): boolean {
+    if (!this.selectedReport) {
       Materialize.toast(this.dictionaryService.getDictionaryValue('page.reports.loadFirst.tooltip'), 3000);
+      return false;
     }
+
+    return true;
+  }
+
+  public isDataValid(): boolean {
+    return true;
   }
 
   public onDeleteClick() {
     this.reportService.deleteReport(this.selectedReport);
     this.reportModalsService.callRefreshPage();
-    this.onCloseModal();
-  }
-
-  public onCloseModal() {
-    this.deleteModalActions.emit({action: "modal", params: ['close']});
+    this.closeModal();
   }
 }

@@ -1,66 +1,55 @@
 /* tslint:disable:component-class-suffix */
-import {Component, EventEmitter, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
 import {PricesService} from "../services/prices.service";
-import {DictionaryService} from "../../shared/services/dictionary.service";
 import {NewPrice} from "../../shared/entities/add.entities";
-import {MaterializeAction} from "angular2-materialize";
 import {PricesModalsService} from "../services/prices-modals.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
-import {MODAL_PARAMS} from "../../shared/global.values";
 import {DateService} from "../../shared/services/date.service";
 import {Product} from "../../shared/entities/get.entities";
+import {BaseModal} from "../../shared/components/base.modal";
 
 @Component({
   selector: 'coach-price-add-modal',
   templateUrl: 'price-add.modal.html',
   styleUrls: ['prices.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class PriceAddModal implements OnInit {
+export class PriceAddModal extends BaseModal{
 
-  public addModalActions = new EventEmitter<string|MaterializeAction>();
-  public modalParams: any;
-  public datePickerParams: any;
-
-  public place: string;
-  public quantity: number;
-  public price: number;
-  public priceDate: string;
-
+  public place: string = '';
+  public priceDate: string = '';
+  public price: number = 0;
+  public quantity: number = 1;
   public priceToAdd: NewPrice;
   public product: Product;
 
   private pricesService: PricesService;
-  private dictionaryService: DictionaryService;
 
   constructor(private pricesModalsService: PricesModalsService, private serviceInjector: ServiceInjector,
               private dateService: DateService) {
+    super(serviceInjector);
     this.pricesService = serviceInjector.getPricesService();
-    this.dictionaryService = serviceInjector.getDictionaryService();
-    this.place = '';
-    this.priceDate = '';
-    this.price = 0;
-    this.quantity = 1;
   }
 
-  ngOnInit(): void {
-    this.modalParams = MODAL_PARAMS;
-    this.datePickerParams = this.dictionaryService.getDateDictionarySettings();
+  public ngOnInit(): void {
+    super.ngOnInit();
 
     this.pricesModalsService.addPrice.subscribe(
       product => {
         this.product = product;
-        this.openAddModal();
+        this.openModal();
       }
     );
   }
 
-  public openAddModal() {
+  public initDataBeforeOpenModal() {
     this.place = '';
     this.priceDate = '';
     this.price = 0;
     this.quantity = 1;
-    this.addModalActions.emit({action: "modal", params: ['open']});
+  }
 
+  public isDataValid(): boolean {
+    return this.quantity > 0 && this.price > 0 && this.dateService.isDateValid(this.priceDate);
   }
 
   public onAddClick() {
@@ -68,15 +57,7 @@ export class PriceAddModal implements OnInit {
       this.place, this.dateService.parseStringToDate(this.priceDate));
     this.pricesService.addPrice(this.priceToAdd);
     this.pricesModalsService.callRefreshPage();
-    this.onCloseModal();
-  }
-
-  public onCloseModal() {
-    this.addModalActions.emit({action: "modal", params: ['close']});
-  }
-
-  public isDataValid(): boolean {
-    return this.quantity > 0 && this.price > 0 && this.dateService.isDateValid(this.priceDate);
+    this.closeModal();
   }
 
   public getProductName(): string {

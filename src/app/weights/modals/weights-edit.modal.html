@@ -1,5 +1,5 @@
 <div id="weights-edit" class="modal fourty-width-modal" materialize="modal" [materializeParams]="[modalParams]"
-     [materializeActions]="editModalActions">
+     [materializeActions]="modalActions">
   <div class="modal-content">
     <h3>{{modalTitle}}</h3>
     <table class="striped">
@@ -22,6 +22,9 @@
       </tbody>
     </table>
   </div>
-  <coach-modal-footer leftButtonLabel="{{'global.edit.label' | dictionary}}" rightButtonLabel="{{'global.close.label' | dictionary}}" (leftButtonAction)="onEditClick()"
-                      (rightButtonAction)="onCloseModal()"></coach-modal-footer>
+  <coach-modal-footer leftButtonLabel="{{'global.edit.label' | dictionary}}"
+                      rightButtonLabel="{{'global.close.label' | dictionary}}"
+                      (leftButtonAction)="onEditClick()"
+                      (rightButtonAction)="onCloseModal()"
+                      [isDataValid]="isDataValid()"></coach-modal-footer>
 </div>
