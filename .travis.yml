@@ -34,7 +34,6 @@ script:
  - ng test --watch=false
 
 after_success:
- - mkdir dist
  - angular-cli-ghpages --no-silent --repo=https://GH_TOKEN@github.com/arturczopek/my-coach.git
 
 env:
