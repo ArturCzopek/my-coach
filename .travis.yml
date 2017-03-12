@@ -30,6 +30,11 @@ before_script:
  - npm install -g angular-cli-ghpages
  - ng build --env=github --base-href "https://arturczopek.github.io/my-coach/"
 
+cache:
+  directories:
+   - node_modules
+   - $HOME/.nvm
+
 script:
  - ng test --watch=false
 
