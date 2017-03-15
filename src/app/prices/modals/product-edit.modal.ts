@@ -3,7 +3,6 @@ import {Component} from "@angular/core";
 import {PricesService} from "../services/prices.service";
 import {PricesModalsService} from "../services/prices-modals.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
-import {environment} from "../../../environments/environment";
 import {Product} from "../../shared/entities/get.entities";
 import {BaseModal} from "../../shared/components/base.modal";
 
@@ -56,6 +55,6 @@ export class ProductEditModal extends BaseModal {
   }
 
   public canStoreFiles() {
-    return environment.isBackendServerAvailable;
+    return true;
   }
 }

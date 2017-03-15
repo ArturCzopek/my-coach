@@ -16,16 +16,21 @@
           <label for="screen-url">Screen link</label>
           <input id="screen-url" type="text" [(ngModel)]="screen" name="screen"/>
         </div>
-        <div *ngIf="canStoreFiles()" class="file-field input-field col s12">
+        <div *ngIf="canStoreFiles() && !screen" class="file-field input-field col s12">
           <div class="btn blue">
             <span>{{'page.prices.modal.add.selectPhoto.label' | dictionary}}</span>
-            <input type="file">
+            <input #photoFile type="file" accept="image/*" (change)="uploadPhoto()">
           </div>
           <div class="file-path-wrapper">
-            <input class="file-path validate" type="text" [(ngModel)]="screen" name="screen">
+            <input class="file-path validate" type="text">
           </div>
         </div>
       </form>
+    </div>
+    <div class="row" *ngIf="screen" >
+      <div class="col s12 center">
+        <img [src]="screen" style="height: 300px; width: 300px;"/>
+      </div>
     </div>
   </div>
 

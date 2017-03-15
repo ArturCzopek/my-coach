@@ -1,11 +1,12 @@
 /* tslint:disable:component-class-suffix */
-import {Component} from "@angular/core";
+import {Component, ViewChild, ElementRef} from "@angular/core";
 import {PricesService} from "../services/prices.service";
 import {NewProduct} from "../../shared/entities/add.entities";
 import {PricesModalsService} from "../services/prices-modals.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {environment} from "../../../environments/environment";
 import {BaseModal} from "../../shared/components/base.modal";
+import {Http} from "@angular/http";
 
 declare var $: any;
 
@@ -20,9 +21,13 @@ export class ProductAddModal extends BaseModal {
   public screen: any = '';
   public productToAdd: NewProduct;
 
+  @ViewChild("photoFile") photoFile: ElementRef;
+  public uploadUrl = "/product/uploadPhoto";
+  public imagesUrl = "/images/"
+
   private pricesService: PricesService;
 
-  constructor(private pricesModalsService: PricesModalsService, private serviceInjector: ServiceInjector) {
+  constructor(private pricesModalsService: PricesModalsService, private serviceInjector: ServiceInjector, private http: Http) {
     super(serviceInjector);
     this.pricesService = serviceInjector.getPricesService();
   }
@@ -50,6 +55,25 @@ export class ProductAddModal extends BaseModal {
     return this.productName.length > 0;
   }
 
+  public uploadPhoto() {
+    if (this.photoFile.nativeElement.files.length > 0) {
+      let file: File = this.photoFile.nativeElement.files[0];
+
+      let input = new FormData();
+      input.append("file", file);
+
+      this.http.post(environment.url + this.uploadUrl, input).subscribe(
+        res => {
+          this.screen = environment.url + this.imagesUrl + res['_body'];
+        },
+        err => {
+          console.log("not ok");
+          console.log(err)
+        }
+      )
+    }
+  }
+
   public onAddClick() {
     this.productToAdd = new NewProduct(this.productName, this.screen);
     this.pricesService.addProduct(this.productToAdd);
@@ -58,6 +82,6 @@ export class ProductAddModal extends BaseModal {
   }
 
   public canStoreFiles() {
-    return environment.isBackendServerAvailable;
+    return true;
   }
 }

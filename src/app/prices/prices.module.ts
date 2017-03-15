@@ -28,7 +28,7 @@ import {ShoppingListModal} from "./modals/shopping-list.modal";
     ProductAddModal,
     ProductDeleteModal,
     ProductEditModal,
-    ShoppingListModal
+    ShoppingListModal,
   ],
   imports: [
     HttpModule,
