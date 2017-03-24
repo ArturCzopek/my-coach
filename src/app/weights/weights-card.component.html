@@ -11,7 +11,7 @@
            [attr.data-tooltip]="'page.weights.delete.tooltip' | dictionary">delete</i>
       </div>
     </span>
-    <img class="right tooltipped" [ngClass]="arrowImageClass" src="assets/img/arrow_down.png"
+    <img class="right" [ngClass]="arrowImageClass" src="assets/img/arrow_down.png"
          (click)="onWeightsClick()"/>
   </div>
   <div *ngIf="showData" class="center card-action" [ngClass]="getLoadingStyle()">

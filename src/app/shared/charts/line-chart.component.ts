@@ -3,7 +3,7 @@ import {Component, Input, OnInit} from "@angular/core";
 @Component({
   selector: 'coach-line-chart',
   templateUrl: 'line-chart.component.html',
-  styleUrls: []
+  styleUrls: ['../materialize-upgrades.scss']
 })
 export class LineChartComponent implements OnInit {
 

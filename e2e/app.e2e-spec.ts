@@ -1,6 +1,6 @@
-import { MyCoachPage } from './app.po';
+import {MyCoachPage} from "./app.po";
 
-describe('my-coach App', function() {
+describe('my-coach App', () => {
   let page: MyCoachPage;
 
   beforeEach(() => {

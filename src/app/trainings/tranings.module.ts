@@ -1,4 +1,4 @@
-import {NgModule} from "@angular/core/src/metadata/ng_module";
+import {NgModule} from "@angular/core";
 import {TrainingsComponent} from "./trainings.component";
 import {CommonModule} from "@angular/common";
 import {HttpModule} from "@angular/http";
