@@ -6,6 +6,12 @@ export class CyclePreview {
   ) {}
 }
 
+export class SetPreview {
+  constructor(
+    public setId: number,
+    public setName: string
+  ) {}
+}
 export class ReportPreview {
   constructor (
     public reportId: number,
