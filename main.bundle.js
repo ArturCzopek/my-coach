@@ -1,547 +1,6 @@
-webpackJsonp([1,5],{
+webpackJsonp([0,5],{
 
-/***/ 100:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportModalsService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-var ReportModalsService = (function () {
-    function ReportModalsService() {
-        this.addReport = new __WEBPACK_IMPORTED_MODULE_1_rxjs__["Subject"]();
-        this.editReport = new __WEBPACK_IMPORTED_MODULE_1_rxjs__["Subject"]();
-        this.deleteReport = new __WEBPACK_IMPORTED_MODULE_1_rxjs__["Subject"]();
-        this.refreshPage = new __WEBPACK_IMPORTED_MODULE_1_rxjs__["Subject"]();
-    }
-    ReportModalsService.prototype.callAddReport = function () {
-        this.addReport.next(null);
-    };
-    ReportModalsService.prototype.callEditReport = function (report, modalTitle) {
-        this.editReport.next({ report: report, modalTitle: modalTitle });
-    };
-    ReportModalsService.prototype.callDeleteReport = function (report, modalTitle) {
-        this.deleteReport.next({ report: report, modalTitle: modalTitle });
-    };
-    ReportModalsService.prototype.callRefreshPage = function () {
-        this.refreshPage.next(null);
-    };
-    return ReportModalsService;
-}());
-ReportModalsService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])()
-], ReportModalsService);
-
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/report-modals.service.js.map
-
-/***/ }),
-
-/***/ 101:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WeightsModalsService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-var WeightsModalsService = (function () {
-    function WeightsModalsService() {
-        this.addWeight = new __WEBPACK_IMPORTED_MODULE_0_rxjs__["Subject"]();
-        this.editWeights = new __WEBPACK_IMPORTED_MODULE_0_rxjs__["Subject"]();
-        this.deleteWeights = new __WEBPACK_IMPORTED_MODULE_0_rxjs__["Subject"]();
-        this.refreshPage = new __WEBPACK_IMPORTED_MODULE_0_rxjs__["Subject"]();
-    }
-    WeightsModalsService.prototype.callAddWeight = function () {
-        this.addWeight.next(null);
-    };
-    WeightsModalsService.prototype.callEditWeights = function (weights, modalTitle) {
-        this.editWeights.next({ weights: weights, modalTitle: modalTitle });
-    };
-    WeightsModalsService.prototype.callDeleteWeights = function (weights, modalTitle) {
-        this.deleteWeights.next({ weights: weights, modalTitle: modalTitle });
-    };
-    WeightsModalsService.prototype.callRefreshPage = function () {
-        this.refreshPage.next(null);
-    };
-    return WeightsModalsService;
-}());
-WeightsModalsService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])()
-], WeightsModalsService);
-
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/weights-modals.service.js.map
-
-/***/ }),
-
-/***/ 1101:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(470);
-
-
-/***/ }),
-
-/***/ 132:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export NewCycle */
-/* unused harmony export NewExerciseSession */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return NewPrice; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return NewProduct; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return NewReport; });
-/* unused harmony export NewSeries */
-/* unused harmony export NewSet */
-/* unused harmony export NewTraining */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewWeight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return ShoppingList; });
-var NewCycle = (function () {
-    function NewCycle(startDate, sets) {
-        this.startDate = startDate;
-        this.sets = sets;
-    }
-    return NewCycle;
-}());
-
-var NewExerciseSession = (function () {
-    function NewExerciseSession(exerciseId, series) {
-        this.exerciseId = exerciseId;
-        this.series = series;
-    }
-    return NewExerciseSession;
-}());
-
-var NewPrice = (function () {
-    function NewPrice(productId, value, quantity, place, priceDate) {
-        this.productId = productId;
-        this.value = value;
-        this.quantity = quantity;
-        this.place = place;
-        this.priceDate = priceDate;
-    }
-    return NewPrice;
-}());
-
-// screen can be file or string, not sure how sending files will be implemented
-var NewProduct = (function () {
-    function NewProduct(productName, screen) {
-        this.productName = productName;
-        this.screen = screen;
-    }
-    return NewProduct;
-}());
-
-var NewReport = (function () {
-    function NewReport(content, startDate, endDate) {
-        this.content = content;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
-    return NewReport;
-}());
-
-var NewSeries = (function () {
-    function NewSeries(weight, repeats, comment) {
-        this.weight = weight;
-        this.repeats = repeats;
-        this.comment = comment;
-    }
-    return NewSeries;
-}());
-
-var NewSet = (function () {
-    function NewSet(setName, exercises) {
-        this.setName = setName;
-        this.exercises = exercises;
-    }
-    return NewSet;
-}());
-
-var NewTraining = (function () {
-    function NewTraining(setId, exerciseSessions, date) {
-        this.setId = setId;
-        this.exerciseSessions = exerciseSessions;
-        this.date = date;
-    }
-    return NewTraining;
-}());
-
-var NewWeight = (function () {
-    function NewWeight(value, measurementDate) {
-        this.value = value;
-        this.measurementDate = measurementDate;
-    }
-    return NewWeight;
-}());
-
-var ShoppingList = (function () {
-    function ShoppingList(place, prices, shoppingDate) {
-        this.place = place;
-        this.prices = prices;
-        this.shoppingDate = shoppingDate;
-    }
-    return ShoppingList;
-}());
-
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/add.entities.js.map
-
-/***/ }),
-
-/***/ 133:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export CyclePreview */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportPreview; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return WeightsPreview; });
-var CyclePreview = (function () {
-    function CyclePreview(cycleId, startDate, endDate) {
-        this.cycleId = cycleId;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
-    return CyclePreview;
-}());
-
-var ReportPreview = (function () {
-    function ReportPreview(reportId, startDate, endDate) {
-        this.reportId = reportId;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
-    return ReportPreview;
-}());
-
-var WeightsPreview = (function () {
-    function WeightsPreview(month, year) {
-        this.month = month;
-        this.year = year;
-    }
-    return WeightsPreview;
-}());
-
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/preview.entities.js.map
-
-/***/ }),
-
-/***/ 134:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MODAL_PARAMS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DOES_NOT_CONTAIN; });
-var MODAL_PARAMS = {
-    dismissible: false,
-    in_duration: 900,
-    out_duration: 900
-};
-var DOES_NOT_CONTAIN = -1;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/global.values.js.map
-
-/***/ }),
-
-/***/ 17:
-/***/ (function(module, exports) {
-
-module.exports = ".material-button, .card-content span.card-title .card-title-icons i {\n  display: inline;\n  cursor: pointer;\n  -webkit-filter: contrast(0);\n          filter: contrast(0); }\n  .material-button:hover, .card-content span.card-title .card-title-icons i:hover {\n    -webkit-filter: contrast(1);\n            filter: contrast(1); }\n\n.arrow, .down-arrow, .left-arrow {\n  -webkit-filter: contrast(0);\n          filter: contrast(0);\n  cursor: pointer; }\n  .arrow:hover, .down-arrow:hover, .left-arrow:hover {\n    -webkit-filter: contrast(1);\n            filter: contrast(1); }\n\n.left-arrow {\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg); }\n\n.card-content {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -ms-flex-wrap: nowrap;\n      flex-wrap: nowrap;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: start;\n      -ms-flex-align: start;\n          align-items: flex-start; }\n  .card-content span.card-title {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    -webkit-box-align: baseline;\n        -ms-flex-align: baseline;\n            align-items: baseline;\n    -ms-flex-item-align: center;\n        align-self: center;\n    -webkit-box-ordinal-group: 2;\n        -ms-flex-order: 1;\n            order: 1; }\n    .card-content span.card-title p {\n      margin-right: 15px; }\n    .card-content span.card-title .card-title-icons {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -ms-flex-wrap: nowrap;\n          flex-wrap: nowrap;\n      -webkit-box-align: baseline;\n          -ms-flex-align: baseline;\n              align-items: baseline;\n      -ms-flex-item-align: center;\n          align-self: center;\n      -webkit-box-ordinal-group: 100;\n          -ms-flex-order: 99;\n              order: 99;\n      visibility: hidden; }\n      .card-content span.card-title .card-title-icons i {\n        margin-right: 5px; }\n  .card-content img.right {\n    -webkit-box-ordinal-group: 100;\n        -ms-flex-order: 99;\n            order: 99;\n    -ms-flex-preferred-size: 40px;\n        flex-basis: 40px; }\n\n.card-content:hover span.card-title .card-title-icons {\n  visibility: visible; }\n\n.input-field input:focus {\n  border-bottom: 1px solid #1976D2;\n  box-shadow: 0 1px 0 0 #1976D2; }\n  .input-field input:focus + label {\n    color: #1976D2; }\n\n.input-field .dropdown-content li > span {\n  color: black; }\n\n.input-field .autocomplete-content li .highlight {\n  color: #1976D2; }\n\n.red-checkbox[type=\"checkbox\"].filled-in:checked + label:after {\n  background-color: #B71C1C;\n  border: 2px solid #B71C1C; }\n\n.loading {\n  padding: 0; }\n\n.preloader-wrapper.big {\n  width: 120px;\n  height: 120px; }\n\n.preloader-wrapper {\n  display: block;\n  position: relative;\n  top: 150px;\n  margin: 0 auto; }\n\n.progress {\n  margin: 0;\n  background-color: #1976D2; }\n  .progress .indeterminate {\n    background-color: #90CAF9; }\n\n.no-data {\n  margin-top: 150px; }\n  .no-data i.large.material-icons {\n    color: #1976D2;\n    margin-bottom: 100px;\n    font-size: 12rem; }\n  .no-data p {\n    font-size: 24px; }\n    .no-data p a:hover {\n      text-decoration: underline;\n      cursor: pointer; }\n  .no-data.small {\n    margin-top: 30px; }\n    .no-data.small i.medium.material-icons {\n      color: #1976D2;\n      margin-bottom: 30px;\n      font-size: 12rem; }\n    .no-data.small p {\n      margin-bottom: 0px; }\n"
-
-/***/ }),
-
-/***/ 184:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__loaders_circle_loader_component__ = __webpack_require__(620);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__loaders_strip_loader_component__ = __webpack_require__(621);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modals_modal_footer_component__ = __webpack_require__(622);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng2_charts__ = __webpack_require__(787);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_ng2_charts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__charts_line_chart_component__ = __webpack_require__(612);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_materialize__ = __webpack_require__(632);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_materialize___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angular2_materialize__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pipes_dictionary_pipe__ = __webpack_require__(623);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SharedModule; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-
-
-
-var SharedModule = (function () {
-    function SharedModule() {
-    }
-    return SharedModule;
-}());
-SharedModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["NgModule"])({
-        declarations: [
-            __WEBPACK_IMPORTED_MODULE_6_angular2_materialize__["MaterializeDirective"],
-            __WEBPACK_IMPORTED_MODULE_0__loaders_circle_loader_component__["a" /* CircleLoaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_1__loaders_strip_loader_component__["a" /* StripLoaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_3__modals_modal_footer_component__["a" /* ModalFooterComponent */],
-            __WEBPACK_IMPORTED_MODULE_5__charts_line_chart_component__["a" /* LineChartComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__pipes_dictionary_pipe__["a" /* DictionaryPipe */]
-        ],
-        imports: [
-            __WEBPACK_IMPORTED_MODULE_4_ng2_charts__["ChartsModule"]
-        ],
-        exports: [
-            __WEBPACK_IMPORTED_MODULE_6_angular2_materialize__["MaterializeDirective"],
-            __WEBPACK_IMPORTED_MODULE_0__loaders_circle_loader_component__["a" /* CircleLoaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_1__loaders_strip_loader_component__["a" /* StripLoaderComponent */],
-            __WEBPACK_IMPORTED_MODULE_3__modals_modal_footer_component__["a" /* ModalFooterComponent */],
-            __WEBPACK_IMPORTED_MODULE_5__charts_line_chart_component__["a" /* LineChartComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__pipes_dictionary_pipe__["a" /* DictionaryPipe */]
-        ]
-    })
-], SharedModule);
-
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/shared.module.js.map
-
-/***/ }),
-
-/***/ 258:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BaseCardComponent; });
-var BaseCardComponent = (function () {
-    function BaseCardComponent() {
-    }
-    BaseCardComponent.prototype.ngOnInit = function () {
-        // false showData because at first toggle we want to see true to load data
-        this.showData = false;
-        this.isLoading = true;
-        this.arrowImageClass = 'left-arrow';
-    };
-    BaseCardComponent.prototype.toggleShow = function () {
-        this.showData = !this.showData;
-        if (this.showData) {
-            this.arrowImageClass = 'down-arrow';
-        }
-        else {
-            this.arrowImageClass = 'left-arrow';
-        }
-    };
-    BaseCardComponent.prototype.getLoadingStyle = function () {
-        if (this.isLoading) {
-            return "loading";
-        }
-        else {
-            return "";
-        }
-    };
-    return BaseCardComponent;
-}());
-
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/base-card.component.js.map
-
-/***/ }),
-
-/***/ 259:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dictionary_service__ = __webpack_require__(388);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DictionaryMockService; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-var DictionaryMockService = (function (_super) {
-    __extends(DictionaryMockService, _super);
-    function DictionaryMockService() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    // Application for dev purposes is in english, but for date picker we have different rule. Mainly only for test
-    // if we can really modify calendar values
-    DictionaryMockService.prototype.getDictionaryFromDb = function () {
-        return {
-            'page.weights.modal.add.title': 'Add weight',
-            'calendar.nextDay.label': 'Następny',
-            'calendar.prevDay.label': 'Poprzedni',
-            'calendar.monthSelect.label': 'Wybierz miesiąc',
-            'calendar.yearSelect.label': 'Wybierz rok',
-            'calendar.today.label': 'Dzisiaj',
-            'calendar.clear.label': 'Czyść',
-            'calendar.close.label': 'Wyjdź',
-            'calendar.month.jan.full': 'Styczeń',
-            'calendar.month.feb.full': 'Luty',
-            'calendar.month.mar.full': 'Marzec',
-            'calendar.month.apr.full': 'Kwiecień',
-            'calendar.month.may.full': 'Maj',
-            'calendar.month.jun.full': 'Czerwiec',
-            'calendar.month.jul.full': 'Lipiec',
-            'calendar.month.aug.full': 'Sierpień',
-            'calendar.month.sep.full': 'Wrzesień',
-            'calendar.month.oct.full': 'Październik',
-            'calendar.month.nov.full': 'Listopad',
-            'calendar.month.dec.full': 'Grudzień',
-            'calendar.month.jan.short': 'Sty',
-            'calendar.month.feb.short': 'Lut',
-            'calendar.month.mar.short': 'Mar',
-            'calendar.month.apr.short': 'Kwi',
-            'calendar.month.may.short': 'Maj',
-            'calendar.month.jun.short': 'Cze',
-            'calendar.month.jul.short': 'Lip',
-            'calendar.month.aug.short': 'Sie',
-            'calendar.month.sep.short': 'Wrz',
-            'calendar.month.oct.short': 'Paź',
-            'calendar.month.nov.short': 'Lis',
-            'calendar.month.dec.short': 'Gru',
-            'calendar.day.mon.full': 'Poniedziałek',
-            'calendar.day.tue.full': 'Wtorek',
-            'calendar.day.wen.full': 'Środa',
-            'calendar.day.thu.full': 'Czwartek',
-            'calendar.day.fri.full': 'Piątek',
-            'calendar.day.sat.full': 'Sobota',
-            'calendar.day.sun.full': 'Niedziela',
-            'calendar.day.mon.short': 'Pn',
-            'calendar.day.tue.short': 'Wt',
-            'calendar.day.wen.short': 'Śr',
-            'calendar.day.thu.short': 'Czw',
-            'calendar.day.fri.short': 'Pt',
-            'calendar.day.sat.short': 'Sb',
-            'calendar.day.sun.short': 'Ndz',
-            'calendar.day.mon.letter': 'P',
-            'calendar.day.tue.letter': 'W',
-            'calendar.day.wen.letter': 'Ś',
-            'calendar.day.thu.letter': 'C',
-            'calendar.day.fri.letter': 'P',
-            'calendar.day.sat.letter': 'S',
-            'calendar.day.sun.letter': 'N',
-            'calendar.day': 'Dzień',
-            'calendar.format': 'dd mmm yyyy',
-            'calendar.format.momentjs': 'DD MMM YYYY'
-        };
-    };
-    return DictionaryMockService;
-}(__WEBPACK_IMPORTED_MODULE_0__dictionary_service__["a" /* DictionaryService */]));
-DictionaryMockService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])()
-], DictionaryMockService);
-
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/dictionary.mock.service.js.map
-
-/***/ }),
-
-/***/ 260:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
-var environment = {
-    production: true,
-    isBackendServerAvailable: false,
-    url: "http://localhost:8080"
-};
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/environment.github.js.map
-
-/***/ }),
-
-/***/ 279:
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ 280:
-/***/ (function(module, exports) {
-
-module.exports = "@media (min-width: 1280px) {\n  .fourty-width-modal {\n    width: 40%; } }\n\ntd.half-width-cell {\n  width: 50%; }\n\n.input-field input:focus {\n  border-bottom: 1px solid #1976D2;\n  box-shadow: 0 1px 0 0 #1976D2; }\n"
-
-/***/ }),
-
-/***/ 30:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__global_values__ = __webpack_require__(134);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BaseModal; });
-
-
-var BaseModal = (function () {
-    function BaseModal(serviceInjector) {
-        this.modalActions = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
-        this.dictionaryService = serviceInjector.getDictionaryService();
-    }
-    BaseModal.prototype.ngOnInit = function () {
-        this.modalParams = __WEBPACK_IMPORTED_MODULE_1__global_values__["b" /* MODAL_PARAMS */];
-        this.datePickerParams = this.dictionaryService.getDateDictionarySettings();
-    };
-    BaseModal.prototype.ngAfterViewChecked = function () {
-        if (typeof Materialize.updateTextFields === "function") {
-            Materialize.updateTextFields();
-        }
-    };
-    BaseModal.prototype.openModal = function () {
-        if (this.canModalBeOpened()) {
-            this.initDataBeforeOpenModal();
-            this.modalActions.emit({ action: "modal", params: ['open'] });
-        }
-    };
-    BaseModal.prototype.closeModal = function () {
-        this.modalActions.emit({ action: "modal", params: ['close'] });
-        $('.lean-overlay').remove();
-    };
-    // "on" only for style purposes in html
-    BaseModal.prototype.onCloseModal = function () {
-        this.closeModal();
-    };
-    BaseModal.prototype.canModalBeOpened = function () {
-        return true;
-    };
-    ;
-    BaseModal.prototype.isDataValid = function () {
-        return true;
-    };
-    ;
-    return BaseModal;
-}());
-
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/base.modal.js.map
-
-/***/ }),
-
-/***/ 378:
+/***/ 105:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -566,17 +25,17 @@ AboutComponent = __decorate([
     })
 ], AboutComponent);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/about.component.js.map
+//# sourceMappingURL=about.component.js.map
 
 /***/ }),
 
-/***/ 379:
+/***/ 106:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(5);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PricesListComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -623,30 +82,35 @@ var PricesListComponent = (function () {
 PricesListComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-prices',
-        template: __webpack_require__(804),
-        styles: [__webpack_require__(438), __webpack_require__(17)]
+        template: __webpack_require__(305),
+        styles: [__webpack_require__(133), __webpack_require__(7)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__["a" /* PricesModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__["a" /* PricesModalsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _b || Object])
 ], PricesListComponent);
 
 var _a, _b;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/prices-list.component.js.map
+//# sourceMappingURL=prices-list.component.js.map
 
 /***/ }),
 
-/***/ 380:
+/***/ 107:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__prices_service__ = __webpack_require__(382);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__prices_service__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(5);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PricesBackEndService; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -703,28 +167,33 @@ PricesBackEndService = __decorate([
 ], PricesBackEndService);
 
 var _a;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/prices.back-end.service.js.map
+//# sourceMappingURL=prices.back-end.service.js.map
 
 /***/ }),
 
-/***/ 381:
+/***/ 108:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__prices_service__ = __webpack_require__(382);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_entities_mock_data_products_mock_data__ = __webpack_require__(617);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__prices_service__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_entities_mock_data_products_mock_data__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_entities_get_entities__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_entities_mock_data_prices_mock_data__ = __webpack_require__(616);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_entities_get_entities__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_entities_mock_data_prices_mock_data__ = __webpack_require__(215);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PricesMockService; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -873,15 +342,15 @@ PricesMockService = __decorate([
 ], PricesMockService);
 
 var _a;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/prices.mock.service.js.map
+//# sourceMappingURL=prices.mock.service.js.map
 
 /***/ }),
 
-/***/ 382:
+/***/ 109:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_services_service_injector__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_services_service_injector__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PricesService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -910,17 +379,17 @@ PricesService = __decorate([
 ], PricesService);
 
 var _a;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/prices.service.js.map
+//# sourceMappingURL=prices.service.js.map
 
 /***/ }),
 
-/***/ 383:
+/***/ 110:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_report_modals_service__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_report_modals_service__ = __webpack_require__(36);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportsListComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -964,29 +433,34 @@ var ReportsListComponent = (function () {
 ReportsListComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-reports-list',
-        template: __webpack_require__(809),
-        styles: [__webpack_require__(439), __webpack_require__(17)]
+        template: __webpack_require__(310),
+        styles: [__webpack_require__(134), __webpack_require__(7)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_report_modals_service__["a" /* ReportModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_report_modals_service__["a" /* ReportModalsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _b || Object])
 ], ReportsListComponent);
 
 var _a, _b;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/reports-list.component.js.map
+//# sourceMappingURL=reports-list.component.js.map
 
 /***/ }),
 
-/***/ 384:
+/***/ 111:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__report_service__ = __webpack_require__(386);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__report_service__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportBackEndService; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1026,29 +500,34 @@ ReportBackEndService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])()
 ], ReportBackEndService);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/report.back-end.service.js.map
+//# sourceMappingURL=report.back-end.service.js.map
 
 /***/ }),
 
-/***/ 385:
+/***/ 112:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_entities_mock_data_previews_report_previews_mock_data__ = __webpack_require__(614);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_entities_mock_data_previews_report_previews_mock_data__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_entities_preview_entities__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_entities_get_entities__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_entities_mock_data_reports_mock_data__ = __webpack_require__(618);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__report_service__ = __webpack_require__(386);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_entities_preview_entities__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_entities_get_entities__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_entities_mock_data_reports_mock_data__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__report_service__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_global_values__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_global_values__ = __webpack_require__(43);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportMockService; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1141,15 +620,15 @@ ReportMockService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__angular_core__["Injectable"])()
 ], ReportMockService);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/report.mock.service.js.map
+//# sourceMappingURL=report.mock.service.js.map
 
 /***/ }),
 
-/***/ 386:
+/***/ 113:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_services_dictionary_mock_service__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_services_dictionary_mock_service__ = __webpack_require__(75);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportService; });
 
 var ReportService = (function () {
@@ -1169,22 +648,27 @@ var ReportService = (function () {
     return ReportService;
 }());
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/report.service.js.map
+//# sourceMappingURL=report.service.js.map
 
 /***/ }),
 
-/***/ 387:
+/***/ 114:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dictionary_service__ = __webpack_require__(388);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dictionary_service__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DictionaryBackEndService; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1208,11 +692,11 @@ DictionaryBackEndService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])()
 ], DictionaryBackEndService);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/dictionary.back-end.service.js.map
+//# sourceMappingURL=dictionary.back-end.service.js.map
 
 /***/ }),
 
-/***/ 388:
+/***/ 115:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1314,16 +798,16 @@ var DictionaryService = (function () {
     return DictionaryService;
 }());
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/dictionary.service.js.map
+//# sourceMappingURL=dictionary.service.js.map
 
 /***/ }),
 
-/***/ 389:
+/***/ 116:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_entities_mock_data_cycles_mock_data__ = __webpack_require__(613);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_entities_mock_data_cycles_mock_data__ = __webpack_require__(212);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TrainingsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1353,29 +837,34 @@ var TrainingsComponent = (function () {
 TrainingsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-training',
-        template: __webpack_require__(814),
-        styles: [__webpack_require__(793)]
+        template: __webpack_require__(315),
+        styles: [__webpack_require__(287)]
     }),
     __metadata("design:paramtypes", [])
 ], TrainingsComponent);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/trainings.component.js.map
+//# sourceMappingURL=trainings.component.js.map
 
 /***/ }),
 
-/***/ 390:
+/***/ 117:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__weights_service__ = __webpack_require__(392);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__weights_service__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(5);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WeightsBackEndService; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1428,28 +917,33 @@ WeightsBackEndService = __decorate([
 ], WeightsBackEndService);
 
 var _a;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/weights.back-end.service.js.map
+//# sourceMappingURL=weights.back-end.service.js.map
 
 /***/ }),
 
-/***/ 391:
+/***/ 118:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_entities_get_entities__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_entities_mock_data_weights_mock_data__ = __webpack_require__(619);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_entities_mock_data_previews_weight_previews_mock_data__ = __webpack_require__(615);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__weights_service__ = __webpack_require__(392);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_services_service_injector__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_entities_get_entities__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_entities_mock_data_weights_mock_data__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_entities_mock_data_previews_weight_previews_mock_data__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__weights_service__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_services_service_injector__ = __webpack_require__(5);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WeightsMockService; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1563,16 +1057,16 @@ WeightsMockService = __decorate([
 ], WeightsMockService);
 
 var _a;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/weights.mock.service.js.map
+//# sourceMappingURL=weights.mock.service.js.map
 
 /***/ }),
 
-/***/ 392:
+/***/ 119:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__ = __webpack_require__(5);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WeightsService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1624,17 +1118,17 @@ WeightsService = __decorate([
 ], WeightsService);
 
 var _a;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/weights.service.js.map
+//# sourceMappingURL=weights.service.js.map
 
 /***/ }),
 
-/***/ 393:
+/***/ 120:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_weights_modals_service__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_weights_modals_service__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(5);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WeightsListComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1677,39 +1171,124 @@ var WeightsListComponent = (function () {
 WeightsListComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-weights-list',
-        template: __webpack_require__(819),
-        styles: [__webpack_require__(440), __webpack_require__(17)]
+        template: __webpack_require__(320),
+        styles: [__webpack_require__(135), __webpack_require__(7)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_weights_modals_service__["a" /* WeightsModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_weights_modals_service__["a" /* WeightsModalsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _b || Object])
 ], WeightsListComponent);
 
 var _a, _b;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/weights-list.component.js.map
+//# sourceMappingURL=weights-list.component.js.map
 
 /***/ }),
 
-/***/ 438:
-/***/ (function(module, exports) {
+/***/ 133:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = ".material-button, .card-content span.card-title .card-title-icons i, .prices-card-content .card-title-icons i {\n  display: inline;\n  cursor: pointer;\n  -webkit-filter: contrast(0);\n          filter: contrast(0); }\n  .material-button:hover, .card-content span.card-title .card-title-icons i:hover, .prices-card-content .card-title-icons i:hover {\n    -webkit-filter: contrast(1);\n            filter: contrast(1); }\n\n.arrow, .down-arrow, .left-arrow {\n  -webkit-filter: contrast(0);\n          filter: contrast(0);\n  cursor: pointer; }\n  .arrow:hover, .down-arrow:hover, .left-arrow:hover {\n    -webkit-filter: contrast(1);\n            filter: contrast(1); }\n\n.left-arrow {\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg); }\n\n.card-content {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -ms-flex-wrap: nowrap;\n      flex-wrap: nowrap;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: start;\n      -ms-flex-align: start;\n          align-items: flex-start; }\n  .card-content span.card-title {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    -webkit-box-align: baseline;\n        -ms-flex-align: baseline;\n            align-items: baseline;\n    -ms-flex-item-align: center;\n        align-self: center;\n    -webkit-box-ordinal-group: 2;\n        -ms-flex-order: 1;\n            order: 1; }\n    .card-content span.card-title p {\n      margin-right: 15px; }\n    .card-content span.card-title .card-title-icons {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -ms-flex-wrap: nowrap;\n          flex-wrap: nowrap;\n      -webkit-box-align: baseline;\n          -ms-flex-align: baseline;\n              align-items: baseline;\n      -ms-flex-item-align: center;\n          align-self: center;\n      -webkit-box-ordinal-group: 100;\n          -ms-flex-order: 99;\n              order: 99;\n      visibility: hidden; }\n      .card-content span.card-title .card-title-icons i {\n        margin-right: 5px; }\n  .card-content img.right {\n    -webkit-box-ordinal-group: 100;\n        -ms-flex-order: 99;\n            order: 99;\n    -ms-flex-preferred-size: 40px;\n        flex-basis: 40px; }\n\n.card-content:hover span.card-title .card-title-icons {\n  visibility: visible; }\n\n.input-field input:focus {\n  border-bottom: 1px solid #1976D2;\n  box-shadow: 0 1px 0 0 #1976D2; }\n  .input-field input:focus + label {\n    color: #1976D2; }\n\n.input-field .dropdown-content li > span {\n  color: black; }\n\n.input-field .autocomplete-content li .highlight {\n  color: #1976D2; }\n\n.red-checkbox[type=\"checkbox\"].filled-in:checked + label:after {\n  background-color: #B71C1C;\n  border: 2px solid #B71C1C; }\n\n.loading {\n  padding: 0; }\n\n.preloader-wrapper.big {\n  width: 120px;\n  height: 120px; }\n\n.preloader-wrapper {\n  display: block;\n  position: relative;\n  top: 150px;\n  margin: 0 auto; }\n\n.progress {\n  margin: 0;\n  background-color: #1976D2; }\n  .progress .indeterminate {\n    background-color: #90CAF9; }\n\n.no-data {\n  margin-top: 150px; }\n  .no-data i.large.material-icons {\n    color: #1976D2;\n    margin-bottom: 100px;\n    font-size: 12rem; }\n  .no-data p {\n    font-size: 24px; }\n    .no-data p a:hover {\n      text-decoration: underline;\n      cursor: pointer; }\n  .no-data.small {\n    margin-top: 30px; }\n    .no-data.small i.medium.material-icons {\n      color: #1976D2;\n      margin-bottom: 30px;\n      font-size: 12rem; }\n    .no-data.small p {\n      margin-bottom: 0px; }\n\n.prices-card-content {\n  -webkit-box-orient: vertical !important;\n  -webkit-box-direction: normal !important;\n      -ms-flex-direction: column !important;\n          flex-direction: column !important;\n  -ms-flex-wrap: nowrap;\n      flex-wrap: nowrap;\n  height: 100%; }\n  .prices-card-content span {\n    -ms-flex-preferred-size: 100%;\n        flex-basis: 100%;\n    width: 100%; }\n    .prices-card-content span.card-title {\n      -webkit-box-ordinal-group: 2;\n          -ms-flex-order: 1;\n              order: 1;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between; }\n    .prices-card-content span.card-subtitle {\n      -webkit-box-ordinal-group: 3;\n          -ms-flex-order: 2;\n              order: 2;\n      -ms-flex-pack: distribute;\n          justify-content: space-around; }\n  .prices-card-content .card-title-icons {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: nowrap;\n        flex-wrap: nowrap;\n    -webkit-box-align: baseline;\n        -ms-flex-align: baseline;\n            align-items: baseline;\n    -webkit-box-ordinal-group: 100;\n        -ms-flex-order: 99;\n            order: 99;\n    visibility: hidden;\n    margin-bottom: 16px; }\n    .prices-card-content .card-title-icons i {\n      display: inline;\n      margin-right: 5px; }\n\n.prices-card-content:hover .card-title-icons {\n  visibility: visible; }\n\n.card-reveal:hover .row.icons-container {\n  visibility: visible; }\n\n.card-reveal .row.icons-container {\n  cursor: default;\n  margin-top: 25px;\n  visibility: hidden; }\n  .card-reveal .row.icons-container i {\n    display: inline;\n    margin: 0 10px;\n    -webkit-filter: contrast(0);\n            filter: contrast(0); }\n    .card-reveal .row.icons-container i:hover {\n      -webkit-filter: contrast(1);\n              filter: contrast(1);\n      cursor: pointer; }\n"
+exports = module.exports = __webpack_require__(17)();
+// imports
 
-/***/ }),
 
-/***/ 439:
-/***/ (function(module, exports) {
+// module
+exports.push([module.i, ".material-button, .card-content span.card-title .card-title-icons i, .prices-card-content .card-title-icons i {\n  display: inline;\n  cursor: pointer;\n  -webkit-filter: contrast(0);\n          filter: contrast(0); }\n  .material-button:hover, .card-content span.card-title .card-title-icons i:hover, .prices-card-content .card-title-icons i:hover {\n    -webkit-filter: contrast(1);\n            filter: contrast(1); }\n\n.arrow, .down-arrow, .left-arrow {\n  -webkit-filter: contrast(0);\n          filter: contrast(0);\n  cursor: pointer; }\n  .arrow:hover, .down-arrow:hover, .left-arrow:hover {\n    -webkit-filter: contrast(1);\n            filter: contrast(1); }\n\n.left-arrow {\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg); }\n\n.card-content {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -ms-flex-wrap: nowrap;\n      flex-wrap: nowrap;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: start;\n      -ms-flex-align: start;\n          align-items: flex-start; }\n  .card-content span.card-title {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    -webkit-box-align: baseline;\n        -ms-flex-align: baseline;\n            align-items: baseline;\n    -ms-flex-item-align: center;\n        align-self: center;\n    -webkit-box-ordinal-group: 2;\n        -ms-flex-order: 1;\n            order: 1; }\n    .card-content span.card-title p {\n      margin-right: 15px; }\n    .card-content span.card-title .card-title-icons {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -ms-flex-wrap: nowrap;\n          flex-wrap: nowrap;\n      -webkit-box-align: baseline;\n          -ms-flex-align: baseline;\n              align-items: baseline;\n      -ms-flex-item-align: center;\n          align-self: center;\n      -webkit-box-ordinal-group: 100;\n          -ms-flex-order: 99;\n              order: 99;\n      visibility: hidden; }\n      .card-content span.card-title .card-title-icons i {\n        margin-right: 5px; }\n  .card-content img.right {\n    -webkit-box-ordinal-group: 100;\n        -ms-flex-order: 99;\n            order: 99;\n    -ms-flex-preferred-size: 40px;\n        flex-basis: 40px; }\n\n.card-content:hover span.card-title .card-title-icons {\n  visibility: visible; }\n\n.input-field input:focus {\n  border-bottom: 1px solid #1976D2;\n  box-shadow: 0 1px 0 0 #1976D2; }\n  .input-field input:focus + label {\n    color: #1976D2; }\n\n.input-field .dropdown-content li > span {\n  color: black; }\n\n.input-field .autocomplete-content li .highlight {\n  color: #1976D2; }\n\n.red-checkbox[type=\"checkbox\"].filled-in:checked + label:after {\n  background-color: #B71C1C;\n  border: 2px solid #B71C1C; }\n\n.loading {\n  padding: 0; }\n\n.preloader-wrapper.big {\n  width: 120px;\n  height: 120px; }\n\n.preloader-wrapper {\n  display: block;\n  position: relative;\n  top: 150px;\n  margin: 0 auto; }\n\n.progress {\n  margin: 0;\n  background-color: #1976D2; }\n  .progress .indeterminate {\n    background-color: #90CAF9; }\n\n.no-data {\n  margin-top: 150px; }\n  .no-data i.large.material-icons {\n    color: #1976D2;\n    margin-bottom: 100px;\n    font-size: 12rem; }\n  .no-data p {\n    font-size: 24px; }\n    .no-data p a:hover {\n      text-decoration: underline;\n      cursor: pointer; }\n  .no-data.small {\n    margin-top: 30px; }\n    .no-data.small i.medium.material-icons {\n      color: #1976D2;\n      margin-bottom: 30px;\n      font-size: 12rem; }\n    .no-data.small p {\n      margin-bottom: 0px; }\n\n.prices-card-content {\n  -webkit-box-orient: vertical !important;\n  -webkit-box-direction: normal !important;\n      -ms-flex-direction: column !important;\n          flex-direction: column !important;\n  -ms-flex-wrap: nowrap;\n      flex-wrap: nowrap;\n  height: 100%; }\n  .prices-card-content span {\n    -ms-flex-preferred-size: 100%;\n        flex-basis: 100%;\n    width: 100%; }\n    .prices-card-content span.card-title {\n      -webkit-box-ordinal-group: 2;\n          -ms-flex-order: 1;\n              order: 1;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between; }\n    .prices-card-content span.card-subtitle {\n      -webkit-box-ordinal-group: 3;\n          -ms-flex-order: 2;\n              order: 2;\n      -ms-flex-pack: distribute;\n          justify-content: space-around; }\n  .prices-card-content .card-title-icons {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: nowrap;\n        flex-wrap: nowrap;\n    -webkit-box-align: baseline;\n        -ms-flex-align: baseline;\n            align-items: baseline;\n    -webkit-box-ordinal-group: 100;\n        -ms-flex-order: 99;\n            order: 99;\n    visibility: hidden;\n    margin-bottom: 16px; }\n    .prices-card-content .card-title-icons i {\n      display: inline;\n      margin-right: 5px; }\n\n.prices-card-content:hover .card-title-icons {\n  visibility: visible; }\n\n.card-reveal:hover .row.icons-container {\n  visibility: visible; }\n\n.card-reveal .row.icons-container {\n  cursor: default;\n  margin-top: 25px;\n  visibility: hidden; }\n  .card-reveal .row.icons-container i {\n    display: inline;\n    margin: 0 10px;\n    -webkit-filter: contrast(0);\n            filter: contrast(0); }\n    .card-reveal .row.icons-container i:hover {\n      -webkit-filter: contrast(1);\n              filter: contrast(1);\n      cursor: pointer; }\n", ""]);
 
-module.exports = ""
+// exports
 
-/***/ }),
 
-/***/ 440:
-/***/ (function(module, exports) {
-
-module.exports = ""
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 469:
+/***/ 134:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(17)();
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 135:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(17)();
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 16:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__global_values__ = __webpack_require__(43);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BaseModal; });
+
+
+var BaseModal = (function () {
+    function BaseModal(serviceInjector) {
+        this.modalActions = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.dictionaryService = serviceInjector.getDictionaryService();
+    }
+    BaseModal.prototype.ngOnInit = function () {
+        this.modalParams = __WEBPACK_IMPORTED_MODULE_1__global_values__["b" /* MODAL_PARAMS */];
+        this.datePickerParams = this.dictionaryService.getDateDictionarySettings();
+    };
+    BaseModal.prototype.ngAfterViewChecked = function () {
+        if (typeof Materialize.updateTextFields === "function") {
+            Materialize.updateTextFields();
+        }
+    };
+    BaseModal.prototype.openModal = function () {
+        if (this.canModalBeOpened()) {
+            this.initDataBeforeOpenModal();
+            this.modalActions.emit({ action: "modal", params: ['open'] });
+        }
+    };
+    BaseModal.prototype.closeModal = function () {
+        this.modalActions.emit({ action: "modal", params: ['close'] });
+        $('.lean-overlay').remove();
+    };
+    // "on" only for style purposes in html
+    BaseModal.prototype.onCloseModal = function () {
+        this.closeModal();
+    };
+    BaseModal.prototype.canModalBeOpened = function () {
+        return true;
+    };
+    ;
+    BaseModal.prototype.isDataValid = function () {
+        return true;
+    };
+    ;
+    return BaseModal;
+}());
+
+//# sourceMappingURL=base.modal.js.map
+
+/***/ }),
+
+/***/ 179:
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -1718,37 +1297,37 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 469;
+webpackEmptyContext.id = 179;
 
 
 /***/ }),
 
-/***/ 470:
+/***/ 180:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(562);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(260);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(594);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(76);
 
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].production) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["enableProdMode"])();
+if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["enableProdMode"])();
 }
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_3__app_app_module__["a" /* AppModule */]);
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/main.js.map
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */]);
+//# sourceMappingURL=main.js.map
 
 /***/ }),
 
-/***/ 50:
+/***/ 19:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PricesModalsService; });
@@ -1801,135 +1380,21 @@ PricesModalsService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])()
 ], PricesModalsService);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/prices-modals.service.js.map
+//# sourceMappingURL=prices-modals.service.js.map
 
 /***/ }),
 
-/***/ 56:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return Cycle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return Exercise; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return ExerciseSession; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Price; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Product; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return Report; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return Series; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return Set; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return Training; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return Weight; });
-var Cycle = (function () {
-    function Cycle(cycleId, sets, startDate, endDate) {
-        this.cycleId = cycleId;
-        this.sets = sets;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
-    return Cycle;
-}());
-
-var Exercise = (function () {
-    function Exercise(exerciseId, exerciseName, exerciseSessions) {
-        this.exerciseId = exerciseId;
-        this.exerciseName = exerciseName;
-        this.exerciseSessions = exerciseSessions;
-    }
-    return Exercise;
-}());
-
-var ExerciseSession = (function () {
-    function ExerciseSession(exereciseSessionId, series) {
-        this.exereciseSessionId = exereciseSessionId;
-        this.series = series;
-    }
-    return ExerciseSession;
-}());
-
-var Price = (function () {
-    function Price(priceId, priceDate, place, quantity, value, productId) {
-        this.priceId = priceId;
-        this.priceDate = priceDate;
-        this.place = place;
-        this.quantity = quantity;
-        this.value = value;
-        this.productId = productId;
-    }
-    return Price;
-}());
-
-var Product = (function () {
-    function Product(productId, productName, screenUrl, average) {
-        this.productId = productId;
-        this.productName = productName;
-        this.screenUrl = screenUrl;
-        this.average = average;
-    }
-    return Product;
-}());
-
-var Report = (function () {
-    function Report(reportId, content, startDate, endDate) {
-        this.reportId = reportId;
-        this.content = content;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
-    return Report;
-}());
-
-var Series = (function () {
-    function Series(seriesId, repeats, weight, comment) {
-        this.seriesId = seriesId;
-        this.repeats = repeats;
-        this.weight = weight;
-        this.comment = comment;
-    }
-    return Series;
-}());
-
-var Set = (function () {
-    function Set(setId, setName, exercises, trainings) {
-        this.setId = setId;
-        this.setName = setName;
-        this.exercises = exercises;
-        this.trainings = trainings;
-    }
-    return Set;
-}());
-
-var Training = (function () {
-    function Training(trainingId, trainingDate) {
-        this.trainingId = trainingId;
-        this.trainingDate = trainingDate;
-    }
-    return Training;
-}());
-
-var Weight = (function () {
-    function Weight(weightId, value, measurementDate) {
-        this.weightId = weightId;
-        this.value = value;
-        this.measurementDate = measurementDate;
-    }
-    return Weight;
-}());
-
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/get.entities.js.map
-
-/***/ }),
-
-/***/ 592:
+/***/ 191:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(582);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__weights_weights_list_component__ = __webpack_require__(393);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__trainings_trainings_component__ = __webpack_require__(389);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__reports_reports_list_component__ = __webpack_require__(383);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__prices_prices_list_component__ = __webpack_require__(379);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__about_component__ = __webpack_require__(378);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__weights_weights_list_component__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__trainings_trainings_component__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__reports_reports_list_component__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__prices_prices_list_component__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__about_component__ = __webpack_require__(105);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyCoachRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1965,11 +1430,11 @@ MyCoachRoutingModule = __decorate([
     })
 ], MyCoachRoutingModule);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/app-routing.module.js.map
+//# sourceMappingURL=app-routing.module.js.map
 
 /***/ }),
 
-/***/ 593:
+/***/ 192:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1990,36 +1455,36 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-root',
-        template: __webpack_require__(795),
-        styles: [__webpack_require__(794)]
+        template: __webpack_require__(296),
+        styles: [__webpack_require__(288)]
     })
 ], AppComponent);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/app.component.js.map
+//# sourceMappingURL=app.component.js.map
 
 /***/ }),
 
-/***/ 594:
+/***/ 193:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(181);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(170);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(593);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_routing_module__ = __webpack_require__(592);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__header_component__ = __webpack_require__(595);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__weights_weights_module__ = __webpack_require__(630);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__reports_reports_module__ = __webpack_require__(611);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__trainings_tranings_module__ = __webpack_require__(624);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__prices_prices_module__ = __webpack_require__(605);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__shared_services_dictionary_mock_service__ = __webpack_require__(259);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__shared_services_dictionary_back_end_service__ = __webpack_require__(387);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__shared_shared_module__ = __webpack_require__(184);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__shared_services_date_service__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__about_component__ = __webpack_require__(378);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_routing_module__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__header_component__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__weights_weights_module__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__reports_reports_module__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__trainings_tranings_module__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__prices_prices_module__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__shared_services_dictionary_mock_service__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__shared_services_dictionary_back_end_service__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__shared_shared_module__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__shared_services_date_service__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__about_component__ = __webpack_require__(105);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2077,11 +1542,11 @@ AppModule = __decorate([
     })
 ], AppModule);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/app.module.js.map
+//# sourceMappingURL=app.module.js.map
 
 /***/ }),
 
-/***/ 595:
+/***/ 194:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2110,26 +1575,31 @@ HeaderComponent = __decorate([
     })
 ], HeaderComponent);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/header.component.js.map
+//# sourceMappingURL=header.component.js.map
 
 /***/ }),
 
-/***/ 596:
+/***/ 195:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_entities_add_entities__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_prices_modals_service__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_services_date_service__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_components_base_modal__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_entities_add_entities__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_prices_modals_service__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_services_date_service__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_components_base_modal__ = __webpack_require__(16);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PriceAddModal; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2194,32 +1664,37 @@ var PriceAddModal = (function (_super) {
 PriceAddModal = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-price-add-modal',
-        template: __webpack_require__(796),
-        styles: [__webpack_require__(88), __webpack_require__(17)]
+        template: __webpack_require__(297),
+        styles: [__webpack_require__(34), __webpack_require__(7)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_prices_modals_service__["a" /* PricesModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_prices_modals_service__["a" /* PricesModalsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__shared_services_date_service__["a" /* DateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_services_date_service__["a" /* DateService */]) === "function" && _c || Object])
 ], PriceAddModal);
 
 var _a, _b, _c;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/price-add.modal.js.map
+//# sourceMappingURL=price-add.modal.js.map
 
 /***/ }),
 
-/***/ 597:
+/***/ 196:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_date_service__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_modal__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_date_service__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_modal__ = __webpack_require__(16);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PricesDeleteModal; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2299,32 +1774,37 @@ var PricesDeleteModal = (function (_super) {
 PricesDeleteModal = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-prices-delete-modal',
-        template: __webpack_require__(797),
-        styles: [__webpack_require__(88), __webpack_require__(17)]
+        template: __webpack_require__(298),
+        styles: [__webpack_require__(34), __webpack_require__(7)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__["a" /* PricesModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__["a" /* PricesModalsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_date_service__["a" /* DateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_date_service__["a" /* DateService */]) === "function" && _c || Object])
 ], PricesDeleteModal);
 
 var _a, _b, _c;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/prices-delete.modal.js.map
+//# sourceMappingURL=prices-delete.modal.js.map
 
 /***/ }),
 
-/***/ 598:
+/***/ 197:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_global_values__ = __webpack_require__(134);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_modal__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_global_values__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_modal__ = __webpack_require__(16);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PricesEditModal; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2388,18 +1868,18 @@ var PricesEditModal = (function (_super) {
 PricesEditModal = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-prices-edit-modal',
-        template: __webpack_require__(798),
-        styles: [__webpack_require__(88), __webpack_require__(17)]
+        template: __webpack_require__(299),
+        styles: [__webpack_require__(34), __webpack_require__(7)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__["a" /* PricesModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__["a" /* PricesModalsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _b || Object])
 ], PricesEditModal);
 
 var _a, _b;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/prices-edit.modal.js.map
+//# sourceMappingURL=prices-edit.modal.js.map
 
 /***/ }),
 
-/***/ 599:
+/***/ 198:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2425,27 +1905,32 @@ PricesModals = __decorate([
     })
 ], PricesModals);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/prices.modals.js.map
+//# sourceMappingURL=prices.modals.js.map
 
 /***/ }),
 
-/***/ 600:
+/***/ 199:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_entities_add_entities__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_prices_modals_service__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__(260);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_components_base_modal__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_http__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_entities_add_entities__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_prices_modals_service__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_components_base_modal__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_http__ = __webpack_require__(35);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProductAddModal; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2526,31 +2011,36 @@ __decorate([
 ProductAddModal = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-product-add-modal',
-        template: __webpack_require__(799),
-        styles: [__webpack_require__(88), __webpack_require__(17)]
+        template: __webpack_require__(300),
+        styles: [__webpack_require__(34), __webpack_require__(7)]
     }),
     __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_prices_modals_service__["a" /* PricesModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_prices_modals_service__["a" /* PricesModalsService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_6__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__angular_http__["b" /* Http */]) === "function" && _d || Object])
 ], ProductAddModal);
 
 var _a, _b, _c, _d;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/product-add.modal.js.map
+//# sourceMappingURL=product-add.modal.js.map
 
 /***/ }),
 
-/***/ 601:
+/***/ 200:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_prices_modals_service__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_base_modal__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_prices_modals_service__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_base_modal__ = __webpack_require__(16);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProductDeleteModal; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2600,31 +2090,36 @@ var ProductDeleteModal = (function (_super) {
 ProductDeleteModal = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-product-delete-modal',
-        template: __webpack_require__(800),
-        styles: [__webpack_require__(88), __webpack_require__(17)]
+        template: __webpack_require__(301),
+        styles: [__webpack_require__(34), __webpack_require__(7)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_prices_modals_service__["a" /* PricesModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_prices_modals_service__["a" /* PricesModalsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _b || Object])
 ], ProductDeleteModal);
 
 var _a, _b;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/product-delete.modal.js.map
+//# sourceMappingURL=product-delete.modal.js.map
 
 /***/ }),
 
-/***/ 602:
+/***/ 201:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_base_modal__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_base_modal__ = __webpack_require__(16);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProductEditModal; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2681,34 +2176,39 @@ var ProductEditModal = (function (_super) {
 ProductEditModal = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-product-edit-modal',
-        template: __webpack_require__(801),
-        styles: [__webpack_require__(88), __webpack_require__(17)]
+        template: __webpack_require__(302),
+        styles: [__webpack_require__(34), __webpack_require__(7)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__["a" /* PricesModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__["a" /* PricesModalsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _b || Object])
 ], ProductEditModal);
 
 var _a, _b;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/product-edit.modal.js.map
+//# sourceMappingURL=product-edit.modal.js.map
 
 /***/ }),
 
-/***/ 603:
+/***/ 202:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_entities_add_entities__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_prices_modals_service__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_global_values__ = __webpack_require__(134);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_services_date_service__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_components_base_modal__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_entities_add_entities__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_prices_modals_service__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_global_values__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_services_date_service__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_components_base_modal__ = __webpack_require__(16);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ShoppingListModal; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2828,33 +2328,38 @@ var ShoppingListModal = (function (_super) {
 ShoppingListModal = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-shopping-list-modal',
-        template: __webpack_require__(802),
-        styles: [__webpack_require__(88), __webpack_require__(17)]
+        template: __webpack_require__(303),
+        styles: [__webpack_require__(34), __webpack_require__(7)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_prices_modals_service__["a" /* PricesModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_prices_modals_service__["a" /* PricesModalsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__shared_services_date_service__["a" /* DateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__shared_services_date_service__["a" /* DateService */]) === "function" && _c || Object])
 ], ShoppingListModal);
 
 var _a, _b, _c;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/shopping-list.modal.js.map
+//# sourceMappingURL=shopping-list.modal.js.map
 
 /***/ }),
 
-/***/ 604:
+/***/ 203:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_components_base_card_component__ = __webpack_require__(258);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_components_base_card_component__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_entities_get_entities__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_prices_modals_service__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_services_date_service__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_entities_get_entities__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_prices_modals_service__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_services_date_service__ = __webpack_require__(28);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PricesCardComponent; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2920,39 +2425,39 @@ __decorate([
 PricesCardComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
         selector: 'coach-prices-card',
-        template: __webpack_require__(803),
-        styles: [__webpack_require__(438)]
+        template: __webpack_require__(304),
+        styles: [__webpack_require__(133)]
     }),
     __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_prices_modals_service__["a" /* PricesModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_prices_modals_service__["a" /* PricesModalsService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__shared_services_date_service__["a" /* DateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__shared_services_date_service__["a" /* DateService */]) === "function" && _d || Object])
 ], PricesCardComponent);
 
 var _a, _b, _c, _d;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/prices-card.component.js.map
+//# sourceMappingURL=prices-card.component.js.map
 
 /***/ }),
 
-/***/ 605:
+/***/ 204:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core_src_metadata_ng_module__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__prices_list_component__ = __webpack_require__(379);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_prices_mock_service__ = __webpack_require__(381);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_prices_back_end_service__ = __webpack_require__(380);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_shared_module__ = __webpack_require__(184);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_forms__ = __webpack_require__(170);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_prices_modals_service__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__prices_card_component__ = __webpack_require__(604);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__modals_prices_modals__ = __webpack_require__(599);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__modals_product_add_modal__ = __webpack_require__(600);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__modals_price_add_modal__ = __webpack_require__(596);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__modals_prices_edit_modal__ = __webpack_require__(598);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__modals_product_edit_modal__ = __webpack_require__(602);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__modals_product_delete_modal__ = __webpack_require__(601);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__modals_prices_delete_modal__ = __webpack_require__(597);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__modals_shopping_list_modal__ = __webpack_require__(603);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__prices_list_component__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_prices_mock_service__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_prices_back_end_service__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_shared_module__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_forms__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_prices_modals_service__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__prices_card_component__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__modals_prices_modals__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__modals_product_add_modal__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__modals_price_add_modal__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__modals_prices_edit_modal__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__modals_product_edit_modal__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__modals_product_delete_modal__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__modals_prices_delete_modal__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__modals_shopping_list_modal__ = __webpack_require__(202);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PricesModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2984,9 +2489,9 @@ var PricesModule = (function () {
     return PricesModule;
 }());
 PricesModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core_src_metadata_ng_module__["a" /* NgModule */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_1__prices_list_component__["a" /* PricesListComponent */],
+            __WEBPACK_IMPORTED_MODULE_3__prices_list_component__["a" /* PricesListComponent */],
             __WEBPACK_IMPORTED_MODULE_9__prices_card_component__["a" /* PricesCardComponent */],
             __WEBPACK_IMPORTED_MODULE_10__modals_prices_modals__["a" /* PricesModals */],
             __WEBPACK_IMPORTED_MODULE_12__modals_price_add_modal__["a" /* PriceAddModal */],
@@ -2998,8 +2503,8 @@ PricesModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_17__modals_shopping_list_modal__["a" /* ShoppingListModal */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_common__["CommonModule"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
             __WEBPACK_IMPORTED_MODULE_7__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_6__shared_shared_module__["a" /* SharedModule */]
         ],
@@ -3011,26 +2516,31 @@ PricesModule = __decorate([
     })
 ], PricesModule);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/prices.module.js.map
+//# sourceMappingURL=prices.module.js.map
 
 /***/ }),
 
-/***/ 606:
+/***/ 205:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_entities_add_entities__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_report_modals_service__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_services_date_service__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_components_base_modal__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_entities_add_entities__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_report_modals_service__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_services_date_service__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_components_base_modal__ = __webpack_require__(16);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportAddModal; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3086,31 +2596,36 @@ var ReportAddModal = (function (_super) {
 ReportAddModal = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-report-add-modal',
-        template: __webpack_require__(805),
-        styles: [__webpack_require__(279), __webpack_require__(17)]
+        template: __webpack_require__(306),
+        styles: [__webpack_require__(93), __webpack_require__(7)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_report_modals_service__["a" /* ReportModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_report_modals_service__["a" /* ReportModalsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__shared_services_date_service__["a" /* DateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_services_date_service__["a" /* DateService */]) === "function" && _c || Object])
 ], ReportAddModal);
 
 var _a, _b, _c;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/report-add.modal.js.map
+//# sourceMappingURL=report-add.modal.js.map
 
 /***/ }),
 
-/***/ 607:
+/***/ 206:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_report_modals_service__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_base_modal__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_report_modals_service__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_base_modal__ = __webpack_require__(16);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportDeleteModal; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3167,32 +2682,37 @@ var ReportDeleteModal = (function (_super) {
 ReportDeleteModal = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-report-delete-modal',
-        template: __webpack_require__(806),
-        styles: [__webpack_require__(279), __webpack_require__(17)]
+        template: __webpack_require__(307),
+        styles: [__webpack_require__(93), __webpack_require__(7)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_report_modals_service__["a" /* ReportModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_report_modals_service__["a" /* ReportModalsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _b || Object])
 ], ReportDeleteModal);
 
 var _a, _b;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/report-delete.modal.js.map
+//# sourceMappingURL=report-delete.modal.js.map
 
 /***/ }),
 
-/***/ 608:
+/***/ 207:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_report_modals_service__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_date_service__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_modal__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_report_modals_service__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_date_service__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_modal__ = __webpack_require__(16);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportEditModal; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3259,18 +2779,18 @@ var ReportEditModal = (function (_super) {
 ReportEditModal = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-report-edit-modal',
-        template: __webpack_require__(807),
-        styles: [__webpack_require__(279), __webpack_require__(17)]
+        template: __webpack_require__(308),
+        styles: [__webpack_require__(93), __webpack_require__(7)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_report_modals_service__["a" /* ReportModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_report_modals_service__["a" /* ReportModalsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_date_service__["a" /* DateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_date_service__["a" /* DateService */]) === "function" && _c || Object])
 ], ReportEditModal);
 
 var _a, _b, _c;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/report-edit.modal.js.map
+//# sourceMappingURL=report-edit.modal.js.map
 
 /***/ }),
 
-/***/ 609:
+/***/ 208:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3296,25 +2816,30 @@ ReportModals = __decorate([
     })
 ], ReportModals);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/report.modals.js.map
+//# sourceMappingURL=report.modals.js.map
 
 /***/ }),
 
-/***/ 610:
+/***/ 209:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_entities_preview_entities__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_report_modals_service__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_card_component__ = __webpack_require__(258);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_entities_preview_entities__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_report_modals_service__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_card_component__ = __webpack_require__(74);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportCardComponent; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3372,35 +2897,149 @@ __decorate([
 ReportCardComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-report-card',
-        template: __webpack_require__(808),
-        styles: [__webpack_require__(439), __webpack_require__(17)]
+        template: __webpack_require__(309),
+        styles: [__webpack_require__(134), __webpack_require__(7)]
     }),
     __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_report_modals_service__["a" /* ReportModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_report_modals_service__["a" /* ReportModalsService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _c || Object])
 ], ReportCardComponent);
 
 var _a, _b, _c;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/report-card.component.js.map
+//# sourceMappingURL=report-card.component.js.map
 
 /***/ }),
 
-/***/ 611:
+/***/ 21:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core_src_metadata_ng_module__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__reports_list_component__ = __webpack_require__(383);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__report_card_component__ = __webpack_require__(610);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_shared_module__ = __webpack_require__(184);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__(170);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_report_back_end_service__ = __webpack_require__(384);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_report_mock_service__ = __webpack_require__(385);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_report_modals_service__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__modals_report_modals__ = __webpack_require__(609);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__modals_report_add_modal__ = __webpack_require__(606);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__modals_report_delete_modal__ = __webpack_require__(607);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__modals_report_edit_modal__ = __webpack_require__(608);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return Cycle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return Exercise; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return ExerciseSession; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Price; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Product; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return Report; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return Series; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return Set; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return Training; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return Weight; });
+var Cycle = (function () {
+    function Cycle(cycleId, sets, startDate, endDate) {
+        this.cycleId = cycleId;
+        this.sets = sets;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+    return Cycle;
+}());
+
+var Exercise = (function () {
+    function Exercise(exerciseId, exerciseName, exerciseSessions) {
+        this.exerciseId = exerciseId;
+        this.exerciseName = exerciseName;
+        this.exerciseSessions = exerciseSessions;
+    }
+    return Exercise;
+}());
+
+var ExerciseSession = (function () {
+    function ExerciseSession(exereciseSessionId, series) {
+        this.exereciseSessionId = exereciseSessionId;
+        this.series = series;
+    }
+    return ExerciseSession;
+}());
+
+var Price = (function () {
+    function Price(priceId, priceDate, place, quantity, value, productId) {
+        this.priceId = priceId;
+        this.priceDate = priceDate;
+        this.place = place;
+        this.quantity = quantity;
+        this.value = value;
+        this.productId = productId;
+    }
+    return Price;
+}());
+
+var Product = (function () {
+    function Product(productId, productName, screenUrl, average) {
+        this.productId = productId;
+        this.productName = productName;
+        this.screenUrl = screenUrl;
+        this.average = average;
+    }
+    return Product;
+}());
+
+var Report = (function () {
+    function Report(reportId, content, startDate, endDate) {
+        this.reportId = reportId;
+        this.content = content;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+    return Report;
+}());
+
+var Series = (function () {
+    function Series(seriesId, repeats, weight, comment) {
+        this.seriesId = seriesId;
+        this.repeats = repeats;
+        this.weight = weight;
+        this.comment = comment;
+    }
+    return Series;
+}());
+
+var Set = (function () {
+    function Set(setId, setName, exercises, trainings) {
+        this.setId = setId;
+        this.setName = setName;
+        this.exercises = exercises;
+        this.trainings = trainings;
+    }
+    return Set;
+}());
+
+var Training = (function () {
+    function Training(trainingId, trainingDate) {
+        this.trainingId = trainingId;
+        this.trainingDate = trainingDate;
+    }
+    return Training;
+}());
+
+var Weight = (function () {
+    function Weight(weightId, value, measurementDate) {
+        this.weightId = weightId;
+        this.value = value;
+        this.measurementDate = measurementDate;
+    }
+    return Weight;
+}());
+
+//# sourceMappingURL=get.entities.js.map
+
+/***/ }),
+
+/***/ 210:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__reports_list_component__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__report_card_component__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_shared_module__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_report_back_end_service__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_report_mock_service__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_report_modals_service__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__modals_report_modals__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__modals_report_add_modal__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__modals_report_delete_modal__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__modals_report_edit_modal__ = __webpack_require__(207);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportsModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3428,7 +3067,7 @@ var ReportsModule = (function () {
     return ReportsModule;
 }());
 ReportsModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core_src_metadata_ng_module__["a" /* NgModule */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_1__reports_list_component__["a" /* ReportsListComponent */],
             __WEBPACK_IMPORTED_MODULE_4__report_card_component__["a" /* ReportCardComponent */],
@@ -3451,11 +3090,11 @@ ReportsModule = __decorate([
     })
 ], ReportsModule);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/reports.module.js.map
+//# sourceMappingURL=reports.module.js.map
 
 /***/ }),
 
-/***/ 612:
+/***/ 211:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3538,20 +3177,20 @@ __decorate([
 LineChartComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-line-chart',
-        template: __webpack_require__(810),
-        styleUrls: []
+        template: __webpack_require__(311),
+        styles: [__webpack_require__(7)]
     })
 ], LineChartComponent);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/line-chart.component.js.map
+//# sourceMappingURL=line-chart.component.js.map
 
 /***/ }),
 
-/***/ 613:
+/***/ 212:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__get_entities__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__get_entities__ = __webpack_require__(21);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CYCLES_LIST; });
 
 var CYCLES_LIST = [
@@ -3807,15 +3446,15 @@ var CYCLES_LIST = [
         ])
     ], new Date(2016, 10, 1))
 ];
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/cycles.mock-data.js.map
+//# sourceMappingURL=cycles.mock-data.js.map
 
 /***/ }),
 
-/***/ 614:
+/***/ 213:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__preview_entities__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__preview_entities__ = __webpack_require__(42);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return REPORT_PREVIEWS_LIST; });
 
 var REPORT_PREVIEWS_LIST = [
@@ -3823,30 +3462,30 @@ var REPORT_PREVIEWS_LIST = [
     new __WEBPACK_IMPORTED_MODULE_0__preview_entities__["a" /* ReportPreview */](2, new Date(2016, 10, 15), new Date(2016, 10, 21)),
     new __WEBPACK_IMPORTED_MODULE_0__preview_entities__["a" /* ReportPreview */](3, new Date(2016, 10, 22), new Date(2016, 10, 28))
 ];
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/report-previews.mock-data.js.map
+//# sourceMappingURL=report-previews.mock-data.js.map
 
 /***/ }),
 
-/***/ 615:
+/***/ 214:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__preview_entities__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__preview_entities__ = __webpack_require__(42);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WEIGHTS_PREVIEWS_LIST; });
 
 var WEIGHTS_PREVIEWS_LIST = [
     new __WEBPACK_IMPORTED_MODULE_0__preview_entities__["b" /* WeightsPreview */](10, 2016),
     new __WEBPACK_IMPORTED_MODULE_0__preview_entities__["b" /* WeightsPreview */](11, 2016)
 ];
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/weight-previews.mock-data.js.map
+//# sourceMappingURL=weight-previews.mock-data.js.map
 
 /***/ }),
 
-/***/ 616:
+/***/ 215:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__get_entities__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__get_entities__ = __webpack_require__(21);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PRICES_LIST; });
 
 var PRICES_LIST = [
@@ -3870,15 +3509,15 @@ var PRICES_LIST = [
     ],
     []
 ];
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/prices.mock-data.js.map
+//# sourceMappingURL=prices.mock-data.js.map
 
 /***/ }),
 
-/***/ 617:
+/***/ 216:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__get_entities__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__get_entities__ = __webpack_require__(21);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PRODUCTS_LIST; });
 
 var PRODUCTS_LIST = [
@@ -3887,15 +3526,15 @@ var PRODUCTS_LIST = [
     new __WEBPACK_IMPORTED_MODULE_0__get_entities__["a" /* Product */](3, 'Serek wiejski', 'http://piatnica.com.pl/p/public/upload/product/yyt2ck3efd0ih642jm4ai2rws.jpg', 1.55),
     new __WEBPACK_IMPORTED_MODULE_0__get_entities__["a" /* Product */](4, 'Masło', 'http://www.jakkupowac.pl/vars/upload/fckeditor/image/maslo/maslo_estra_mlekpol.jpg', 4.18)
 ];
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/products.mock-data.js.map
+//# sourceMappingURL=products.mock-data.js.map
 
 /***/ }),
 
-/***/ 618:
+/***/ 217:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__get_entities__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__get_entities__ = __webpack_require__(21);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return REPORTS_LIST; });
 
 var REPORTS_LIST = [
@@ -3904,15 +3543,15 @@ var REPORTS_LIST = [
         ' Testowy komunikat Testowy komunikat Testowy komunikat Testowy komunikat Testowy komunikat Testowy komunikat ', new Date(2016, 10, 15), new Date(2016, 10, 21)),
     new __WEBPACK_IMPORTED_MODULE_0__get_entities__["c" /* Report */](3, 'Lipa kolego', new Date(2016, 10, 22), new Date(2016, 10, 28))
 ];
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/reports.mock-data.js.map
+//# sourceMappingURL=reports.mock-data.js.map
 
 /***/ }),
 
-/***/ 619:
+/***/ 218:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__get_entities__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__get_entities__ = __webpack_require__(21);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WEIGHT_LIST; });
 
 var WEIGHT_LIST = [
@@ -3938,11 +3577,11 @@ var WEIGHT_LIST = [
         new __WEBPACK_IMPORTED_MODULE_0__get_entities__["d" /* Weight */](17, 78.1, new Date(2016, 11, 6))
     ]
 ];
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/weights.mock-data.js.map
+//# sourceMappingURL=weights.mock-data.js.map
 
 /***/ }),
 
-/***/ 620:
+/***/ 219:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3963,16 +3602,16 @@ var CircleLoaderComponent = (function () {
 CircleLoaderComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-circle-loader',
-        template: __webpack_require__(811),
-        styles: [__webpack_require__(17)]
+        template: __webpack_require__(312),
+        styles: [__webpack_require__(7)]
     })
 ], CircleLoaderComponent);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/circle-loader.component.js.map
+//# sourceMappingURL=circle-loader.component.js.map
 
 /***/ }),
 
-/***/ 621:
+/***/ 220:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3993,16 +3632,16 @@ var StripLoaderComponent = (function () {
 StripLoaderComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-strip-loader',
-        template: __webpack_require__(812),
-        styles: [__webpack_require__(17)]
+        template: __webpack_require__(313),
+        styles: [__webpack_require__(7)]
     })
 ], StripLoaderComponent);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/strip-loader.component.js.map
+//# sourceMappingURL=strip-loader.component.js.map
 
 /***/ }),
 
-/***/ 622:
+/***/ 221:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4054,21 +3693,21 @@ __decorate([
 ModalFooterComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-modal-footer',
-        template: __webpack_require__(813),
-        styleUrls: []
+        template: __webpack_require__(314),
+        styles: [__webpack_require__(7)]
     })
 ], ModalFooterComponent);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/modal-footer.component.js.map
+//# sourceMappingURL=modal-footer.component.js.map
 
 /***/ }),
 
-/***/ 623:
+/***/ 222:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_service_injector__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_service_injector__ = __webpack_require__(5);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DictionaryPipe; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -4096,18 +3735,18 @@ DictionaryPipe = __decorate([
 ], DictionaryPipe);
 
 var _a;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/dictionary.pipe.js.map
+//# sourceMappingURL=dictionary.pipe.js.map
 
 /***/ }),
 
-/***/ 624:
+/***/ 223:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core_src_metadata_ng_module__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__trainings_component__ = __webpack_require__(389);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__trainings_component__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(35);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TrainingsModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -4125,7 +3764,7 @@ var TrainingsModule = (function () {
     return TrainingsModule;
 }());
 TrainingsModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core_src_metadata_ng_module__["a" /* NgModule */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [__WEBPACK_IMPORTED_MODULE_1__trainings_component__["a" /* TrainingsComponent */]],
         imports: [
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */],
@@ -4134,26 +3773,31 @@ TrainingsModule = __decorate([
     })
 ], TrainingsModule);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/tranings.module.js.map
+//# sourceMappingURL=tranings.module.js.map
 
 /***/ }),
 
-/***/ 625:
+/***/ 224:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_weights_modals_service__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_entities_add_entities__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_services_date_service__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_components_base_modal__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_weights_modals_service__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_entities_add_entities__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_services_date_service__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_components_base_modal__ = __webpack_require__(16);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WeightAddModal; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4207,31 +3851,36 @@ var WeightAddModal = (function (_super) {
 WeightAddModal = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-weight-add-modal',
-        template: __webpack_require__(815),
-        styles: [__webpack_require__(280), __webpack_require__(17)]
+        template: __webpack_require__(316),
+        styles: [__webpack_require__(94), __webpack_require__(7)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_weights_modals_service__["a" /* WeightsModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_weights_modals_service__["a" /* WeightsModalsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__shared_services_date_service__["a" /* DateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_services_date_service__["a" /* DateService */]) === "function" && _c || Object])
 ], WeightAddModal);
 
 var _a, _b, _c;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/weight-add.modal.js.map
+//# sourceMappingURL=weight-add.modal.js.map
 
 /***/ }),
 
-/***/ 626:
+/***/ 225:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_weights_modals_service__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_base_modal__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_weights_modals_service__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_base_modal__ = __webpack_require__(16);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WeightsDeleteModal; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4311,32 +3960,37 @@ var WeightsDeleteModal = (function (_super) {
 WeightsDeleteModal = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-weights-delete-modal',
-        template: __webpack_require__(816),
-        styles: [__webpack_require__(280), __webpack_require__(17)]
+        template: __webpack_require__(317),
+        styles: [__webpack_require__(94), __webpack_require__(7)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_weights_modals_service__["a" /* WeightsModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_weights_modals_service__["a" /* WeightsModalsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _b || Object])
 ], WeightsDeleteModal);
 
 var _a, _b;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/weights-delete.modal.js.map
+//# sourceMappingURL=weights-delete.modal.js.map
 
 /***/ }),
 
-/***/ 627:
+/***/ 226:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_weights_modals_service__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_global_values__ = __webpack_require__(134);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_modal__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_weights_modals_service__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_global_values__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_modal__ = __webpack_require__(16);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WeightsEditModal; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4407,18 +4061,18 @@ var WeightsEditModal = (function (_super) {
 WeightsEditModal = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-weights-edit-modal',
-        template: __webpack_require__(817),
-        styles: [__webpack_require__(280), __webpack_require__(17)]
+        template: __webpack_require__(318),
+        styles: [__webpack_require__(94), __webpack_require__(7)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_weights_modals_service__["a" /* WeightsModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_weights_modals_service__["a" /* WeightsModalsService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _b || Object])
 ], WeightsEditModal);
 
 var _a, _b;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/weights-edit.modal.js.map
+//# sourceMappingURL=weights-edit.modal.js.map
 
 /***/ }),
 
-/***/ 628:
+/***/ 227:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4444,25 +4098,30 @@ WeightsModals = __decorate([
     })
 ], WeightsModals);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/weights.modals.js.map
+//# sourceMappingURL=weights.modals.js.map
 
 /***/ }),
 
-/***/ 629:
+/***/ 228:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_entities_preview_entities__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_weights_modals_service__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_card_component__ = __webpack_require__(258);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_entities_preview_entities__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_weights_modals_service__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_card_component__ = __webpack_require__(74);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WeightsCardComponent; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4533,35 +4192,35 @@ __decorate([
 WeightsCardComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'coach-weights-card',
-        template: __webpack_require__(818),
-        styles: [__webpack_require__(440), __webpack_require__(17)]
+        template: __webpack_require__(319),
+        styles: [__webpack_require__(135), __webpack_require__(7)]
     }),
     __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_weights_modals_service__["a" /* WeightsModalsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_weights_modals_service__["a" /* WeightsModalsService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__["a" /* ServiceInjector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__["a" /* ServiceInjector */]) === "function" && _c || Object])
 ], WeightsCardComponent);
 
 var _a, _b, _c;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/weights-card.component.js.map
+//# sourceMappingURL=weights-card.component.js.map
 
 /***/ }),
 
-/***/ 630:
+/***/ 229:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core_src_metadata_ng_module__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__weights_list_component__ = __webpack_require__(393);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__weights_card_component__ = __webpack_require__(629);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_shared_module__ = __webpack_require__(184);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_weights_mock_service__ = __webpack_require__(391);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_weights_back_end_service__ = __webpack_require__(390);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_weights_modals_service__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__modals_weights_edit_modal__ = __webpack_require__(627);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__modals_weights_modals__ = __webpack_require__(628);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_forms__ = __webpack_require__(170);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__modals_weights_delete_modal__ = __webpack_require__(626);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__modals_weight_add_modal__ = __webpack_require__(625);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__weights_list_component__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__weights_card_component__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_shared_module__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_weights_mock_service__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_weights_back_end_service__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_weights_modals_service__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__modals_weights_edit_modal__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__modals_weights_modals__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_forms__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__modals_weights_delete_modal__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__modals_weight_add_modal__ = __webpack_require__(224);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WeightsModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -4589,7 +4248,7 @@ var WeightsModule = (function () {
     return WeightsModule;
 }());
 WeightsModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core_src_metadata_ng_module__["a" /* NgModule */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_1__weights_list_component__["a" /* WeightsListComponent */],
             __WEBPACK_IMPORTED_MODULE_4__weights_card_component__["a" /* WeightsCardComponent */],
@@ -4612,16 +4271,16 @@ WeightsModule = __decorate([
     })
 ], WeightsModule);
 
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/weights.module.js.map
+//# sourceMappingURL=weights.module.js.map
 
 /***/ }),
 
-/***/ 72:
+/***/ 28:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_injector__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_injector__ = __webpack_require__(5);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DateService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -4675,220 +4334,511 @@ DateService = __decorate([
 ], DateService);
 
 var _a;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/date.service.js.map
+//# sourceMappingURL=date.service.js.map
 
 /***/ }),
 
-/***/ 793:
-/***/ (function(module, exports) {
+/***/ 287:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = ""
+exports = module.exports = __webpack_require__(17)();
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 794:
-/***/ (function(module, exports) {
+/***/ 288:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = ""
+exports = module.exports = __webpack_require__(17)();
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 795:
+/***/ 296:
 /***/ (function(module, exports) {
 
 module.exports = "<coach-header></coach-header>\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
-/***/ 796:
+/***/ 297:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"price-add\" class=\"modal\" materialize=\"modal\" [materializeParams]=\"[modalParams]\"\n     [materializeActions]=\"modalActions\">\n  <div class=\"modal-content\">\n    <h3>{{'page.prices.modal.add.addPrice.title' | dictionary}} - {{getProductName()}}</h3>\n    <div class=\"row\">\n      <form materialize class=\"col s12\">\n        <div class=\"input-field col s6 m6 l3\">\n          <i class=\"material-icons prefix\">shop</i>\n          <label for=\"quantity\">{{'page.prices.modal.add.quantity.label' | dictionary}}</label>\n          <input id=\"quantity\" type=\"number\" step=\"0.1\" min=\"0\" [(ngModel)]=\"quantity\" name=\"quantity\">\n        </div>\n        <div class=\"input-field col s6 m6 l3\">\n          <i class=\"material-icons prefix\">payment</i>\n          <label for=\"price\">{{'page.prices.modal.add.price.label' | dictionary}}</label>\n          <input id=\"price\" type=\"number\" step=\"0.1\" min=\"0\" [(ngModel)]=\"price\" name=\"quantity\">\n        </div>\n        <div class=\"input-field col s12 m12 l6\">\n          <i class=\"material-icons prefix\">today</i>\n          <label for=\"price-date\">{{'page.prices.modal.add.date.label' | dictionary}}</label>\n          <input id=\"price-date\" type=\"date\" class=\"datepicker\" materialize=\"pickadate\"\n                 [(ngModel)]=\"priceDate\" name=\"priceDate\"\n                 [materializeParams]=\"[datePickerParams]\">\n        </div>\n        <div class=\"input-field col s12\">\n          <i class=\"material-icons prefix\">location_on</i>\n          <label for=\"place\">{{'page.prices.modal.add.place.label' | dictionary}}</label>\n          <input id=\"place\" type=\"text\" [(ngModel)]=\"place\" name=\"place\"/>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <coach-modal-footer leftButtonLabel=\"{{'global.add.label' | dictionary}}\"\n                      rightButtonLabel=\"{{'global.close.label' | dictionary}}\"\n                      (leftButtonAction)=\"onAddClick()\"\n                      (rightButtonAction)=\"onCloseModal()\"\n                      [isDataValid]=\"isDataValid()\"></coach-modal-footer>\n</div>\n"
 
 /***/ }),
 
-/***/ 797:
+/***/ 298:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"prices-delete\" class=\"modal\" materialize=\"modal\" [materializeParams]=\"[modalParams]\"\n     [materializeActions]=\"modalActions\">\n  <div class=\"modal-content\">\n\n    <h3>{{modalTitle}}</h3>\n\n    <form materialize class=\"col s12\">\n      <div class=\"row\">\n        <p *ngFor=\"let price of selectedPrices; let i = index\">\n          <input type=\"checkbox\" id=\"{{i}}\" name=\"{{i}}\" class=\"filled-in red-checkbox\" [(ngModel)]=\"checkboxesForPrices[i]\"/>\n          <label for=\"{{i}}\">{{getDateAsString(price.priceDate)}} - {{price.quantity}} x {{price.value}} {{'global.currency.label' | dictionary}}</label>\n        </p>\n      </div>\n    </form>\n  </div>\n\n  <coach-modal-footer leftButtonLabel=\"{{'global.delete.label' | dictionary}}\"\n                      rightButtonLabel=\"{{'global.close.label' | dictionary}}\"\n                      (leftButtonAction)=\"onDeleteClick()\"\n                      (rightButtonAction)=\"onCloseModal()\"\n                      [isDataValid]=\"isDataValid()\"></coach-modal-footer>\n</div>\n"
 
 /***/ }),
 
-/***/ 798:
+/***/ 299:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"prices-edit\" class=\"modal\" materialize=\"modal\" [materializeParams]=\"[modalParams]\"\n     [materializeActions]=\"modalActions\">\n  <div class=\"modal-content\">\n\n    <h3>{{modalTitle}}</h3>\n\n    <table class=\"striped\">\n      <thead>\n      <tr>\n        <!--<th data-field=\"Day\">{{'page.prices.day.label' | dictionary}}</th>-->\n        <th data-field=\"Place\">{{'page.prices.place.label' | dictionary}}</th>\n        <th data-field=\"Price\">{{'page.prices.price.label' | dictionary}}</th>\n        <th data-field=\"Quantity\">{{'page.prices.quantity.label' | dictionary}}</th>\n      </tr>\n      </thead>\n\n      <tbody>\n      <tr *ngFor=\"let price of selectedPrices; let i = index\">\n        <!--<td>{{dateService.parseDateToString(price.priceDate)}} r.</td>-->\n        <td>\n          <div class=\"input-field inline\">\n            <input type=\"text\" [(ngModel)]=\"price.place\" (ngModelChange)=\"addPriceIndexToChanged(i)\">\n          </div>\n        </td>\n        <td>\n          <div class=\"input-field inline\">\n            <input type=\"number\" step=\"0.1\" [(ngModel)]=\"price.value\" (ngModelChange)=\"addPriceIndexToChanged(i)\">\n          </div>\n        </td>\n        <td>\n          <div class=\"input-field inline\">\n            <input type=\"number\" step=\"0.1\" [(ngModel)]=\"price.quantity\" (ngModelChange)=\"addPriceIndexToChanged(i)\">\n          </div>\n        </td>\n      </tr>\n      </tbody>\n    </table>\n  </div>\n\n  <coach-modal-footer leftButtonLabel=\"{{'global.edit.label' | dictionary}}\"\n                      rightButtonLabel=\"{{'global.close.label' | dictionary}}\"\n                      (leftButtonAction)=\"onEditClick()\"\n                      (rightButtonAction)=\"onCloseModal()\"\n                      [isDataValid]=\"isDataValid()\"></coach-modal-footer>\n</div>\n"
 
 /***/ }),
 
-/***/ 799:
+/***/ 300:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"product-add\" class=\"modal\" materialize=\"modal\" [materializeParams]=\"[modalParams]\"\n     [materializeActions]=\"modalActions\">\n  <div class=\"modal-content\">\n\n    <h3>{{'page.prices.modal.add.addProduct.title' | dictionary}}</h3>\n\n    <div class=\"row\">\n      <form materialize class=\"col s12\">\n        <div class=\"input-field col s12\">\n          <i class=\"material-icons prefix\">receipt</i>\n          <label for=\"product-name\">{{'page.prices.modal.add.productName.label' | dictionary}}</label>\n          <input id=\"product-name\" type=\"text\" [(ngModel)]=\"productName\" name=\"productName\"/>\n        </div>\n        <div *ngIf=\"!canStoreFiles()\" class=\"input-field col s12\">\n          <i class=\"material-icons prefix\">perm_media</i>\n          <label for=\"screen-url\">Screen link</label>\n          <input id=\"screen-url\" type=\"text\" [(ngModel)]=\"screen\" name=\"screen\"/>\n        </div>\n        <div *ngIf=\"canStoreFiles() && !screen\" class=\"file-field input-field col s12\">\n          <div class=\"btn blue\">\n            <span>{{'page.prices.modal.add.selectPhoto.label' | dictionary}}</span>\n            <input #photoFile type=\"file\" accept=\"image/*\" (change)=\"uploadPhoto()\">\n          </div>\n          <div class=\"file-path-wrapper\">\n            <input class=\"file-path validate\" type=\"text\">\n          </div>\n        </div>\n      </form>\n    </div>\n    <div class=\"row\" *ngIf=\"screen\" >\n      <div class=\"col s12 center\">\n        <img [src]=\"screen\" style=\"height: 300px; width: 300px;\"/>\n      </div>\n    </div>\n  </div>\n\n  <coach-modal-footer leftButtonLabel=\"{{'global.add.label' | dictionary}}\"\n                      rightButtonLabel=\"{{'global.close.label' | dictionary}}\"\n                      (leftButtonAction)=\"onAddClick()\"\n                      (rightButtonAction)=\"onCloseModal()\"\n                      [isDataValid]=\"isDataValid()\"></coach-modal-footer>\n\n</div>\n"
 
 /***/ }),
 
-/***/ 800:
+/***/ 301:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"product-delete\" class=\"modal\" materialize=\"modal\" [materializeParams]=\"[modalParams]\"\n     [materializeActions]=\"modalActions\">\n  <div class=\"modal-content\">\n\n    <h3>{{modalTitle}}</h3>\n\n    <div class=\"col s12\">\n      <div class=\"row\">\n        <p>{{'page.prices.modal.deleteProduct.content' | dictionary}}</p>\n      </div>\n    </div>\n  </div>\n\n  <coach-modal-footer leftButtonLabel=\"{{'global.delete.label' | dictionary}}\"\n                      rightButtonLabel=\"{{'global.close.label' | dictionary}}\"\n                      (leftButtonAction)=\"onDeleteClick()\"\n                      (rightButtonAction)=\"onCloseModal()\"\n                      [isDataValid]=\"isDataValid()\"></coach-modal-footer>\n</div>\n"
 
 /***/ }),
 
-/***/ 801:
+/***/ 302:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"product-edit\" class=\"modal\" materialize=\"modal\" [materializeParams]=\"[modalParams]\"\n     [materializeActions]=\"modalActions\">\n  <div class=\"modal-content\">\n\n    <h3>{{'page.prices.modal.edit.title' | dictionary}}</h3>\n\n    <div class=\"row\">\n      <form materialize class=\"col s12\">\n        <div class=\"input-field col s12\">\n          <i class=\"material-icons prefix\">receipt</i>\n          <label for=\"product-name\">{{'page.prices.modal.add.productName.label' | dictionary}}</label>\n          <input id=\"product-name\" type=\"text\" [(ngModel)]=\"productName\" name=\"productName\"/>\n        </div>\n        <div *ngIf=\"!canStoreFiles()\" class=\"input-field col s12\">\n          <i class=\"material-icons prefix\">perm_media</i>\n          <label for=\"screen-url\">Screen link</label>\n          <input id=\"screen-url\" type=\"text\" [(ngModel)]=\"screen\" name=\"screen\"/>\n        </div>\n        <div *ngIf=\"canStoreFiles()\" class=\"file-field input-field col s12\">\n          <div class=\"btn blue\">\n            <span>{{'page.prices.modal.add.selectPhoto.label' | dictionary}}</span>\n            <input type=\"file\">\n          </div>\n          <div class=\"file-path-wrapper\">\n            <input class=\"file-path\" type=\"text\" [(ngModel)]=\"screen\" name=\"screen\">\n          </div>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <coach-modal-footer leftButtonLabel=\"{{'global.edit.label' | dictionary}}\"\n                      rightButtonLabel=\"{{'global.close.label' | dictionary}}\"\n                      (leftButtonAction)=\"onEditClick()\"\n                      (rightButtonAction)=\"onCloseModal()\"\n                      [isDataValid]=\"isDataValid()\"></coach-modal-footer>\n</div>\n"
 
 /***/ }),
 
-/***/ 802:
+/***/ 303:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"shopping-list\" class=\"modal\" materialize=\"modal\" [materializeParams]=\"[modalParams]\"\n     [materializeActions]=\"modalActions\">\n  <div class=\"modal-content\">\n\n    <h3>{{'page.prices.modal.add.shoppingList.title' | dictionary}}</h3>\n\n    <div *ngIf=\"!products\" class=\"col s12 center no-data small\">\n      <div class=\"row\">\n        <i class=\"medium material-icons\">info_outline</i>\n      </div>\n      <div class=\"row\">\n        <p>{{'page.prices.list.noData.info' | dictionary}} <a (click)=\"onAddProductClick()\">{{'page.prices.list.noData.click.info'\n          | dictionary}}</a></p>\n      </div>\n    </div>\n\n    <form materialize *ngIf=\"products\">\n      <div class=\"row\">\n        <div class=\"input-field col s12 m6 l6\">\n          <i class=\"material-icons prefix\">location_on</i>\n          <label for=\"place\">{{'page.prices.modal.add.place.label' | dictionary}}</label>\n          <input id=\"place\" type=\"text\" [(ngModel)]=\"place\" name=\"place\"/>\n        </div>\n        <div class=\"input-field col s12 m6 l6\">\n          <i class=\"material-icons prefix\">today</i>\n          <label for=\"shopping-date\">{{'page.prices.modal.add.date.label' | dictionary}}</label>\n          <input id=\"shopping-date\" type=\"date\" class=\"datepicker\" materialize=\"pickadate\"\n                 [(ngModel)]=\"shoppingDate\" name=\"priceDate\"\n                 [materializeParams]=\"[datePickerParams]\">\n        </div>\n      </div>\n\n      <table class=\"striped\">\n        <thead>\n        <tr>\n          <th data-field=\"Product\">{{'page.prices.product.label' | dictionary}}</th>\n          <th data-field=\"Price\">{{'page.prices.price.label' | dictionary}}</th>\n          <th data-field=\"Quantity\">{{'page.prices.quantity.label' | dictionary}}</th>\n          <th data-field=\"Delete\" class=\"icons\">{{'global.delete.label' | dictionary}}</th>\n        </tr>\n        </thead>\n        <tbody>\n        <tr *ngFor=\"let price of shoppingListToAdd.prices; let i = index\">\n          <td>\n            <div class=\"input-field inline\">\n              <label for=\"{{'product_' + (i + 1)}}\">{{'page.prices.product.label' | dictionary}} #{{(i + 1)}}</label>\n              <input type=\"text\" [(ngModel)]=\"productNamesForPrices[i]\" class=\"autocomplete\" name=\"{{'product_' + (i + 1)}}\" id=\"{{'product_' + (i + 1)}}\" materialize=\"autocomplete\" [materializeParams]=\"[autoCompleteData]\">\n            </div>\n          </td>\n          <td>\n            <div class=\"input-field inline\">\n              <label for=\"{{'price' + (i + 1)}}\">{{'page.prices.price.label' | dictionary}} #{{(i + 1)}}</label>\n              <input type=\"number\" step=\"0.1\" min=\"0\" [(ngModel)]=\"price.value\" name=\"{{'price' + (i + 1)}}\" id=\"{{'price' + (i + 1)}}\">\n            </div>\n          </td>\n          <td>\n            <div class=\"input-field inline\">\n              <label for=\"{{'quantity' + (i + 1)}}\">{{'page.prices.quantity.label' | dictionary}} #{{(i + 1)}}</label>\n              <input type=\"number\" step=\"0.1\" min=\"0\" [(ngModel)]=\"price.quantity\" name=\"{{'quantity' + (i + 1)}}\" id=\"{{'quantity' + (i + 1)}}\">\n            </div>\n          </td>\n          <td class=\"icons\">\n            <i (click)=\"onDeletePrice(i)\" class=\"small material-icons material-button tooltipped\"\n               materialize=\"tooltip\" data-position=\"bottom\" data-delay=\"50\"\n               [attr.data-tooltip]=\"'page.prices.deletePrice.tooltip' | dictionary\">delete</i>\n          </td>\n        </tr>\n        </tbody>\n      </table>\n      <a (click)=\"addNewEmptyPriceToList()\">{{'page.prices.modal.add.addPrice.title' | dictionary}}</a>\n    </form>\n  </div>\n\n  <coach-modal-footer leftButtonLabel=\"{{'global.add.label' | dictionary}}\"\n                      rightButtonLabel=\"{{'global.close.label' | dictionary}}\"\n                      (leftButtonAction)=\"onAddShoppingListClick()\"\n                      (rightButtonAction)=\"onCloseModal()\"\n                      [isDataValid]=\"isDataValid()\"></coach-modal-footer>\n</div>\n"
 
 /***/ }),
 
-/***/ 803:
+/***/ 304:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"card medium grey lighten-3 hoverable\">\n  <div class=\"card-image waves-effect waves-block waves-light\">\n    <img class=\"activator\" [src]=\"productPreview.screenUrl\">\n  </div>\n  <div class=\"card-content prices-card-content\">\n    <span class=\"card-title grey-text activator text-darken-4\">\n      <p>{{productPreview.productName}}</p>\n      <i class=\"material-icons right\">more_vert</i>\n    </span>\n    <span class=\"card-subtitle\">\n      <p>{{'page.prices.avgPrice.label' | dictionary}} {{productPreview.average}} {{'global.currency.label' | dictionary}}</p>\n    </span>\n    <div class=\"card-title-icons\">\n      <i (click)=\"onEditProductClick()\" class=\"small material-icons tooltipped\"\n         materialize=\"tooltip\" data-position=\"bottom\" data-delay=\"50\"\n         [attr.data-tooltip]=\"'page.prices.editProduct.tooltip' | dictionary\">mode_edit</i>\n      <i (click)=\"onDeleteProductClick()\" class=\"small material-icons tooltipped\"\n         materialize=\"tooltip\" data-position=\"bottom\" data-delay=\"50\"\n         [attr.data-tooltip]=\"'page.prices.deleteProduct.tooltip' | dictionary\">delete</i>\n    </div>\n  </div>\n\n  <div class=\"card-reveal\">\n    <span class=\"card-title grey-text text-darken-4\">{{productPreview.productName}}\n      <i class=\"material-icons right\">close</i>\n    </span>\n    <table *ngIf=\"prices.length > 0\">\n      <thead>\n      <tr>\n        <th data-field=\"Day\">{{'page.prices.day.label' | dictionary}}</th>\n        <th data-field=\"Place\">{{'page.prices.place.label' | dictionary}}</th>\n        <th data-field=\"Price\">{{'page.prices.price.label' | dictionary}}</th>\n        <th data-field=\"Quantity\">{{'page.prices.quantity.label' | dictionary}}</th>\n      </tr>\n      </thead>\n      <tbody>\n      <tr *ngFor=\"let price of prices\">\n        <td>{{dateService.parseDateToString(price.priceDate)}} r.</td>\n        <td>{{price.place}}</td>\n        <td>{{price.value}} {{'global.currency.label' | dictionary}}</td>\n        <td>{{price.quantity}}</td>\n      </tr>\n      </tbody>\n    </table>\n\n    <div class=\"row icons-container\" *ngIf=\"prices.length > 0\">\n      <div class=\"col s12\">\n        <i (click)=\"onAddPriceClick()\" class=\"edit-button small material-icons tooltipped\" materialize=\"tooltip\"\n           data-position=\"bottom\" data-delay=\"50\"\n           [attr.data-tooltip]=\"'page.prices.addPrice.tooltip' | dictionary\">note_add</i>\n        <i (click)=\"onEditPricesClick()\" class=\"edit-button small material-icons tooltipped\" materialize=\"tooltip\"\n           data-position=\"bottom\" data-delay=\"50\"\n           [attr.data-tooltip]=\"'page.prices.editPrices.tooltip' | dictionary\">mode_edit</i>\n        <i (click)=\"onDeletePricesClick()\" class=\"delete-button small material-icons tooltipped\"\n           materialize=\"tooltip\"\n           data-position=\"bottom\" data-delay=\"50\"\n           [attr.data-tooltip]=\"'page.prices.deletePrices.tooltip' | dictionary\">delete</i>\n      </div>\n    </div>\n\n    <div *ngIf=\"prices.length === 0\" class=\"col s12 center no-data small\">\n      <div class=\"row\">\n        <i class=\"medium material-icons\">info_outline</i>\n      </div>\n      <div class=\"row\">\n        <p>{{'page.prices.productPrices.noData.info' | dictionary}} <a (click)=\"onAddPriceClick()\">{{'page.prices.productPrices.noData.click.info'\n          | dictionary}}</a></p>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
-/***/ 804:
+/***/ 305:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div *ngIf=\"isLoading\">\n      <coach-circle-loader></coach-circle-loader>\n    </div>\n\n    <div *ngIf=\"!isLoading\">\n      <div *ngFor=\"let productPreview of productPreviews\" class=\"col l6 m12 s12\">\n        <coach-prices-card [productPreview]=\"productPreview\"></coach-prices-card>\n      </div>\n\n      <div *ngIf=\"productPreviews.length === 0\" class=\"col s12 center no-data\">\n        <div class=\"row\">\n          <i class=\"large material-icons\">info_outline</i>\n        </div>\n        <div class=\"row\">\n          <p>{{'page.prices.list.noData.info' | dictionary}} <a (click)=\"onAddProductClick()\">{{'page.prices.list.noData.click.info'\n            | dictionary}}</a></p>\n        </div>\n      </div>\n    </div>\n\n    <div id=\"fab\" class=\"fixed-action-btn vertical click-to-toggle\" style=\"bottom: 45px; right: 24px;\">\n      <a class=\"btn-floating btn-large waves-effect waves-light blue\">\n        <i class=\"material-icons\">menu</i>\n      </a>\n      <ul>\n        <li materialize=\"tooltip\" data-position=\"left\" data-delay=\"50\" [attr.data-tooltip]=\"'page.prices.addProduct.tooltip' | dictionary\"\n            (click)=\"onAddProductClick()\"><a class=\"btn-floating red\"><i class=\"material-icons\">add</i></a></li>\n        <li materialize=\"tooltip\" data-position=\"left\" data-delay=\"50\" [attr.data-tooltip]=\"'page.weights.addShoppingList.tooltip' | dictionary\"\n            (click)=\"onAddShoppingListClick()\"><a class=\"btn-floating green darken-1\"><i class=\"material-icons\">toc</i></a>\n        </li>\n      </ul>\n    </div>\n\n  </div>\n</div>\n\n<coach-prices-modals></coach-prices-modals>\n"
 
 /***/ }),
 
-/***/ 805:
+/***/ 306:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"report-add\" class=\"modal\" materialize=\"modal\" [materializeParams]=\"[modalParams]\"\n     [materializeActions]=\"modalActions\">\n  <div class=\"modal-content\">\n    <h3>{{'page.reports.modal.add.title' | dictionary}}</h3>\n    <div class=\"row\">\n      <form materialize class=\"col s12\">\n        <div class=\"row\">\n          <div class=\"input-field col s6\">\n            <i class=\"material-icons prefix\">today</i>\n            <label for=\"start-date\">{{'page.reports.modal.startDate.label' | dictionary}}</label>\n            <input id=\"start-date\" type=\"date\" class=\"datepicker\" materialize=\"pickadate\"\n              [(ngModel)]=\"startDate\" name=\"startDate\" [materializeParams]=\"[datePickerParams]\">\n          </div>\n          <div class=\"input-field col s6\">\n            <i class=\"material-icons prefix\">today</i>\n            <label for=\"end-date\">{{'page.reports.modal.endDate.label' | dictionary}}</label>\n            <input id=\"end-date\" type=\"date\" class=\"datepicker\" materialize=\"pickadate\"\n                   [(ngModel)]=\"endDate\" name=\"endDate\" [materializeParams]=\"[datePickerParams]\">\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"input-field col s12\">\n            <i class=\"material-icons prefix\">receipt</i>\n            <textarea id=\"report-content\" class=\"materialize-textarea\" [(ngModel)]=\"reportContent\" name=\"reportContent\" length=\"2000\" materialize=\"characterCounter\"></textarea>\n            <label for=\"report-content\">{{'page.reports.modal.reportContent.label' | dictionary}}</label>\n          </div>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <coach-modal-footer leftButtonLabel=\"{{'global.add.label' | dictionary}}\"\n                      rightButtonLabel=\"{{'global.close.label' | dictionary}}\"\n                      (leftButtonAction)=\"onAddClick()\"\n                      (rightButtonAction)=\"onCloseModal()\"\n                      [isDataValid]=\"isDataValid()\"></coach-modal-footer>\n\n</div>\n"
 
 /***/ }),
 
-/***/ 806:
+/***/ 307:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"reports-delete\" class=\"modal\" materialize=\"modal\" [materializeParams]=\"[modalParams]\"\n     [materializeActions]=\"modalActions\">\n  <div class=\"modal-content\">\n\n    <h3>{{modalTitle}}</h3>\n\n    <div class=\"col s12\">\n      <div class=\"row\">\n        <p>{{'page.reports.modal.delete.content' | dictionary}}</p>\n      </div>\n    </div>\n  </div>\n\n  <coach-modal-footer leftButtonLabel=\"{{'global.delete.label' | dictionary}}\"\n                      rightButtonLabel=\"{{'global.close.label' | dictionary}}\"\n                      (leftButtonAction)=\"onDeleteClick()\"\n                      (rightButtonAction)=\"onCloseModal()\"\n                      [isDataValid]=\"isDataValid()\"></coach-modal-footer>\n</div>\n"
 
 /***/ }),
 
-/***/ 807:
+/***/ 308:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"report-edit\" class=\"modal\" materialize=\"modal\" [materializeParams]=\"[modalParams]\"\n     [materializeActions]=\"modalActions\">\n  <div class=\"modal-content\">\n    <h3>{{modalTitle}}</h3>\n    <div class=\"row\">\n      <form materialize class=\"col s12\">\n        <div class=\"row\">\n          <div class=\"input-field col s6\">\n            <i class=\"material-icons prefix\">today</i>\n            <label for=\"start-date\">{{'page.reports.modal.startDate.label' | dictionary}}</label>\n            <input id=\"start-date\" type=\"date\" class=\"datepicker\" materialize=\"pickadate\"\n                   [(ngModel)]=\"startDate\" name=\"startDate\" [materializeParams]=\"[datePickerParams]\">\n          </div>\n          <div class=\"input-field col s6\">\n            <i class=\"material-icons prefix\">today</i>\n            <label for=\"end-date\">{{'page.reports.modal.endDate.label' | dictionary}}</label>\n            <input id=\"end-date\" type=\"date\" class=\"datepicker\" materialize=\"pickadate\"\n                   [(ngModel)]=\"endDate\" name=\"endDate\" [materializeParams]=\"[datePickerParams]\">\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"input-field col s12\">\n            <i class=\"material-icons prefix\">receipt</i>\n            <textarea id=\"report-content\" class=\"materialize-textarea active\" [(ngModel)]=\"reportContent\" name=\"reportContent\" length=\"2000\" materialize=\"characterCounter\"></textarea>\n            <label for=\"report-content\">{{'page.reports.modal.reportContent.label' | dictionary}}</label>\n          </div>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <coach-modal-footer leftButtonLabel=\"{{'global.edit.label' | dictionary}}\"\n                      rightButtonLabel=\"{{'global.close.label' | dictionary}}\"\n                      (leftButtonAction)=\"onEditClick()\"\n                      (rightButtonAction)=\"onCloseModal()\"\n                      [isDataValid]=\"isDataValid()\"></coach-modal-footer>\n\n</div>\n"
 
 /***/ }),
 
-/***/ 808:
+/***/ 309:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"card grey lighten-3 hoverable\">\n  <div class=\"card-content\">\n    <span class=\"card-title\">\n      <p>{{previewTitle}}</p>\n      <div class=\"card-title-icons\">\n        <i (click)=\"onEditClick()\" class=\"small material-icons tooltipped\" materialize=\"tooltip\"\n           data-position=\"bottom\" data-delay=\"50\" [attr.data-tooltip]=\"'page.reports.edit.tooltip' | dictionary\">mode_edit</i>\n        <i (click)=\"onDeleteClick()\" class=\"small material-icons tooltipped\" materialize=\"tooltip\"\n           data-position=\"bottom\" data-delay=\"50\" [attr.data-tooltip]=\"'page.reports.delete.tooltip' | dictionary\">delete</i>\n      </div>\n    </span>\n    <img class=\"right tooltipped\" [ngClass]=\"arrowImageClass\" src=\"assets/img/arrow_down.png\"\n         (click)=\"onReportClick()\"/>\n  </div>\n  <div *ngIf=\"showData\" class=\"card-action\" [ngClass]=\"getLoadingStyle()\">\n    <div *ngIf=\"isLoading\">\n      <coach-strip-loader></coach-strip-loader>\n    </div>\n    <div *ngIf=\"!isLoading\">\n      {{report.content}}\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
-/***/ 809:
+/***/ 310:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div *ngIf=\"isLoading\">\n      <coach-circle-loader></coach-circle-loader>\n    </div>\n\n    <div *ngIf=\"!isLoading\">\n      <div *ngFor=\"let reportPreview of reportPreviews\" class=\"col s12\">\n        <coach-report-card [reportPreview]=\"reportPreview\"></coach-report-card>\n      </div>\n\n      <div *ngIf=\"reportPreviews.length === 0\" class=\"col s12 center no-data\">\n        <div class=\"row\">\n          <i class=\"large material-icons\">info_outline</i>\n        </div>\n        <div class=\"row\">\n          <p>{{'page.reports.list.noData.info' | dictionary}} <a (click)=\"onAddClick()\">{{'page.reports.list.noData.click.info' | dictionary}}</a></p>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"fixed-action-btn tooltipped\" materialize=\"tooltip\"\n         data-position=\"left\" data-delay=\"50\" [attr.data-tooltip]=\"'page.reports.add.tooltip' | dictionary\"\n         style=\"bottom: 45px; right: 24px;\"\n         (click)=\"onAddClick()\">\n      <a class=\"btn-floating btn-large waves-effect waves-light blue\">\n        <i class=\"large material-icons\">add</i>\n      </a>\n    </div>\n\n  </div>\n</div>\n\n<coach-report-modals></coach-report-modals>\n"
 
 /***/ }),
 
-/***/ 810:
+/***/ 311:
 /***/ (function(module, exports) {
 
 module.exports = "<div style=\"display: block\">\n  <canvas baseChart height=\"60\"\n          [datasets]=\"chartData\"\n          [labels]=\"chartLabels\"\n          [options]=\"chartOptions\"\n          [colors]=\"chartColors\"\n          [legend]=\"isChartLegend\"\n          [chartType]=\"chartType\">\n  </canvas>\n</div>\n"
 
 /***/ }),
 
-/***/ 811:
+/***/ 312:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"preloader-wrapper big active\">\n  <div class=\"spinner-layer spinner-blue-only\">\n    <div class=\"circle-clipper left\">\n      <div class=\"circle\"></div>\n    </div>\n    <div class=\"gap-patch\">\n      <div class=\"circle\"></div>\n    </div>\n    <div class=\"circle-clipper right\">\n      <div class=\"circle\"></div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
-/***/ 812:
+/***/ 313:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"progress\">\n  <div class=\"indeterminate\"></div>\n</div>\n"
 
 /***/ }),
 
-/***/ 813:
+/***/ 314:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"modal-footer\">\n  <a class=\"modal-action modal-close waves-effect waves-red btn-flat\" (click)=\"onRightButtonClick()\">{{rightButtonLabel}}</a>\n  <a class=\"modal-action modal-close waves-effect waves-teal btn-flat\" (click)=\"onLeftButtonClick()\" [class.disabled]=\"!isDataValid\">{{leftButtonLabel}}</a>\n</div>\n"
 
 /***/ }),
 
-/***/ 814:
+/***/ 315:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"container\">\n  <div class=\"row\">\n\n    <div *ngFor=\"let cycle of getCycles(); let i = index\" class=\"col s12\">\n      <div class=\"card grey lighten-3\">\n        <div class=\"card-content\">\n          <span class=\"card-title\">Cykl {{ i + 1}}</span>\n        </div>\n        <div *ngIf=\"showContent(i)\" class=\"center card-action\">\n          <table *ngFor=\"let set of cycle.sets\" class=\"responsive-table\">\n            <thead>\n            <tr>\n              <th data-field=\"Set\">{{set.setName | uppercase}}</th>\n              <th *ngFor=\"let training of set.trainings\" data-field=\"Day 01\">{{training.trainingDate | date: \"dd-MM-yyyy\"}}</th>\n            </tr>\n            </thead>\n            <tbody>\n            <!--TODO SPARSUJ EXERCISE'Y DOBRA FUNKCJA-->\n            <tr *ngFor=\"let exercise of set.exercises\">\n              <td>{{exercise.exerciseName}}</td>\n              <td *ngFor=\"let session of exercise.exerciseSessions\">\n                <div *ngFor=\"let series of session.series\">\n                  {{series.repeats}} x {{series.weight}} kg\n                </div>\n              </td>\n            </tr>\n            </tbody>\n          </table>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"fixed-action-btn\" style=\"bottom: 45px; right: 24px;\">\n      <a class=\"btn-floating btn-large waves-effect waves-light blue\">\n        <i class=\"large material-icons\">add</i>\n      </a>\n    </div>\n\n  </div>\n</div>\n"
 
 /***/ }),
 
-/***/ 815:
+/***/ 316:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"weight-add\" class=\"modal\" materialize=\"modal\" [materializeParams]=\"[modalParams]\"\n     [materializeActions]=\"modalActions\">\n  <div class=\"modal-content\">\n\n    <h3>{{'page.weights.modal.add.title' | dictionary}}</h3>\n\n    <div class=\"row\">\n      <form materialize class=\"col s12\">\n        <div class=\"row\">\n          <div class=\"input-field col s6\">\n            <i class=\"material-icons prefix\">assignment_ind</i>\n            <label for=\"weight\">{{'page.weights.modal.add.weight.label' | dictionary}}</label>\n            <input id=\"weight\" type=\"number\" step=\"0.1\" min=\"0\" [(ngModel)]=\"weightValue\" name=\"weightValue\">\n          </div>\n          <div class=\"input-field col s6\">\n            <i class=\"material-icons prefix\">today</i>\n            <label for=\"measurement-date\">{{'page.weights.modal.add.date.label' | dictionary}}</label>\n            <input id=\"measurement-date\" type=\"date\" class=\"datepicker\" materialize=\"pickadate\"\n                   [(ngModel)]=\"measurementDate\" name=\"measurementDate\"\n                   [materializeParams]=\"[datePickerParams]\">\n          </div>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <coach-modal-footer leftButtonLabel=\"{{'global.add.label' | dictionary}}\"\n                      rightButtonLabel=\"{{'global.close.label' | dictionary}}\"\n                      (leftButtonAction)=\"onAddClick()\"\n                      (rightButtonAction)=\"onCloseModal()\"\n                      [isDataValid]=\"isDataValid()\"></coach-modal-footer>\n\n</div>\n"
 
 /***/ }),
 
-/***/ 816:
+/***/ 317:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"weights-delete\" class=\"modal fourty-width-modal\" materialize=\"modal\" [materializeParams]=\"[modalParams]\"\n     [materializeActions]=\"modalActions\">\n  <div class=\"modal-content\">\n\n    <h3>{{modalTitle}}</h3>\n\n    <form materialize class=\"col s12\">\n      <div class=\"row\">\n        <p *ngFor=\"let weight of selectedWeights; let i = index\">\n          <input type=\"checkbox\" id=\"{{formattedDays[i]}}\" name=\"{{formattedDays[i]}}\" class=\"filled-in red-checkbox\"\n                 [(ngModel)]=\"checkboxesForWeights[i]\"/>\n          <label for=\"{{formattedDays[i]}}\">{{formattedDays[i]}} - {{weight.value}}</label>\n        </p>\n      </div>\n    </form>\n  </div>\n\n  <coach-modal-footer leftButtonLabel=\"{{'global.delete.label' | dictionary}}\"\n                      rightButtonLabel=\"{{'global.close.label' | dictionary}}\"\n                      (leftButtonAction)=\"onDeleteClick()\"\n                      (rightButtonAction)=\"onCloseModal()\"\n                      [isDataValid]=\"isDataValid()\"></coach-modal-footer>\n</div>\n"
 
 /***/ }),
 
-/***/ 817:
+/***/ 318:
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"weights-edit\" class=\"modal fourty-width-modal\" materialize=\"modal\" [materializeParams]=\"[modalParams]\"\n     [materializeActions]=\"modalActions\">\n  <div class=\"modal-content\">\n    <h3>{{modalTitle}}</h3>\n    <table class=\"striped\">\n      <thead>\n      <tr>\n        <th data-field=\"day\">{{'page.weights.modal.edit.day.label' | dictionary}}</th>\n        <th data-field=\"measurement\">{{'page.weights.modal.edit.measurement.label' | dictionary}}</th>\n      </tr>\n      </thead>\n\n      <tbody>\n      <tr *ngFor=\"let weight of selectedWeights; let i = index\">\n        <td class=\"half-width-cell\">{{formattedDays[i]}}</td>\n        <td class=\"half-width-cell\">\n          <div class=\"input-field inline\">\n            <input type=\"number\" step=\"0.1\" [(ngModel)]=\"weight.value\" (ngModelChange)=\"addDayIndexToChanged(i)\">\n          </div>\n        </td>\n      </tr>\n      </tbody>\n    </table>\n  </div>\n  <coach-modal-footer leftButtonLabel=\"{{'global.edit.label' | dictionary}}\"\n                      rightButtonLabel=\"{{'global.close.label' | dictionary}}\"\n                      (leftButtonAction)=\"onEditClick()\"\n                      (rightButtonAction)=\"onCloseModal()\"\n                      [isDataValid]=\"isDataValid()\"></coach-modal-footer>\n</div>\n"
 
 /***/ }),
 
-/***/ 818:
+/***/ 319:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card grey lighten-3 hoverable\">\n  <div class=\"card-content\">\n    <span class=\"card-title\">\n      <p>{{previewTitle}}</p>\n      <div class=\"card-title-icons\">\n        <i (click)=\"onEditClick()\" class=\"small material-icons tooltipped\" materialize=\"tooltip\"\n           data-position=\"bottom\" data-delay=\"50\"\n           [attr.data-tooltip]=\"'page.weights.edit.tooltip' | dictionary\">mode_edit</i>\n        <i (click)=\"onDeleteClick()\" class=\"small material-icons tooltipped\" materialize=\"tooltip\"\n           data-position=\"bottom\" data-delay=\"50\"\n           [attr.data-tooltip]=\"'page.weights.delete.tooltip' | dictionary\">delete</i>\n      </div>\n    </span>\n    <img class=\"right tooltipped\" [ngClass]=\"arrowImageClass\" src=\"assets/img/arrow_down.png\"\n         (click)=\"onWeightsClick()\"/>\n  </div>\n  <div *ngIf=\"showData\" class=\"center card-action\" [ngClass]=\"getLoadingStyle()\">\n    <div *ngIf=\"isLoading\">\n      <coach-strip-loader></coach-strip-loader>\n    </div>\n    <div *ngIf=\"!isLoading\">\n      <coach-line-chart [chartData]=\"chartData\" [chartLabels]=\"chartLabels\"></coach-line-chart>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"card grey lighten-3 hoverable\">\n  <div class=\"card-content\">\n    <span class=\"card-title\">\n      <p>{{previewTitle}}</p>\n      <div class=\"card-title-icons\">\n        <i (click)=\"onEditClick()\" class=\"small material-icons tooltipped\" materialize=\"tooltip\"\n           data-position=\"bottom\" data-delay=\"50\"\n           [attr.data-tooltip]=\"'page.weights.edit.tooltip' | dictionary\">mode_edit</i>\n        <i (click)=\"onDeleteClick()\" class=\"small material-icons tooltipped\" materialize=\"tooltip\"\n           data-position=\"bottom\" data-delay=\"50\"\n           [attr.data-tooltip]=\"'page.weights.delete.tooltip' | dictionary\">delete</i>\n      </div>\n    </span>\n    <img class=\"right\" [ngClass]=\"arrowImageClass\" src=\"assets/img/arrow_down.png\"\n         (click)=\"onWeightsClick()\"/>\n  </div>\n  <div *ngIf=\"showData\" class=\"center card-action\" [ngClass]=\"getLoadingStyle()\">\n    <div *ngIf=\"isLoading\">\n      <coach-strip-loader></coach-strip-loader>\n    </div>\n    <div *ngIf=\"!isLoading\">\n      <coach-line-chart [chartData]=\"chartData\" [chartLabels]=\"chartLabels\"></coach-line-chart>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
-/***/ 819:
+/***/ 320:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div *ngIf=\"isLoading\">\n      <coach-circle-loader></coach-circle-loader>\n    </div>\n\n    <div *ngIf=\"!isLoading\">\n      <div *ngFor=\"let weightsPreview of weightsPreviews\" class=\"col s12\">\n        <coach-weights-card [weightsPreview]=\"weightsPreview\"></coach-weights-card>\n      </div>\n\n      <div *ngIf=\"weightsPreviews.length === 0\" class=\"col s12 center no-data\">\n        <div class=\"row\">\n          <i class=\"large material-icons\">info_outline</i>\n        </div>\n        <div class=\"row\">\n          <p>{{'page.weights.list.noData.info' | dictionary}} <a (click)=\"onAddClick()\">{{'page.weights.list.noData.click.info'\n            | dictionary}}</a></p>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"fixed-action-btn tooltipped\" materialize=\"tooltip\"\n         data-position=\"left\" data-delay=\"50\" [attr.data-tooltip]=\"'page.weights.add.tooltip' | dictionary\"\n         style=\"bottom: 45px; right: 24px;\"\n         (click)=\"onAddClick()\">\n      <a class=\"btn-floating btn-large waves-effect waves-light blue\">\n        <i class=\"large material-icons\">add</i>\n      </a>\n    </div>\n  </div>\n</div>\n\n<coach-weights-modals></coach-weights-modals>\n"
 
 /***/ }),
 
-/***/ 88:
-/***/ (function(module, exports) {
+/***/ 34:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "#shopping-list table {\n  margin-bottom: 20px; }\n  #shopping-list table th.icons {\n    text-align: center; }\n  #shopping-list table td {\n    vertical-align: top; }\n    #shopping-list table td.icons {\n      padding-top: 35px;\n      text-align: center; }\n\n#shopping-list a {\n  cursor: pointer; }\n\n.my-drop-zone {\n  border: dotted 3px lightgray; }\n\n.nv-file-over {\n  border: dotted 3px red; }\n\n/* Default class applied to drop zones on over */\n"
+exports = module.exports = __webpack_require__(17)();
+// imports
+
+
+// module
+exports.push([module.i, "#shopping-list table {\n  margin-bottom: 20px; }\n  #shopping-list table th.icons {\n    text-align: center; }\n  #shopping-list table td {\n    vertical-align: top; }\n    #shopping-list table td.icons {\n      padding-top: 35px;\n      text-align: center; }\n\n#shopping-list a {\n  cursor: pointer; }\n\n.my-drop-zone {\n  border: dotted 3px lightgray; }\n\n.nv-file-over {\n  border: dotted 3px red; }\n\n/* Default class applied to drop zones on over */\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 9:
+/***/ 36:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__weights_services_weights_back_end_service__ = __webpack_require__(390);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__weights_services_weights_mock_service__ = __webpack_require__(391);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(260);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__reports_services_report_back_end_service__ = __webpack_require__(384);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__reports_services_report_mock_service__ = __webpack_require__(385);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dictionary_mock_service__ = __webpack_require__(259);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__dictionary_back_end_service__ = __webpack_require__(387);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__prices_services_prices_back_end_service__ = __webpack_require__(380);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__prices_services_prices_mock_service__ = __webpack_require__(381);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportModalsService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var ReportModalsService = (function () {
+    function ReportModalsService() {
+        this.addReport = new __WEBPACK_IMPORTED_MODULE_1_rxjs__["Subject"]();
+        this.editReport = new __WEBPACK_IMPORTED_MODULE_1_rxjs__["Subject"]();
+        this.deleteReport = new __WEBPACK_IMPORTED_MODULE_1_rxjs__["Subject"]();
+        this.refreshPage = new __WEBPACK_IMPORTED_MODULE_1_rxjs__["Subject"]();
+    }
+    ReportModalsService.prototype.callAddReport = function () {
+        this.addReport.next(null);
+    };
+    ReportModalsService.prototype.callEditReport = function (report, modalTitle) {
+        this.editReport.next({ report: report, modalTitle: modalTitle });
+    };
+    ReportModalsService.prototype.callDeleteReport = function (report, modalTitle) {
+        this.deleteReport.next({ report: report, modalTitle: modalTitle });
+    };
+    ReportModalsService.prototype.callRefreshPage = function () {
+        this.refreshPage.next(null);
+    };
+    return ReportModalsService;
+}());
+ReportModalsService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])()
+], ReportModalsService);
+
+//# sourceMappingURL=report-modals.service.js.map
+
+/***/ }),
+
+/***/ 37:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WeightsModalsService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var WeightsModalsService = (function () {
+    function WeightsModalsService() {
+        this.addWeight = new __WEBPACK_IMPORTED_MODULE_0_rxjs__["Subject"]();
+        this.editWeights = new __WEBPACK_IMPORTED_MODULE_0_rxjs__["Subject"]();
+        this.deleteWeights = new __WEBPACK_IMPORTED_MODULE_0_rxjs__["Subject"]();
+        this.refreshPage = new __WEBPACK_IMPORTED_MODULE_0_rxjs__["Subject"]();
+    }
+    WeightsModalsService.prototype.callAddWeight = function () {
+        this.addWeight.next(null);
+    };
+    WeightsModalsService.prototype.callEditWeights = function (weights, modalTitle) {
+        this.editWeights.next({ weights: weights, modalTitle: modalTitle });
+    };
+    WeightsModalsService.prototype.callDeleteWeights = function (weights, modalTitle) {
+        this.deleteWeights.next({ weights: weights, modalTitle: modalTitle });
+    };
+    WeightsModalsService.prototype.callRefreshPage = function () {
+        this.refreshPage.next(null);
+    };
+    return WeightsModalsService;
+}());
+WeightsModalsService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])()
+], WeightsModalsService);
+
+//# sourceMappingURL=weights-modals.service.js.map
+
+/***/ }),
+
+/***/ 41:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export NewCycle */
+/* unused harmony export NewExerciseSession */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return NewPrice; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return NewProduct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return NewReport; });
+/* unused harmony export NewSeries */
+/* unused harmony export NewSet */
+/* unused harmony export NewTraining */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewWeight; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return ShoppingList; });
+var NewCycle = (function () {
+    function NewCycle(startDate, sets) {
+        this.startDate = startDate;
+        this.sets = sets;
+    }
+    return NewCycle;
+}());
+
+var NewExerciseSession = (function () {
+    function NewExerciseSession(exerciseId, series) {
+        this.exerciseId = exerciseId;
+        this.series = series;
+    }
+    return NewExerciseSession;
+}());
+
+var NewPrice = (function () {
+    function NewPrice(productId, value, quantity, place, priceDate) {
+        this.productId = productId;
+        this.value = value;
+        this.quantity = quantity;
+        this.place = place;
+        this.priceDate = priceDate;
+    }
+    return NewPrice;
+}());
+
+// screen can be file or string, not sure how sending files will be implemented
+var NewProduct = (function () {
+    function NewProduct(productName, screen) {
+        this.productName = productName;
+        this.screen = screen;
+    }
+    return NewProduct;
+}());
+
+var NewReport = (function () {
+    function NewReport(content, startDate, endDate) {
+        this.content = content;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+    return NewReport;
+}());
+
+var NewSeries = (function () {
+    function NewSeries(weight, repeats, comment) {
+        this.weight = weight;
+        this.repeats = repeats;
+        this.comment = comment;
+    }
+    return NewSeries;
+}());
+
+var NewSet = (function () {
+    function NewSet(setName, exercises) {
+        this.setName = setName;
+        this.exercises = exercises;
+    }
+    return NewSet;
+}());
+
+var NewTraining = (function () {
+    function NewTraining(setId, exerciseSessions, date) {
+        this.setId = setId;
+        this.exerciseSessions = exerciseSessions;
+        this.date = date;
+    }
+    return NewTraining;
+}());
+
+var NewWeight = (function () {
+    function NewWeight(value, measurementDate) {
+        this.value = value;
+        this.measurementDate = measurementDate;
+    }
+    return NewWeight;
+}());
+
+var ShoppingList = (function () {
+    function ShoppingList(place, prices, shoppingDate) {
+        this.place = place;
+        this.prices = prices;
+        this.shoppingDate = shoppingDate;
+    }
+    return ShoppingList;
+}());
+
+//# sourceMappingURL=add.entities.js.map
+
+/***/ }),
+
+/***/ 42:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export CyclePreview */
+/* unused harmony export SetPreview */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportPreview; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return WeightsPreview; });
+var CyclePreview = (function () {
+    function CyclePreview(cycleId, startDate, endDate) {
+        this.cycleId = cycleId;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+    return CyclePreview;
+}());
+
+var SetPreview = (function () {
+    function SetPreview(setId, setName) {
+        this.setId = setId;
+        this.setName = setName;
+    }
+    return SetPreview;
+}());
+
+var ReportPreview = (function () {
+    function ReportPreview(reportId, startDate, endDate) {
+        this.reportId = reportId;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+    return ReportPreview;
+}());
+
+var WeightsPreview = (function () {
+    function WeightsPreview(month, year) {
+        this.month = month;
+        this.year = year;
+    }
+    return WeightsPreview;
+}());
+
+//# sourceMappingURL=preview.entities.js.map
+
+/***/ }),
+
+/***/ 43:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MODAL_PARAMS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DOES_NOT_CONTAIN; });
+var MODAL_PARAMS = {
+    dismissible: false,
+    in_duration: 900,
+    out_duration: 900
+};
+var DOES_NOT_CONTAIN = -1;
+//# sourceMappingURL=global.values.js.map
+
+/***/ }),
+
+/***/ 5:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__weights_services_weights_back_end_service__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__weights_services_weights_mock_service__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__reports_services_report_back_end_service__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__reports_services_report_mock_service__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dictionary_mock_service__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__dictionary_back_end_service__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__prices_services_prices_back_end_service__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__prices_services_prices_mock_service__ = __webpack_require__(108);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ServiceInjector; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -4953,9 +4903,287 @@ ServiceInjector = __decorate([
 ], ServiceInjector);
 
 var _a;
-//# sourceMappingURL=/home/travis/build/ArturCzopek/my-coach/src/service.injector.js.map
+//# sourceMappingURL=service.injector.js.map
+
+/***/ }),
+
+/***/ 57:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__loaders_circle_loader_component__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__loaders_strip_loader_component__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modals_modal_footer_component__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__charts_line_chart_component__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ng2_charts__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_ng2_charts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_materialize__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_materialize___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angular2_materialize__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pipes_dictionary_pipe__ = __webpack_require__(222);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SharedModule; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+
+var SharedModule = (function () {
+    function SharedModule() {
+    }
+    return SharedModule;
+}());
+SharedModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["NgModule"])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_6_angular2_materialize__["MaterializeDirective"],
+            __WEBPACK_IMPORTED_MODULE_0__loaders_circle_loader_component__["a" /* CircleLoaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_1__loaders_strip_loader_component__["a" /* StripLoaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_3__modals_modal_footer_component__["a" /* ModalFooterComponent */],
+            __WEBPACK_IMPORTED_MODULE_4__charts_line_chart_component__["a" /* LineChartComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__pipes_dictionary_pipe__["a" /* DictionaryPipe */]
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_5_ng2_charts__["ChartsModule"]
+        ],
+        exports: [
+            __WEBPACK_IMPORTED_MODULE_6_angular2_materialize__["MaterializeDirective"],
+            __WEBPACK_IMPORTED_MODULE_0__loaders_circle_loader_component__["a" /* CircleLoaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_1__loaders_strip_loader_component__["a" /* StripLoaderComponent */],
+            __WEBPACK_IMPORTED_MODULE_3__modals_modal_footer_component__["a" /* ModalFooterComponent */],
+            __WEBPACK_IMPORTED_MODULE_4__charts_line_chart_component__["a" /* LineChartComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__pipes_dictionary_pipe__["a" /* DictionaryPipe */]
+        ]
+    })
+], SharedModule);
+
+//# sourceMappingURL=shared.module.js.map
+
+/***/ }),
+
+/***/ 600:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(180);
+
+
+/***/ }),
+
+/***/ 7:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(17)();
+// imports
+
+
+// module
+exports.push([module.i, ".material-button, .card-content span.card-title .card-title-icons i {\n  display: inline;\n  cursor: pointer;\n  -webkit-filter: contrast(0);\n          filter: contrast(0); }\n  .material-button:hover, .card-content span.card-title .card-title-icons i:hover {\n    -webkit-filter: contrast(1);\n            filter: contrast(1); }\n\n.arrow, .down-arrow, .left-arrow {\n  -webkit-filter: contrast(0);\n          filter: contrast(0);\n  cursor: pointer; }\n  .arrow:hover, .down-arrow:hover, .left-arrow:hover {\n    -webkit-filter: contrast(1);\n            filter: contrast(1); }\n\n.left-arrow {\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg); }\n\n.card-content {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n  -ms-flex-wrap: nowrap;\n      flex-wrap: nowrap;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: start;\n      -ms-flex-align: start;\n          align-items: flex-start; }\n  .card-content span.card-title {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    -webkit-box-align: baseline;\n        -ms-flex-align: baseline;\n            align-items: baseline;\n    -ms-flex-item-align: center;\n        align-self: center;\n    -webkit-box-ordinal-group: 2;\n        -ms-flex-order: 1;\n            order: 1; }\n    .card-content span.card-title p {\n      margin-right: 15px; }\n    .card-content span.card-title .card-title-icons {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -ms-flex-wrap: nowrap;\n          flex-wrap: nowrap;\n      -webkit-box-align: baseline;\n          -ms-flex-align: baseline;\n              align-items: baseline;\n      -ms-flex-item-align: center;\n          align-self: center;\n      -webkit-box-ordinal-group: 100;\n          -ms-flex-order: 99;\n              order: 99;\n      visibility: hidden; }\n      .card-content span.card-title .card-title-icons i {\n        margin-right: 5px; }\n  .card-content img.right {\n    -webkit-box-ordinal-group: 100;\n        -ms-flex-order: 99;\n            order: 99;\n    -ms-flex-preferred-size: 40px;\n        flex-basis: 40px; }\n\n.card-content:hover span.card-title .card-title-icons {\n  visibility: visible; }\n\n.input-field input:focus {\n  border-bottom: 1px solid #1976D2;\n  box-shadow: 0 1px 0 0 #1976D2; }\n  .input-field input:focus + label {\n    color: #1976D2; }\n\n.input-field .dropdown-content li > span {\n  color: black; }\n\n.input-field .autocomplete-content li .highlight {\n  color: #1976D2; }\n\n.red-checkbox[type=\"checkbox\"].filled-in:checked + label:after {\n  background-color: #B71C1C;\n  border: 2px solid #B71C1C; }\n\n.loading {\n  padding: 0; }\n\n.preloader-wrapper.big {\n  width: 120px;\n  height: 120px; }\n\n.preloader-wrapper {\n  display: block;\n  position: relative;\n  top: 150px;\n  margin: 0 auto; }\n\n.progress {\n  margin: 0;\n  background-color: #1976D2; }\n  .progress .indeterminate {\n    background-color: #90CAF9; }\n\n.no-data {\n  margin-top: 150px; }\n  .no-data i.large.material-icons {\n    color: #1976D2;\n    margin-bottom: 100px;\n    font-size: 12rem; }\n  .no-data p {\n    font-size: 24px; }\n    .no-data p a:hover {\n      text-decoration: underline;\n      cursor: pointer; }\n  .no-data.small {\n    margin-top: 30px; }\n    .no-data.small i.medium.material-icons {\n      color: #1976D2;\n      margin-bottom: 30px;\n      font-size: 12rem; }\n    .no-data.small p {\n      margin-bottom: 0px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 74:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BaseCardComponent; });
+var BaseCardComponent = (function () {
+    function BaseCardComponent() {
+    }
+    BaseCardComponent.prototype.ngOnInit = function () {
+        // false showData because at first toggle we want to see true to load data
+        this.showData = false;
+        this.isLoading = true;
+        this.arrowImageClass = 'left-arrow';
+    };
+    BaseCardComponent.prototype.toggleShow = function () {
+        this.showData = !this.showData;
+        if (this.showData) {
+            this.arrowImageClass = 'down-arrow';
+        }
+        else {
+            this.arrowImageClass = 'left-arrow';
+        }
+    };
+    BaseCardComponent.prototype.getLoadingStyle = function () {
+        if (this.isLoading) {
+            return "loading";
+        }
+        else {
+            return "";
+        }
+    };
+    return BaseCardComponent;
+}());
+
+//# sourceMappingURL=base-card.component.js.map
+
+/***/ }),
+
+/***/ 75:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dictionary_service__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DictionaryMockService; });
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var DictionaryMockService = (function (_super) {
+    __extends(DictionaryMockService, _super);
+    function DictionaryMockService() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    // Application for dev purposes is in english, but for date picker we have different rule. Mainly only for test
+    // if we can really modify calendar values
+    DictionaryMockService.prototype.getDictionaryFromDb = function () {
+        return {
+            'page.weights.modal.add.title': 'Add weight',
+            'calendar.nextDay.label': 'Następny',
+            'calendar.prevDay.label': 'Poprzedni',
+            'calendar.monthSelect.label': 'Wybierz miesiąc',
+            'calendar.yearSelect.label': 'Wybierz rok',
+            'calendar.today.label': 'Dzisiaj',
+            'calendar.clear.label': 'Czyść',
+            'calendar.close.label': 'Wyjdź',
+            'calendar.month.jan.full': 'Styczeń',
+            'calendar.month.feb.full': 'Luty',
+            'calendar.month.mar.full': 'Marzec',
+            'calendar.month.apr.full': 'Kwiecień',
+            'calendar.month.may.full': 'Maj',
+            'calendar.month.jun.full': 'Czerwiec',
+            'calendar.month.jul.full': 'Lipiec',
+            'calendar.month.aug.full': 'Sierpień',
+            'calendar.month.sep.full': 'Wrzesień',
+            'calendar.month.oct.full': 'Październik',
+            'calendar.month.nov.full': 'Listopad',
+            'calendar.month.dec.full': 'Grudzień',
+            'calendar.month.jan.short': 'Sty',
+            'calendar.month.feb.short': 'Lut',
+            'calendar.month.mar.short': 'Mar',
+            'calendar.month.apr.short': 'Kwi',
+            'calendar.month.may.short': 'Maj',
+            'calendar.month.jun.short': 'Cze',
+            'calendar.month.jul.short': 'Lip',
+            'calendar.month.aug.short': 'Sie',
+            'calendar.month.sep.short': 'Wrz',
+            'calendar.month.oct.short': 'Paź',
+            'calendar.month.nov.short': 'Lis',
+            'calendar.month.dec.short': 'Gru',
+            'calendar.day.mon.full': 'Poniedziałek',
+            'calendar.day.tue.full': 'Wtorek',
+            'calendar.day.wen.full': 'Środa',
+            'calendar.day.thu.full': 'Czwartek',
+            'calendar.day.fri.full': 'Piątek',
+            'calendar.day.sat.full': 'Sobota',
+            'calendar.day.sun.full': 'Niedziela',
+            'calendar.day.mon.short': 'Pn',
+            'calendar.day.tue.short': 'Wt',
+            'calendar.day.wen.short': 'Śr',
+            'calendar.day.thu.short': 'Czw',
+            'calendar.day.fri.short': 'Pt',
+            'calendar.day.sat.short': 'Sb',
+            'calendar.day.sun.short': 'Ndz',
+            'calendar.day.mon.letter': 'P',
+            'calendar.day.tue.letter': 'W',
+            'calendar.day.wen.letter': 'Ś',
+            'calendar.day.thu.letter': 'C',
+            'calendar.day.fri.letter': 'P',
+            'calendar.day.sat.letter': 'S',
+            'calendar.day.sun.letter': 'N',
+            'calendar.day': 'Dzień',
+            'calendar.format': 'dd mmm yyyy',
+            'calendar.format.momentjs': 'DD MMM YYYY'
+        };
+    };
+    return DictionaryMockService;
+}(__WEBPACK_IMPORTED_MODULE_0__dictionary_service__["a" /* DictionaryService */]));
+DictionaryMockService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])()
+], DictionaryMockService);
+
+//# sourceMappingURL=dictionary.mock.service.js.map
+
+/***/ }),
+
+/***/ 76:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
+var environment = {
+    production: true,
+    isBackendServerAvailable: false,
+    url: "http://localhost:8080"
+};
+//# sourceMappingURL=environment.js.map
+
+/***/ }),
+
+/***/ 93:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(17)();
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 94:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(17)();
+// imports
+
+
+// module
+exports.push([module.i, "@media (min-width: 1280px) {\n  .fourty-width-modal {\n    width: 40%; } }\n\ntd.half-width-cell {\n  width: 50%; }\n\n.input-field input:focus {\n  border-bottom: 1px solid #1976D2;\n  box-shadow: 0 1px 0 0 #1976D2; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ })
 
-},[1101]);
-//# sourceMappingURL=main.bundle.map
+},[600]);
+//# sourceMappingURL=main.bundle.js.map
