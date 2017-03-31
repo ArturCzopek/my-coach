@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {WeightsService} from "../services/weights.service";
 import {WeightsModalsService} from "../services/weights-modals.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
@@ -10,12 +10,12 @@ import {BaseModal} from "../../shared/components/base.modal";
 @Component({
   selector: 'coach-weight-add-modal',
   templateUrl: 'weight-add.modal.html',
-  styleUrls: ['weights.modals.scss', '../../shared/materialize-upgrades.scss']
+  styleUrls: ['./weights.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class WeightAddModal extends BaseModal {
+export class WeightAddModal extends BaseModal implements OnInit {
 
-  public weightValue: number = 50;
-  public measurementDate: string = '';
+  public weightValue = 50;
+  public measurementDate = '';
   public weightToAdd: NewWeight;
 
   private weightsService: WeightsService;

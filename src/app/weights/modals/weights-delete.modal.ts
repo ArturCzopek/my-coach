@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Weight} from "../../shared/entities/get.entities";
 import {WeightsModalsService} from "../services/weights-modals.service";
 import {WeightsService} from "../services/weights.service";
@@ -11,9 +11,9 @@ declare var Materialize: any;
 @Component({
   selector: 'coach-weights-delete-modal',
   templateUrl: 'weights-delete.modal.html',
-  styleUrls: ['weights.modals.scss', '../../shared/materialize-upgrades.scss']
+  styleUrls: ['./weights.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class WeightsDeleteModal extends BaseModal {
+export class WeightsDeleteModal extends BaseModal implements OnInit {
 
   public formattedDays: string[] = [];
   public selectedWeights: Weight[] = [];
@@ -58,7 +58,7 @@ export class WeightsDeleteModal extends BaseModal {
   }
 
   public isDataValid(): boolean {
-    for (let checkbox of this.checkboxesForWeights) {
+    for (const checkbox of this.checkboxesForWeights) {
       if (checkbox) {
         return true;
       }

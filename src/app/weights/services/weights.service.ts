@@ -1,6 +1,6 @@
 import {Inject} from "@angular/core";
 import {WeightsPreview} from "../../shared/entities/preview.entities";
-import {Observable} from "rxjs";
+import {Observable} from "rxjs/Observable";
 import {Weight} from "../../shared/entities/get.entities";
 import {NewWeight} from "../../shared/entities/add.entities";
 import {DictionaryService} from "../../shared/services/dictionary.service";

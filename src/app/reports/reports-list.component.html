@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-    <div *ngIf="isLoading">
+    <div *ngIf="isLoading; else reports">
       <coach-circle-loader></coach-circle-loader>
     </div>
 
-    <div *ngIf="!isLoading">
+    <ng-template #reports>
       <div *ngFor="let reportPreview of reportPreviews" class="col s12">
         <coach-report-card [reportPreview]="reportPreview"></coach-report-card>
       </div>
@@ -17,7 +17,7 @@
           <p>{{'page.reports.list.noData.info' | dictionary}} <a (click)="onAddClick()">{{'page.reports.list.noData.click.info' | dictionary}}</a></p>
         </div>
       </div>
-    </div>
+    </ng-template>
 
     <div class="fixed-action-btn tooltipped" materialize="tooltip"
          data-position="left" data-delay="50" [attr.data-tooltip]="'page.reports.add.tooltip' | dictionary"
@@ -27,7 +27,6 @@
         <i class="large material-icons">add</i>
       </a>
     </div>
-
   </div>
 </div>
 

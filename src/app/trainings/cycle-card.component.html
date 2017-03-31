@@ -10,14 +10,21 @@
       </div>
     </span>
     <img class="right tooltipped" [ngClass]="arrowImageClass" src="assets/img/arrow_down.png"
-         (click)="onReportClick()"/>
+         (click)="onCycleClick()"/>
   </div>
-  <div *ngIf="showData" class="card-action" [ngClass]="getLoadingStyle()">
-    <div *ngIf="isLoading ;else reportContent">
+
+  <div *ngIf="showData" class="center card-action" [ngClass]="getLoadingStyle()">
+    <div *ngIf="isLoading; else cycleContent">
       <coach-strip-loader></coach-strip-loader>
     </div>
-    <ng-template #reportContent>
-      {{report.content}}
+
+    <ng-template #cycleContent>
+      <div materialize="carousel" [materializeParams]="[{full_width: true}]" class="carousel carousel-slider center"
+           data-indicators="true">
+        <div *ngFor="let set of cycle.sets" class="carousel-item">
+          <coach-set-section [set]="set"></coach-set-section>
+        </div>
+      </div>
     </ng-template>
   </div>
 </div>

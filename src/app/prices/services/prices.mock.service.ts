@@ -2,9 +2,9 @@ import {Injectable, Injector} from "@angular/core";
 import {PricesService} from "./prices.service";
 import {PRODUCTS_LIST} from "../../shared/entities/mock-data/products.mock-data";
 import {ServiceInjector} from "../../shared/services/service.injector";
-import {Observable} from "rxjs";
-import {Product, Price} from "../../shared/entities/get.entities";
-import {NewProduct, NewPrice, ShoppingList} from "../../shared/entities/add.entities";
+import {Observable} from "rxjs/Observable";
+import {Price, Product} from "../../shared/entities/get.entities";
+import {NewPrice, NewProduct, ShoppingList} from "../../shared/entities/add.entities";
 import {PRICES_LIST} from "../../shared/entities/mock-data/prices.mock-data";
 
 @Injectable()
@@ -86,7 +86,7 @@ export class PricesMockService extends PricesService {
   }
 
   addShoppingList(shoppingList: ShoppingList): void {
-    for (let price of shoppingList.prices) {
+    for (const price of shoppingList.prices) {
       price.priceDate = shoppingList.shoppingDate;
       price.place = shoppingList.place;
       this.addPrice(price);

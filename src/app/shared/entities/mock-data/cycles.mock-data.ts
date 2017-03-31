@@ -1,7 +1,6 @@
-import {Cycle, Exercise, Set, ExerciseSession, Series, Training} from "../get.entities";
+import {Cycle, Exercise, ExerciseSession, Series, Set, Training} from "../get.entities";
 
 export let CYCLES_LIST: Cycle[] = [
-  null, // padding for test issues
   new Cycle(
     1,
     [
@@ -90,7 +89,8 @@ export let CYCLES_LIST: Cycle[] = [
                   new Series(
                     32,
                     3.75,
-                    12
+                    12,
+                    "Coś zakłuło w dupsku"
                   ),
                   new Series(
                     33,
@@ -121,7 +121,8 @@ export let CYCLES_LIST: Cycle[] = [
                   new Series(
                     9,
                     6.25,
-                    12
+                    12,
+                    "Ale chujoza"
                   )
                 ]
               ),
@@ -918,6 +919,11 @@ export let CYCLES_LIST: Cycle[] = [
                   new Series(
                     108,
                     6.25,
+                    10
+                  ),
+                  new Series(
+                    109,
+                    7.5,
                     10
                   )
                 ]

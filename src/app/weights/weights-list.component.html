@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-    <div *ngIf="isLoading">
+    <div *ngIf="isLoading; else weights">
       <coach-circle-loader></coach-circle-loader>
     </div>
 
-    <div *ngIf="!isLoading">
+    <ng-template #weights>
       <div *ngFor="let weightsPreview of weightsPreviews" class="col s12">
         <coach-weights-card [weightsPreview]="weightsPreview"></coach-weights-card>
       </div>
@@ -18,7 +18,7 @@
             | dictionary}}</a></p>
         </div>
       </div>
-    </div>
+    </ng-template>
 
     <div class="fixed-action-btn tooltipped" materialize="tooltip"
          data-position="left" data-delay="50" [attr.data-tooltip]="'page.weights.add.tooltip' | dictionary"

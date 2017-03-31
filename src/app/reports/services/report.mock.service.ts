@@ -1,17 +1,22 @@
 import {REPORT_PREVIEWS_LIST} from "../../shared/entities/mock-data/previews/report-previews.mock-data";
-import {Observable} from "rxjs";
+import {Observable} from "rxjs/Observable";
 import {ReportPreview} from "../../shared/entities/preview.entities";
 import {Report} from "../../shared/entities/get.entities";
 import {REPORTS_LIST} from "../../shared/entities/mock-data/reports.mock-data";
 import {ReportService} from "./report.service";
 import {NewReport} from "../../shared/entities/add.entities";
-import {Injectable} from "@angular/core";
+import {Injectable, Injector} from "@angular/core";
 import {DOES_NOT_CONTAIN} from "../../shared/global.values";
+import {ServiceInjector} from "../../shared/services/service.injector";
 
 @Injectable()
 export class ReportMockService extends ReportService {
 
   private newId: number = REPORTS_LIST.length;
+
+  constructor(private injector: Injector) {
+    super(injector.get(ServiceInjector));
+  }
 
   public getReportPreviews(): Observable<ReportPreview[]> {
     return Observable.create(observer => {

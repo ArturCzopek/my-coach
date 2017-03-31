@@ -1,4 +1,4 @@
-import {Injector, Injectable} from "@angular/core";
+import {Injectable, Injector} from "@angular/core";
 import {WeightsService} from "../../weights/services/weights.service";
 import {WeightsBackEndService} from "../../weights/services/weights.back-end.service";
 import {WeightsMockService} from "../../weights/services/weights.mock.service";
@@ -12,6 +12,10 @@ import {DictionaryBackEndService} from "./dictionary.back-end.service";
 import {PricesService} from "../../prices/services/prices.service";
 import {PricesBackEndService} from "../../prices/services/prices.back-end.service";
 import {PricesMockService} from "../../prices/services/prices.mock.service";
+import {TrainingsService} from "../../trainings/services/tranings.service";
+import {TrainingsMockService} from "../../trainings/services/trainings.mock.service";
+import {TrainingsBackEndService} from "../../trainings/services/trainings.back-end.service";
+import {DateService} from "./date.service";
 
 @Injectable()
 export class ServiceInjector {
@@ -43,11 +47,23 @@ export class ServiceInjector {
     }
   }
 
+  public getTrainingsService(): TrainingsService {
+    if (environment.isBackendServerAvailable) {
+      return this.injector.get(TrainingsBackEndService);
+    } else {
+      return this.injector.get(TrainingsMockService);
+    }
+  }
+
   public getDictionaryService(): DictionaryService {
     if (environment.isBackendServerAvailable) {
       return this.injector.get(DictionaryBackEndService);
     } else {
       return this.injector.get(DictionaryMockService);
     }
+  }
+
+  public getDateService(): DateService {
+    return this.injector.get(DateService);
   }
 }

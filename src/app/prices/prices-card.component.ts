@@ -1,6 +1,6 @@
 import {BaseCardComponent} from "../shared/components/base-card.component";
-import {Component, Input} from "@angular/core";
-import {Product, Price} from "../shared/entities/get.entities";
+import {Component, Input, OnInit} from "@angular/core";
+import {Price, Product} from "../shared/entities/get.entities";
 import {PricesService} from "./services/prices.service";
 import {PricesModalsService} from "./services/prices-modals.service";
 import {ServiceInjector} from "../shared/services/service.injector";
@@ -11,7 +11,7 @@ import {DateService} from "../shared/services/date.service";
   templateUrl: 'prices-card.component.html',
   styleUrls: ['./prices.scss']
 })
-export class PricesCardComponent extends BaseCardComponent {
+export class PricesCardComponent extends BaseCardComponent implements OnInit {
 
   @Input() productPreview: Product;
   public prices: Price[] = [];

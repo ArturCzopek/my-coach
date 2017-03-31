@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component, ViewChild, ElementRef} from "@angular/core";
+import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {PricesService} from "../services/prices.service";
 import {NewProduct} from "../../shared/entities/add.entities";
 import {PricesModalsService} from "../services/prices-modals.service";
@@ -13,17 +13,17 @@ declare var $: any;
 @Component({
   selector: 'coach-product-add-modal',
   templateUrl: 'product-add.modal.html',
-  styleUrls: ['prices.modals.scss', '../../shared/materialize-upgrades.scss']
+  styleUrls: ['./prices.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class ProductAddModal extends BaseModal {
+export class ProductAddModal extends BaseModal implements OnInit {
 
-  public productName: string = '';
+  public productName= '';
   public screen: any = '';
   public productToAdd: NewProduct;
 
   @ViewChild("photoFile") photoFile: ElementRef;
   public uploadUrl = "/product/uploadPhoto";
-  public imagesUrl = "/images/"
+  public imagesUrl = "/images/";
 
   private pricesService: PricesService;
 
@@ -57,9 +57,9 @@ export class ProductAddModal extends BaseModal {
 
   public uploadPhoto() {
     if (this.photoFile.nativeElement.files.length > 0) {
-      let file: File = this.photoFile.nativeElement.files[0];
+      const file: File = this.photoFile.nativeElement.files[0];
 
-      let input = new FormData();
+      const input = new FormData();
       input.append("file", file);
 
       this.http.post(environment.url + this.uploadUrl, input).subscribe(
@@ -68,9 +68,9 @@ export class ProductAddModal extends BaseModal {
         },
         err => {
           console.log("not ok");
-          console.log(err)
+          console.log(err);
         }
-      )
+      );
     }
   }
 

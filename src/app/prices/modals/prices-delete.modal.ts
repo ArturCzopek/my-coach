@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Price} from "../../shared/entities/get.entities";
 import {PricesService} from "../services/prices.service";
 import {PricesModalsService} from "../services/prices-modals.service";
@@ -10,9 +10,9 @@ import {BaseModal} from "../../shared/components/base.modal";
 @Component({
   selector: 'coach-prices-delete-modal',
   templateUrl: 'prices-delete.modal.html',
-  styleUrls: ['prices.modals.scss', '../../shared/materialize-upgrades.scss']
+  styleUrls: ['./prices.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class PricesDeleteModal extends BaseModal{
+export class PricesDeleteModal extends BaseModal implements OnInit {
 
   public selectedPrices: Price[] = [];
   public checkboxesForPrices: boolean[] = [];
@@ -50,7 +50,7 @@ export class PricesDeleteModal extends BaseModal{
   }
 
   public isDataValid(): boolean {
-    for (let checkbox of this.checkboxesForPrices) {
+    for (const checkbox of this.checkboxesForPrices) {
       if (checkbox) {
         return true;
       }

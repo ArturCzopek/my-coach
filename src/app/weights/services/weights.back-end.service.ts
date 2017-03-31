@@ -1,7 +1,7 @@
 import {WeightsService} from "./weights.service";
-import {Injector, Injectable} from "@angular/core";
+import {Injectable, Injector} from "@angular/core";
 import {Weight} from "../../shared/entities/get.entities";
-import {Observable} from "rxjs";
+import {Observable} from "rxjs/Observable";
 import {WeightsPreview} from "../../shared/entities/preview.entities";
 import {NewWeight} from "../../shared/entities/add.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";

@@ -43,7 +43,7 @@
       </tbody>
     </table>
 
-    <div class="row icons-container" *ngIf="prices.length > 0">
+    <div class="row icons-container" *ngIf="prices.length > 0; else noData">
       <div class="col s12">
         <i (click)="onAddPriceClick()" class="edit-button small material-icons tooltipped" materialize="tooltip"
            data-position="bottom" data-delay="50"
@@ -58,14 +58,16 @@
       </div>
     </div>
 
-    <div *ngIf="prices.length === 0" class="col s12 center no-data small">
-      <div class="row">
-        <i class="medium material-icons">info_outline</i>
+    <ng-template #noData>
+      <div class="col s12 center no-data small">
+        <div class="row">
+          <i class="medium material-icons">info_outline</i>
+        </div>
+        <div class="row">
+          <p>{{'page.prices.productPrices.noData.info' | dictionary}} <a (click)="onAddPriceClick()">{{'page.prices.productPrices.noData.click.info'
+            | dictionary}}</a></p>
+        </div>
       </div>
-      <div class="row">
-        <p>{{'page.prices.productPrices.noData.info' | dictionary}} <a (click)="onAddPriceClick()">{{'page.prices.productPrices.noData.click.info'
-          | dictionary}}</a></p>
-      </div>
-    </div>
+    </ng-template>
   </div>
 </div>

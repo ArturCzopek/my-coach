@@ -64,7 +64,11 @@ export class DictionaryMockService extends DictionaryService {
       'calendar.day.sun.letter': 'N',
       'calendar.day': 'Dzień',
       'calendar.format': 'dd mmm yyyy',
-      'calendar.format.momentjs': 'DD MMM YYYY'
+      'calendar.format.momentjs': 'DD MMM YYYY',
+
+      'global.currency.label': 'zł',
+      'global.weight.label': 'kg',
+      'global.multiply.label': 'x'
     };
   }
 }

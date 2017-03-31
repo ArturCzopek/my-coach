@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Injectable, Injector} from "@angular/core";
 import {ServiceInjector} from "./service.injector";
 import {DictionaryService} from "./dictionary.service";
 declare var moment: any;
@@ -8,8 +8,8 @@ export class DateService {
 
   private dictionaryService: DictionaryService;
 
-  constructor(private serviceInjector: ServiceInjector) {
-    this.dictionaryService = serviceInjector.getDictionaryService();
+  constructor(private injector: Injector) {
+    this.dictionaryService = injector.get(ServiceInjector).getDictionaryService();
     this.configureMoment();
   }
 

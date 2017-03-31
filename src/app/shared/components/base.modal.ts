@@ -1,4 +1,4 @@
-import {OnInit, EventEmitter, AfterViewChecked} from "@angular/core";
+import {AfterViewChecked, EventEmitter, OnInit} from "@angular/core";
 import {MaterializeAction} from "angular2-materialize";
 import {DictionaryService} from "../services/dictionary.service";
 import {MODAL_PARAMS} from "../global.values";
@@ -9,10 +9,10 @@ declare var Materialize: any;
 
 export abstract class BaseModal implements OnInit, AfterViewChecked {
 
-  protected modalActions = new EventEmitter<string|MaterializeAction>();
-  protected modalParams: any;
-  protected datePickerParams: any;
-  protected dictionaryService: DictionaryService;
+  public modalActions = new EventEmitter<string|MaterializeAction>();
+  public modalParams: any;
+  public datePickerParams: any;
+  public dictionaryService: DictionaryService;
 
   constructor(serviceInjector: ServiceInjector) {
     this.dictionaryService = serviceInjector.getDictionaryService();

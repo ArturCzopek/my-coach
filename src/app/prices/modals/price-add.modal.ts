@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {PricesService} from "../services/prices.service";
 import {NewPrice} from "../../shared/entities/add.entities";
 import {PricesModalsService} from "../services/prices-modals.service";
@@ -11,14 +11,14 @@ import {BaseModal} from "../../shared/components/base.modal";
 @Component({
   selector: 'coach-price-add-modal',
   templateUrl: 'price-add.modal.html',
-  styleUrls: ['prices.modals.scss', '../../shared/materialize-upgrades.scss']
+  styleUrls: ['./prices.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class PriceAddModal extends BaseModal{
+export class PriceAddModal extends BaseModal implements OnInit {
 
-  public place: string = '';
-  public priceDate: string = '';
-  public price: number = 0;
-  public quantity: number = 1;
+  public place = '';
+  public priceDate = '';
+  public price = 0;
+  public quantity = 1;
   public priceToAdd: NewPrice;
   public product: Product;
 

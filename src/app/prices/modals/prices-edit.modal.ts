@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Price} from "../../shared/entities/get.entities";
 import {PricesService} from "../services/prices.service";
 import {PricesModalsService} from "../services/prices-modals.service";
@@ -10,9 +10,9 @@ import {BaseModal} from "../../shared/components/base.modal";
 @Component({
   selector: 'coach-prices-edit-modal',
   templateUrl: 'prices-edit.modal.html',
-  styleUrls: ['prices.modals.scss', '../../shared/materialize-upgrades.scss']
+  styleUrls: ['./prices.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class PricesEditModal extends BaseModal {
+export class PricesEditModal extends BaseModal implements OnInit {
 
   public selectedPrices: Price[] = [];
   public pricesToEditIndexes: number[] = [];

@@ -15,11 +15,11 @@
          (click)="onWeightsClick()"/>
   </div>
   <div *ngIf="showData" class="center card-action" [ngClass]="getLoadingStyle()">
-    <div *ngIf="isLoading">
+    <div *ngIf="isLoading; else chart">
       <coach-strip-loader></coach-strip-loader>
     </div>
-    <div *ngIf="!isLoading">
+    <ng-template #chart>
       <coach-line-chart [chartData]="chartData" [chartLabels]="chartLabels"></coach-line-chart>
-    </div>
+    </ng-template>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {ReportPreview} from "../shared/entities/preview.entities";
 import {Report} from "../shared/entities/get.entities";
 import {ReportService} from "./services/report.service";
@@ -11,7 +11,7 @@ import {BaseCardComponent} from "../shared/components/base-card.component";
   templateUrl: 'report-card.component.html',
   styleUrls: ['./reports.scss', '../shared/materialize-upgrades.scss']
 })
-export class ReportCardComponent extends BaseCardComponent {
+export class ReportCardComponent extends BaseCardComponent implements OnInit {
 
   @Input() reportPreview: ReportPreview;
   public report: Report;

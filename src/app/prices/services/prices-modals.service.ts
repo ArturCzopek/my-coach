@@ -1,6 +1,6 @@
-import {Subject} from "rxjs";
+import {Subject} from "rxjs/Subject";
 import {Injectable} from "@angular/core";
-import {Product, Price} from "../../shared/entities/get.entities";
+import {Price, Product} from "../../shared/entities/get.entities";
 
 @Injectable()
 export class PricesModalsService {

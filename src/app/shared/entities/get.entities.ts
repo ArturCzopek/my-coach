@@ -1,21 +1,21 @@
 export class Cycle {
-  constructor(private cycleId: number,
-              private sets: Set[],
-              private startDate: Date,
-              private endDate?: Date) {
+  constructor(public cycleId: number,
+              public sets: Set[],
+              public startDate: Date,
+              public endDate?: Date) {
   }
 }
 
 export class Exercise {
-  constructor(private exerciseId: number,
-              private exerciseName: string,
-              private exerciseSessions: ExerciseSession[]) {
+  constructor(public exerciseId: number,
+              public exerciseName: string,
+              public exerciseSessions: ExerciseSession[]) {
   }
 }
 
 export class ExerciseSession {
-  constructor(private exereciseSessionId: number,
-              private series: Series[]) {
+  constructor(public exereciseSessionId: number,
+              public series: Series[]) {
   }
 }
 
@@ -30,12 +30,11 @@ export class Price {
 }
 
 export class Product {
-  constructor (
-    public productId: number,
-    public productName: string,
-    public screenUrl: string,
-    public average: number
-  ) {}
+  constructor(public productId: number,
+              public productName: string,
+              public screenUrl: string,
+              public average: number) {
+  }
 }
 
 
@@ -48,24 +47,24 @@ export class Report {
 }
 
 export class Series {
-  constructor(private seriesId: number,
-              private repeats: number,
-              private weight: number,
-              private comment?: string) {
+  constructor(public seriesId: number,
+              public repeats: number,
+              public weight: number,
+              public comment?: string) {
   }
 }
 
 export class Set {
-  constructor(private setId: number,
-              private setName: string,
-              private exercises: Exercise[],
-              private trainings: Training[]) {
+  constructor(public setId: number,
+              public setName: string,
+              public exercises: Exercise[],
+              public trainings: Training[]) {
   }
 }
 
 export class Training {
-  constructor(private trainingId: number,
-              private trainingDate: Date) {
+  constructor(public trainingId: number,
+              public trainingDate: Date) {
   }
 }
 

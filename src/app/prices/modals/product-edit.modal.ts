@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {PricesService} from "../services/prices.service";
 import {PricesModalsService} from "../services/prices-modals.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
@@ -11,13 +11,13 @@ declare var $: any;
 @Component({
   selector: 'coach-product-edit-modal',
   templateUrl: 'product-edit.modal.html',
-  styleUrls: ['prices.modals.scss', '../../shared/materialize-upgrades.scss']
+  styleUrls: ['./prices.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class ProductEditModal extends BaseModal {
+export class ProductEditModal extends BaseModal implements OnInit {
 
   public selectedProduct: Product = null;
-  public productName: string = '';
-  public screen: string = '';
+  public productName= '';
+  public screen= '';
 
   private pricesService: PricesService;
 

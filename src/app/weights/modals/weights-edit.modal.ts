@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Weight} from "../../shared/entities/get.entities";
 import {WeightsModalsService} from "../services/weights-modals.service";
 import {WeightsService} from "../services/weights.service";
@@ -12,9 +12,9 @@ declare var Materialize: any;
 @Component({
   selector: 'coach-weights-edit-modal',
   templateUrl: 'weights-edit.modal.html',
-  styleUrls: ['weights.modals.scss', '../../shared/materialize-upgrades.scss']
+  styleUrls: ['./weights.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class WeightsEditModal extends BaseModal {
+export class WeightsEditModal extends BaseModal implements OnInit {
 
   public formattedDays: string[] = [];
   public selectedWeights: Weight[] = [];
@@ -55,7 +55,7 @@ export class WeightsEditModal extends BaseModal {
   }
 
   public isDataValid(): boolean {
-    return this.weightsToEditIndexes.length > 0
+    return this.weightsToEditIndexes.length > 0;
   }
 
   public onEditClick() {

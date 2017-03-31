@@ -1,0 +1,21 @@
+<table class="responsive-table striped">
+  <thead>
+  <tr>
+    <th data-field="Set">{{set.setName | uppercase}}</th>
+    <th *ngFor="let training of set.trainings">{{ dateService.parseDateToString(training.trainingDate) }}
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let exercise of set.exercises">
+    <td>{{exercise.exerciseName}}</td>
+    <td *ngFor="let session of exercise.exerciseSessions">
+      <div *ngFor="let series of session.series" class="series">
+        {{trainingsService.getFormattedRepeatsWithWeight(series)}}
+        <i *ngIf="series.comment" class="material-button material-icons tooltipped" materialize="tooltip"
+           data-position="bottom" data-delay="50" [attr.data-tooltip]="series.comment">comment</i>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>

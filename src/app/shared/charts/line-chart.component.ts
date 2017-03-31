@@ -14,8 +14,8 @@ export class LineChartComponent implements OnInit {
   public maxValue = 0;
   public dataOffset = 5;
 
-  public isChartLegend: boolean = false;
-  public chartType: string = 'line';
+  public isChartLegend = false;
+  public chartType = 'line';
 
   public chartOptions: any = {
     responsive: true,

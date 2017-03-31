@@ -1,6 +1,6 @@
-import {Injector, Injectable} from "@angular/core";
+import {Injectable, Injector} from "@angular/core";
 import {WeightsPreview} from "../../shared/entities/preview.entities";
-import {Observable} from "rxjs";
+import {Observable} from "rxjs/Observable";
 import {Weight} from "../../shared/entities/get.entities";
 import {WEIGHT_LIST} from "../../shared/entities/mock-data/weights.mock-data";
 import {WEIGHTS_PREVIEWS_LIST} from "../../shared/entities/mock-data/previews/weight-previews.mock-data";
@@ -58,7 +58,7 @@ export class WeightsMockService extends WeightsService {
     const days: number[] = [];
 
     for (const weight of weights) {
-        days.push(weight.measurementDate.getDate());
+      days.push(weight.measurementDate.getDate());
     }
 
     return days;
@@ -69,7 +69,7 @@ export class WeightsMockService extends WeightsService {
     const values: number[] = [];
 
     for (const weight of weights) {
-        values.push(weight.value);
+      values.push(weight.value);
     }
 
     return values;

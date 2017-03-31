@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {PricesService} from "../services/prices.service";
 import {NewPrice, ShoppingList} from "../../shared/entities/add.entities";
 import {PricesModalsService} from "../services/prices-modals.service";
@@ -14,12 +14,12 @@ declare var $: any;
 @Component({
   selector: 'coach-shopping-list-modal',
   templateUrl: 'shopping-list.modal.html',
-  styleUrls: ['prices.modals.scss', '../../shared/materialize-upgrades.scss']
+  styleUrls: ['./prices.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class ShoppingListModal extends BaseModal {
+export class ShoppingListModal extends BaseModal implements OnInit {
 
-  public shoppingDate: string = '';
-  public place: string = '';
+  public shoppingDate= '';
+  public place= '';
   public products: Product[];
   public shoppingListToAdd: ShoppingList;
   public autoCompleteData: any = {data: {}};
@@ -57,7 +57,7 @@ export class ShoppingListModal extends BaseModal {
     this.productNamesForPrices = [];
     this.autoCompleteData = {data: {}};
 
-    for (let product of this.products) {
+    for (const product of this.products) {
       this.autoCompleteData.data[product.productName] = product.screenUrl;
     }
 
@@ -101,7 +101,7 @@ export class ShoppingListModal extends BaseModal {
   }
 
   private getProductIdForName(productName: string): number {
-    for (let product of this.products) {
+    for (const product of this.products) {
       if (product.productName === productName) {
         return product.productId;
       }
@@ -116,7 +116,7 @@ export class ShoppingListModal extends BaseModal {
       return false;
     }
 
-    for (let price of this.shoppingListToAdd.prices) {
+    for (const price of this.shoppingListToAdd.prices) {
       if (price.value <= 0 || price.quantity <= 0) {
         return false;
       }
@@ -127,7 +127,7 @@ export class ShoppingListModal extends BaseModal {
 
   private hasEveryProductValidName(): boolean {
 
-    for (let productName of this.productNamesForPrices) {
+    for (const productName of this.productNamesForPrices) {
       if (this.getProductIdForName(productName) === DOES_NOT_CONTAIN) {
         return false;
       }

@@ -7,7 +7,7 @@ import {ServiceInjector} from "../shared/services/service.injector";
 @Component({
   selector: 'coach-prices',
   templateUrl: './prices-list.component.html',
-  styleUrls: ['prices.scss', '../shared/materialize-upgrades.scss']
+  styleUrls: ['./prices.scss', '../shared/materialize-upgrades.scss']
 })
 export class PricesListComponent implements OnInit {
 

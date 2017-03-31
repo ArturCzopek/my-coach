@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Report} from "../../shared/entities/get.entities";
 import {ReportService} from "../services/report.service";
 import {ReportModalsService} from "../services/report-modals.service";
@@ -11,9 +11,9 @@ declare var Materialize: any;
 @Component({
   selector: 'coach-report-delete-modal',
   templateUrl: 'report-delete.modal.html',
-  styleUrls: ['report.modals.scss', '../../shared/materialize-upgrades.scss']
+  styleUrls: ['./report.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class ReportDeleteModal extends BaseModal {
+export class ReportDeleteModal extends BaseModal implements OnInit {
 
   public selectedReport: Report = null;
   public modalTitle: string;

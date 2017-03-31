@@ -1,4 +1,4 @@
-import {Subject} from "rxjs";
+import {Subject} from "rxjs/Subject";
 import {Weight} from "../../shared/entities/get.entities";
 import {Injectable} from "@angular/core";
 

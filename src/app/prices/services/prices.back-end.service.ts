@@ -1,9 +1,9 @@
 import {Injectable, Injector} from "@angular/core";
 import {PricesService} from "./prices.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
-import {Observable} from "rxjs";
-import {Product, Price} from "../../shared/entities/get.entities";
-import {NewProduct, NewPrice, ShoppingList} from "../../shared/entities/add.entities";
+import {Observable} from "rxjs/Observable";
+import {Price, Product} from "../../shared/entities/get.entities";
+import {NewPrice, NewProduct, ShoppingList} from "../../shared/entities/add.entities";
 
 @Injectable()
 export class PricesBackEndService extends PricesService {

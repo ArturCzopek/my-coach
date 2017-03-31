@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ReportService} from "../services/report.service";
 import {NewReport} from "../../shared/entities/add.entities";
 import {ReportModalsService} from "../services/report-modals.service";
@@ -10,13 +10,13 @@ import {BaseModal} from "../../shared/components/base.modal";
 @Component({
   selector: 'coach-report-add-modal',
   templateUrl: 'report-add.modal.html',
-  styleUrls: ['report.modals.scss', '../../shared/materialize-upgrades.scss']
+  styleUrls: ['./report.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class ReportAddModal extends BaseModal {
+export class ReportAddModal extends BaseModal implements OnInit {
 
-  public reportContent: string = '';
-  public startDate: string = '';
-  public endDate: string = '';
+  public reportContent = '';
+  public startDate = '';
+  public endDate = '';
 
   public reportToAdd: NewReport;
 
@@ -51,6 +51,7 @@ export class ReportAddModal extends BaseModal {
   public onAddClick() {
     this.reportToAdd = new NewReport(this.reportContent, this.dateService.parseStringToDate(this.startDate),
       this.dateService.parseStringToDate(this.endDate));
+
     this.reportService.addReport(this.reportToAdd);
     this.reportModalsService.callRefreshPage();
     this.closeModal();

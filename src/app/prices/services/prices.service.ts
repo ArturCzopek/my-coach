@@ -1,9 +1,9 @@
 import {DictionaryService} from "../../shared/services/dictionary.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {Inject} from "@angular/core";
-import {Observable} from "rxjs";
-import {Product, Price} from "../../shared/entities/get.entities";
-import {NewProduct, NewPrice, ShoppingList} from "../../shared/entities/add.entities";
+import {Observable} from "rxjs/Observable";
+import {Price, Product} from "../../shared/entities/get.entities";
+import {NewPrice, NewProduct, ShoppingList} from "../../shared/entities/add.entities";
 
 export abstract class PricesService {
   private dictionaryService: DictionaryService;

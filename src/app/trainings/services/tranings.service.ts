@@ -1,19 +1,42 @@
-import {CyclePreview, SetPreview} from "../../shared/entities/preview.entities";
-import {Set} from "../../shared/entities/get.entities";
+import {CyclePreview} from "../../shared/entities/preview.entities";
+import {Cycle, Series, Set} from "../../shared/entities/get.entities";
+import {ServiceInjector} from "../../shared/services/service.injector";
+import {Inject} from "@angular/core";
+import {DictionaryService} from "../../shared/services/dictionary.service";
+import {DateService} from "../../shared/services/date.service";
+import {Observable} from "rxjs/Observable";
 
-abstract class TrainingsService {
+export abstract class TrainingsService {
 
-  abstract getCyclePreviews(): CyclePreview[]
+  protected dictionaryService: DictionaryService;
+  protected dateService: DateService;
 
-  abstract getCycleTitle(cycleId: number): string;
+  constructor(@Inject(ServiceInjector)  serviceInjector: ServiceInjector) {
+    this.dictionaryService = serviceInjector.getDictionaryService();
+    this.dateService = serviceInjector.getDateService();
+  }
 
-  abstract getSetsPreviews(cycleId: number): SetPreview[];
+  abstract getCyclePreviews(): Observable<CyclePreview[]>
 
-  abstract getSets(cycleId: number): string;
+  abstract getCycle(cycleId: number): Observable<Cycle>;
 
-  abstract getSet(setId: number): Set;
+  abstract getTrainingDatesForSet(set: Set): string[];
 
-  abstract getTrainingDates(setId: number);
+  getCyclePreviewTitle(cyclePreview: CyclePreview): string {
+    let title: string = `${this.dictionaryService.getDictionaryValue('page.trainings.cycle.card.title')} `
+      + `${this.dateService.parseDateToString(cyclePreview.startDate)} - `;
 
-  abstract getExercises(setId: number);
+    if (cyclePreview.endDate) {
+      title += `${this.dateService.parseDateToString(cyclePreview.endDate)}`;
+    } else {
+      title += `${this.dictionaryService.getDictionaryValue('page.trainings.cycle.current')}`;
+    }
+
+    return title;
+  }
+
+  getFormattedRepeatsWithWeight(series: Series): string {
+    return `${series.repeats} ${this.dictionaryService.getDictionaryValue('global.multiply.label')} ` +
+      `${series.weight} ${this.dictionaryService.getDictionaryValue('global.weight.label')}`;
+  }
 }

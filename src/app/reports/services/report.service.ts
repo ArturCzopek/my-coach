@@ -1,17 +1,17 @@
 import {ReportPreview} from "../../shared/entities/preview.entities";
-import {Observable} from "rxjs";
+import {Observable} from "rxjs/Observable";
 import {Report} from "../../shared/entities/get.entities";
 import {NewReport} from "../../shared/entities/add.entities";
 import {DictionaryService} from "../../shared/services/dictionary.service";
-import {DictionaryMockService} from "../../shared/services/dictionary.mock.service";
+import {ServiceInjector} from "../../shared/services/service.injector";
+import {Inject} from "@angular/core";
 
 export abstract class ReportService {
 
   private dictionaryService: DictionaryService;
 
-  constructor() {
-    // this.dictionaryService = serviceInjector.getDictionaryService();
-    this.dictionaryService = new DictionaryMockService;
+  constructor(@Inject(ServiceInjector) serviceInjector: ServiceInjector) {
+    this.dictionaryService = serviceInjector.getDictionaryService();
   }
 
   abstract getReportPreviews(): Observable<ReportPreview[]>;

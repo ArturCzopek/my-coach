@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {WeightsPreview} from "../shared/entities/preview.entities";
 import {Weight} from "../shared/entities/get.entities";
 import {WeightsService} from "./services/weights.service";
@@ -12,7 +12,7 @@ import {BaseCardComponent} from "../shared/components/base-card.component";
   templateUrl: 'weights-card.component.html',
   styleUrls: ['./weights.scss', '../shared/materialize-upgrades.scss']
 })
-export class WeightsCardComponent extends BaseCardComponent {
+export class WeightsCardComponent extends BaseCardComponent implements OnInit {
 
   @Input() weightsPreview: WeightsPreview;
 

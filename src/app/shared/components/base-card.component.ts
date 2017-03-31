@@ -2,11 +2,10 @@ import {OnInit} from "@angular/core";
 
 export abstract class BaseCardComponent implements OnInit {
 
-  protected previewTitle: string;
-  protected arrowImageClass: string;
-  protected isLoading: boolean;
-  protected showData: boolean;
-
+  public previewTitle: string;
+  public arrowImageClass: string;
+  public isLoading: boolean;
+  public showData: boolean;
 
   ngOnInit(): void {
     // false showData because at first toggle we want to see true to load data
