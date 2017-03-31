@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {CyclePreview} from "../shared/entities/preview.entities";
 import {TrainingsService} from "./services/tranings.service";
 import {ServiceInjector} from "../shared/services/service.injector";
+import {TrainingModalsService} from "./services/training-modals.service";
 
 @Component({
   selector: 'coach-cycles-list',
@@ -14,13 +15,13 @@ export class CyclesListComponent implements OnInit {
   private cyclePreviews: CyclePreview[];
   private trainingService: TrainingsService;
 
-  constructor(private serviceInjector: ServiceInjector) {
+  constructor(private serviceInjector: ServiceInjector, private trainingModalsService: TrainingModalsService) {
     this.trainingService = serviceInjector.getTrainingsService();
   }
 
   ngOnInit() {
     this.loadCyclePreviews();
-    // this.trainingsModalsService.refreshPage.subscribe(() => this.ngOnInit());
+    this.trainingModalsService.refreshPage.subscribe(() => this.ngOnInit());
   }
 
   private loadCyclePreviews() {

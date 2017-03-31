@@ -469,6 +469,7 @@ export let CYCLES_LIST: Cycle[] = [
         ]
       )
     ],
+    true,
     new Date(2016, 9, 1),
     new Date(2016, 9, 30)
   ),
@@ -943,6 +944,7 @@ export let CYCLES_LIST: Cycle[] = [
         ]
       )
     ],
+    false,
     new Date(2016, 10, 1)
   )
 ];

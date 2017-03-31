@@ -1,5 +1,5 @@
 import {CyclePreview} from "../../shared/entities/preview.entities";
-import {Cycle, Series, Set} from "../../shared/entities/get.entities";
+import {Cycle, Series} from "../../shared/entities/get.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {Inject} from "@angular/core";
 import {DictionaryService} from "../../shared/services/dictionary.service";
@@ -20,13 +20,15 @@ export abstract class TrainingsService {
 
   abstract getCycle(cycleId: number): Observable<Cycle>;
 
-  abstract getTrainingDatesForSet(set: Set): string[];
+  abstract deleteCycle(cycleToDelete: Cycle): void;
+
+  abstract editCycle(cycleToEdit: Cycle): void;
 
   getCyclePreviewTitle(cyclePreview: CyclePreview): string {
     let title: string = `${this.dictionaryService.getDictionaryValue('page.trainings.cycle.card.title')} `
       + `${this.dateService.parseDateToString(cyclePreview.startDate)} - `;
 
-    if (cyclePreview.endDate) {
+    if (cyclePreview.isFinished && cyclePreview.endDate) {
       title += `${this.dateService.parseDateToString(cyclePreview.endDate)}`;
     } else {
       title += `${this.dictionaryService.getDictionaryValue('page.trainings.cycle.current')}`;

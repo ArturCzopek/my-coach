@@ -1,6 +1,7 @@
 export class CyclePreview {
   constructor (
     public cycleId: number,
+    public isFinished: boolean,
     public startDate: Date,
     public endDate?: Date
   ) {}

@@ -5,6 +5,7 @@ import {DictionaryService} from "../shared/services/dictionary.service";
 import {BaseCardComponent} from "../shared/components/base-card.component";
 import {TrainingsService} from "./services/tranings.service";
 import {Cycle} from "../shared/entities/get.entities";
+import {TrainingModalsService} from "./services/training-modals.service";
 
 @Component({
   selector: 'coach-cycle-card',
@@ -19,7 +20,7 @@ export class CycleCardComponent extends BaseCardComponent implements OnInit {
   private trainingsService: TrainingsService;
   private dictionaryService: DictionaryService;
 
-  constructor(private serviceInjector: ServiceInjector) {
+  constructor(private serviceInjector: ServiceInjector, private trainingModalsService: TrainingModalsService) {
     super();
     this.trainingsService = serviceInjector.getTrainingsService();
     this.dictionaryService = serviceInjector.getDictionaryService();
@@ -51,12 +52,10 @@ export class CycleCardComponent extends BaseCardComponent implements OnInit {
   }
 
   public onEditClick() {
-    console.log('Not implemented yet');
-    // this.weightsModalsService.callEditWeights(this.weights, this.previewTitle);
+    this.trainingModalsService.callEditCycle(this.cycle, this.previewTitle);
   }
 
   public onDeleteClick() {
-    console.log('Not implemented yet');
-    // this.weightsModalsService.callDeleteWeights(this.weights, this.previewTitle);
+    this.trainingModalsService.callDeleteCycle(this.cycle, this.previewTitle);
   }
 }

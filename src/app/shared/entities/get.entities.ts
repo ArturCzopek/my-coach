@@ -1,6 +1,7 @@
 export class Cycle {
   constructor(public cycleId: number,
               public sets: Set[],
+              public isFinished: boolean,
               public startDate: Date,
               public endDate?: Date) {
   }

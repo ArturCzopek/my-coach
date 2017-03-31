@@ -109,6 +109,11 @@ $circle-size: 120px;
   border: 2px solid $red-color;
 }
 
+.blue-checkbox[type="checkbox"].filled-in:checked + label:after {
+  background-color: $blue-color;
+  border: 2px solid $blue-color;
+}
+
 //LOADERS
 
 .loading {

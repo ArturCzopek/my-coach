@@ -8,12 +8,19 @@ import {FormsModule} from "@angular/forms";
 import {CyclesListComponent} from "./cycles-list.component";
 import {CycleCardComponent} from "./cycle-card.component";
 import {SetSectionComponent} from "./set-section.component";
+import {TrainingModals} from "./modals/training.modals";
+import {CycleDeleteModal} from "./modals/cycle-delete.modal";
+import {TrainingModalsService} from "./services/training-modals.service";
+import {CycleEditModal} from "./modals/cycle-edit.modal";
 
 @NgModule({
   declarations: [
     CyclesListComponent,
     CycleCardComponent,
-    SetSectionComponent
+    SetSectionComponent,
+    TrainingModals,
+    CycleDeleteModal,
+    CycleEditModal
   ],
   imports: [
     HttpModule,
@@ -23,7 +30,8 @@ import {SetSectionComponent} from "./set-section.component";
   ],
   providers: [
     TrainingsMockService,
-    TrainingsBackEndService
+    TrainingsBackEndService,
+    TrainingModalsService
   ]
 })
 export class TrainingsModule {

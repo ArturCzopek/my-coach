@@ -38,7 +38,7 @@ export class DictionaryMockService extends DictionaryService {
       'calendar.month.jul.short': 'Lip',
       'calendar.month.aug.short': 'Sie',
       'calendar.month.sep.short': 'Wrz',
-      'calendar.month.oct.short': 'Paź',
+      'calendar.month.oct.short': 'Paz',
       'calendar.month.nov.short': 'Lis',
       'calendar.month.dec.short': 'Gru',
       'calendar.day.mon.full': 'Poniedziałek',
