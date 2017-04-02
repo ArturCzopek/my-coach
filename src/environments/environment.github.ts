@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   isBackendServerAvailable: false,
-  url: "http://localhost:8080"
+  url: "http://arturczopek.github.io/my-coach/"
 };

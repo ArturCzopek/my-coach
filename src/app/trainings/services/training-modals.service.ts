@@ -6,12 +6,17 @@ import {Cycle} from "../../shared/entities/get.entities";
 export class TrainingModalsService {
 
   addCycle: Subject<any> = new Subject<any>();
+  addExercises: Subject<any> = new Subject<any>();
   deleteCycle: Subject<any> = new Subject<any>();
   editCycle: Subject<any> = new Subject<any>();
   refreshPage: Subject<any> = new Subject<any>();
 
   public callAddCycle() {
     this.addCycle.next(null);
+  }
+
+  public callAddExercise() {
+    this.addExercises.next(null);
   }
 
   public callDeleteCycle(cycle: Cycle, modalTitle: string) {

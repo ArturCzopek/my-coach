@@ -1,6 +1,6 @@
 <div id="product-add" class="modal" materialize="modal" [materializeParams]="[modalParams]"
      [materializeActions]="modalActions">
-  <div class="modal-content">
+  <div class="modal-content" *ngIf="productToAdd">
 
     <h3>{{'page.prices.modal.add.addProduct.title' | dictionary}}</h3>
 
@@ -16,7 +16,7 @@
           <label for="screen-url">Screen link</label>
           <input id="screen-url" type="text" [(ngModel)]="productToAdd.screen" name="screen"/>
         </div>
-        <div *ngIf="canStoreFiles() && !screen" class="file-field input-field col s12">
+        <div *ngIf="canStoreFiles() && !productToAdd.screen" class="file-field input-field col s12">
           <div class="btn blue">
             <span>{{'page.prices.modal.add.selectPhoto.label' | dictionary}}</span>
             <input #photoFile type="file" accept="image/*" (change)="uploadPhoto()">

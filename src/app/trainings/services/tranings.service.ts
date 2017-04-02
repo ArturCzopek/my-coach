@@ -5,7 +5,7 @@ import {Inject} from "@angular/core";
 import {DictionaryService} from "../../shared/services/dictionary.service";
 import {DateService} from "../../shared/services/date.service";
 import {Observable} from "rxjs/Observable";
-import {NewCycle} from "../../shared/entities/add.entities";
+import {NewCycle, NewExercise} from "../../shared/entities/add.entities";
 
 export abstract class TrainingsService {
 
@@ -23,9 +23,15 @@ export abstract class TrainingsService {
 
   abstract addCycle(cycleToAdd: NewCycle): void;
 
+  abstract addExercises(exercisesToAdd: NewExercise[]): void;
+
   abstract deleteCycle(cycleToDelete: Cycle): void;
 
   abstract editCycle(cycleToEdit: Cycle): void;
+
+  abstract hasUserOnlyFinishedCycles(): boolean;
+
+  abstract getActiveCycle(): Cycle;
 
   getCyclePreviewTitle(cyclePreview: CyclePreview): string {
     let title: string = `${this.dictionaryService.getDictionaryValue('page.trainings.cycle.card.title')} `

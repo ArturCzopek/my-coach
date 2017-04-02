@@ -4,74 +4,32 @@
     <h3>{{'page.trainings.modal.addCycle.title' | dictionary}}</h3>
     <div class="row">
       <form materialize class="col s12">
-        <div class="row">
-          <div class="input-field col s6">
+        <div class="flex-cycle-add">
+          <div class="input-field flex-cycle-date">
             <i class="material-icons prefix">today</i>
             <label for="start-date">{{'page.trainings.modal.addCycle.startDate.label' | dictionary}}</label>
             <input id="start-date" type="date" class="datepicker" materialize="pickadate"
                    [(ngModel)]="startDate" name="startDate" [materializeParams]="[datePickerParams]">
           </div>
-          <div class="col s6 right">
+          <div class="flex-cycle-actions">
             <a (click)="addNewEmptySetToList()">{{'page.trainings.modal.addSet.label' | dictionary}}</a>
           </div>
         </div>
 
-        <div materialize="carousel" [materializeParams]="[{full_width: true}]" class="carousel carousel-slider center"
-             data-indicators="true">
-          <div *ngFor="let set of setsToAdd; let i = index" class="carousel-item">
+        <div *ngFor="let set of setsToAdd; let i = index" class="flex-cycle-add">
 
-            <form materialize>
-              <div class="row">
-                <div class="input-field col s6">
-                  <i class="material-icons prefix">label</i>
-                  <label for="{{'setName_' + i}}">{{'page.trainings.modal.addCycle.set.label' | dictionary}}</label>
-                  <input id="{{'setName_' + i}}" type="text" [(ngModel)]="set.setName" name="{{'setName_' + i}}"/>
-                </div>
-                <div class="col s6 right">
-                  <a (click)="onDeleteSet(i)">{{'page.trainings.modal.deleteSet.label' | dictionary}}</a>
-                </div>
-              </div>
-
-              <table class="responsive-table striped">
-                <thead>
-                <tr>
-                  <th data-field="Name">{{'page.trainings.modal.addCycle.exercise.name.label' | dictionary}}</th>
-                  <th data-field="Description">{{'page.trainings.modal.addCycle.exercise.description.label' |
-                    dictionary}}}
-                  </th>
-                  <th data-field="Delete" class="icons">{{'global.delete.label' | dictionary}}</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let exercise of set.exercises; let j = index">
-                  <td>
-                    <div class="input-field inline">
-                      <label for="{{'exerciseName_' + i + '_' + j}}">{{'page.trainings.exercise.label' | dictionary}} #{{(i
-                        + 1)}}</label>
-                      <input type="text" id="{{'exerciseName_' + i + '_' + j}}" [(ngModel)]="exercise.exerciseName"
-                             name="{{'exerciseName_' + i + '_' + j}}">
-                    </div>
-                  </td>
-                  <td>
-                    <div class="input-field inline">
-                      <label for="{{'exerciseDescription_' + i + '_' + j}}">{{'page.trainings.exercise.label' | dictionary}} #{{(i
-                        + 1)}}</label>
-                      <input type="text" id="{{'exerciseDescription_' + i + '_' + j}}" [(ngModel)]="exercise.exerciseDescription"
-                             name="{{'exerciseDescription_' + i + '_' + j}}">
-                    </div>
-                  </td>
-                  <td class="icons">
-                    <i (click)="onDeleteExercise(set, j)" class="small material-icons material-button tooltipped"
-                       materialize="tooltip" data-position="bottom" data-delay="50"
-                       [attr.data-tooltip]="'page.trainings.deleteExercise.tooltip' | dictionary">delete</i>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-              <a (click)="addNewExerciseToSet(set)">{{'page.prices.modal.add.addPrice.title' | dictionary}}</a>
-            </form>
-
+          <div class="input-field flex-cycle-date">
+            <i class="material-icons prefix">label</i>
+            <label for="{{'setName_' + (i+1)}}">{{'page.trainings.modal.addCycle.set.label' | dictionary}} #{{i+1}}</label>
+            <input id="{{'setName_' + (i+1)}}" type="text" [(ngModel)]="set.setName"
+                   name="{{'setName_' + (i+1)}}"/>
           </div>
+          <div class="flex-cycle-actions icons">
+            <i (click)="onDeleteSet(i)" class="small material-icons material-button tooltipped"
+               materialize="tooltip" data-position="bottom" data-delay="50"
+               [attr.data-tooltip]="'page.trainings.modal.deleteSet.tooltip' | dictionary">delete</i>
+          </div>
+
         </div>
       </form>
     </div>

@@ -19,7 +19,7 @@
     </div>
 
     <ng-template #cycleContent>
-      <div materialize="carousel" [materializeParams]="[{full_width: true}]" class="carousel carousel-slider center"
+      <div materialize="carousel" [materializeParams]="[{full_width: true, no_wrap: true}]" class="carousel carousel-slider center"
            data-indicators="true">
         <div *ngFor="let set of cycle.sets" class="carousel-item">
           <coach-set-section [set]="set"></coach-set-section>

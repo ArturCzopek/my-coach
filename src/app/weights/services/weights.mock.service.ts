@@ -11,7 +11,7 @@ import {ServiceInjector} from "../../shared/services/service.injector";
 @Injectable()
 export class WeightsMockService extends WeightsService {
 
-  private newWeightId: number = WEIGHT_LIST[0].length + WEIGHT_LIST[1].length;
+  private newWeightId: number = WEIGHT_LIST[0].length + WEIGHT_LIST[1].length + 1;
 
   constructor(private injector: Injector) {
     super(injector.get(ServiceInjector));

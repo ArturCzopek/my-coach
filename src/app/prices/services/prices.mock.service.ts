@@ -10,8 +10,8 @@ import {PRICES_LIST} from "../../shared/entities/mock-data/prices.mock-data";
 @Injectable()
 export class PricesMockService extends PricesService {
 
-  private newId: number = PRODUCTS_LIST.length;
-  private newPriceId: number = PRICES_LIST.map(prices => prices.length).reduce(this.reduce);
+  private newId: number = PRODUCTS_LIST.length + 1;
+  private newPriceId: number = PRICES_LIST.map(prices => prices.length).reduce(this.reduce) + 1;
 
   constructor(private injector: Injector) {
     super(injector.get(ServiceInjector));
@@ -32,7 +32,7 @@ export class PricesMockService extends PricesService {
 
   getPrices(productPreview: Product): Observable<Price[]> {
 
-    let pricesToReturn: Price[] = PRICES_LIST.find(priceList => priceList.length > 0 && priceList[0].productId === productPreview.productId);
+    let pricesToReturn: Price[] = PRICES_LIST.find(priceList => priceList.length > 0 && priceList[0].productId === productPreview.productId) || [];
 
     return Observable.create(observer => {
       // timeout is simulation of 'getting from http'

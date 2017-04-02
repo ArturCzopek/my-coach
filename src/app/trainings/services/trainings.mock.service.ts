@@ -7,20 +7,20 @@ import {CYCLE_PREVIEWS_LIST} from "../../shared/entities/mock-data/previews/cycl
 import {Observable} from "rxjs/Observable";
 import {CYCLES_LIST} from "../../shared/entities/mock-data/cycles.mock-data";
 import {DOES_NOT_CONTAIN} from "../../shared/global.values";
-import {NewCycle, NewExercise, NewSet} from "../../shared/entities/add.entities";
+import {NewCycle, NewExercise} from "../../shared/entities/add.entities";
 
 @Injectable()
 export class TrainingsMockService extends TrainingsService {
 
-  private newCycleId: number = CYCLES_LIST.length;
+  private newCycleId: number = CYCLES_LIST.length + 1;
   private newSetId: number = CYCLES_LIST
     .map(cycle => cycle.sets.length)
-    .reduce(this.reduce);
+    .reduce(this.reduce) + 1;
 
   private newExerciseId: number = CYCLES_LIST
     .map(cycle => cycle.sets)
     .map(sets => sets.map(set => set.exercises.length).reduce(this.reduce))
-    .reduce(this.reduce);
+    .reduce(this.reduce) + 1;
 
   constructor(private injector: Injector) {
     super(injector.get(ServiceInjector));
@@ -43,7 +43,7 @@ export class TrainingsMockService extends TrainingsService {
     return Observable.create(observer => {
       // timeout is simulation of 'getting from http'
       setTimeout(() => {
-        observer.next(this.getCycleById(cycleId));
+        observer.next(CYCLES_LIST.find(cycle => cycle.cycleId === cycleId));
       }, 500);
 
       setTimeout(() => {
@@ -53,12 +53,30 @@ export class TrainingsMockService extends TrainingsService {
   }
 
   addCycle(cycleToAdd: NewCycle): void {
-    const sets: Set[] = this.createSetsToAdd(cycleToAdd.sets);
+    const sets: Set[] = [];
+    cycleToAdd.sets.map(set => sets.push(new Set(this.newSetId++, set.setName, [], [])));
     const cycle: Cycle = new Cycle(this.newCycleId, sets, false, cycleToAdd.startDate);
     this.newCycleId++;
 
     CYCLES_LIST.push(cycle);
     CYCLE_PREVIEWS_LIST.push(new CyclePreview(cycle.cycleId, false, cycle.startDate));
+  }
+
+  addExercises(exercisesToAdd: NewExercise[]): void {
+
+    for (const exercise of exercisesToAdd) {
+
+      const setIdInArray: number = this.getActiveCycle().sets.findIndex(set => set.setId === exercise.setId);
+      const exerciseToAdd: Exercise = new Exercise(this.newExerciseId, exercise.exerciseName, []);
+
+      if (exercise.exerciseDescription) {
+        exerciseToAdd.exerciseDescription = exercise.exerciseDescription;
+      }
+
+      this.newExerciseId++;
+
+      this.getActiveCycle().sets[setIdInArray].exercises.push(exerciseToAdd);
+    }
   }
 
   deleteCycle(cycleToDelete: Cycle): void {
@@ -90,40 +108,13 @@ export class TrainingsMockService extends TrainingsService {
     }
   }
 
-  private getCycleById(cycleId: number): Cycle {
-    return CYCLES_LIST.find(cycle => cycle.cycleId === cycleId);
-  }
-
-  private createSetsToAdd(sets: NewSet[]): Set[] {
-
-    const setsToAdd: Set[] = [];
-
-    for (const set of sets) {
-      const exercises: Exercise[] = this.createExercisesToAdd(set.exercises);
-      setsToAdd.push(new Set(this.newSetId, set.setName, exercises, []));
-      this.newSetId++;
-    }
-
-    return setsToAdd;
+  hasUserOnlyFinishedCycles(): boolean {
+    return CYCLES_LIST.every(cycle => cycle.isFinished);
   }
 
 
-  private createExercisesToAdd(exercises: NewExercise[]): Exercise[] {
-
-    const exercisesToAdd: Exercise[] = [];
-
-    for (const exercise of exercises) {
-      let exerciseDescription = null;
-
-      if (exercise.exerciseDescription) {
-        exerciseDescription = exercise.exerciseDescription
-      }
-
-      exercisesToAdd.push(new Exercise(this.newExerciseId, exercise.exerciseName, [], exerciseDescription));
-      this.newExerciseId++;
-    }
-
-    return exercisesToAdd;
+  getActiveCycle(): Cycle {
+    return CYCLES_LIST.find(cycle => !cycle.isFinished);
   }
 
   private reduce(prevVal, currVal): number {

@@ -6,7 +6,7 @@
     </th>
   </tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="set.exercises.length > 0; else noExercises">
   <tr *ngFor="let exercise of set.exercises">
     <td>{{exercise.exerciseName}}</td>
     <td *ngFor="let session of exercise.exerciseSessions">
@@ -18,4 +18,19 @@
     </td>
   </tr>
   </tbody>
+
+  <ng-template #noExercises>
+    <tbody>
+    <div class="col s12 center no-data small">
+      <div class="row">
+        <i class="medium material-icons">info_outline</i>
+      </div>
+      <div class="row">
+        <p>{{'page.trainings.set.noExercises.info' | dictionary}} <a class="click" (click)="onAddExerciseClick()">{{'page.trainings.set.noExercises.click.info'
+          | dictionary}}</a></p>
+      </div>
+    </div>
+    </tbody>
+  </ng-template>
+
 </table>

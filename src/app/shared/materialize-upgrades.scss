@@ -152,10 +152,23 @@ $circle-size: 120px;
 
   p {
     font-size: 24px;
-    a:hover {
-      text-decoration: underline;
-      cursor: pointer;
+    a {
+
+      &.click {
+        text-transform: none;
+        margin-right: 0;
+        text-transform: none;
+        color: $blue-color;
+
+        &:hover {
+          color: $blue-color;
+          transition: none;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
     }
+
   }
 
   &.small {

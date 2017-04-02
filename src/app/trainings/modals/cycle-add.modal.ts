@@ -1,12 +1,13 @@
 /* tslint:disable:component-class-suffix */
 import {Component, OnInit} from "@angular/core";
-import {NewCycle, NewExercise, NewSet} from "../../shared/entities/add.entities";
+import {NewCycle, NewSet} from "../../shared/entities/add.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {DateService} from "../../shared/services/date.service";
 import {BaseModal} from "../../shared/components/base.modal";
 import {TrainingsService} from "../services/tranings.service";
 import {TrainingModalsService} from "../services/training-modals.service";
 
+declare var Materialize: any;
 declare var $: any;
 
 @Component({
@@ -25,6 +26,7 @@ export class CycleAddModal extends BaseModal implements OnInit {
   constructor(private trainingModalsService: TrainingModalsService, private serviceInjector: ServiceInjector,
               private dateService: DateService) {
     super(serviceInjector);
+    this.trainingsService = this.serviceInjector.getTrainingsService();
   }
 
   public ngOnInit(): void {
@@ -39,7 +41,6 @@ export class CycleAddModal extends BaseModal implements OnInit {
 
   public initDataBeforeOpenModal() {
     this.setsToAdd = [];
-    this.addNewEmptySetToList();
     this.startDate = '';
 
     if ($('#fab').hasClass('active')) {
@@ -48,7 +49,7 @@ export class CycleAddModal extends BaseModal implements OnInit {
   }
 
   public isDataValid(): boolean {
-    return this.setsToAdd.length > 0 && this.hasEverySetExercises() && this.dateService.isDateValid(this.startDate)
+    return this.setsToAdd.length > 0 && this.hasEverySetName() && this.dateService.isDateValid(this.startDate);
   }
 
   public onAddClick() {
@@ -60,23 +61,24 @@ export class CycleAddModal extends BaseModal implements OnInit {
     this.closeModal();
   }
 
+  public canModalBeOpened(): boolean {
+    if (!this.trainingsService.hasUserOnlyFinishedCycles()) {
+      Materialize.toast(this.dictionaryService.getDictionaryValue('page.trainings.cycle.finishAll.tooltip'), 3000);
+      return false;
+    }
+
+    return true;
+  }
+
   public addNewEmptySetToList() {
     this.setsToAdd.push(new NewSet("", []));
-  };
-
-  public addNewExerciseToSet(set: NewSet) {
-    set.exercises.push(new NewExercise("", ""));
   }
 
   public onDeleteSet(index: number) {
     this.setsToAdd.splice(index, 1);
   }
 
-  public onDeleteExercise(set: NewSet, index: number) {
-    set.exercises.splice(index, 1);
-  }
-
-  private hasEverySetExercises(): boolean {
-    return this.setsToAdd.every(set => set.exercises && set.exercises.length > 0);
+  private hasEverySetName(): boolean {
+    return this.setsToAdd.every(set => set.setName.length > 0);
   }
 }

@@ -4,7 +4,7 @@
 
     <h3>{{'page.prices.modal.add.shoppingList.title' | dictionary}}</h3>
 
-    <div *ngIf="!products" class="col s12 center no-data small">
+    <ng-template #noData class="col s12 center no-data small">
       <div class="row">
         <i class="medium material-icons">info_outline</i>
       </div>
@@ -12,9 +12,9 @@
         <p>{{'page.prices.list.noData.info' | dictionary}} <a (click)="onAddProductClick()">{{'page.prices.list.noData.click.info'
           | dictionary}}</a></p>
       </div>
-    </div>
+    </ng-template>
 
-    <form materialize *ngIf="products">
+    <form materialize *ngIf="products; else noData">
       <div class="row">
         <div class="input-field col s12 m6 l6">
           <i class="material-icons prefix">location_on</i>

@@ -6,7 +6,7 @@ export class NewCycle {
 }
 
 export class NewExercise {
-  constructor(public exerciseName: string, public exerciseDescription?: string) {
+  constructor(public setId: number, public exerciseName: string, public exerciseDescription?: string) {
 
   }
 }

@@ -38,6 +38,10 @@ export class CyclesListComponent implements OnInit {
       );
   }
 
+  onAddExerciseClick() {
+    this.trainingModalsService.callAddExercise();
+  }
+
   onAddCycleClick() {
     this.trainingModalsService.callAddCycle();
   }

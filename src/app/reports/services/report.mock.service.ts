@@ -11,7 +11,7 @@ import {ServiceInjector} from "../../shared/services/service.injector";
 @Injectable()
 export class ReportMockService extends ReportService {
 
-  private newReportId: number = REPORTS_LIST.length;
+  private newReportId: number = REPORTS_LIST.length + 1;
 
   constructor(private injector: Injector) {
     super(injector.get(ServiceInjector));
@@ -33,13 +33,11 @@ export class ReportMockService extends ReportService {
 
   public getReport(reportId: number): Observable<Report> {
 
-    const reportToReturn: Report = REPORTS_LIST.find(report => report.reportId === reportId);
-
     return Observable.create(observer => {
 
       // timeout is simulation of 'getting from http'
       setTimeout(() => {
-        observer.next(reportToReturn);
+        observer.next(REPORTS_LIST.find(report => report.reportId === reportId));
       }, 1000);
 
       setTimeout(() => {

@@ -49,7 +49,10 @@ export class ProductAddModal extends BaseModal implements OnInit {
   }
 
   public isDataValid(): boolean {
-    return this.productToAdd.productName.length > 0;
+    if (this.productToAdd) {
+      return this.productToAdd.productName.length > 0;
+    }
+    return false;
   }
 
   public uploadPhoto() {
