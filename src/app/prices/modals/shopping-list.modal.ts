@@ -76,10 +76,6 @@ export class ShoppingListModal extends BaseModal implements OnInit {
     this.shoppingListToAdd.shoppingDate = this.dateService.parseStringToDate(this.shoppingDate);
     this.shoppingListToAdd.place = this.place;
 
-    for (let i = 0; i < this.shoppingListToAdd.prices.length; i++) {
-      this.shoppingListToAdd.prices[i].productId = this.getProductIdForName(this.productNamesForPrices[i]);
-    }
-
     this.pricesService.addShoppingList(this.shoppingListToAdd);
 
     this.pricesModalsService.callRefreshPage();
@@ -111,28 +107,10 @@ export class ShoppingListModal extends BaseModal implements OnInit {
   }
 
   private hasEveryProductValidPriceAndQuantity(): boolean {
-
-    if (!this.shoppingListToAdd.prices) {
-      return false;
-    }
-
-    for (const price of this.shoppingListToAdd.prices) {
-      if (price.value <= 0 || price.quantity <= 0) {
-        return false;
-      }
-    }
-
-    return true;
+    return this.shoppingListToAdd.prices.every(price => price.value > 0 && price.quantity > 0);
   }
 
   private hasEveryProductValidName(): boolean {
-
-    for (const productName of this.productNamesForPrices) {
-      if (this.getProductIdForName(productName) === DOES_NOT_CONTAIN) {
-        return false;
-      }
-    }
-
-    return true;
+    return this.productNamesForPrices.every(productName => this.getProductIdForName(productName) !== DOES_NOT_CONTAIN);
   }
 }

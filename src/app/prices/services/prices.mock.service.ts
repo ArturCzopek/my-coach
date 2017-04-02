@@ -11,14 +11,10 @@ import {PRICES_LIST} from "../../shared/entities/mock-data/prices.mock-data";
 export class PricesMockService extends PricesService {
 
   private newId: number = PRODUCTS_LIST.length;
-  private newPriceId: number = -1;
+  private newPriceId: number = PRICES_LIST.map(prices => prices.length).reduce(this.reduce);
 
   constructor(private injector: Injector) {
     super(injector.get(ServiceInjector));
-
-    for (const prices of PRICES_LIST) {
-      this.newPriceId += prices.length;
-    }
   }
 
   getProductPreviews(): Observable<Product[]> {
@@ -36,14 +32,7 @@ export class PricesMockService extends PricesService {
 
   getPrices(productPreview: Product): Observable<Price[]> {
 
-    let pricesToReturn: Price[] = [];
-
-    for (let i = 0; i < PRICES_LIST.length; i++) {
-      if (PRICES_LIST[i].length > 0 && PRICES_LIST[i][0].productId === productPreview.productId) {
-        pricesToReturn = PRICES_LIST[i];
-        break;
-      }
-    }
+    let pricesToReturn: Price[] = PRICES_LIST.find(priceList => priceList.length > 0 && priceList[0].productId === productPreview.productId);
 
     return Observable.create(observer => {
       // timeout is simulation of 'getting from http'
@@ -58,8 +47,8 @@ export class PricesMockService extends PricesService {
   }
 
   addProduct(productToAdd: NewProduct): void {
-    this.newId++;
     const productId: number = this.newId;
+    this.newId++;
     const product: Product = new Product(productId, productToAdd.productName, productToAdd.screen, 0);
     PRICES_LIST.push([]);
     PRODUCTS_LIST.push(product);
@@ -67,21 +56,12 @@ export class PricesMockService extends PricesService {
 
   addPrice(priceToAdd: NewPrice): void {
 
-    let prodIdInArray = 0;
+    let prodIdInArray = PRODUCTS_LIST.findIndex(product => product.productId === priceToAdd.productId);
 
-    for (; prodIdInArray <= PRODUCTS_LIST.length; prodIdInArray++) {
-      if (PRODUCTS_LIST[prodIdInArray].productId === priceToAdd.productId) {
-        break;
-      }
-    }
-
-    if (prodIdInArray === PRODUCTS_LIST.length) {
-      return;
-    }
+    const price: Price = new Price(this.newPriceId, priceToAdd.priceDate, priceToAdd.place, priceToAdd.quantity,
+      priceToAdd.value, priceToAdd.productId);
 
     this.newPriceId++;
-    const price: Price = new Price(this.newPriceId, priceToAdd.priceDate, priceToAdd.place, priceToAdd.quantity,
-                                    priceToAdd.value, priceToAdd.productId);
     PRICES_LIST[prodIdInArray].push(price);
   }
 
@@ -95,13 +75,7 @@ export class PricesMockService extends PricesService {
 
   editPrices(pricesToEdit: Price[]): void {
 
-    let prodIdInArray = 0;
-
-    for (; prodIdInArray <= PRODUCTS_LIST.length; prodIdInArray++) {
-      if (PRODUCTS_LIST[prodIdInArray].productId === pricesToEdit[0].productId) {
-        break;
-      }
-    }
+    const prodIdInArray = PRODUCTS_LIST.findIndex(product => product.productId === pricesToEdit[0].productId);
 
     const priceList: Price[] = PRICES_LIST[prodIdInArray];
 
@@ -116,24 +90,12 @@ export class PricesMockService extends PricesService {
   }
 
   editProduct(productToEdit: Product): void {
-
-    for (let i = 0; i < PRODUCTS_LIST.length; i++) {
-      if (PRODUCTS_LIST[i].productId === productToEdit.productId) {
-        PRODUCTS_LIST[i] = productToEdit;
-        break;
-      }
-    }
+    const prodIdInArray = PRODUCTS_LIST.findIndex(product => product.productId === productToEdit.productId);
+    PRODUCTS_LIST[prodIdInArray] = productToEdit;
   }
 
   deletePrices(pricesToDelete: Price[]): void {
-    let prodIdInArray = 0;
-
-    for (; prodIdInArray <= PRODUCTS_LIST.length; prodIdInArray++) {
-      if (PRODUCTS_LIST[prodIdInArray].productId === pricesToDelete[0].productId) {
-        break;
-      }
-    }
-
+    const prodIdInArray = PRODUCTS_LIST.findIndex(product => product.productId === pricesToDelete[0].productId);
     const priceList: Price[] = PRICES_LIST[prodIdInArray];
 
     for (const price of pricesToDelete) {
@@ -147,13 +109,13 @@ export class PricesMockService extends PricesService {
   }
 
   deleteProduct(productToDelete: Product): void {
+    const productIndex = PRODUCTS_LIST.findIndex(product => product.productId === productToDelete.productId);
 
-    for (let i = 0; i < PRODUCTS_LIST.length; i++) {
-      if (PRODUCTS_LIST[i].productId === productToDelete.productId) {
-        PRODUCTS_LIST.splice(i, 1);
-        PRICES_LIST.splice(i, 1);
-        break;
-      }
-    }
+    PRODUCTS_LIST.splice(productIndex, 1);
+    PRICES_LIST.splice(productIndex, 1);
+  }
+
+  private reduce(prevVal, currVal): number {
+    return prevVal + currVal;
   }
 }

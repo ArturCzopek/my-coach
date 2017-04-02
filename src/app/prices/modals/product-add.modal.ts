@@ -17,8 +17,6 @@ declare var $: any;
 })
 export class ProductAddModal extends BaseModal implements OnInit {
 
-  public productName= '';
-  public screen: any = '';
   public productToAdd: NewProduct;
 
   @ViewChild("photoFile") photoFile: ElementRef;
@@ -43,8 +41,7 @@ export class ProductAddModal extends BaseModal implements OnInit {
   }
 
   public initDataBeforeOpenModal() {
-    this.productName = '';
-    this.screen = '';
+    this.productToAdd = new NewProduct('', '');
 
     if ($('#fab').hasClass('active')) {
       $('#fab a').click();
@@ -52,7 +49,7 @@ export class ProductAddModal extends BaseModal implements OnInit {
   }
 
   public isDataValid(): boolean {
-    return this.productName.length > 0;
+    return this.productToAdd.productName.length > 0;
   }
 
   public uploadPhoto() {
@@ -64,7 +61,7 @@ export class ProductAddModal extends BaseModal implements OnInit {
 
       this.http.post(environment.url + this.uploadUrl, input).subscribe(
         res => {
-          this.screen = environment.url + this.imagesUrl + res['_body'];
+          this.productToAdd.screen = environment.url + this.imagesUrl + res['_body'];
         },
         err => {
           console.log("not ok");
@@ -75,7 +72,6 @@ export class ProductAddModal extends BaseModal implements OnInit {
   }
 
   public onAddClick() {
-    this.productToAdd = new NewProduct(this.productName, this.screen);
     this.pricesService.addProduct(this.productToAdd);
     this.pricesModalsService.callRefreshPage();
     this.onCloseModal();

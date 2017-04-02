@@ -1,13 +1,19 @@
 export class NewCycle {
-  constructor(private startDate: Date,
-              private sets: NewSet[]) {
+  constructor(public startDate: Date,
+              public sets: NewSet[]) {
+
+  }
+}
+
+export class NewExercise {
+  constructor(public exerciseName: string, public exerciseDescription?: string) {
 
   }
 }
 
 export class NewExerciseSession {
   constructor(private exerciseId: number,
-              private series: NewSeries) {
+              private series: NewSeries[]) {
 
   }
 }
@@ -43,15 +49,15 @@ export class NewSeries {
 }
 
 export class NewSet {
-  constructor(private setName: string,
-              private exercises: string[]) {
+  constructor(public setName: string,
+              public exercises: NewExercise[]) {
   }
 }
 
 export class NewTraining {
-  constructor(private setId: number,
-              private exerciseSessions: NewExerciseSession[],
-              private date?: Date) {
+  constructor(public setId: number,
+              public exerciseSessions: NewExerciseSession[],
+              public date?: Date) {
   }
 }
 

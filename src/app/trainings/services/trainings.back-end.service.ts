@@ -4,6 +4,7 @@ import {Observable} from "rxjs/Observable";
 import {CyclePreview} from "../../shared/entities/preview.entities";
 import {Cycle} from "../../shared/entities/get.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
+import {NewCycle} from "../../shared/entities/add.entities";
 
 @Injectable()
 export class TrainingsBackEndService extends TrainingsService {
@@ -22,10 +23,13 @@ export class TrainingsBackEndService extends TrainingsService {
     return null;
   }
 
+  addCycle(cycleToAdd: NewCycle): void {
+    console.log("TrainingsBackEndService#addCycle not implemented yet");
+  }
+
   deleteCycle(cycleToDelete: Cycle): void {
     console.log("TrainingsBackEndService#deleteCycle not implemented yet");
   }
-
 
   editCycle(cycleToEdit: Cycle): void {
     console.log("TrainingsBackEndService#editCycle not implemented yet");

@@ -10,7 +10,8 @@ export class Cycle {
 export class Exercise {
   constructor(public exerciseId: number,
               public exerciseName: string,
-              public exerciseSessions: ExerciseSession[]) {
+              public exerciseSessions: ExerciseSession[],
+              public exerciseDescription?: string) {
   }
 }
 

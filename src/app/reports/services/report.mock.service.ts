@@ -6,13 +6,12 @@ import {REPORTS_LIST} from "../../shared/entities/mock-data/reports.mock-data";
 import {ReportService} from "./report.service";
 import {NewReport} from "../../shared/entities/add.entities";
 import {Injectable, Injector} from "@angular/core";
-import {DOES_NOT_CONTAIN} from "../../shared/global.values";
 import {ServiceInjector} from "../../shared/services/service.injector";
 
 @Injectable()
 export class ReportMockService extends ReportService {
 
-  private newId: number = REPORTS_LIST.length;
+  private newReportId: number = REPORTS_LIST.length;
 
   constructor(private injector: Injector) {
     super(injector.get(ServiceInjector));
@@ -34,14 +33,7 @@ export class ReportMockService extends ReportService {
 
   public getReport(reportId: number): Observable<Report> {
 
-    let reportToReturn: Report;
-
-    for (const report of REPORTS_LIST) {
-      if (report.reportId === reportId) {
-        reportToReturn = report;
-        break;
-      }
-    }
+    const reportToReturn: Report = REPORTS_LIST.find(report => report.reportId === reportId);
 
     return Observable.create(observer => {
 
@@ -57,45 +49,25 @@ export class ReportMockService extends ReportService {
   }
 
   public addReport(reportToAdd: NewReport): void {
-    this.newId++;
-    const reportId: number = this.newId;
-    const report: Report = new Report(reportId, reportToAdd.content, reportToAdd.startDate, reportToAdd.endDate);
-    const reportPreview: ReportPreview = new ReportPreview(reportId, reportToAdd.startDate, reportToAdd.endDate);
+    const report: Report = new Report(this.newReportId, reportToAdd.content, reportToAdd.startDate, reportToAdd.endDate);
+    const reportPreview: ReportPreview = new ReportPreview(this.newReportId, reportToAdd.startDate, reportToAdd.endDate);
+    this.newReportId++;
+
     REPORTS_LIST.push(report);
     REPORT_PREVIEWS_LIST.push(reportPreview);
   }
 
   public deleteReport(reportToDelete: Report): void {
-
-    for (let i = 0; i < REPORTS_LIST.length; i++) {
-      if (REPORTS_LIST[i].reportId === reportToDelete.reportId) {
-        REPORTS_LIST.splice(i, 1);
-        break;
-      }
-    }
-
-    for (let i = 0; i < REPORT_PREVIEWS_LIST.length; i++) {
-      if (REPORT_PREVIEWS_LIST[i].reportId === reportToDelete.reportId) {
-        REPORT_PREVIEWS_LIST.splice(i, 1);
-        break;
-      }
-    }
+    const reportId = REPORTS_LIST.findIndex(report => report.reportId === reportToDelete.reportId);
+    REPORTS_LIST.splice(reportId, 1);
+    REPORT_PREVIEWS_LIST.splice(reportId, 1);
   }
 
 
   editReport(reportToEdit: Report): void {
-
-    const reportIndex: number = REPORTS_LIST.indexOf(reportToEdit);
-    if (reportIndex !== DOES_NOT_CONTAIN) {
-      REPORTS_LIST[reportIndex] = reportToEdit;
-    }
-
-    for (let i = 0; i < REPORT_PREVIEWS_LIST.length; i++) {
-      if (REPORT_PREVIEWS_LIST[i].reportId === reportToEdit.reportId) {
-        REPORT_PREVIEWS_LIST[i].startDate = reportToEdit.startDate;
-        REPORT_PREVIEWS_LIST[i].endDate = reportToEdit.endDate;
-        break;
-      }
-    }
+    const reportId: number = REPORTS_LIST.findIndex(report => report.reportId === reportToEdit.reportId);
+    REPORTS_LIST[reportId] = reportToEdit;
+    REPORT_PREVIEWS_LIST[reportId].startDate = reportToEdit.startDate;
+    REPORT_PREVIEWS_LIST[reportId].endDate = reportToEdit.endDate;
   }
 }

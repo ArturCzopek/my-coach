@@ -11,7 +11,7 @@ import {ServiceInjector} from "../../shared/services/service.injector";
 @Injectable()
 export class WeightsMockService extends WeightsService {
 
-  private newId: number = WEIGHT_LIST[0].length + WEIGHT_LIST[1].length;
+  private newWeightId: number = WEIGHT_LIST[0].length + WEIGHT_LIST[1].length;
 
   constructor(private injector: Injector) {
     super(injector.get(ServiceInjector));
@@ -54,32 +54,17 @@ export class WeightsMockService extends WeightsService {
   }
 
   public getAllDays(weights: Weight[]): number[] {
-
-    const days: number[] = [];
-
-    for (const weight of weights) {
-      days.push(weight.measurementDate.getDate());
-    }
-
-    return days;
+    return weights.map(weight => weight.measurementDate.getDate());
   }
 
   public getAllValues(weights: Weight[]): number[] {
-
-    const values: number[] = [];
-
-    for (const weight of weights) {
-      values.push(weight.value);
-    }
-
-    return values;
+    return weights.map(weight => weight.value);
   }
 
   // for mock we add only to second month
   public addWeight(weightToAdd: NewWeight): void {
-    const weightId: number = this.newId;
-    this.newId++;
-    const weight: Weight = new Weight(weightId, weightToAdd.value, weightToAdd.measurementDate);
+    const weight: Weight = new Weight(this.newWeightId, weightToAdd.value, weightToAdd.measurementDate);
+    this.newWeightId++;
     WEIGHT_LIST[1].push(weight);
   }
 

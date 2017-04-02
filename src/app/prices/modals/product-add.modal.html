@@ -9,12 +9,12 @@
         <div class="input-field col s12">
           <i class="material-icons prefix">receipt</i>
           <label for="product-name">{{'page.prices.modal.add.productName.label' | dictionary}}</label>
-          <input id="product-name" type="text" [(ngModel)]="productName" name="productName"/>
+          <input id="product-name" type="text" [(ngModel)]="productToAdd.productName" name="productName"/>
         </div>
         <div *ngIf="!canStoreFiles()" class="input-field col s12">
           <i class="material-icons prefix">perm_media</i>
           <label for="screen-url">Screen link</label>
-          <input id="screen-url" type="text" [(ngModel)]="screen" name="screen"/>
+          <input id="screen-url" type="text" [(ngModel)]="productToAdd.screen" name="screen"/>
         </div>
         <div *ngIf="canStoreFiles() && !screen" class="file-field input-field col s12">
           <div class="btn blue">
@@ -27,9 +27,9 @@
         </div>
       </form>
     </div>
-    <div class="row" *ngIf="screen" >
+    <div class="row" *ngIf="productToAdd.screen" >
       <div class="col s12 center">
-        <img [src]="screen" style="height: 300px; width: 300px;"/>
+        <img [src]="productToAdd.screen" style="height: 300px; width: 300px;"/>
       </div>
     </div>
   </div>

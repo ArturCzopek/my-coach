@@ -878,7 +878,8 @@ export let CYCLES_LIST: Cycle[] = [
                   )
                 ]
               )
-            ]
+            ],
+            "Pamiętaj o prostych nogach!"
           ),
           new Exercise(
             18,
@@ -929,7 +930,8 @@ export let CYCLES_LIST: Cycle[] = [
                   )
                 ]
               )
-            ]
+            ],
+            "Rób tak abyś się zesrał"
           )
         ],
         [

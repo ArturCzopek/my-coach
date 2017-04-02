@@ -32,7 +32,7 @@ export class DateService {
     if (this.isDateValid(firstDate) && this.isDateValid(secondDate)) {
       const diff: number = moment(this.parseStringToDate(secondDate)).diff(moment(this.parseStringToDate(firstDate)));
       return diff > 0;
-    } else if (this.isDateValid(firstDate)) {
+    } else if (this.isDateValid(firstDate) && secondDate == null) {
       // sometimes end date is nullable, this is for 'current' date
       return true;
     }

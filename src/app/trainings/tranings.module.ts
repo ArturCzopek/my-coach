@@ -12,6 +12,7 @@ import {TrainingModals} from "./modals/training.modals";
 import {CycleDeleteModal} from "./modals/cycle-delete.modal";
 import {TrainingModalsService} from "./services/training-modals.service";
 import {CycleEditModal} from "./modals/cycle-edit.modal";
+import {CycleAddModal} from "./modals/cycle-add.modal";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {CycleEditModal} from "./modals/cycle-edit.modal";
     CycleCardComponent,
     SetSectionComponent,
     TrainingModals,
+    CycleAddModal,
     CycleDeleteModal,
     CycleEditModal
   ],

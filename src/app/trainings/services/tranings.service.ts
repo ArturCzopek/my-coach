@@ -5,6 +5,7 @@ import {Inject} from "@angular/core";
 import {DictionaryService} from "../../shared/services/dictionary.service";
 import {DateService} from "../../shared/services/date.service";
 import {Observable} from "rxjs/Observable";
+import {NewCycle} from "../../shared/entities/add.entities";
 
 export abstract class TrainingsService {
 
@@ -19,6 +20,8 @@ export abstract class TrainingsService {
   abstract getCyclePreviews(): Observable<CyclePreview[]>
 
   abstract getCycle(cycleId: number): Observable<Cycle>;
+
+  abstract addCycle(cycleToAdd: NewCycle): void;
 
   abstract deleteCycle(cycleToDelete: Cycle): void;
 
