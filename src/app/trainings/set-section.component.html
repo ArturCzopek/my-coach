@@ -2,7 +2,11 @@
   <thead>
   <tr>
     <th data-field="Set">{{set.setName | uppercase}}</th>
-    <th *ngFor="let training of set.trainings">{{ dateService.parseDateToString(training.trainingDate) }}
+    <th *ngFor="let training of set.trainings">
+      {{ dateService.parseDateToString(training.trainingDate) }}
+      <i (click)="onDeleteTraining(training)" class="small material-icons material-button tooltipped hover-visible"
+         materialize="tooltip" data-position="bottom" data-delay="50"
+         [attr.data-tooltip]="'page.trainings.deleteTraining.tooltip' | dictionary">delete</i>
     </th>
   </tr>
   </thead>
@@ -11,6 +15,9 @@
     <td>{{exercise.exerciseName}}
       <i *ngIf="exercise.exerciseDescription" class="material-button material-icons tooltipped" materialize="tooltip"
          data-position="bottom" data-delay="50" [attr.data-tooltip]="exercise.exerciseDescription">comment</i>
+      <i (click)="onDeleteExercise(exercise)" class="small material-icons material-button tooltipped hover-visible"
+         materialize="tooltip" data-position="bottom" data-delay="50"
+         [attr.data-tooltip]="'page.trainings.deleteExercise.tooltip' | dictionary">delete</i>
     </td>
     <td *ngFor="let session of exercise.exerciseSessions">
       <div *ngFor="let series of session.series" class="series">
@@ -29,7 +36,7 @@
         <i class="medium material-icons">info_outline</i>
       </div>
       <div class="row">
-        <p>{{'page.trainings.set.noExercises.info' | dictionary}} <a class="click" (click)="onAddExerciseClick()">{{'page.trainings.set.noExercises.click.info'
+        <p>{{'page.trainings.set.noExercises.info' | dictionary}} <a class="click" (click)="onAddExercise()">{{'page.trainings.set.noExercises.click.info'
           | dictionary}}</a></p>
       </div>
     </div>

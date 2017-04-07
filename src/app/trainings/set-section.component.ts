@@ -1,4 +1,4 @@
-import {Set} from "../shared/entities/get.entities";
+import {Exercise, Set, Training} from "../shared/entities/get.entities";
 import {Component, Input} from "@angular/core";
 import {DateService} from "../shared/services/date.service";
 import {ServiceInjector} from "../shared/services/service.injector";
@@ -21,7 +21,15 @@ export class SetSectionComponent {
     this.trainingsService = serviceInjector.getTrainingsService();
   }
 
-  onAddExerciseClick() {
+  onAddExercise() {
     this.trainingModalsService.callAddExercise();
+  }
+
+  onDeleteExercise(exercise: Exercise) {
+    this.trainingModalsService.callDeleteExercise(exercise);
+  }
+
+  onDeleteTraining(training: Training) {
+    this.trainingModalsService.callDeleteTraining(training);
   }
 }

@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Subject} from "rxjs/Subject";
-import {Cycle} from "../../shared/entities/get.entities";
+import {Cycle, Exercise, Training} from "../../shared/entities/get.entities";
 
 @Injectable()
 export class TrainingModalsService {
@@ -9,6 +9,8 @@ export class TrainingModalsService {
   addExercises: Subject<any> = new Subject<any>();
   addTraining: Subject<any> = new Subject<any>();
   deleteCycle: Subject<any> = new Subject<any>();
+  deleteExercise: Subject<any> = new Subject<any>();
+  deleteTraining: Subject<any> = new Subject<any>();
   editCycle: Subject<any> = new Subject<any>();
   refreshPage: Subject<any> = new Subject<any>();
 
@@ -26,6 +28,14 @@ export class TrainingModalsService {
 
   public callDeleteCycle(cycle: Cycle, modalTitle: string) {
     this.deleteCycle.next({cycle: cycle, modalTitle: modalTitle});
+  }
+
+  public callDeleteExercise(exercise: Exercise) {
+    this.deleteExercise.next(exercise);
+  }
+
+  public callDeleteTraining(training: Training) {
+    this.deleteTraining.next(training);
   }
 
   public callEditCycle(cycle: Cycle, modalTitle: string) {

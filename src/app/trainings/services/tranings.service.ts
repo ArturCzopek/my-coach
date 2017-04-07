@@ -1,5 +1,5 @@
 import {CyclePreview} from "../../shared/entities/preview.entities";
-import {Cycle, Series} from "../../shared/entities/get.entities";
+import {Cycle, Exercise, Series} from "../../shared/entities/get.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {Inject, NgZone} from "@angular/core";
 import {DictionaryService} from "../../shared/services/dictionary.service";
@@ -34,6 +34,8 @@ export abstract class TrainingsService {
   abstract hasUserOnlyFinishedCycles(): boolean;
 
   abstract getActiveCycle(): Cycle;
+
+  abstract deleteExercise(exerciseToDelete: Exercise): void;
 
   getCyclePreviewTitle(cyclePreview: CyclePreview): string {
 

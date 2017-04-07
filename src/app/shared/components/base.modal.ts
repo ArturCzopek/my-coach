@@ -29,7 +29,8 @@ export abstract class BaseModal implements OnInit, AfterViewChecked {
     }
   }
 
-  abstract initDataBeforeOpenModal();
+  initDataBeforeOpenModal() {
+  }
 
   openModal() {
     if (this.canModalBeOpened()) {

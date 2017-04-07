@@ -1,5 +1,19 @@
 table {
   cursor: default;
+
+  .hover-visible {
+    visibility: hidden;
+    vertical-align: middle;
+  }
+
+  th {
+    &:hover {
+      .hover-visible {
+        visibility: visible;
+      }
+    }
+  }
+
   td {
     .series {
 
@@ -9,6 +23,12 @@ table {
         font-size: 1rem;
         vertical-align: middle;
         cursor: default;
+      }
+    }
+
+    &:hover {
+      .hover-visible {
+        visibility: visible;
       }
     }
   }
@@ -26,3 +46,4 @@ table {
     overflow-y: auto;
   }
 }
+

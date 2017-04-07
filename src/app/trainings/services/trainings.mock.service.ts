@@ -176,6 +176,20 @@ export class TrainingsMockService extends TrainingsService {
     })
   }
 
+
+  deleteExercise(exerciseToDelete: Exercise): void {
+    this.ngZone.runOutsideAngular(() => {
+      CYCLES_LIST.forEach(cycle => {
+        cycle.sets.forEach(set => {
+          const exerciseId = set.exercises.findIndex(exercise => exercise.exerciseId === exerciseToDelete.exerciseId);
+          if (exerciseId != DOES_NOT_CONTAIN) {
+            set.exercises.splice(exerciseId, 1);
+          }
+        })
+      })
+    })
+  }
+
   hasUserOnlyFinishedCycles(): boolean {
     return this.ngZone.runOutsideAngular(() => {
       return CYCLES_LIST.every(cycle => cycle.isFinished);
