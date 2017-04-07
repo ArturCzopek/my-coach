@@ -40,6 +40,10 @@ export class DateService {
     return false;
   }
 
+  public getCurrentDateAsString(): string {
+    return this.parseDateToString(new Date());
+  }
+
   private getDateFormat(): string {
     return this.dictionaryService.getDictionaryValue('calendar.format.momentjs');
   }

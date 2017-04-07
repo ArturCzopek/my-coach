@@ -14,6 +14,7 @@ import {TrainingModalsService} from "./services/training-modals.service";
 import {CycleEditModal} from "./modals/cycle-edit.modal";
 import {CycleAddModal} from "./modals/cycle-add.modal";
 import {ExerciseAddModal} from "./modals/exercise-add.modal";
+import {TrainingAddModal} from "./modals/training-add.modal";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {ExerciseAddModal} from "./modals/exercise-add.modal";
     CycleAddModal,
     CycleDeleteModal,
     CycleEditModal,
-    ExerciseAddModal
+    ExerciseAddModal,
+    TrainingAddModal
   ],
   imports: [
     HttpModule,

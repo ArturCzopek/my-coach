@@ -7,6 +7,7 @@ export class TrainingModalsService {
 
   addCycle: Subject<any> = new Subject<any>();
   addExercises: Subject<any> = new Subject<any>();
+  addTraining: Subject<any> = new Subject<any>();
   deleteCycle: Subject<any> = new Subject<any>();
   editCycle: Subject<any> = new Subject<any>();
   refreshPage: Subject<any> = new Subject<any>();
@@ -17,6 +18,10 @@ export class TrainingModalsService {
 
   public callAddExercise() {
     this.addExercises.next(null);
+  }
+
+  public callAddTraining() {
+    this.addTraining.next(null);
   }
 
   public callDeleteCycle(cycle: Cycle, modalTitle: string) {

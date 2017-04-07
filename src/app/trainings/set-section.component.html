@@ -8,7 +8,10 @@
   </thead>
   <tbody *ngIf="set.exercises.length > 0; else noExercises">
   <tr *ngFor="let exercise of set.exercises">
-    <td>{{exercise.exerciseName}}</td>
+    <td>{{exercise.exerciseName}}
+      <i *ngIf="exercise.exerciseDescription" class="material-button material-icons tooltipped" materialize="tooltip"
+         data-position="bottom" data-delay="50" [attr.data-tooltip]="exercise.exerciseDescription">comment</i>
+    </td>
     <td *ngFor="let session of exercise.exerciseSessions">
       <div *ngFor="let series of session.series" class="series">
         {{trainingsService.getFormattedRepeatsWithWeight(series)}}

@@ -17,7 +17,8 @@ export class Exercise {
 
 export class ExerciseSession {
   constructor(public exereciseSessionId: number,
-              public series: Series[]) {
+              public series?: Series[],
+              public isEmpty = false) {
   }
 }
 

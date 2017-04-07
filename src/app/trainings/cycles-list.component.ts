@@ -47,7 +47,6 @@ export class CyclesListComponent implements OnInit {
   }
 
   onAddTrainingClick() {
-    console.log("not implemented yet");
-    // this.trainingsModalsService.callAddTraining();
+    this.trainingModalsService.callAddTraining();
   }
 }

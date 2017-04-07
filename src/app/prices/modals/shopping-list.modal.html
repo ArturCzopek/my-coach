@@ -16,7 +16,7 @@
 
     <form materialize *ngIf="products; else noData">
       <div class="row">
-        <div class="input-field col s12 m6 l6">
+        <div class="input-field col s12 m6 l6" style="padding-left: 0">
           <i class="material-icons prefix">location_on</i>
           <label for="place">{{'page.prices.modal.add.place.label' | dictionary}}</label>
           <input id="place" type="text" [(ngModel)]="place" name="place"/>
@@ -30,7 +30,7 @@
         </div>
       </div>
 
-      <table class="striped">
+      <table class="responsive-table striped">
         <thead>
         <tr>
           <th data-field="Product">{{'page.prices.product.label' | dictionary}}</th>

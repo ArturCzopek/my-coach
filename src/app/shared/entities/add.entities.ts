@@ -12,8 +12,9 @@ export class NewExercise {
 }
 
 export class NewExerciseSession {
-  constructor(private exerciseId: number,
-              private series: NewSeries[]) {
+  constructor(public exerciseId: number,
+              public series: NewSeries[],
+              public isEmpty: boolean = false) {
 
   }
 }
@@ -42,9 +43,9 @@ export class NewReport {
 }
 
 export class NewSeries {
-  constructor(private weight: number,
-              private repeats: number,
-              private comment?: string) {
+  constructor(public weight: number,
+              public repeats: number,
+              public comment: string) {
   }
 }
 

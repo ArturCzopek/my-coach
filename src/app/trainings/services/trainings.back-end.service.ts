@@ -1,16 +1,16 @@
 import {TrainingsService} from "./tranings.service";
-import {Injectable, Injector} from "@angular/core";
+import {Injectable, Injector, NgZone} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {CyclePreview} from "../../shared/entities/preview.entities";
 import {Cycle} from "../../shared/entities/get.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
-import {NewCycle, NewExercise} from "../../shared/entities/add.entities";
+import {NewCycle, NewExercise, NewTraining} from "../../shared/entities/add.entities";
 
 @Injectable()
 export class TrainingsBackEndService extends TrainingsService {
 
   constructor(private injector: Injector) {
-    super(injector.get(ServiceInjector));
+    super(injector.get(ServiceInjector), injector.get(NgZone));
   }
 
   getCyclePreviews(): Observable<CyclePreview[]> {
@@ -29,6 +29,10 @@ export class TrainingsBackEndService extends TrainingsService {
 
   addExercises(exerciseToAdd: NewExercise[]): void {
     console.log("TrainingsBackEndService#addExercises not implemented yet");
+  }
+
+  addTraining(trainingToAdd: NewTraining): void {
+    console.log("TrainingsBackEndService#addTraining not implemented yet");
   }
 
   deleteCycle(cycleToDelete: Cycle): void {

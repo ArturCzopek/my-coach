@@ -15,12 +15,12 @@
   display: flex;
   justify-content: center;
 
- a {
-   cursor: pointer;
- }
+  a {
+    cursor: pointer;
+  }
 }
 
-.add-exercise-link {
+.add-link {
   cursor: pointer;
 }
 
@@ -31,3 +31,57 @@ table.margin {
     text-align: center;
   }
 }
+
+table.responsive-table.striped.fixed {
+  table-layout: fixed;
+
+  tr {
+    color: black;
+  }
+
+  tr.inactive {
+    color: gray;
+    cursor: not-allowed;
+
+    .input-field label.asText {
+      color: grey;
+    }
+  }
+
+  td {
+    &.exercise {
+      i {
+        margin-left: 5px;
+        visibility: visible;
+        font-size: 1rem;
+        vertical-align: middle;
+        cursor: default;
+      }
+    }
+
+    &.repeats {
+      i {
+        margin-left: 5px;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.input-field.inline {
+
+  &.full {
+    width: 100%;
+  }
+  &.short {
+    width: 20%;
+  }
+}
+
+.input-field label.asText {
+  top: 0;
+  color: black;
+  margin-bottom: 1rem;
+}
+
+
