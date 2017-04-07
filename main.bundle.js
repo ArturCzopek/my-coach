@@ -4,8 +4,8 @@ webpackJsonp([0,5],[
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__weights_services_weights_back_end_service__ = __webpack_require__(135);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__weights_services_weights_mock_service__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__weights_services_weights_back_end_service__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__weights_services_weights_mock_service__ = __webpack_require__(137);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__reports_services_report_back_end_service__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__reports_services_report_mock_service__ = __webpack_require__(114);
@@ -13,8 +13,8 @@ webpackJsonp([0,5],[
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__dictionary_back_end_service__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__prices_services_prices_back_end_service__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__prices_services_prices_mock_service__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__trainings_services_trainings_mock_service__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__trainings_services_trainings_back_end_service__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__trainings_services_trainings_mock_service__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__trainings_services_trainings_back_end_service__ = __webpack_require__(128);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__date_service__ = __webpack_require__(6);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ServiceInjector; });
 
@@ -234,8 +234,7 @@ var PricesModalsService = (function () {
 //# sourceMappingURL=prices-modals.service.js.map
 
 /***/ }),
-/* 9 */,
-/* 10 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -259,13 +258,63 @@ var ModalFooterComponent = (function () {
 //# sourceMappingURL=modal-footer.component.js.map
 
 /***/ }),
-/* 11 */
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TrainingModalsService; });
+
+var TrainingModalsService = (function () {
+    function TrainingModalsService() {
+        this.addCycle = new __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__["Subject"]();
+        this.addExercises = new __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__["Subject"]();
+        this.addTraining = new __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__["Subject"]();
+        this.deleteCycle = new __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__["Subject"]();
+        this.deleteExercise = new __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__["Subject"]();
+        this.deleteTraining = new __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__["Subject"]();
+        this.editCycle = new __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__["Subject"]();
+        this.refreshPage = new __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__["Subject"]();
+    }
+    TrainingModalsService.prototype.callAddCycle = function () {
+        this.addCycle.next(null);
+    };
+    TrainingModalsService.prototype.callAddExercise = function () {
+        this.addExercises.next(null);
+    };
+    TrainingModalsService.prototype.callAddTraining = function () {
+        this.addTraining.next(null);
+    };
+    TrainingModalsService.prototype.callDeleteCycle = function (cycle, modalTitle) {
+        this.deleteCycle.next({ cycle: cycle, modalTitle: modalTitle });
+    };
+    TrainingModalsService.prototype.callDeleteExercise = function (exercise) {
+        this.deleteExercise.next(exercise);
+    };
+    TrainingModalsService.prototype.callDeleteTraining = function (training) {
+        this.deleteTraining.next(training);
+    };
+    TrainingModalsService.prototype.callEditCycle = function (cycle, modalTitle) {
+        this.editCycle.next({ cycle: cycle, modalTitle: modalTitle });
+    };
+    TrainingModalsService.prototype.callRefreshPage = function () {
+        this.refreshPage.next(null);
+    };
+    return TrainingModalsService;
+}());
+
+//# sourceMappingURL=training-modals.service.js.map
+
+/***/ }),
+/* 11 */,
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__materialize_upgrades_scss_shim_ngstyle__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_ModalFooterComponent; });
 /* harmony export (immutable) */ __webpack_exports__["a"] = View_ModalFooterComponent_0;
 /* unused harmony export ModalFooterComponentNgFactory */
@@ -370,7 +419,7 @@ var ModalFooterComponentNgFactory = __WEBPACK_IMPORTED_MODULE_1__angular_core__[
 //# sourceMappingURL=modal-footer.component.ngfactory.js.map
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -392,6 +441,8 @@ var BaseModal = (function () {
         if (typeof Materialize.updateTextFields === "function") {
             Materialize.updateTextFields();
         }
+    };
+    BaseModal.prototype.initDataBeforeOpenModal = function () {
     };
     BaseModal.prototype.openModal = function () {
         if (this.canModalBeOpened()) {
@@ -419,47 +470,6 @@ var BaseModal = (function () {
 }());
 
 //# sourceMappingURL=base.modal.js.map
-
-/***/ }),
-/* 13 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TrainingModalsService; });
-
-var TrainingModalsService = (function () {
-    function TrainingModalsService() {
-        this.addCycle = new __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__["Subject"]();
-        this.addExercises = new __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__["Subject"]();
-        this.addTraining = new __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__["Subject"]();
-        this.deleteCycle = new __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__["Subject"]();
-        this.editCycle = new __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__["Subject"]();
-        this.refreshPage = new __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__["Subject"]();
-    }
-    TrainingModalsService.prototype.callAddCycle = function () {
-        this.addCycle.next(null);
-    };
-    TrainingModalsService.prototype.callAddExercise = function () {
-        this.addExercises.next(null);
-    };
-    TrainingModalsService.prototype.callAddTraining = function () {
-        this.addTraining.next(null);
-    };
-    TrainingModalsService.prototype.callDeleteCycle = function (cycle, modalTitle) {
-        this.deleteCycle.next({ cycle: cycle, modalTitle: modalTitle });
-    };
-    TrainingModalsService.prototype.callEditCycle = function (cycle, modalTitle) {
-        this.editCycle.next({ cycle: cycle, modalTitle: modalTitle });
-    };
-    TrainingModalsService.prototype.callRefreshPage = function () {
-        this.refreshPage.next(null);
-    };
-    return TrainingModalsService;
-}());
-
-//# sourceMappingURL=training-modals.service.js.map
 
 /***/ }),
 /* 14 */,
@@ -796,8 +806,7 @@ var ShoppingList = (function () {
 /* 30 */,
 /* 31 */,
 /* 32 */,
-/* 33 */,
-/* 34 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -813,10 +822,11 @@ var ShoppingList = (function () {
  * Do not edit.
  * @suppress {suspiciousCode,uselessCode,missingProperties}
  */ var styles = ['.flex-cycle-add[_ngcontent-%COMP%] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between; }\n\n.flex-cycle-date[_ngcontent-%COMP%] {\n  -webkit-box-ordinal-group: 2;\n      -ms-flex-order: 1;\n          order: 1;\n  -ms-flex-preferred-size: 75%;\n      flex-basis: 75%; }\n\n.flex-cycle-actions[_ngcontent-%COMP%] {\n  -webkit-box-ordinal-group: 201;\n      -ms-flex-order: 200;\n          order: 200;\n  -ms-flex-preferred-size: 25%;\n      flex-basis: 25%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n  .flex-cycle-actions[_ngcontent-%COMP%]   a[_ngcontent-%COMP%] {\n    cursor: pointer; }\n\n.add-link[_ngcontent-%COMP%] {\n  cursor: pointer; }\n\ntable.margin[_ngcontent-%COMP%] {\n  margin-bottom: 30px; }\n  table.margin[_ngcontent-%COMP%]   td.icons[_ngcontent-%COMP%] {\n    text-align: center; }\n\ntable.responsive-table.striped.fixed[_ngcontent-%COMP%] {\n  table-layout: fixed; }\n  table.responsive-table.striped.fixed[_ngcontent-%COMP%]   tr[_ngcontent-%COMP%] {\n    color: black; }\n  table.responsive-table.striped.fixed[_ngcontent-%COMP%]   tr.inactive[_ngcontent-%COMP%] {\n    color: gray;\n    cursor: not-allowed; }\n    table.responsive-table.striped.fixed[_ngcontent-%COMP%]   tr.inactive[_ngcontent-%COMP%]   .input-field[_ngcontent-%COMP%]   label.asText[_ngcontent-%COMP%] {\n      color: grey; }\n  table.responsive-table.striped.fixed[_ngcontent-%COMP%]   td.exercise[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n    margin-left: 5px;\n    visibility: visible;\n    font-size: 1rem;\n    vertical-align: middle;\n    cursor: default; }\n  table.responsive-table.striped.fixed[_ngcontent-%COMP%]   td.repeats[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n    margin-left: 5px;\n    vertical-align: middle; }\n\n.input-field.inline.full[_ngcontent-%COMP%] {\n  width: 100%; }\n\n.input-field.inline.short[_ngcontent-%COMP%] {\n  width: 20%; }\n\n.input-field[_ngcontent-%COMP%]   label.asText[_ngcontent-%COMP%] {\n  top: 0;\n  color: black;\n  margin-bottom: 1rem; }'];
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL2hvbWUvdHJhdmlzL2J1aWxkL0FydHVyQ3pvcGVrL215LWNvYWNoL3NyYy9hcHAvdHJhaW5pbmdzL21vZGFscy90cmFpbmluZy5tb2RhbHMuc2Nzcy5zaGltLm5nc3R5bGUudHMiLCJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJuZzovLy9ob21lL3RyYXZpcy9idWlsZC9BcnR1ckN6b3Blay9teS1jb2FjaC9zcmMvYXBwL3RyYWluaW5ncy9tb2RhbHMvdHJhaW5pbmctYWRkLm1vZGFsLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIiAiXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7OzsifQ==
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL2hvbWUvdHJhdmlzL2J1aWxkL0FydHVyQ3pvcGVrL215LWNvYWNoL3NyYy9hcHAvdHJhaW5pbmdzL21vZGFscy90cmFpbmluZy5tb2RhbHMuc2Nzcy5zaGltLm5nc3R5bGUudHMiLCJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJuZzovLy9ob21lL3RyYXZpcy9idWlsZC9BcnR1ckN6b3Blay9teS1jb2FjaC9zcmMvYXBwL3RyYWluaW5ncy9tb2RhbHMvZXhlcmNpc2UtZGVsZXRlLm1vZGFsLnRzIl0sInNvdXJjZXNDb250ZW50IjpbIiAiXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7OzsifQ==
 //# sourceMappingURL=training.modals.scss.shim.ngstyle.js.map
 
 /***/ }),
+/* 34 */,
 /* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1132,7 +1142,7 @@ var StripLoaderComponentNgFactory = __WEBPACK_IMPORTED_MODULE_1__angular_core__[
  * @fileoverview This file is generated by the Angular template compiler.
  * Do not edit.
  * @suppress {suspiciousCode,uselessCode,missingProperties}
- */ var styles = ['table[_ngcontent-%COMP%] {\n  cursor: default; }\n  table[_ngcontent-%COMP%]   td[_ngcontent-%COMP%]   .series[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n    margin-left: 5px;\n    visibility: visible;\n    font-size: 1rem;\n    vertical-align: middle;\n    cursor: default; }\n\n.carousel.carousel-slider[_ngcontent-%COMP%] {\n  min-height: 400px;\n  max-height: 400px;\n  height: 400px; }\n  .carousel.carousel-slider[_ngcontent-%COMP%]   .carousel-item[_ngcontent-%COMP%] {\n    min-height: 300px;\n    max-height: 350px;\n    overflow-y: auto; }'];
+ */ var styles = ['table[_ngcontent-%COMP%] {\n  cursor: default; }\n  table[_ngcontent-%COMP%]   .hover-visible[_ngcontent-%COMP%] {\n    visibility: hidden;\n    vertical-align: middle; }\n  table[_ngcontent-%COMP%]   th[_ngcontent-%COMP%]:hover   .hover-visible[_ngcontent-%COMP%] {\n    visibility: visible; }\n  table[_ngcontent-%COMP%]   td[_ngcontent-%COMP%]   .series[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n    margin-left: 5px;\n    visibility: visible;\n    font-size: 1rem;\n    vertical-align: middle;\n    cursor: default; }\n  table[_ngcontent-%COMP%]   td[_ngcontent-%COMP%]:hover   .hover-visible[_ngcontent-%COMP%] {\n    visibility: visible; }\n\n.carousel.carousel-slider[_ngcontent-%COMP%] {\n  min-height: 400px;\n  max-height: 400px;\n  height: 400px; }\n  .carousel.carousel-slider[_ngcontent-%COMP%]   .carousel-item[_ngcontent-%COMP%] {\n    min-height: 300px;\n    max-height: 350px;\n    overflow-y: auto; }'];
 //# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL2hvbWUvdHJhdmlzL2J1aWxkL0FydHVyQ3pvcGVrL215LWNvYWNoL3NyYy9hcHAvdHJhaW5pbmdzL3RyYWluaW5ncy5zY3NzLnNoaW0ubmdzdHlsZS50cyIsInZlcnNpb24iOjMsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIm5nOi8vL2hvbWUvdHJhdmlzL2J1aWxkL0FydHVyQ3pvcGVrL215LWNvYWNoL3NyYy9hcHAvdHJhaW5pbmdzL3NldC1zZWN0aW9uLmNvbXBvbmVudC50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIgIl0sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7In0=
 //# sourceMappingURL=trainings.scss.shim.ngstyle.js.map
 
@@ -1261,7 +1271,7 @@ var ReportsListComponent = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_services_service_injector__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_training_modals_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_training_modals_service__ = __webpack_require__(10);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CyclesListComponent; });
 
 
@@ -1464,7 +1474,7 @@ var HeaderComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_date_service__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_modal__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_modal__ = __webpack_require__(13);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PriceAddModal; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -1538,7 +1548,7 @@ var PriceAddModal = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_prices_modals_service__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_date_service__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_base_modal__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_base_modal__ = __webpack_require__(13);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PricesDeleteModal; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -1627,7 +1637,7 @@ var PricesDeleteModal = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_prices_modals_service__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_global_values__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_base_modal__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_base_modal__ = __webpack_require__(13);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PricesEditModal; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -1715,7 +1725,7 @@ var PricesModals = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_modal__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_modal__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(43);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProductAddModal; });
 var __extends = (this && this.__extends) || (function () {
@@ -1800,7 +1810,7 @@ var ProductAddModal = (function (_super) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_prices_modals_service__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_components_base_modal__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_components_base_modal__ = __webpack_require__(13);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProductDeleteModal; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -1858,7 +1868,7 @@ var ProductDeleteModal = (function (_super) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_prices_modals_service__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_components_base_modal__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_components_base_modal__ = __webpack_require__(13);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProductEditModal; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -1926,7 +1936,7 @@ var ProductEditModal = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_global_values__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_services_date_service__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_components_base_modal__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_components_base_modal__ = __webpack_require__(13);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ShoppingListModal; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -2172,12 +2182,12 @@ var PricesBackEndService = (function (_super) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__prices_service__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_entities_mock_data_products_mock_data__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_entities_mock_data_products_mock_data__ = __webpack_require__(229);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_service_injector__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_entities_get_entities__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_entities_mock_data_prices_mock_data__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_entities_mock_data_prices_mock_data__ = __webpack_require__(228);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PricesMockService; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -2317,7 +2327,7 @@ var PricesService = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_report_modals_service__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_date_service__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_modal__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_modal__ = __webpack_require__(13);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportAddModal; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -2381,7 +2391,7 @@ var ReportAddModal = (function (_super) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_report_modals_service__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_components_base_modal__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_components_base_modal__ = __webpack_require__(13);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportDeleteModal; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -2447,7 +2457,7 @@ var ReportDeleteModal = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_report_modals_service__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_date_service__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_base_modal__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_base_modal__ = __webpack_require__(13);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportEditModal; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -2651,12 +2661,12 @@ var ReportBackEndService = (function (_super) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_entities_mock_data_previews_report_previews_mock_data__ = __webpack_require__(224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_entities_mock_data_previews_report_previews_mock_data__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_entities_preview_entities__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_entities_get_entities__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_entities_mock_data_reports_mock_data__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_entities_mock_data_reports_mock_data__ = __webpack_require__(230);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__report_service__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_services_service_injector__ = __webpack_require__(0);
@@ -3059,7 +3069,7 @@ var DictionaryService = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_components_base_card_component__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_training_modals_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_training_modals_service__ = __webpack_require__(10);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CycleCardComponent; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -3123,8 +3133,8 @@ var CycleCardComponent = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_entities_add_entities__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_date_service__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_base_modal__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_training_modals_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_base_modal__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_training_modals_service__ = __webpack_require__(10);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CycleAddModal; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -3205,8 +3215,8 @@ var CycleAddModal = (function (_super) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_services_service_injector__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_components_base_modal__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_training_modals_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_components_base_modal__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_training_modals_service__ = __webpack_require__(10);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CycleDeleteModal; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -3271,8 +3281,8 @@ var CycleDeleteModal = (function (_super) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_date_service__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_components_base_modal__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_training_modals_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_components_base_modal__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_training_modals_service__ = __webpack_require__(10);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CycleEditModal; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -3347,8 +3357,8 @@ var CycleEditModal = (function (_super) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_entities_add_entities__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_components_base_modal__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_training_modals_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_components_base_modal__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_training_modals_service__ = __webpack_require__(10);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExerciseAddModal; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -3421,10 +3431,62 @@ var ExerciseAddModal = (function (_super) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_services_service_injector__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_components_base_modal__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_training_modals_service__ = __webpack_require__(10);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExerciseDeleteModal; });
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var ExerciseDeleteModal = (function (_super) {
+    __extends(ExerciseDeleteModal, _super);
+    function ExerciseDeleteModal(trainingModalsService, serviceInjector) {
+        var _this = _super.call(this, serviceInjector) || this;
+        _this.trainingModalsService = trainingModalsService;
+        _this.serviceInjector = serviceInjector;
+        _this.selectedExercise = null;
+        _this.trainingsService = serviceInjector.getTrainingsService();
+        return _this;
+    }
+    ExerciseDeleteModal.prototype.ngOnInit = function () {
+        var _this = this;
+        _super.prototype.ngOnInit.call(this);
+        this.trainingModalsService.deleteExercise.subscribe(function (exercise) {
+            _this.selectedExercise = exercise;
+            _this.openModal();
+        });
+    };
+    ;
+    ExerciseDeleteModal.prototype.onDeleteClick = function () {
+        this.trainingsService.deleteExercise(this.selectedExercise);
+        this.trainingModalsService.callRefreshPage();
+        this.closeModal();
+    };
+    ExerciseDeleteModal.ctorParameters = function () { return [{ type: __WEBPACK_IMPORTED_MODULE_2__services_training_modals_service__["a" /* TrainingModalsService */] }, { type: __WEBPACK_IMPORTED_MODULE_0__shared_services_service_injector__["a" /* ServiceInjector */] }]; };
+    return ExerciseDeleteModal;
+}(__WEBPACK_IMPORTED_MODULE_1__shared_components_base_modal__["a" /* BaseModal */]));
+
+//# sourceMappingURL=exercise-delete.modal.js.map
+
+/***/ }),
+/* 126 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_entities_add_entities__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_components_base_modal__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_training_modals_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_components_base_modal__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_training_modals_service__ = __webpack_require__(10);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TrainingAddModal; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -3521,7 +3583,7 @@ var TrainingAddModal = (function (_super) {
 //# sourceMappingURL=training-add.modal.js.map
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3535,11 +3597,11 @@ var TrainingModals = (function () {
 //# sourceMappingURL=training.modals.js.map
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tranings_service__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tranings_service__ = __webpack_require__(130);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(0);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TrainingsBackEndService; });
@@ -3583,6 +3645,9 @@ var TrainingsBackEndService = (function (_super) {
     TrainingsBackEndService.prototype.deleteCycle = function (cycleToDelete) {
         console.log("TrainingsBackEndService#deleteCycle not implemented yet");
     };
+    TrainingsBackEndService.prototype.deleteExercise = function (exerciseToDelete) {
+        console.log("TrainingsBackEndService#exerciseToDelete not implemented yet");
+    };
     TrainingsBackEndService.prototype.editCycle = function (cycleToEdit) {
         console.log("TrainingsBackEndService#editCycle not implemented yet");
     };
@@ -3601,19 +3666,19 @@ var TrainingsBackEndService = (function (_super) {
 //# sourceMappingURL=trainings.back-end.service.js.map
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tranings_service__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tranings_service__ = __webpack_require__(130);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_entities_preview_entities__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_entities_get_entities__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_services_service_injector__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_entities_mock_data_previews_cycle_previews_mock_data__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_Observable__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_entities_mock_data_previews_cycle_previews_mock_data__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_Observable__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_entities_mock_data_cycles_mock_data__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_entities_mock_data_cycles_mock_data__ = __webpack_require__(224);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__shared_global_values__ = __webpack_require__(36);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TrainingsMockService; });
 var __extends = (this && this.__extends) || (function () {
@@ -3768,6 +3833,18 @@ var TrainingsMockService = (function (_super) {
             }
         });
     };
+    TrainingsMockService.prototype.deleteExercise = function (exerciseToDelete) {
+        this.ngZone.runOutsideAngular(function () {
+            __WEBPACK_IMPORTED_MODULE_7__shared_entities_mock_data_cycles_mock_data__["a" /* CYCLES_LIST */].forEach(function (cycle) {
+                cycle.sets.forEach(function (set) {
+                    var exerciseId = set.exercises.findIndex(function (exercise) { return exercise.exerciseId === exerciseToDelete.exerciseId; });
+                    if (exerciseId != __WEBPACK_IMPORTED_MODULE_8__shared_global_values__["a" /* DOES_NOT_CONTAIN */]) {
+                        set.exercises.splice(exerciseId, 1);
+                    }
+                });
+            });
+        });
+    };
     TrainingsMockService.prototype.hasUserOnlyFinishedCycles = function () {
         return this.ngZone.runOutsideAngular(function () {
             return __WEBPACK_IMPORTED_MODULE_7__shared_entities_mock_data_cycles_mock_data__["a" /* CYCLES_LIST */].every(function (cycle) { return cycle.isFinished; });
@@ -3788,7 +3865,7 @@ var TrainingsMockService = (function (_super) {
 //# sourceMappingURL=trainings.mock.service.js.map
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3826,12 +3903,12 @@ var TrainingsService = (function () {
 //# sourceMappingURL=tranings.service.js.map
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_services_service_injector__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_training_modals_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_training_modals_service__ = __webpack_require__(10);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SetSectionComponent; });
 
 
@@ -3841,8 +3918,14 @@ var SetSectionComponent = (function () {
         this.dateService = serviceInjector.getDateService();
         this.trainingsService = serviceInjector.getTrainingsService();
     }
-    SetSectionComponent.prototype.onAddExerciseClick = function () {
+    SetSectionComponent.prototype.onAddExercise = function () {
         this.trainingModalsService.callAddExercise();
+    };
+    SetSectionComponent.prototype.onDeleteExercise = function (exercise) {
+        this.trainingModalsService.callDeleteExercise(exercise);
+    };
+    SetSectionComponent.prototype.onDeleteTraining = function (training) {
+        this.trainingModalsService.callDeleteTraining(training);
     };
     SetSectionComponent.ctorParameters = function () { return [{ type: __WEBPACK_IMPORTED_MODULE_0__shared_services_service_injector__["a" /* ServiceInjector */] }, { type: __WEBPACK_IMPORTED_MODULE_1__services_training_modals_service__["a" /* TrainingModalsService */] }]; };
     return SetSectionComponent;
@@ -3851,7 +3934,7 @@ var SetSectionComponent = (function () {
 //# sourceMappingURL=set-section.component.js.map
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3859,7 +3942,7 @@ var SetSectionComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_entities_add_entities__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_date_service__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_modal__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_components_base_modal__ = __webpack_require__(13);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WeightAddModal; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -3915,13 +3998,13 @@ var WeightAddModal = (function (_super) {
 //# sourceMappingURL=weight-add.modal.js.map
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_weights_modals_service__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_service_injector__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_components_base_modal__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_components_base_modal__ = __webpack_require__(13);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WeightsDeleteModal; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -4003,14 +4086,14 @@ var WeightsDeleteModal = (function (_super) {
 //# sourceMappingURL=weights-delete.modal.js.map
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_weights_modals_service__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_global_values__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_base_modal__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_components_base_modal__ = __webpack_require__(13);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WeightsEditModal; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -4083,7 +4166,7 @@ var WeightsEditModal = (function (_super) {
 //# sourceMappingURL=weights-edit.modal.js.map
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4097,11 +4180,11 @@ var WeightsModals = (function () {
 //# sourceMappingURL=weights.modals.js.map
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__weights_service__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__weights_service__ = __webpack_require__(138);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_service_injector__ = __webpack_require__(0);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WeightsBackEndService; });
@@ -4157,17 +4240,17 @@ var WeightsBackEndService = (function (_super) {
 //# sourceMappingURL=weights.back-end.service.js.map
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_entities_get_entities__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_entities_mock_data_weights_mock_data__ = __webpack_require__(229);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_entities_mock_data_previews_weight_previews_mock_data__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__weights_service__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_entities_mock_data_weights_mock_data__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_entities_mock_data_previews_weight_previews_mock_data__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__weights_service__ = __webpack_require__(138);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_services_service_injector__ = __webpack_require__(0);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WeightsMockService; });
 var __extends = (this && this.__extends) || (function () {
@@ -4272,7 +4355,7 @@ var WeightsMockService = (function (_super) {
 //# sourceMappingURL=weights.mock.service.js.map
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4311,7 +4394,7 @@ var WeightsService = (function () {
 //# sourceMappingURL=weights.service.js.map
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4386,7 +4469,6 @@ var WeightsCardComponent = (function (_super) {
 //# sourceMappingURL=weights-card.component.js.map
 
 /***/ }),
-/* 139 */,
 /* 140 */,
 /* 141 */,
 /* 142 */,
@@ -4418,7 +4500,8 @@ var WeightsCardComponent = (function (_super) {
 /* 168 */,
 /* 169 */,
 /* 170 */,
-/* 171 */
+/* 171 */,
+/* 172 */
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -4427,19 +4510,19 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 171;
+webpackEmptyContext.id = 172;
 
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_environment__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gendir_app_app_module_ngfactory__ = __webpack_require__(183);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gendir_app_app_module_ngfactory__ = __webpack_require__(184);
 
 
 
@@ -4451,14 +4534,14 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a
 //# sourceMappingURL=main.js.map
 
 /***/ }),
-/* 173 */,
 /* 174 */,
 /* 175 */,
 /* 176 */,
 /* 177 */,
 /* 178 */,
 /* 179 */,
-/* 180 */
+/* 180 */,
+/* 181 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4612,7 +4695,7 @@ var AboutComponentNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵccf
 //# sourceMappingURL=about.component.ngfactory.js.map
 
 /***/ }),
-/* 181 */
+/* 182 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4632,16 +4715,16 @@ var AboutComponentNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵccf
 //# sourceMappingURL=app.component.css.shim.ngstyle.js.map
 
 /***/ }),
-/* 182 */
+/* 183 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_component_css_shim_ngstyle__ = __webpack_require__(181);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_component_css_shim_ngstyle__ = __webpack_require__(182);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__header_component_ngfactory__ = __webpack_require__(184);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__header_component_ngfactory__ = __webpack_require__(185);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_header_component__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_component__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_component__ = __webpack_require__(220);
 /* unused harmony export RenderType_AppComponent */
 /* unused harmony export View_AppComponent_0 */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponentNgFactory; });
@@ -4694,49 +4777,49 @@ var AppComponentNgFactory = __WEBPACK_IMPORTED_MODULE_1__angular_core__["ɵccf"]
 //# sourceMappingURL=app.component.ngfactory.js.map
 
 /***/ }),
-/* 183 */
+/* 184 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_module__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_module__ = __webpack_require__(221);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_http__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angular2_materialize_dist_materialize_module__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angular2_materialize_dist_materialize_module__ = __webpack_require__(236);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_angular2_materialize_dist_materialize_module___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_angular2_materialize_dist_materialize_module__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng2_charts_charts_charts__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng2_charts_charts_charts__ = __webpack_require__(157);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng2_charts_charts_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_ng2_charts_charts_charts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_shared_shared_module__ = __webpack_require__(230);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_prices_prices_module__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_reports_reports_module__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_trainings_tranings_module__ = __webpack_require__(231);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_weights_weights_module__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_app_routing_module__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_shared_shared_module__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_prices_prices_module__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_reports_reports_module__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_trainings_tranings_module__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_weights_weights_module__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_app_routing_module__ = __webpack_require__(219);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__app_prices_services_prices_mock_service__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__app_prices_services_prices_back_end_service__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__app_prices_services_prices_modals_service__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_reports_services_report_back_end_service__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__app_reports_services_report_mock_service__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__app_reports_services_report_modals_service__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__app_trainings_services_trainings_mock_service__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__app_trainings_services_trainings_back_end_service__ = __webpack_require__(127);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__app_trainings_services_training_modals_service__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__app_weights_services_weights_mock_service__ = __webpack_require__(136);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__app_weights_services_weights_back_end_service__ = __webpack_require__(135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__app_trainings_services_trainings_mock_service__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__app_trainings_services_trainings_back_end_service__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__app_trainings_services_training_modals_service__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__app_weights_services_weights_mock_service__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__app_weights_services_weights_back_end_service__ = __webpack_require__(136);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__app_weights_services_weights_modals_service__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__app_shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__app_shared_services_date_service__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__app_shared_services_dictionary_mock_service__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__app_shared_services_dictionary_back_end_service__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__weights_weights_list_component_ngfactory__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__prices_prices_list_component_ngfactory__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__reports_reports_list_component_ngfactory__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__trainings_cycles_list_component_ngfactory__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__about_component_ngfactory__ = __webpack_require__(180);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__app_component_ngfactory__ = __webpack_require__(182);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__weights_weights_list_component_ngfactory__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__prices_prices_list_component_ngfactory__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__reports_reports_list_component_ngfactory__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__trainings_cycles_list_component_ngfactory__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__about_component_ngfactory__ = __webpack_require__(181);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__app_component_ngfactory__ = __webpack_require__(183);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__app_weights_weights_list_component__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__app_prices_prices_list_component__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__app_reports_reports_list_component__ = __webpack_require__(64);
@@ -5609,7 +5692,7 @@ var AppModuleNgFactory = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModu
 //# sourceMappingURL=app.module.ngfactory.js.map
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6347,7 +6430,7 @@ var HeaderComponentNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵcc
 //# sourceMappingURL=header.component.ngfactory.js.map
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6360,8 +6443,8 @@ var HeaderComponentNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵcc
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_prices_modals_price_add_modal__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_prices_services_prices_modals_service__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_shared_services_date_service__ = __webpack_require__(6);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_PriceAddModal; });
@@ -7412,7 +7495,7 @@ var PriceAddModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵccf"
 //# sourceMappingURL=price-add.modal.ngfactory.js.map
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7426,8 +7509,8 @@ var PriceAddModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵccf"
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angular2_materialize_dist_materialize_directive__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_prices_modals_prices_delete_modal__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_prices_services_prices_modals_service__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_shared_services_date_service__ = __webpack_require__(6);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_PricesDeleteModal; });
@@ -7864,7 +7947,7 @@ var PricesDeleteModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵ
 //# sourceMappingURL=prices-delete.modal.ngfactory.js.map
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7878,8 +7961,8 @@ var PricesDeleteModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵ
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angular2_materialize_dist_materialize_directive__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_prices_modals_prices_edit_modal__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_prices_services_prices_modals_service__ = __webpack_require__(8);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_PricesEditModal; });
 /* harmony export (immutable) */ __webpack_exports__["a"] = View_PricesEditModal_0;
@@ -8610,28 +8693,28 @@ var PricesEditModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵcc
 //# sourceMappingURL=prices-edit.modal.ngfactory.js.map
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__price_add_modal_ngfactory__ = __webpack_require__(185);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__price_add_modal_ngfactory__ = __webpack_require__(186);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_prices_modals_price_add_modal__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_prices_services_prices_modals_service__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_shared_services_date_service__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__prices_delete_modal_ngfactory__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__prices_delete_modal_ngfactory__ = __webpack_require__(187);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_prices_modals_prices_delete_modal__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__prices_edit_modal_ngfactory__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__prices_edit_modal_ngfactory__ = __webpack_require__(188);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_prices_modals_prices_edit_modal__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__product_add_modal_ngfactory__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__product_add_modal_ngfactory__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_prices_modals_product_add_modal__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_http__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__product_delete_modal_ngfactory__ = __webpack_require__(190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__product_delete_modal_ngfactory__ = __webpack_require__(191);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_prices_modals_product_delete_modal__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__product_edit_modal_ngfactory__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__product_edit_modal_ngfactory__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__app_prices_modals_product_edit_modal__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__shopping_list_modal_ngfactory__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__shopping_list_modal_ngfactory__ = __webpack_require__(193);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_prices_modals_shopping_list_modal__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__app_prices_modals_prices_modals__ = __webpack_require__(99);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_PricesModals; });
@@ -8739,7 +8822,7 @@ var PricesModalsNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵccf"]
 //# sourceMappingURL=prices.modals.ngfactory.js.map
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8753,8 +8836,8 @@ var PricesModalsNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵccf"]
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_shared_pipes_dictionary_pipe__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_prices_modals_product_add_modal__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_prices_services_prices_modals_service__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_http__ = __webpack_require__(43);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_ProductAddModal; });
@@ -9528,7 +9611,7 @@ var ProductAddModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵcc
 //# sourceMappingURL=product-add.modal.ngfactory.js.map
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9540,8 +9623,8 @@ var ProductAddModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵcc
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_prices_modals_product_delete_modal__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_prices_services_prices_modals_service__ = __webpack_require__(8);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_ProductDeleteModal; });
 /* harmony export (immutable) */ __webpack_exports__["a"] = View_ProductDeleteModal_0;
@@ -9715,7 +9798,7 @@ var ProductDeleteModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["�
 //# sourceMappingURL=product-delete.modal.ngfactory.js.map
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9729,8 +9812,8 @@ var ProductDeleteModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["�
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angular2_materialize_dist_materialize_directive__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_prices_modals_product_edit_modal__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_prices_services_prices_modals_service__ = __webpack_require__(8);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_ProductEditModal; });
 /* harmony export (immutable) */ __webpack_exports__["a"] = View_ProductEditModal_0;
@@ -10551,7 +10634,7 @@ var ProductEditModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵc
 //# sourceMappingURL=product-edit.modal.ngfactory.js.map
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10565,8 +10648,8 @@ var ProductEditModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵc
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_shared_pipes_dictionary_pipe__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_prices_modals_shopping_list_modal__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_prices_services_prices_modals_service__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_shared_services_date_service__ = __webpack_require__(6);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_ShoppingListModal; });
@@ -12063,7 +12146,7 @@ var ShoppingListModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵ
 //# sourceMappingURL=shopping-list.modal.ngfactory.js.map
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12716,7 +12799,7 @@ var PricesCardComponentNgFactory = __WEBPACK_IMPORTED_MODULE_1__angular_core__["
 //# sourceMappingURL=prices-card.component.ngfactory.js.map
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12725,7 +12808,7 @@ var PricesCardComponentNgFactory = __WEBPACK_IMPORTED_MODULE_1__angular_core__["
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_loaders_circle_loader_component_ngfactory__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_shared_loaders_circle_loader_component__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__prices_card_component_ngfactory__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__prices_card_component_ngfactory__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_prices_prices_card_component__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_prices_services_prices_modals_service__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_shared_services_service_injector__ = __webpack_require__(0);
@@ -12735,7 +12818,7 @@ var PricesCardComponentNgFactory = __WEBPACK_IMPORTED_MODULE_1__angular_core__["
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_prices_prices_list_component__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_angular2_materialize_dist_materialize_directive__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_angular2_materialize_dist_materialize_directive__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__modals_prices_modals_ngfactory__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__modals_prices_modals_ngfactory__ = __webpack_require__(189);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__app_prices_modals_prices_modals__ = __webpack_require__(99);
 /* unused harmony export RenderType_PricesListComponent */
 /* unused harmony export View_PricesListComponent_0 */
@@ -13102,7 +13185,7 @@ var PricesListComponentNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["
 //# sourceMappingURL=prices-list.component.ngfactory.js.map
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13115,8 +13198,8 @@ var PricesListComponentNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_reports_modals_report_add_modal__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_reports_services_report_modals_service__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_shared_services_date_service__ = __webpack_require__(6);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_ReportAddModal; });
@@ -13973,7 +14056,7 @@ var ReportAddModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵccf
 //# sourceMappingURL=report-add.modal.ngfactory.js.map
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13985,8 +14068,8 @@ var ReportAddModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵccf
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_reports_modals_report_delete_modal__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_reports_services_report_modals_service__ = __webpack_require__(17);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_ReportDeleteModal; });
 /* harmony export (immutable) */ __webpack_exports__["a"] = View_ReportDeleteModal_0;
@@ -14160,7 +14243,7 @@ var ReportDeleteModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵ
 //# sourceMappingURL=report-delete.modal.ngfactory.js.map
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14173,8 +14256,8 @@ var ReportDeleteModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵ
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_reports_modals_report_edit_modal__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_reports_services_report_modals_service__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_shared_services_date_service__ = __webpack_require__(6);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_ReportEditModal; });
@@ -15031,19 +15114,19 @@ var ReportEditModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵcc
 //# sourceMappingURL=report-edit.modal.ngfactory.js.map
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__report_add_modal_ngfactory__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__report_add_modal_ngfactory__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_reports_modals_report_add_modal__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_reports_services_report_modals_service__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_shared_services_date_service__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__report_delete_modal_ngfactory__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__report_delete_modal_ngfactory__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_reports_modals_report_delete_modal__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__report_edit_modal_ngfactory__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__report_edit_modal_ngfactory__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_reports_modals_report_edit_modal__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_reports_modals_report_modals__ = __webpack_require__(111);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_ReportModals; });
@@ -15111,7 +15194,7 @@ var ReportModalsNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵccf"]
 //# sourceMappingURL=report.modals.ngfactory.js.map
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15437,7 +15520,7 @@ var ReportCardComponentNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["
 //# sourceMappingURL=report-card.component.ngfactory.js.map
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15446,7 +15529,7 @@ var ReportCardComponentNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_loaders_circle_loader_component_ngfactory__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_shared_loaders_circle_loader_component__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__report_card_component_ngfactory__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__report_card_component_ngfactory__ = __webpack_require__(200);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_reports_report_card_component__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_reports_services_report_modals_service__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_shared_services_service_injector__ = __webpack_require__(0);
@@ -15455,7 +15538,7 @@ var ReportCardComponentNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_reports_reports_list_component__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_angular2_materialize_dist_materialize_directive__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_angular2_materialize_dist_materialize_directive__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__modals_report_modals_ngfactory__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__modals_report_modals_ngfactory__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_reports_modals_report_modals__ = __webpack_require__(111);
 /* unused harmony export RenderType_ReportsListComponent */
 /* unused harmony export View_ReportsListComponent_0 */
@@ -15745,13 +15828,13 @@ var ReportsListComponentNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__[
 //# sourceMappingURL=reports-list.component.ngfactory.js.map
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__materialize_upgrades_scss_shim_ngstyle__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_charts_charts_charts__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_charts_charts_charts__ = __webpack_require__(157);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_charts_charts_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_ng2_charts_charts_charts__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_charts_line_chart_component__ = __webpack_require__(116);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_LineChartComponent; });
@@ -15847,7 +15930,7 @@ var LineChartComponentNgFactory = __WEBPACK_IMPORTED_MODULE_1__angular_core__["�
 //# sourceMappingURL=line-chart.component.ngfactory.js.map
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15856,10 +15939,10 @@ var LineChartComponentNgFactory = __WEBPACK_IMPORTED_MODULE_1__angular_core__["�
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_loaders_strip_loader_component_ngfactory__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_shared_loaders_strip_loader_component__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__set_section_component_ngfactory__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_trainings_set_section_component__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__set_section_component_ngfactory__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_trainings_set_section_component__ = __webpack_require__(131);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_shared_services_service_injector__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_trainings_services_training_modals_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_trainings_services_training_modals_service__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_angular2_materialize_dist_materialize_directive__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_angular2_materialize_dist_materialize_directive__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_common__ = __webpack_require__(7);
@@ -16247,7 +16330,7 @@ var CycleCardComponentNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["�
 //# sourceMappingURL=cycle-card.component.ngfactory.js.map
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16256,17 +16339,17 @@ var CycleCardComponentNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["�
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_loaders_circle_loader_component_ngfactory__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_shared_loaders_circle_loader_component__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__cycle_card_component_ngfactory__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__cycle_card_component_ngfactory__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_trainings_cycle_card_component__ = __webpack_require__(120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_shared_services_service_injector__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_trainings_services_training_modals_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_trainings_services_training_modals_service__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_common__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_pipes_dictionary_pipe__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_trainings_cycles_list_component__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_angular2_materialize_dist_materialize_directive__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_angular2_materialize_dist_materialize_directive__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__modals_training_modals_ngfactory__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_trainings_modals_training_modals__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__modals_training_modals_ngfactory__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_trainings_modals_training_modals__ = __webpack_require__(127);
 /* unused harmony export RenderType_CyclesListComponent */
 /* unused harmony export View_CyclesListComponent_0 */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CyclesListComponentNgFactory; });
@@ -16685,11 +16768,11 @@ var CyclesListComponentNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["
 //# sourceMappingURL=cycles-list.component.ngfactory.js.map
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__training_modals_scss_shim_ngstyle__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__training_modals_scss_shim_ngstyle__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_materialize_upgrades_scss_shim_ngstyle__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(15);
@@ -16699,9 +16782,9 @@ var CyclesListComponentNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_trainings_modals_cycle_add_modal__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_trainings_services_training_modals_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_trainings_services_training_modals_service__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_shared_services_date_service__ = __webpack_require__(6);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_CycleAddModal; });
 /* harmony export (immutable) */ __webpack_exports__["a"] = View_CycleAddModal_0;
@@ -17448,11 +17531,11 @@ var CycleAddModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵccf"
 //# sourceMappingURL=cycle-add.modal.ngfactory.js.map
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__training_modals_scss_shim_ngstyle__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__training_modals_scss_shim_ngstyle__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_materialize_upgrades_scss_shim_ngstyle__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_pipes_dictionary_pipe__ = __webpack_require__(3);
@@ -17460,9 +17543,9 @@ var CycleAddModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵccf"
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_trainings_modals_cycle_delete_modal__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_trainings_services_training_modals_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_trainings_services_training_modals_service__ = __webpack_require__(10);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_CycleDeleteModal; });
 /* harmony export (immutable) */ __webpack_exports__["a"] = View_CycleDeleteModal_0;
 /* unused harmony export CycleDeleteModalNgFactory */
@@ -17635,11 +17718,11 @@ var CycleDeleteModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵc
 //# sourceMappingURL=cycle-delete.modal.ngfactory.js.map
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__training_modals_scss_shim_ngstyle__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__training_modals_scss_shim_ngstyle__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_materialize_upgrades_scss_shim_ngstyle__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_pipes_dictionary_pipe__ = __webpack_require__(3);
@@ -17648,9 +17731,9 @@ var CycleDeleteModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵc
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_trainings_modals_cycle_edit_modal__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_trainings_services_training_modals_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_trainings_services_training_modals_service__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_shared_services_date_service__ = __webpack_require__(6);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_CycleEditModal; });
 /* harmony export (immutable) */ __webpack_exports__["a"] = View_CycleEditModal_0;
@@ -18473,11 +18556,11 @@ var CycleEditModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵccf
 //# sourceMappingURL=cycle-edit.modal.ngfactory.js.map
 
 /***/ }),
-/* 207 */
+/* 208 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__training_modals_scss_shim_ngstyle__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__training_modals_scss_shim_ngstyle__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_materialize_upgrades_scss_shim_ngstyle__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(15);
@@ -18487,9 +18570,9 @@ var CycleEditModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵccf
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_shared_pipes_dictionary_pipe__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_trainings_modals_exercise_add_modal__ = __webpack_require__(124);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_trainings_services_training_modals_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_trainings_services_training_modals_service__ = __webpack_require__(10);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_ExerciseAddModal; });
 /* harmony export (immutable) */ __webpack_exports__["a"] = View_ExerciseAddModal_0;
 /* unused harmony export ExerciseAddModalNgFactory */
@@ -19452,11 +19535,219 @@ var ExerciseAddModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵc
 //# sourceMappingURL=exercise-add.modal.ngfactory.js.map
 
 /***/ }),
-/* 208 */
+/* 209 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__training_modals_scss_shim_ngstyle__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__training_modals_scss_shim_ngstyle__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_materialize_upgrades_scss_shim_ngstyle__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_pipes_dictionary_pipe__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_shared_services_service_injector__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_trainings_modals_exercise_delete_modal__ = __webpack_require__(125);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_trainings_services_training_modals_service__ = __webpack_require__(10);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_ExerciseDeleteModal; });
+/* harmony export (immutable) */ __webpack_exports__["a"] = View_ExerciseDeleteModal_0;
+/* unused harmony export ExerciseDeleteModalNgFactory */
+/**
+ * @fileoverview This file is generated by the Angular template compiler.
+ * Do not edit.
+ * @suppress {suspiciousCode,uselessCode,missingProperties}
+ */
+/* tslint:disable */
+
+
+
+
+
+
+
+
+
+
+
+var styles_ExerciseDeleteModal = [
+    __WEBPACK_IMPORTED_MODULE_0__training_modals_scss_shim_ngstyle__["a" /* styles */],
+    __WEBPACK_IMPORTED_MODULE_1__shared_materialize_upgrades_scss_shim_ngstyle__["a" /* styles */]
+];
+var RenderType_ExerciseDeleteModal = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵcrt"]({
+    encapsulation: 0,
+    styles: styles_ExerciseDeleteModal,
+    data: {}
+});
+function View_ExerciseDeleteModal_1(l) {
+    return __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵvid"](0, [
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵeld"](0, null, null, 2, 'h3', [], null, null, null, null, null)),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, [
+            '',
+            ' - ',
+            ''
+        ])),
+        __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵppd"](1)
+    ], null, function (ck, v) {
+        var co = v.component;
+        var currVal_0 = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵunv"](v, 1, 0, ck(v, 2, 0, __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵnov"](v.parent, 0), 'page.trainings.modal.deleteExercise.title'));
+        var currVal_1 = co.selectedExercise.exerciseName;
+        ck(v, 1, 0, currVal_0, currVal_1);
+    });
+}
+function View_ExerciseDeleteModal_0(l) {
+    return __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵvid"](0, [
+        __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵpid"](0, __WEBPACK_IMPORTED_MODULE_3__app_shared_pipes_dictionary_pipe__["a" /* DictionaryPipe */], [__WEBPACK_IMPORTED_MODULE_4__app_shared_services_service_injector__["a" /* ServiceInjector */]]),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵeld"](0, null, null, 24, 'div', [
+            [
+                'class',
+                'modal'
+            ],
+            [
+                'id',
+                'exercise-delete'
+            ],
+            [
+                'materialize',
+                'modal'
+            ]
+        ], null, null, null, null, null)),
+        __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵdid"](2564096, null, 0, __WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive__["MaterializeDirective"], [__WEBPACK_IMPORTED_MODULE_2__angular_core__["ElementRef"]], {
+            materializeParams: [
+                0,
+                'materializeParams'
+            ],
+            materializeActions: [
+                1,
+                'materializeActions'
+            ],
+            materialize: [
+                2,
+                'materialize'
+            ]
+        }, null),
+        __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵpad"](1),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, ['\n  '])),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵeld"](0, null, null, 14, 'div', [[
+                'class',
+                'modal-content'
+            ]
+        ], null, null, null, null, null)),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, ['\n\n    '])),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵand"](8388608, null, null, 1, null, View_ExerciseDeleteModal_1)),
+        __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵdid"](8192, null, 0, __WEBPACK_IMPORTED_MODULE_6__angular_common__["NgIf"], [
+            __WEBPACK_IMPORTED_MODULE_2__angular_core__["ViewContainerRef"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_core__["TemplateRef"]
+        ], { ngIf: [
+                0,
+                'ngIf'
+            ]
+        }, null),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, ['\n\n    '])),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵeld"](0, null, null, 8, 'div', [[
+                'class',
+                'col s12'
+            ]
+        ], null, null, null, null, null)),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, ['\n      '])),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵeld"](0, null, null, 5, 'div', [[
+                'class',
+                'row'
+            ]
+        ], null, null, null, null, null)),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, ['\n        '])),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵeld"](0, null, null, 2, 'p', [], null, null, null, null, null)),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, [
+            '',
+            ''
+        ])),
+        __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵppd"](1),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, ['\n      '])),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, ['\n    '])),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, ['\n  '])),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, ['\n\n  '])),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵeld"](0, null, null, 3, 'coach-modal-footer', [], null, [
+            [
+                null,
+                'leftButtonAction'
+            ],
+            [
+                null,
+                'rightButtonAction'
+            ]
+        ], function (v, en, $event) {
+            var ad = true;
+            var co = v.component;
+            if (('leftButtonAction' === en)) {
+                var pd_0 = (co.onDeleteClick() !== false);
+                ad = (pd_0 && ad);
+            }
+            if (('rightButtonAction' === en)) {
+                var pd_1 = (co.onCloseModal() !== false);
+                ad = (pd_1 && ad);
+            }
+            return ad;
+        }, __WEBPACK_IMPORTED_MODULE_8__shared_modals_modal_footer_component_ngfactory__["a" /* View_ModalFooterComponent_0 */], __WEBPACK_IMPORTED_MODULE_8__shared_modals_modal_footer_component_ngfactory__["b" /* RenderType_ModalFooterComponent */])),
+        __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵdid"](24576, null, 0, __WEBPACK_IMPORTED_MODULE_9__app_shared_modals_modal_footer_component__["a" /* ModalFooterComponent */], [], {
+            rightButtonLabel: [
+                0,
+                'rightButtonLabel'
+            ],
+            leftButtonLabel: [
+                1,
+                'leftButtonLabel'
+            ],
+            isDataValid: [
+                2,
+                'isDataValid'
+            ]
+        }, {
+            rightButtonAction: 'rightButtonAction',
+            leftButtonAction: 'leftButtonAction'
+        }),
+        __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵppd"](1),
+        __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵppd"](1),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, ['\n'])),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, ['\n']))
+    ], function (ck, v) {
+        var co = v.component;
+        var currVal_0 = ck(v, 3, 0, co.modalParams);
+        var currVal_1 = co.modalActions;
+        var currVal_2 = 'modal';
+        ck(v, 2, 0, currVal_0, currVal_1, currVal_2);
+        var currVal_3 = co.selectedExercise;
+        ck(v, 8, 0, currVal_3);
+        var currVal_5 = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵinlineInterpolate"](1, '', __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵunv"](v, 22, 0, ck(v, 23, 0, __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵnov"](v, 0), 'global.close.label')), '');
+        var currVal_6 = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵinlineInterpolate"](1, '', __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵunv"](v, 22, 1, ck(v, 24, 0, __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵnov"](v, 0), 'global.delete.label')), '');
+        var currVal_7 = co.isDataValid();
+        ck(v, 22, 0, currVal_5, currVal_6, currVal_7);
+    }, function (ck, v) {
+        var currVal_4 = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵunv"](v, 15, 0, ck(v, 16, 0, __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵnov"](v, 0), 'page.trainings.modal.deleteExercise.content'));
+        ck(v, 15, 0, currVal_4);
+    });
+}
+function View_ExerciseDeleteModal_Host_0(l) {
+    return __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵvid"](0, [
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵeld"](0, null, null, 1, 'coach-exercise-delete-modal', [], null, null, null, View_ExerciseDeleteModal_0, RenderType_ExerciseDeleteModal)),
+        __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵdid"](4251648, null, 0, __WEBPACK_IMPORTED_MODULE_7__app_trainings_modals_exercise_delete_modal__["a" /* ExerciseDeleteModal */], [
+            __WEBPACK_IMPORTED_MODULE_10__app_trainings_services_training_modals_service__["a" /* TrainingModalsService */],
+            __WEBPACK_IMPORTED_MODULE_4__app_shared_services_service_injector__["a" /* ServiceInjector */]
+        ], null, null)
+    ], function (ck, v) {
+        ck(v, 1, 0);
+    }, null);
+}
+var ExerciseDeleteModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵccf"]('coach-exercise-delete-modal', __WEBPACK_IMPORTED_MODULE_7__app_trainings_modals_exercise_delete_modal__["a" /* ExerciseDeleteModal */], View_ExerciseDeleteModal_Host_0, {}, {}, []);
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL2hvbWUvdHJhdmlzL2J1aWxkL0FydHVyQ3pvcGVrL215LWNvYWNoL3NyYy9hcHAvdHJhaW5pbmdzL21vZGFscy9leGVyY2lzZS1kZWxldGUubW9kYWwubmdmYWN0b3J5LnRzIiwidmVyc2lvbiI6Mywic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsibmc6Ly8vaG9tZS90cmF2aXMvYnVpbGQvQXJ0dXJDem9wZWsvbXktY29hY2gvc3JjL2FwcC90cmFpbmluZ3MvbW9kYWxzL2V4ZXJjaXNlLWRlbGV0ZS5tb2RhbC50cyIsIm5nOi8vL2hvbWUvdHJhdmlzL2J1aWxkL0FydHVyQ3pvcGVrL215LWNvYWNoL3NyYy9hcHAvdHJhaW5pbmdzL21vZGFscy9leGVyY2lzZS1kZWxldGUubW9kYWwuaHRtbCIsIm5nOi8vL2hvbWUvdHJhdmlzL2J1aWxkL0FydHVyQ3pvcGVrL215LWNvYWNoL3NyYy9hcHAvdHJhaW5pbmdzL21vZGFscy9leGVyY2lzZS1kZWxldGUubW9kYWwudHMuRXhlcmNpc2VEZWxldGVNb2RhbF9Ib3N0Lmh0bWwiXSwic291cmNlc0NvbnRlbnQiOlsiICIsIjxkaXYgaWQ9XCJleGVyY2lzZS1kZWxldGVcIiBjbGFzcz1cIm1vZGFsXCIgbWF0ZXJpYWxpemU9XCJtb2RhbFwiIFttYXRlcmlhbGl6ZVBhcmFtc109XCJbbW9kYWxQYXJhbXNdXCJcbiAgICAgW21hdGVyaWFsaXplQWN0aW9uc109XCJtb2RhbEFjdGlvbnNcIj5cbiAgPGRpdiBjbGFzcz1cIm1vZGFsLWNvbnRlbnRcIj5cblxuICAgIDxoMyAqbmdJZj1cInNlbGVjdGVkRXhlcmNpc2VcIj57eydwYWdlLnRyYWluaW5ncy5tb2RhbC5kZWxldGVFeGVyY2lzZS50aXRsZScgfCBkaWN0aW9uYXJ5fX0gLSB7e3NlbGVjdGVkRXhlcmNpc2UuZXhlcmNpc2VOYW1lfX08L2gzPlxuXG4gICAgPGRpdiBjbGFzcz1cImNvbCBzMTJcIj5cbiAgICAgIDxkaXYgY2xhc3M9XCJyb3dcIj5cbiAgICAgICAgPHA+e3sncGFnZS50cmFpbmluZ3MubW9kYWwuZGVsZXRlRXhlcmNpc2UuY29udGVudCcgfCBkaWN0aW9uYXJ5fX08L3A+XG4gICAgICA8L2Rpdj5cbiAgICA8L2Rpdj5cbiAgPC9kaXY+XG5cbiAgPGNvYWNoLW1vZGFsLWZvb3RlciBsZWZ0QnV0dG9uTGFiZWw9XCJ7eydnbG9iYWwuZGVsZXRlLmxhYmVsJyB8IGRpY3Rpb25hcnl9fVwiXG4gICAgICAgICAgICAgICAgICAgICAgcmlnaHRCdXR0b25MYWJlbD1cInt7J2dsb2JhbC5jbG9zZS5sYWJlbCcgfCBkaWN0aW9uYXJ5fX1cIlxuICAgICAgICAgICAgICAgICAgICAgIChsZWZ0QnV0dG9uQWN0aW9uKT1cIm9uRGVsZXRlQ2xpY2soKVwiXG4gICAgICAgICAgICAgICAgICAgICAgKHJpZ2h0QnV0dG9uQWN0aW9uKT1cIm9uQ2xvc2VNb2RhbCgpXCJcbiAgICAgICAgICAgICAgICAgICAgICBbaXNEYXRhVmFsaWRdPVwiaXNEYXRhVmFsaWQoKVwiPjwvY29hY2gtbW9kYWwtZm9vdGVyPlxuPC9kaXY+XG4iLCI8Y29hY2gtZXhlcmNpc2UtZGVsZXRlLW1vZGFsPjwvY29hY2gtZXhlcmNpc2UtZGVsZXRlLW1vZGFsPiJdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0lDSUk7SUFBNkI7TUFBQTtNQUFBO01BQUE7SUFBQTtJQUFBO2dCQUFBOzs7O0lBQUE7SUFBQTtJQUFBOzs7Ozs7SUFKakM7TUFBQTtRQUFBO1FBQUE7TUFBQTs7TUFBQTtRQUFBO1FBQUE7TUFBQTs7TUFBQTtRQUFBO1FBQUE7TUFBQTs7SUFBQTtLQUFBO2dCQUFBO01BQUE7UUFBQTtRQUFBO01BQUE7O01BQUE7UUFBQTtRQUFBO01BQUE7O01BQUE7UUFBQTtRQUFBO01BQUE7O0lBQUE7S0FBQTtnQkFBNEQ7SUFDbkI7TUFDdkM7UUFBQTtRQUFBO01BQUE7SUFBQTtJQUEyQjtJQUV6QjtnQkFBQTs7O0lBQUE7T0FBQTtRQUFBO1FBQUE7TUFBQTtJQUFBO0lBQWtJO01BRWxJO1FBQUE7UUFBQTtNQUFBO0lBQUE7SUFBcUI7TUFDbkI7UUFBQTtRQUFBO01BQUE7SUFBQTtJQUFpQjtJQUNmO0lBQUc7TUFBQTtNQUFBO0lBQUE7SUFBQTtnQkFBQTtJQUFrRTtJQUNqRTtJQUNGO0lBQ0Y7SUFFTjtNQUFBO1FBQUE7UUFBQTtNQUFBOztNQUFBO1FBQUE7UUFBQTtNQUFBOztJQUFBO0tBQUE7TUFBQTtNQUFBO01BRW9CO1FBQUE7UUFBQTtNQUFBO01BQ0E7UUFBQTtRQUFBO01BQUE7TUFIcEI7SUFBQTtnQkFBQTtNQUFBO1FBQUE7UUFBQTtNQUFBOztNQUFBO1FBQUE7UUFBQTtNQUFBOztNQUFBO1FBQUE7UUFBQTtNQUFBOztJQUFBO0tBQUE7TUFBQTtNQUFBO0lBQUE7SUFBQTtnQkFDb0I7Z0JBREE7SUFJbUQ7SUFDbkU7Ozs7SUFsQnNEO0lBQ3ZEO0lBRG1DO0lBQXhDLFNBQTRELFVBQ3ZELFVBRG1DLFNBQXhDO0lBSVE7SUFBSixTQUFJLFNBQUo7SUFVa0I7SUFEQTtJQUlBO0lBSnBCLFVBQ29CLFVBREEsVUFJQSxTQUpwQjs7SUFMUztJQUFBOzs7OztJQ1JYO2dCQUFBOzs7SUFBQTtLQUFBOzs7SUFBQTs7OyJ9
+//# sourceMappingURL=exercise-delete.modal.ngfactory.js.map
+
+/***/ }),
+/* 210 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__training_modals_scss_shim_ngstyle__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_materialize_upgrades_scss_shim_ngstyle__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(15);
@@ -19465,10 +19756,10 @@ var ExerciseAddModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵc
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_shared_pipes_dictionary_pipe__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_shared_services_service_injector__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_trainings_modals_training_add_modal__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_trainings_services_training_modals_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_trainings_modals_training_add_modal__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_trainings_services_training_modals_service__ = __webpack_require__(10);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_TrainingAddModal; });
 /* harmony export (immutable) */ __webpack_exports__["a"] = View_TrainingAddModal_0;
 /* unused harmony export TrainingAddModalNgFactory */
@@ -21122,25 +21413,27 @@ var TrainingAddModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵc
 //# sourceMappingURL=training-add.modal.ngfactory.js.map
 
 /***/ }),
-/* 209 */
+/* 211 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__cycle_add_modal_ngfactory__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__cycle_add_modal_ngfactory__ = __webpack_require__(205);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_trainings_modals_cycle_add_modal__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_trainings_services_training_modals_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_trainings_services_training_modals_service__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_shared_services_date_service__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__exercise_add_modal_ngfactory__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__exercise_add_modal_ngfactory__ = __webpack_require__(208);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_trainings_modals_exercise_add_modal__ = __webpack_require__(124);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__training_add_modal_ngfactory__ = __webpack_require__(208);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_trainings_modals_training_add_modal__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__cycle_delete_modal_ngfactory__ = __webpack_require__(205);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_trainings_modals_cycle_delete_modal__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__cycle_edit_modal_ngfactory__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_trainings_modals_cycle_edit_modal__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_trainings_modals_training_modals__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__exercise_delete_modal_ngfactory__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_trainings_modals_exercise_delete_modal__ = __webpack_require__(125);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__training_add_modal_ngfactory__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_trainings_modals_training_add_modal__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__cycle_delete_modal_ngfactory__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_trainings_modals_cycle_delete_modal__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__cycle_edit_modal_ngfactory__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__app_trainings_modals_cycle_edit_modal__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__app_trainings_modals_training_modals__ = __webpack_require__(127);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_TrainingModals; });
 /* harmony export (immutable) */ __webpack_exports__["a"] = View_TrainingModals_0;
 /* unused harmony export TrainingModalsNgFactory */
@@ -21150,6 +21443,8 @@ var TrainingAddModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵc
  * @suppress {suspiciousCode,uselessCode,missingProperties}
  */
 /* tslint:disable */
+
+
 
 
 
@@ -21187,20 +21482,26 @@ function View_TrainingModals_0(l) {
             __WEBPACK_IMPORTED_MODULE_4__app_shared_services_service_injector__["a" /* ServiceInjector */]
         ], null, null),
         (l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](null, ['\n    '])),
-        (l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](0, null, null, 1, 'coach-training-add-modal', [], null, null, null, __WEBPACK_IMPORTED_MODULE_8__training_add_modal_ngfactory__["a" /* View_TrainingAddModal_0 */], __WEBPACK_IMPORTED_MODULE_8__training_add_modal_ngfactory__["b" /* RenderType_TrainingAddModal */])),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵdid"](4251648, null, 0, __WEBPACK_IMPORTED_MODULE_9__app_trainings_modals_training_add_modal__["a" /* TrainingAddModal */], [
+        (l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](0, null, null, 1, 'coach-exercise-delete-modal', [], null, null, null, __WEBPACK_IMPORTED_MODULE_8__exercise_delete_modal_ngfactory__["a" /* View_ExerciseDeleteModal_0 */], __WEBPACK_IMPORTED_MODULE_8__exercise_delete_modal_ngfactory__["b" /* RenderType_ExerciseDeleteModal */])),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵdid"](4251648, null, 0, __WEBPACK_IMPORTED_MODULE_9__app_trainings_modals_exercise_delete_modal__["a" /* ExerciseDeleteModal */], [
             __WEBPACK_IMPORTED_MODULE_3__app_trainings_services_training_modals_service__["a" /* TrainingModalsService */],
             __WEBPACK_IMPORTED_MODULE_4__app_shared_services_service_injector__["a" /* ServiceInjector */]
         ], null, null),
         (l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](null, ['\n    '])),
-        (l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](0, null, null, 1, 'coach-cycle-delete-modal', [], null, null, null, __WEBPACK_IMPORTED_MODULE_10__cycle_delete_modal_ngfactory__["a" /* View_CycleDeleteModal_0 */], __WEBPACK_IMPORTED_MODULE_10__cycle_delete_modal_ngfactory__["b" /* RenderType_CycleDeleteModal */])),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵdid"](4251648, null, 0, __WEBPACK_IMPORTED_MODULE_11__app_trainings_modals_cycle_delete_modal__["a" /* CycleDeleteModal */], [
+        (l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](0, null, null, 1, 'coach-training-add-modal', [], null, null, null, __WEBPACK_IMPORTED_MODULE_10__training_add_modal_ngfactory__["a" /* View_TrainingAddModal_0 */], __WEBPACK_IMPORTED_MODULE_10__training_add_modal_ngfactory__["b" /* RenderType_TrainingAddModal */])),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵdid"](4251648, null, 0, __WEBPACK_IMPORTED_MODULE_11__app_trainings_modals_training_add_modal__["a" /* TrainingAddModal */], [
             __WEBPACK_IMPORTED_MODULE_3__app_trainings_services_training_modals_service__["a" /* TrainingModalsService */],
             __WEBPACK_IMPORTED_MODULE_4__app_shared_services_service_injector__["a" /* ServiceInjector */]
         ], null, null),
         (l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](null, ['\n    '])),
-        (l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](0, null, null, 1, 'coach-cycle-edit-modal', [], null, null, null, __WEBPACK_IMPORTED_MODULE_12__cycle_edit_modal_ngfactory__["a" /* View_CycleEditModal_0 */], __WEBPACK_IMPORTED_MODULE_12__cycle_edit_modal_ngfactory__["b" /* RenderType_CycleEditModal */])),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵdid"](4251648, null, 0, __WEBPACK_IMPORTED_MODULE_13__app_trainings_modals_cycle_edit_modal__["a" /* CycleEditModal */], [
+        (l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](0, null, null, 1, 'coach-cycle-delete-modal', [], null, null, null, __WEBPACK_IMPORTED_MODULE_12__cycle_delete_modal_ngfactory__["a" /* View_CycleDeleteModal_0 */], __WEBPACK_IMPORTED_MODULE_12__cycle_delete_modal_ngfactory__["b" /* RenderType_CycleDeleteModal */])),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵdid"](4251648, null, 0, __WEBPACK_IMPORTED_MODULE_13__app_trainings_modals_cycle_delete_modal__["a" /* CycleDeleteModal */], [
+            __WEBPACK_IMPORTED_MODULE_3__app_trainings_services_training_modals_service__["a" /* TrainingModalsService */],
+            __WEBPACK_IMPORTED_MODULE_4__app_shared_services_service_injector__["a" /* ServiceInjector */]
+        ], null, null),
+        (l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](null, ['\n    '])),
+        (l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](0, null, null, 1, 'coach-cycle-edit-modal', [], null, null, null, __WEBPACK_IMPORTED_MODULE_14__cycle_edit_modal_ngfactory__["a" /* View_CycleEditModal_0 */], __WEBPACK_IMPORTED_MODULE_14__cycle_edit_modal_ngfactory__["b" /* RenderType_CycleEditModal */])),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵdid"](4251648, null, 0, __WEBPACK_IMPORTED_MODULE_15__app_trainings_modals_cycle_edit_modal__["a" /* CycleEditModal */], [
             __WEBPACK_IMPORTED_MODULE_3__app_trainings_services_training_modals_service__["a" /* TrainingModalsService */],
             __WEBPACK_IMPORTED_MODULE_4__app_shared_services_service_injector__["a" /* ServiceInjector */],
             __WEBPACK_IMPORTED_MODULE_5__app_shared_services_date_service__["a" /* DateService */]
@@ -21211,20 +21512,21 @@ function View_TrainingModals_0(l) {
         ck(v, 8, 0);
         ck(v, 11, 0);
         ck(v, 14, 0);
+        ck(v, 17, 0);
     }, null);
 }
 function View_TrainingModals_Host_0(l) {
     return __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵvid"](0, [
         (l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](0, null, null, 1, 'coach-training-modals', [], null, null, null, View_TrainingModals_0, RenderType_TrainingModals)),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵdid"](24576, null, 0, __WEBPACK_IMPORTED_MODULE_14__app_trainings_modals_training_modals__["a" /* TrainingModals */], [], null, null)
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵdid"](24576, null, 0, __WEBPACK_IMPORTED_MODULE_16__app_trainings_modals_training_modals__["a" /* TrainingModals */], [], null, null)
     ], null, null);
 }
-var TrainingModalsNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵccf"]('coach-training-modals', __WEBPACK_IMPORTED_MODULE_14__app_trainings_modals_training_modals__["a" /* TrainingModals */], View_TrainingModals_Host_0, {}, {}, []);
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL2hvbWUvdHJhdmlzL2J1aWxkL0FydHVyQ3pvcGVrL215LWNvYWNoL3NyYy9hcHAvdHJhaW5pbmdzL21vZGFscy90cmFpbmluZy5tb2RhbHMubmdmYWN0b3J5LnRzIiwidmVyc2lvbiI6Mywic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsibmc6Ly8vaG9tZS90cmF2aXMvYnVpbGQvQXJ0dXJDem9wZWsvbXktY29hY2gvc3JjL2FwcC90cmFpbmluZ3MvbW9kYWxzL3RyYWluaW5nLm1vZGFscy50cyIsIm5nOi8vL2hvbWUvdHJhdmlzL2J1aWxkL0FydHVyQ3pvcGVrL215LWNvYWNoL3NyYy9hcHAvdHJhaW5pbmdzL21vZGFscy90cmFpbmluZy5tb2RhbHMudHMuVHJhaW5pbmdNb2RhbHMuaHRtbCIsIm5nOi8vL2hvbWUvdHJhdmlzL2J1aWxkL0FydHVyQ3pvcGVrL215LWNvYWNoL3NyYy9hcHAvdHJhaW5pbmdzL21vZGFscy90cmFpbmluZy5tb2RhbHMudHMuVHJhaW5pbmdNb2RhbHNfSG9zdC5odG1sIl0sInNvdXJjZXNDb250ZW50IjpbIiAiLCJcbiAgICA8Y29hY2gtY3ljbGUtYWRkLW1vZGFsPjwvY29hY2gtY3ljbGUtYWRkLW1vZGFsPlxuICAgIDxjb2FjaC1leGVyY2lzZS1hZGQtbW9kYWw+PC9jb2FjaC1leGVyY2lzZS1hZGQtbW9kYWw+XG4gICAgPGNvYWNoLXRyYWluaW5nLWFkZC1tb2RhbD48L2NvYWNoLXRyYWluaW5nLWFkZC1tb2RhbD5cbiAgICA8Y29hY2gtY3ljbGUtZGVsZXRlLW1vZGFsPjwvY29hY2gtY3ljbGUtZGVsZXRlLW1vZGFsPlxuICAgIDxjb2FjaC1jeWNsZS1lZGl0LW1vZGFsPjwvY29hY2gtY3ljbGUtZWRpdC1tb2RhbD4iLCI8Y29hY2gtdHJhaW5pbmctbW9kYWxzPjwvY29hY2gtdHJhaW5pbmctbW9kYWxzPiJdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0lDQUE7SUFDSTtnQkFBQTs7OztJQUFBO0tBQUE7SUFBK0M7SUFDL0M7Z0JBQUE7OztJQUFBO0tBQUE7SUFBcUQ7SUFDckQ7Z0JBQUE7OztJQUFBO0tBQUE7SUFBcUQ7SUFDckQ7Z0JBQUE7OztJQUFBO0tBQUE7SUFBcUQ7SUFDckQ7Z0JBQUE7Ozs7SUFBQTtLQUFBOzs7SUFKQTtJQUNBO0lBQ0E7SUFDQTtJQUNBOzs7OztJQ0xKO2dCQUFBOzs7OyJ9
+var TrainingModalsNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵccf"]('coach-training-modals', __WEBPACK_IMPORTED_MODULE_16__app_trainings_modals_training_modals__["a" /* TrainingModals */], View_TrainingModals_Host_0, {}, {}, []);
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL2hvbWUvdHJhdmlzL2J1aWxkL0FydHVyQ3pvcGVrL215LWNvYWNoL3NyYy9hcHAvdHJhaW5pbmdzL21vZGFscy90cmFpbmluZy5tb2RhbHMubmdmYWN0b3J5LnRzIiwidmVyc2lvbiI6Mywic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsibmc6Ly8vaG9tZS90cmF2aXMvYnVpbGQvQXJ0dXJDem9wZWsvbXktY29hY2gvc3JjL2FwcC90cmFpbmluZ3MvbW9kYWxzL3RyYWluaW5nLm1vZGFscy50cyIsIm5nOi8vL2hvbWUvdHJhdmlzL2J1aWxkL0FydHVyQ3pvcGVrL215LWNvYWNoL3NyYy9hcHAvdHJhaW5pbmdzL21vZGFscy90cmFpbmluZy5tb2RhbHMudHMuVHJhaW5pbmdNb2RhbHMuaHRtbCIsIm5nOi8vL2hvbWUvdHJhdmlzL2J1aWxkL0FydHVyQ3pvcGVrL215LWNvYWNoL3NyYy9hcHAvdHJhaW5pbmdzL21vZGFscy90cmFpbmluZy5tb2RhbHMudHMuVHJhaW5pbmdNb2RhbHNfSG9zdC5odG1sIl0sInNvdXJjZXNDb250ZW50IjpbIiAiLCJcbiAgICA8Y29hY2gtY3ljbGUtYWRkLW1vZGFsPjwvY29hY2gtY3ljbGUtYWRkLW1vZGFsPlxuICAgIDxjb2FjaC1leGVyY2lzZS1hZGQtbW9kYWw+PC9jb2FjaC1leGVyY2lzZS1hZGQtbW9kYWw+XG4gICAgPGNvYWNoLWV4ZXJjaXNlLWRlbGV0ZS1tb2RhbD48L2NvYWNoLWV4ZXJjaXNlLWRlbGV0ZS1tb2RhbD5cbiAgICA8Y29hY2gtdHJhaW5pbmctYWRkLW1vZGFsPjwvY29hY2gtdHJhaW5pbmctYWRkLW1vZGFsPlxuICAgIDxjb2FjaC1jeWNsZS1kZWxldGUtbW9kYWw+PC9jb2FjaC1jeWNsZS1kZWxldGUtbW9kYWw+XG4gICAgPGNvYWNoLWN5Y2xlLWVkaXQtbW9kYWw+PC9jb2FjaC1jeWNsZS1lZGl0LW1vZGFsPiIsIjxjb2FjaC10cmFpbmluZy1tb2RhbHM+PC9jb2FjaC10cmFpbmluZy1tb2RhbHM+Il0sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztJQ0FBO0lBQ0k7Z0JBQUE7Ozs7SUFBQTtLQUFBO0lBQStDO0lBQy9DO2dCQUFBOzs7SUFBQTtLQUFBO0lBQXFEO0lBQ3JEO2dCQUFBOzs7SUFBQTtLQUFBO0lBQTJEO0lBQzNEO2dCQUFBOzs7SUFBQTtLQUFBO0lBQXFEO0lBQ3JEO2dCQUFBOzs7SUFBQTtLQUFBO0lBQXFEO0lBQ3JEO2dCQUFBOzs7O0lBQUE7S0FBQTs7O0lBTEE7SUFDQTtJQUNBO0lBQ0E7SUFDQTtJQUNBOzs7OztJQ05KO2dCQUFBOzs7OyJ9
 //# sourceMappingURL=training.modals.ngfactory.js.map
 
 /***/ }),
-/* 210 */
+/* 212 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21236,8 +21538,8 @@ var TrainingModalsNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵccf
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_shared_pipes_dictionary_pipe__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_shared_services_service_injector__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_trainings_set_section_component__ = __webpack_require__(130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_trainings_services_training_modals_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_trainings_set_section_component__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_trainings_services_training_modals_service__ = __webpack_require__(10);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_SetSectionComponent; });
 /* harmony export (immutable) */ __webpack_exports__["a"] = View_SetSectionComponent_0;
 /* unused harmony export SetSectionComponentNgFactory */
@@ -21267,15 +21569,63 @@ var RenderType_SetSectionComponent = __WEBPACK_IMPORTED_MODULE_2__angular_core__
 });
 function View_SetSectionComponent_1(l) {
     return __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵvid"](0, [
-        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵeld"](0, null, null, 1, 'th', [], null, null, null, null, null)),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵeld"](0, null, null, 6, 'th', [], null, null, null, null, null)),
         (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, [
-            '',
-            '\n    '
-        ]))
-    ], null, function (ck, v) {
+            '\n      ',
+            '\n      '
+        ])),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵeld"](0, null, null, 3, 'i', [
+            [
+                'class',
+                'small material-icons material-button tooltipped hover-visible'
+            ],
+            [
+                'data-delay',
+                '50'
+            ],
+            [
+                'data-position',
+                'bottom'
+            ],
+            [
+                'materialize',
+                'tooltip'
+            ]
+        ], [[
+                1,
+                'data-tooltip',
+                0
+            ]
+        ], [[
+                null,
+                'click'
+            ]
+        ], function (v, en, $event) {
+            var ad = true;
+            var co = v.component;
+            if (('click' === en)) {
+                var pd_0 = (co.onDeleteTraining(v.context.$implicit) !== false);
+                ad = (pd_0 && ad);
+            }
+            return ad;
+        }, null, null)),
+        __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵdid"](2564096, null, 0, __WEBPACK_IMPORTED_MODULE_3_angular2_materialize_dist_materialize_directive__["MaterializeDirective"], [__WEBPACK_IMPORTED_MODULE_2__angular_core__["ElementRef"]], { materialize: [
+                0,
+                'materialize'
+            ]
+        }, null),
+        __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵppd"](1),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, ['delete'])),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, ['\n    ']))
+    ], function (ck, v) {
+        var currVal_2 = 'tooltip';
+        ck(v, 3, 0, currVal_2);
+    }, function (ck, v) {
         var co = v.component;
         var currVal_0 = co.dateService.parseDateToString(v.context.$implicit.trainingDate);
         ck(v, 1, 0, currVal_0);
+        var currVal_1 = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵunv"](v, 2, 0, ck(v, 4, 0, __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵnov"](v.parent, 1), 'page.trainings.deleteTraining.tooltip'));
+        ck(v, 2, 0, currVal_1);
     });
 }
 function View_SetSectionComponent_4(l) {
@@ -21408,9 +21758,9 @@ function View_SetSectionComponent_5(l) {
 }
 function View_SetSectionComponent_3(l) {
     return __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵvid"](0, [
-        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵeld"](0, null, null, 10, 'tr', [], null, null, null, null, null)),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵeld"](0, null, null, 15, 'tr', [], null, null, null, null, null)),
         (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, ['\n    '])),
-        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵeld"](0, null, null, 4, 'td', [], null, null, null, null, null)),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵeld"](0, null, null, 9, 'td', [], null, null, null, null, null)),
         (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, [
             '',
             '\n      '
@@ -21424,6 +21774,49 @@ function View_SetSectionComponent_3(l) {
                 'ngIf'
             ]
         }, null),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, ['\n      '])),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵeld"](0, null, null, 3, 'i', [
+            [
+                'class',
+                'small material-icons material-button tooltipped hover-visible'
+            ],
+            [
+                'data-delay',
+                '50'
+            ],
+            [
+                'data-position',
+                'bottom'
+            ],
+            [
+                'materialize',
+                'tooltip'
+            ]
+        ], [[
+                1,
+                'data-tooltip',
+                0
+            ]
+        ], [[
+                null,
+                'click'
+            ]
+        ], function (v, en, $event) {
+            var ad = true;
+            var co = v.component;
+            if (('click' === en)) {
+                var pd_0 = (co.onDeleteExercise(v.context.$implicit) !== false);
+                ad = (pd_0 && ad);
+            }
+            return ad;
+        }, null, null)),
+        __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵdid"](2564096, null, 0, __WEBPACK_IMPORTED_MODULE_3_angular2_materialize_dist_materialize_directive__["MaterializeDirective"], [__WEBPACK_IMPORTED_MODULE_2__angular_core__["ElementRef"]], { materialize: [
+                0,
+                'materialize'
+            ]
+        }, null),
+        __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵppd"](1),
+        (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, ['delete'])),
         (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, ['\n    '])),
         (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵted"](null, ['\n    '])),
         (l()(), __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵand"](8388608, null, null, 1, null, View_SetSectionComponent_5)),
@@ -21440,11 +21833,15 @@ function View_SetSectionComponent_3(l) {
     ], function (ck, v) {
         var currVal_1 = v.context.$implicit.exerciseDescription;
         ck(v, 5, 0, currVal_1);
-        var currVal_2 = v.context.$implicit.exerciseSessions;
-        ck(v, 9, 0, currVal_2);
+        var currVal_3 = 'tooltip';
+        ck(v, 8, 0, currVal_3);
+        var currVal_4 = v.context.$implicit.exerciseSessions;
+        ck(v, 14, 0, currVal_4);
     }, function (ck, v) {
         var currVal_0 = v.context.$implicit.exerciseName;
         ck(v, 3, 0, currVal_0);
+        var currVal_2 = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵunv"](v, 7, 0, ck(v, 9, 0, __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵnov"](v.parent.parent, 1), 'page.trainings.deleteExercise.tooltip'));
+        ck(v, 7, 0, currVal_2);
     });
 }
 function View_SetSectionComponent_2(l) {
@@ -21517,7 +21914,7 @@ function View_SetSectionComponent_8(l) {
             var ad = true;
             var co = v.component;
             if (('click' === en)) {
-                var pd_0 = (co.onAddExerciseClick() !== false);
+                var pd_0 = (co.onAddExercise() !== false);
                 ad = (pd_0 && ad);
             }
             return ad;
@@ -21621,11 +22018,11 @@ function View_SetSectionComponent_Host_0(l) {
     ], null, null);
 }
 var SetSectionComponentNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵccf"]('coach-set-section', __WEBPACK_IMPORTED_MODULE_7__app_trainings_set_section_component__["a" /* SetSectionComponent */], View_SetSectionComponent_Host_0, { set: 'set' }, {}, []);
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL2hvbWUvdHJhdmlzL2J1aWxkL0FydHVyQ3pvcGVrL215LWNvYWNoL3NyYy9hcHAvdHJhaW5pbmdzL3NldC1zZWN0aW9uLmNvbXBvbmVudC5uZ2ZhY3RvcnkudHMiLCJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJuZzovLy9ob21lL3RyYXZpcy9idWlsZC9BcnR1ckN6b3Blay9teS1jb2FjaC9zcmMvYXBwL3RyYWluaW5ncy9zZXQtc2VjdGlvbi5jb21wb25lbnQudHMiLCJuZzovLy9ob21lL3RyYXZpcy9idWlsZC9BcnR1ckN6b3Blay9teS1jb2FjaC9zcmMvYXBwL3RyYWluaW5ncy9zZXQtc2VjdGlvbi5jb21wb25lbnQuaHRtbCIsIm5nOi8vL2hvbWUvdHJhdmlzL2J1aWxkL0FydHVyQ3pvcGVrL215LWNvYWNoL3NyYy9hcHAvdHJhaW5pbmdzL3NldC1zZWN0aW9uLmNvbXBvbmVudC50cy5TZXRTZWN0aW9uQ29tcG9uZW50X0hvc3QuaHRtbCJdLCJzb3VyY2VzQ29udGVudCI6WyIgIiwiPHRhYmxlIGNsYXNzPVwicmVzcG9uc2l2ZS10YWJsZSBzdHJpcGVkXCI+XG4gIDx0aGVhZD5cbiAgPHRyPlxuICAgIDx0aCBkYXRhLWZpZWxkPVwiU2V0XCI+e3tzZXQuc2V0TmFtZSB8IHVwcGVyY2FzZX19PC90aD5cbiAgICA8dGggKm5nRm9yPVwibGV0IHRyYWluaW5nIG9mIHNldC50cmFpbmluZ3NcIj57eyBkYXRlU2VydmljZS5wYXJzZURhdGVUb1N0cmluZyh0cmFpbmluZy50cmFpbmluZ0RhdGUpIH19XG4gICAgPC90aD5cbiAgPC90cj5cbiAgPC90aGVhZD5cbiAgPHRib2R5ICpuZ0lmPVwic2V0LmV4ZXJjaXNlcy5sZW5ndGggPiAwOyBlbHNlIG5vRXhlcmNpc2VzXCI+XG4gIDx0ciAqbmdGb3I9XCJsZXQgZXhlcmNpc2Ugb2Ygc2V0LmV4ZXJjaXNlc1wiPlxuICAgIDx0ZD57e2V4ZXJjaXNlLmV4ZXJjaXNlTmFtZX19XG4gICAgICA8aSAqbmdJZj1cImV4ZXJjaXNlLmV4ZXJjaXNlRGVzY3JpcHRpb25cIiBjbGFzcz1cIm1hdGVyaWFsLWJ1dHRvbiBtYXRlcmlhbC1pY29ucyB0b29sdGlwcGVkXCIgbWF0ZXJpYWxpemU9XCJ0b29sdGlwXCJcbiAgICAgICAgIGRhdGEtcG9zaXRpb249XCJib3R0b21cIiBkYXRhLWRlbGF5PVwiNTBcIiBbYXR0ci5kYXRhLXRvb2x0aXBdPVwiZXhlcmNpc2UuZXhlcmNpc2VEZXNjcmlwdGlvblwiPmNvbW1lbnQ8L2k+XG4gICAgPC90ZD5cbiAgICA8dGQgKm5nRm9yPVwibGV0IHNlc3Npb24gb2YgZXhlcmNpc2UuZXhlcmNpc2VTZXNzaW9uc1wiPlxuICAgICAgPGRpdiAqbmdGb3I9XCJsZXQgc2VyaWVzIG9mIHNlc3Npb24uc2VyaWVzXCIgY2xhc3M9XCJzZXJpZXNcIj5cbiAgICAgICAge3t0cmFpbmluZ3NTZXJ2aWNlLmdldEZvcm1hdHRlZFJlcGVhdHNXaXRoV2VpZ2h0KHNlcmllcyl9fVxuICAgICAgICA8aSAqbmdJZj1cInNlcmllcy5jb21tZW50XCIgY2xhc3M9XCJtYXRlcmlhbC1idXR0b24gbWF0ZXJpYWwtaWNvbnMgdG9vbHRpcHBlZFwiIG1hdGVyaWFsaXplPVwidG9vbHRpcFwiXG4gICAgICAgICAgIGRhdGEtcG9zaXRpb249XCJib3R0b21cIiBkYXRhLWRlbGF5PVwiNTBcIiBbYXR0ci5kYXRhLXRvb2x0aXBdPVwic2VyaWVzLmNvbW1lbnRcIj5jb21tZW50PC9pPlxuICAgICAgPC9kaXY+XG4gICAgPC90ZD5cbiAgPC90cj5cbiAgPC90Ym9keT5cblxuICA8bmctdGVtcGxhdGUgI25vRXhlcmNpc2VzPlxuICAgIDx0Ym9keT5cbiAgICA8ZGl2IGNsYXNzPVwiY29sIHMxMiBjZW50ZXIgbm8tZGF0YSBzbWFsbFwiPlxuICAgICAgPGRpdiBjbGFzcz1cInJvd1wiPlxuICAgICAgICA8aSBjbGFzcz1cIm1lZGl1bSBtYXRlcmlhbC1pY29uc1wiPmluZm9fb3V0bGluZTwvaT5cbiAgICAgIDwvZGl2PlxuICAgICAgPGRpdiBjbGFzcz1cInJvd1wiPlxuICAgICAgICA8cD57eydwYWdlLnRyYWluaW5ncy5zZXQubm9FeGVyY2lzZXMuaW5mbycgfCBkaWN0aW9uYXJ5fX0gPGEgY2xhc3M9XCJjbGlja1wiIChjbGljayk9XCJvbkFkZEV4ZXJjaXNlQ2xpY2soKVwiPnt7J3BhZ2UudHJhaW5pbmdzLnNldC5ub0V4ZXJjaXNlcy5jbGljay5pbmZvJ1xuICAgICAgICAgIHwgZGljdGlvbmFyeX19PC9hPjwvcD5cbiAgICAgIDwvZGl2PlxuICAgIDwvZGl2PlxuICAgIDwvdGJvZHk+XG4gIDwvbmctdGVtcGxhdGU+XG5cbjwvdGFibGU+XG4iLCI8Y29hY2gtc2V0LXNlY3Rpb24+PC9jb2FjaC1zZXQtc2VjdGlvbj4iXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7SUNJSTtJQUEyQztNQUFBO01BQUE7SUFBQTtJQUFBOzs7O0lBQUE7SUFBQTs7Ozs7SUFPekM7TUFBQTtRQUFBO1FBQUE7TUFBQTs7TUFBQTtRQUFBO1FBQUE7TUFBQTs7TUFBQTtRQUFBO1FBQUE7TUFBQTs7TUFBQTtRQUFBO1FBQUE7TUFBQTs7SUFBQTtPQUFBO1FBQUE7UUFBQTtRQUFBO01BQUE7SUFBQTtrQkFBQTtRQUFBO1FBQUE7TUFBQTtJQUFBO0lBQzZGOzs7SUFESDtJQUExRixTQUEwRixTQUExRjs7SUFDMEM7SUFEMUMsU0FDMEMsU0FEMUM7Ozs7O0lBTUU7TUFBQTtRQUFBO1FBQUE7TUFBQTs7TUFBQTtRQUFBO1FBQUE7TUFBQTs7TUFBQTtRQUFBO1FBQUE7TUFBQTs7TUFBQTtRQUFBO1FBQUE7TUFBQTs7SUFBQTtPQUFBO1FBQUE7UUFBQTtRQUFBO01BQUE7SUFBQTtrQkFBQTtRQUFBO1FBQUE7TUFBQTtJQUFBO0lBQytFOzs7SUFESDtJQUE1RSxTQUE0RSxTQUE1RTs7SUFDMEM7SUFEMUMsU0FDMEMsU0FEMUM7Ozs7O01BRkY7UUFBQTtRQUFBO01BQUE7SUFBQTtJQUEwRDtNQUFBO01BQUE7SUFBQTtJQUFBO0lBRXhEO2dCQUFBOzs7SUFBQTtPQUFBO1FBQUE7UUFBQTtNQUFBO0lBQUE7SUFDMEY7OztJQUR2RjtJQUFILFNBQUcsU0FBSDs7O0lBRndEO0lBQUE7Ozs7O0lBRDVEO0lBQXNEO0lBQ3BEO2dCQUFBOzs7O0lBQUE7T0FBQTtRQUFBO1FBQUE7TUFBQTtJQUFBO0lBSU07OztJQUpEO0lBQUwsU0FBSyxTQUFMOzs7OztJQU5KO0lBQTJDO0lBQ3pDO0lBQUk7TUFBQTtNQUFBO0lBQUE7SUFBQTtJQUNGO2dCQUFBOzs7SUFBQTtPQUFBO1FBQUE7UUFBQTtNQUFBO0lBQUE7SUFDd0c7SUFDckc7SUFDTDtnQkFBQTs7OztJQUFBO09BQUE7UUFBQTtRQUFBO01BQUE7SUFBQTtJQU1LOzs7SUFUQTtJQUFILFNBQUcsU0FBSDtJQUdFO0lBQUosU0FBSSxTQUFKOztJQUpJO0lBQUE7Ozs7O0lBRk47SUFBMEQ7SUFDMUQ7Z0JBQUE7Ozs7SUFBQTtPQUFBO1FBQUE7UUFBQTtNQUFBO0lBQUE7SUFZSzs7OztJQVpEO0lBQUosU0FBSSxTQUFKOzs7OztJQWUwQjtJQUN4QjtJQUFPO01BQ1A7UUFBQTtRQUFBO01BQUE7SUFBQTtJQUEwQztNQUN4QztRQUFBO1FBQUE7TUFBQTtJQUFBO0lBQWlCO01BQ2Y7UUFBQTtRQUFBO01BQUE7SUFBQTtJQUFpQztJQUFnQjtJQUM3QztNQUNOO1FBQUE7UUFBQTtNQUFBO0lBQUE7SUFBaUI7SUFDZjtJQUFHO01BQUE7TUFBQTtJQUFBO0lBQUE7Z0JBQUE7TUFBdUQ7UUFBQTtRQUFBO01BQUE7TUFBQTtRQUFBO1FBQUE7TUFBQTtJQUFBO01BQUE7TUFBQTtNQUFpQjtRQUFBO1FBQUE7TUFBQTtNQUFqQjtJQUFBO0lBQWdEO01BQUE7TUFBQTtJQUFBO0lBQUE7Z0JBQUE7SUFDbEY7SUFDcEI7SUFDRjtJQUNFOzs7SUFKRDtJQUFBO0lBQXVHO0lBQUE7Ozs7Ozs7TUEvQmxIO1FBQUE7UUFBQTtNQUFBO0lBQUE7SUFBd0M7SUFDdEM7SUFBTztJQUNQO0lBQUk7TUFDRjtRQUFBO1FBQUE7TUFBQTtJQUFBO0lBQXFCO01BQUE7TUFBQTtJQUFBO0lBQUE7Z0JBQUE7SUFBZ0M7SUFDckQ7Z0JBQUE7Ozs7SUFBQTtPQUFBO1FBQUE7UUFBQTtNQUFBO0lBQUE7SUFDSztJQUNGO0lBQ0c7SUFDUjtnQkFBQTs7O0lBQUE7S0FBQTtNQUFBO1FBQUE7UUFBQTtNQUFBOztNQUFBO1FBQUE7UUFBQTtNQUFBOztJQUFBO0tBQUE7SUFjUTtNQUVSO1FBQUE7UUFBQTtNQUFBO0lBQUE7SUFZYztJQUVSOzs7O0lBbENBO0lBQUosVUFBSSxTQUFKO0lBSUs7SUFBQTtJQUFQLFVBQU8sbUJBQVA7OztJQUx1QjtJQUFBOzs7OztJQ0h6QjtnQkFBQTs7O0lBQUE7S0FBQTs7OzsifQ==
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL2hvbWUvdHJhdmlzL2J1aWxkL0FydHVyQ3pvcGVrL215LWNvYWNoL3NyYy9hcHAvdHJhaW5pbmdzL3NldC1zZWN0aW9uLmNvbXBvbmVudC5uZ2ZhY3RvcnkudHMiLCJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJuZzovLy9ob21lL3RyYXZpcy9idWlsZC9BcnR1ckN6b3Blay9teS1jb2FjaC9zcmMvYXBwL3RyYWluaW5ncy9zZXQtc2VjdGlvbi5jb21wb25lbnQudHMiLCJuZzovLy9ob21lL3RyYXZpcy9idWlsZC9BcnR1ckN6b3Blay9teS1jb2FjaC9zcmMvYXBwL3RyYWluaW5ncy9zZXQtc2VjdGlvbi5jb21wb25lbnQuaHRtbCIsIm5nOi8vL2hvbWUvdHJhdmlzL2J1aWxkL0FydHVyQ3pvcGVrL215LWNvYWNoL3NyYy9hcHAvdHJhaW5pbmdzL3NldC1zZWN0aW9uLmNvbXBvbmVudC50cy5TZXRTZWN0aW9uQ29tcG9uZW50X0hvc3QuaHRtbCJdLCJzb3VyY2VzQ29udGVudCI6WyIgIiwiPHRhYmxlIGNsYXNzPVwicmVzcG9uc2l2ZS10YWJsZSBzdHJpcGVkXCI+XG4gIDx0aGVhZD5cbiAgPHRyPlxuICAgIDx0aCBkYXRhLWZpZWxkPVwiU2V0XCI+e3tzZXQuc2V0TmFtZSB8IHVwcGVyY2FzZX19PC90aD5cbiAgICA8dGggKm5nRm9yPVwibGV0IHRyYWluaW5nIG9mIHNldC50cmFpbmluZ3NcIj5cbiAgICAgIHt7IGRhdGVTZXJ2aWNlLnBhcnNlRGF0ZVRvU3RyaW5nKHRyYWluaW5nLnRyYWluaW5nRGF0ZSkgfX1cbiAgICAgIDxpIChjbGljayk9XCJvbkRlbGV0ZVRyYWluaW5nKHRyYWluaW5nKVwiIGNsYXNzPVwic21hbGwgbWF0ZXJpYWwtaWNvbnMgbWF0ZXJpYWwtYnV0dG9uIHRvb2x0aXBwZWQgaG92ZXItdmlzaWJsZVwiXG4gICAgICAgICBtYXRlcmlhbGl6ZT1cInRvb2x0aXBcIiBkYXRhLXBvc2l0aW9uPVwiYm90dG9tXCIgZGF0YS1kZWxheT1cIjUwXCJcbiAgICAgICAgIFthdHRyLmRhdGEtdG9vbHRpcF09XCIncGFnZS50cmFpbmluZ3MuZGVsZXRlVHJhaW5pbmcudG9vbHRpcCcgfCBkaWN0aW9uYXJ5XCI+ZGVsZXRlPC9pPlxuICAgIDwvdGg+XG4gIDwvdHI+XG4gIDwvdGhlYWQ+XG4gIDx0Ym9keSAqbmdJZj1cInNldC5leGVyY2lzZXMubGVuZ3RoID4gMDsgZWxzZSBub0V4ZXJjaXNlc1wiPlxuICA8dHIgKm5nRm9yPVwibGV0IGV4ZXJjaXNlIG9mIHNldC5leGVyY2lzZXNcIj5cbiAgICA8dGQ+e3tleGVyY2lzZS5leGVyY2lzZU5hbWV9fVxuICAgICAgPGkgKm5nSWY9XCJleGVyY2lzZS5leGVyY2lzZURlc2NyaXB0aW9uXCIgY2xhc3M9XCJtYXRlcmlhbC1idXR0b24gbWF0ZXJpYWwtaWNvbnMgdG9vbHRpcHBlZFwiIG1hdGVyaWFsaXplPVwidG9vbHRpcFwiXG4gICAgICAgICBkYXRhLXBvc2l0aW9uPVwiYm90dG9tXCIgZGF0YS1kZWxheT1cIjUwXCIgW2F0dHIuZGF0YS10b29sdGlwXT1cImV4ZXJjaXNlLmV4ZXJjaXNlRGVzY3JpcHRpb25cIj5jb21tZW50PC9pPlxuICAgICAgPGkgKGNsaWNrKT1cIm9uRGVsZXRlRXhlcmNpc2UoZXhlcmNpc2UpXCIgY2xhc3M9XCJzbWFsbCBtYXRlcmlhbC1pY29ucyBtYXRlcmlhbC1idXR0b24gdG9vbHRpcHBlZCBob3Zlci12aXNpYmxlXCJcbiAgICAgICAgIG1hdGVyaWFsaXplPVwidG9vbHRpcFwiIGRhdGEtcG9zaXRpb249XCJib3R0b21cIiBkYXRhLWRlbGF5PVwiNTBcIlxuICAgICAgICAgW2F0dHIuZGF0YS10b29sdGlwXT1cIidwYWdlLnRyYWluaW5ncy5kZWxldGVFeGVyY2lzZS50b29sdGlwJyB8IGRpY3Rpb25hcnlcIj5kZWxldGU8L2k+XG4gICAgPC90ZD5cbiAgICA8dGQgKm5nRm9yPVwibGV0IHNlc3Npb24gb2YgZXhlcmNpc2UuZXhlcmNpc2VTZXNzaW9uc1wiPlxuICAgICAgPGRpdiAqbmdGb3I9XCJsZXQgc2VyaWVzIG9mIHNlc3Npb24uc2VyaWVzXCIgY2xhc3M9XCJzZXJpZXNcIj5cbiAgICAgICAge3t0cmFpbmluZ3NTZXJ2aWNlLmdldEZvcm1hdHRlZFJlcGVhdHNXaXRoV2VpZ2h0KHNlcmllcyl9fVxuICAgICAgICA8aSAqbmdJZj1cInNlcmllcy5jb21tZW50XCIgY2xhc3M9XCJtYXRlcmlhbC1idXR0b24gbWF0ZXJpYWwtaWNvbnMgdG9vbHRpcHBlZFwiIG1hdGVyaWFsaXplPVwidG9vbHRpcFwiXG4gICAgICAgICAgIGRhdGEtcG9zaXRpb249XCJib3R0b21cIiBkYXRhLWRlbGF5PVwiNTBcIiBbYXR0ci5kYXRhLXRvb2x0aXBdPVwic2VyaWVzLmNvbW1lbnRcIj5jb21tZW50PC9pPlxuICAgICAgPC9kaXY+XG4gICAgPC90ZD5cbiAgPC90cj5cbiAgPC90Ym9keT5cblxuICA8bmctdGVtcGxhdGUgI25vRXhlcmNpc2VzPlxuICAgIDx0Ym9keT5cbiAgICA8ZGl2IGNsYXNzPVwiY29sIHMxMiBjZW50ZXIgbm8tZGF0YSBzbWFsbFwiPlxuICAgICAgPGRpdiBjbGFzcz1cInJvd1wiPlxuICAgICAgICA8aSBjbGFzcz1cIm1lZGl1bSBtYXRlcmlhbC1pY29uc1wiPmluZm9fb3V0bGluZTwvaT5cbiAgICAgIDwvZGl2PlxuICAgICAgPGRpdiBjbGFzcz1cInJvd1wiPlxuICAgICAgICA8cD57eydwYWdlLnRyYWluaW5ncy5zZXQubm9FeGVyY2lzZXMuaW5mbycgfCBkaWN0aW9uYXJ5fX0gPGEgY2xhc3M9XCJjbGlja1wiIChjbGljayk9XCJvbkFkZEV4ZXJjaXNlKClcIj57eydwYWdlLnRyYWluaW5ncy5zZXQubm9FeGVyY2lzZXMuY2xpY2suaW5mbydcbiAgICAgICAgICB8IGRpY3Rpb25hcnl9fTwvYT48L3A+XG4gICAgICA8L2Rpdj5cbiAgICA8L2Rpdj5cbiAgICA8L3Rib2R5PlxuICA8L25nLXRlbXBsYXRlPlxuXG48L3RhYmxlPlxuIiwiPGNvYWNoLXNldC1zZWN0aW9uPjwvY29hY2gtc2V0LXNlY3Rpb24+Il0sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0lDSUk7SUFBMkM7TUFBQTtNQUFBO0lBQUE7SUFBQTtJQUV6QztNQUFBO1FBQUE7UUFBQTtNQUFBOztNQUFBO1FBQUE7UUFBQTtNQUFBOztNQUFBO1FBQUE7UUFBQTtNQUFBOztNQUFBO1FBQUE7UUFBQTtNQUFBOztJQUFBO09BQUE7UUFBQTtRQUFBO1FBQUE7TUFBQTtNQUFBO1FBQUE7UUFBQTtNQUFBO0lBQUE7TUFBQTtNQUFBO01BQUc7UUFBQTtRQUFBO01BQUE7TUFBSDtJQUFBO2tCQUFBO1FBQUE7UUFBQTtNQUFBO0lBQUE7Z0JBRUc7SUFBMkU7SUFBVTs7O0lBRHJGO0lBREgsU0FDRyxTQURIOzs7SUFGeUM7SUFBQTtJQUl0QztJQUZILFNBRUcsU0FGSDs7Ozs7SUFTQTtNQUFBO1FBQUE7UUFBQTtNQUFBOztNQUFBO1FBQUE7UUFBQTtNQUFBOztNQUFBO1FBQUE7UUFBQTtNQUFBOztNQUFBO1FBQUE7UUFBQTtNQUFBOztJQUFBO09BQUE7UUFBQTtRQUFBO1FBQUE7TUFBQTtJQUFBO2tCQUFBO1FBQUE7UUFBQTtNQUFBO0lBQUE7SUFDNkY7OztJQURIO0lBQTFGLFNBQTBGLFNBQTFGOztJQUMwQztJQUQxQyxTQUMwQyxTQUQxQzs7Ozs7SUFTRTtNQUFBO1FBQUE7UUFBQTtNQUFBOztNQUFBO1FBQUE7UUFBQTtNQUFBOztNQUFBO1FBQUE7UUFBQTtNQUFBOztNQUFBO1FBQUE7UUFBQTtNQUFBOztJQUFBO09BQUE7UUFBQTtRQUFBO1FBQUE7TUFBQTtJQUFBO2tCQUFBO1FBQUE7UUFBQTtNQUFBO0lBQUE7SUFDK0U7OztJQURIO0lBQTVFLFNBQTRFLFNBQTVFOztJQUMwQztJQUQxQyxTQUMwQyxTQUQxQzs7Ozs7TUFGRjtRQUFBO1FBQUE7TUFBQTtJQUFBO0lBQTBEO01BQUE7TUFBQTtJQUFBO0lBQUE7SUFFeEQ7Z0JBQUE7OztJQUFBO09BQUE7UUFBQTtRQUFBO01BQUE7SUFBQTtJQUMwRjs7O0lBRHZGO0lBQUgsU0FBRyxTQUFIOzs7SUFGd0Q7SUFBQTs7Ozs7SUFENUQ7SUFBc0Q7SUFDcEQ7Z0JBQUE7Ozs7SUFBQTtPQUFBO1FBQUE7UUFBQTtNQUFBO0lBQUE7SUFJTTs7O0lBSkQ7SUFBTCxTQUFLLFNBQUw7Ozs7O0lBVEo7SUFBMkM7SUFDekM7SUFBSTtNQUFBO01BQUE7SUFBQTtJQUFBO0lBQ0Y7Z0JBQUE7OztJQUFBO09BQUE7UUFBQTtRQUFBO01BQUE7SUFBQTtJQUN3RztJQUN4RztNQUFBO1FBQUE7UUFBQTtNQUFBOztNQUFBO1FBQUE7UUFBQTtNQUFBOztNQUFBO1FBQUE7UUFBQTtNQUFBOztNQUFBO1FBQUE7UUFBQTtNQUFBOztJQUFBO09BQUE7UUFBQTtRQUFBO1FBQUE7TUFBQTtNQUFBO1FBQUE7UUFBQTtNQUFBO0lBQUE7TUFBQTtNQUFBO01BQUc7UUFBQTtRQUFBO01BQUE7TUFBSDtJQUFBO2tCQUFBO1FBQUE7UUFBQTtNQUFBO0lBQUE7Z0JBRUc7SUFBMkU7SUFBVTtJQUNyRjtJQUNMO2dCQUFBOzs7O0lBQUE7T0FBQTtRQUFBO1FBQUE7TUFBQTtJQUFBO0lBTUs7OztJQVpBO0lBQUgsU0FBRyxTQUFIO0lBR0c7SUFESCxTQUNHLFNBREg7SUFJRTtJQUFKLFVBQUksU0FBSjs7SUFQSTtJQUFBO0lBS0M7SUFGSCxTQUVHLFNBRkg7Ozs7O0lBTEo7SUFBMEQ7SUFDMUQ7Z0JBQUE7Ozs7SUFBQTtPQUFBO1FBQUE7UUFBQTtNQUFBO0lBQUE7SUFlSzs7OztJQWZEO0lBQUosU0FBSSxTQUFKOzs7OztJQWtCMEI7SUFDeEI7SUFBTztNQUNQO1FBQUE7UUFBQTtNQUFBO0lBQUE7SUFBMEM7TUFDeEM7UUFBQTtRQUFBO01BQUE7SUFBQTtJQUFpQjtNQUNmO1FBQUE7UUFBQTtNQUFBO0lBQUE7SUFBaUM7SUFBZ0I7SUFDN0M7TUFDTjtRQUFBO1FBQUE7TUFBQTtJQUFBO0lBQWlCO0lBQ2Y7SUFBRztNQUFBO01BQUE7SUFBQTtJQUFBO2dCQUFBO01BQXVEO1FBQUE7UUFBQTtNQUFBO01BQUE7UUFBQTtRQUFBO01BQUE7SUFBQTtNQUFBO01BQUE7TUFBaUI7UUFBQTtRQUFBO01BQUE7TUFBakI7SUFBQTtJQUEyQztNQUFBO01BQUE7SUFBQTtJQUFBO2dCQUFBO0lBQzdFO0lBQ3BCO0lBQ0Y7SUFDRTs7O0lBSkQ7SUFBQTtJQUFrRztJQUFBOzs7Ozs7O01BdEM3RztRQUFBO1FBQUE7TUFBQTtJQUFBO0lBQXdDO0lBQ3RDO0lBQU87SUFDUDtJQUFJO01BQ0Y7UUFBQTtRQUFBO01BQUE7SUFBQTtJQUFxQjtNQUFBO01BQUE7SUFBQTtJQUFBO2dCQUFBO0lBQWdDO0lBQ3JEO2dCQUFBOzs7O0lBQUE7T0FBQTtRQUFBO1FBQUE7TUFBQTtJQUFBO0lBS0s7SUFDRjtJQUNHO0lBQ1I7Z0JBQUE7OztJQUFBO0tBQUE7TUFBQTtRQUFBO1FBQUE7TUFBQTs7TUFBQTtRQUFBO1FBQUE7TUFBQTs7SUFBQTtLQUFBO0lBaUJRO01BRVI7UUFBQTtRQUFBO01BQUE7SUFBQTtJQVljO0lBRVI7Ozs7SUF6Q0E7SUFBSixVQUFJLFNBQUo7SUFRSztJQUFBO0lBQVAsVUFBTyxtQkFBUDs7O0lBVHVCO0lBQUE7Ozs7O0lDSHpCO2dCQUFBOzs7SUFBQTtLQUFBOzs7OyJ9
 //# sourceMappingURL=set-section.component.ngfactory.js.map
 
 /***/ }),
-/* 211 */
+/* 213 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21637,9 +22034,9 @@ var SetSectionComponentNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular2_materialize_dist_materialize_directive__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_weights_modals_weight_add_modal__ = __webpack_require__(131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_weights_modals_weight_add_modal__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_weights_services_weights_modals_service__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_shared_services_date_service__ = __webpack_require__(6);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_WeightAddModal; });
@@ -22312,7 +22709,7 @@ var WeightAddModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵccf
 //# sourceMappingURL=weight-add.modal.ngfactory.js.map
 
 /***/ }),
-/* 212 */
+/* 214 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22325,9 +22722,9 @@ var WeightAddModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵccf
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_materialize_dist_materialize_directive__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angular2_materialize_dist_materialize_directive__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_weights_modals_weights_delete_modal__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_weights_modals_weights_delete_modal__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_weights_services_weights_modals_service__ = __webpack_require__(18);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_WeightsDeleteModal; });
 /* harmony export (immutable) */ __webpack_exports__["a"] = View_WeightsDeleteModal_0;
@@ -22756,7 +23153,7 @@ var WeightsDeleteModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["�
 //# sourceMappingURL=weights-delete.modal.ngfactory.js.map
 
 /***/ }),
-/* 213 */
+/* 215 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22769,9 +23166,9 @@ var WeightsDeleteModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["�
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_materialize_dist_materialize_directive__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angular2_materialize_dist_materialize_directive__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_weights_modals_weights_edit_modal__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_weights_modals_weights_edit_modal__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_modals_modal_footer_component_ngfactory__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_modals_modal_footer_component__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_weights_services_weights_modals_service__ = __webpack_require__(18);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_WeightsEditModal; });
 /* harmony export (immutable) */ __webpack_exports__["a"] = View_WeightsEditModal_0;
@@ -23181,21 +23578,21 @@ var WeightsEditModalNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__["ɵc
 //# sourceMappingURL=weights-edit.modal.ngfactory.js.map
 
 /***/ }),
-/* 214 */
+/* 216 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__weight_add_modal_ngfactory__ = __webpack_require__(211);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_weights_modals_weight_add_modal__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__weight_add_modal_ngfactory__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_weights_modals_weight_add_modal__ = __webpack_require__(132);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_weights_services_weights_modals_service__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_shared_services_date_service__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__weights_edit_modal_ngfactory__ = __webpack_require__(213);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_weights_modals_weights_edit_modal__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__weights_delete_modal_ngfactory__ = __webpack_require__(212);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_weights_modals_weights_delete_modal__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_weights_modals_weights_modals__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__weights_edit_modal_ngfactory__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_weights_modals_weights_edit_modal__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__weights_delete_modal_ngfactory__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_weights_modals_weights_delete_modal__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_weights_modals_weights_modals__ = __webpack_require__(135);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RenderType_WeightsModals; });
 /* harmony export (immutable) */ __webpack_exports__["a"] = View_WeightsModals_0;
 /* unused harmony export WeightsModalsNgFactory */
@@ -23260,7 +23657,7 @@ var WeightsModalsNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵccf"
 //# sourceMappingURL=weights.modals.ngfactory.js.map
 
 /***/ }),
-/* 215 */
+/* 217 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23269,12 +23666,12 @@ var WeightsModalsNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵccf"
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_loaders_strip_loader_component_ngfactory__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_shared_loaders_strip_loader_component__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_charts_line_chart_component_ngfactory__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_charts_line_chart_component_ngfactory__ = __webpack_require__(202);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_shared_charts_line_chart_component__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_shared_pipes_dictionary_pipe__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_shared_services_service_injector__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_weights_weights_card_component__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_weights_weights_card_component__ = __webpack_require__(139);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_angular2_materialize_dist_materialize_directive__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_angular2_materialize_dist_materialize_directive__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_weights_services_weights_modals_service__ = __webpack_require__(18);
@@ -23602,7 +23999,7 @@ var WeightsCardComponentNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__[
 //# sourceMappingURL=weights-card.component.ngfactory.js.map
 
 /***/ }),
-/* 216 */
+/* 218 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23611,8 +24008,8 @@ var WeightsCardComponentNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__[
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_loaders_circle_loader_component_ngfactory__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_shared_loaders_circle_loader_component__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__weights_card_component_ngfactory__ = __webpack_require__(215);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_weights_weights_card_component__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__weights_card_component_ngfactory__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_weights_weights_card_component__ = __webpack_require__(139);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_weights_services_weights_modals_service__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_shared_services_service_injector__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_common__ = __webpack_require__(7);
@@ -23620,8 +24017,8 @@ var WeightsCardComponentNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__[
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_weights_weights_list_component__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_angular2_materialize_dist_materialize_directive__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_angular2_materialize_dist_materialize_directive___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_angular2_materialize_dist_materialize_directive__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__modals_weights_modals_ngfactory__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_weights_modals_weights_modals__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__modals_weights_modals_ngfactory__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_weights_modals_weights_modals__ = __webpack_require__(135);
 /* unused harmony export RenderType_WeightsListComponent */
 /* unused harmony export View_WeightsListComponent_0 */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WeightsListComponentNgFactory; });
@@ -23910,7 +24307,7 @@ var WeightsListComponentNgFactory = __WEBPACK_IMPORTED_MODULE_2__angular_core__[
 //# sourceMappingURL=weights-list.component.ngfactory.js.map
 
 /***/ }),
-/* 217 */
+/* 219 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23942,7 +24339,7 @@ var MyCoachRoutingModule = (function () {
 //# sourceMappingURL=app-routing.module.js.map
 
 /***/ }),
-/* 218 */
+/* 220 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23956,7 +24353,7 @@ var AppComponent = (function () {
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
-/* 219 */
+/* 221 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23970,7 +24367,7 @@ var AppModule = (function () {
 //# sourceMappingURL=app.module.js.map
 
 /***/ }),
-/* 220 */
+/* 222 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23984,7 +24381,7 @@ var PricesModule = (function () {
 //# sourceMappingURL=prices.module.js.map
 
 /***/ }),
-/* 221 */
+/* 223 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23998,7 +24395,7 @@ var ReportsModule = (function () {
 //# sourceMappingURL=reports.module.js.map
 
 /***/ }),
-/* 222 */
+/* 224 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24261,7 +24658,7 @@ var CYCLES_LIST = [
 //# sourceMappingURL=cycles.mock-data.js.map
 
 /***/ }),
-/* 223 */
+/* 225 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24275,7 +24672,7 @@ var CYCLE_PREVIEWS_LIST = [
 //# sourceMappingURL=cycle-previews.mock-data.js.map
 
 /***/ }),
-/* 224 */
+/* 226 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24290,7 +24687,7 @@ var REPORT_PREVIEWS_LIST = [
 //# sourceMappingURL=report-previews.mock-data.js.map
 
 /***/ }),
-/* 225 */
+/* 227 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24304,7 +24701,7 @@ var WEIGHTS_PREVIEWS_LIST = [
 //# sourceMappingURL=weight-previews.mock-data.js.map
 
 /***/ }),
-/* 226 */
+/* 228 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24335,7 +24732,7 @@ var PRICES_LIST = [
 //# sourceMappingURL=prices.mock-data.js.map
 
 /***/ }),
-/* 227 */
+/* 229 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24351,7 +24748,7 @@ var PRODUCTS_LIST = [
 //# sourceMappingURL=products.mock-data.js.map
 
 /***/ }),
-/* 228 */
+/* 230 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24367,7 +24764,7 @@ var REPORTS_LIST = [
 //# sourceMappingURL=reports.mock-data.js.map
 
 /***/ }),
-/* 229 */
+/* 231 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24400,7 +24797,7 @@ var WEIGHT_LIST = [
 //# sourceMappingURL=weights.mock-data.js.map
 
 /***/ }),
-/* 230 */
+/* 232 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24414,7 +24811,7 @@ var SharedModule = (function () {
 //# sourceMappingURL=shared.module.js.map
 
 /***/ }),
-/* 231 */
+/* 233 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24428,7 +24825,7 @@ var TrainingsModule = (function () {
 //# sourceMappingURL=tranings.module.js.map
 
 /***/ }),
-/* 232 */
+/* 234 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24442,8 +24839,6 @@ var WeightsModule = (function () {
 //# sourceMappingURL=weights.module.js.map
 
 /***/ }),
-/* 233 */,
-/* 234 */,
 /* 235 */,
 /* 236 */,
 /* 237 */,
@@ -24548,12 +24943,14 @@ var WeightsModule = (function () {
 /* 336 */,
 /* 337 */,
 /* 338 */,
-/* 339 */
+/* 339 */,
+/* 340 */,
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(172);
+module.exports = __webpack_require__(173);
 
 
 /***/ })
-],[339]);
+],[341]);
 //# sourceMappingURL=main.bundle.js.map
