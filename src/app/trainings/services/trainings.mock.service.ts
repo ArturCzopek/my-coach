@@ -222,6 +222,22 @@ export class TrainingsMockService extends TrainingsService {
     });
   }
 
+
+  editExercise(exerciseToEdit: Exercise) {
+    this.ngZone.runOutsideAngular(() => {
+      CYCLES_LIST.forEach(cycle => {
+        cycle.sets.forEach(set => {
+          const exerciseIndex = set.exercises.findIndex(exercise => exercise.exerciseId === exerciseToEdit.exerciseId);
+
+          if (exerciseIndex !== DOES_NOT_CONTAIN) {
+            set.exercises[exerciseIndex].exerciseName = exerciseToEdit.exerciseName;
+            set.exercises[exerciseIndex].exerciseDescription = exerciseToEdit.exerciseDescription;
+          }
+        })
+      })
+    });
+  }
+
   hasUserOnlyFinishedCycles(): boolean {
     return this.ngZone.runOutsideAngular(() => {
       return CYCLES_LIST.every(cycle => cycle.isFinished);

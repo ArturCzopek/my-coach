@@ -1,0 +1,31 @@
+<div id="exercise-edit" class="modal" materialize="modal" [materializeParams]="[modalParams]"
+     [materializeActions]="modalActions">
+  <div class="modal-content" *ngIf="selectedExercise">
+
+    <h3>{{'page.trainings.modal.editExercise.title' | dictionary}} - {{previousExerciseName}}</h3>
+
+    <div class="col s12">
+      <div class="row">
+        <form materialize class="col s12">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">label</i>
+            <label for="exercise-name">{{'page.trainings.exercise.label' | dictionary}}</label>
+            <input id="exercise-name" type="text" [(ngModel)]="newExerciseName" name="exercise-name">
+          </div>
+          <div class="input-field col s6">
+            <i class="material-icons prefix">comment</i>
+            <label for="exercise-description">{{'page.trainings.exerciseDesc.label' | dictionary}}</label>
+            <input id="exercise-description" type="text" [(ngModel)]="newExerciseDescription"
+                   name="exercise-description">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <coach-modal-footer leftButtonLabel="{{'global.edit.label' | dictionary}}"
+                      rightButtonLabel="{{'global.close.label' | dictionary}}"
+                      (leftButtonAction)="onEditClick()"
+                      (rightButtonAction)="onCloseModal()"
+                      [isDataValid]="isDataValid()"></coach-modal-footer>
+</div>

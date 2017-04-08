@@ -39,6 +39,8 @@ export abstract class TrainingsService {
 
   abstract deleteTraining(trainingToDelete: Training): void;
 
+  abstract editExercise(exerciseToEdit: Exercise);
+
   getCyclePreviewTitle(cyclePreview: CyclePreview): string {
 
     return this.ngZone.runOutsideAngular(() => {

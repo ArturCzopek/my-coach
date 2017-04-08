@@ -17,6 +17,7 @@ import {ExerciseAddModal} from "./modals/exercise-add.modal";
 import {TrainingAddModal} from "./modals/training-add.modal";
 import {ExerciseDeleteModal} from "./modals/exercise-delete.modal";
 import {TrainingDeleteModal} from "./modals/training-delete.modal";
+import {ExerciseEditModal} from "./modals/exercise-edit.modal";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {TrainingDeleteModal} from "./modals/training-delete.modal";
     ExerciseAddModal,
     TrainingAddModal,
     ExerciseDeleteModal,
-    TrainingDeleteModal
+    TrainingDeleteModal,
+    ExerciseEditModal,
   ],
   imports: [
     HttpModule,

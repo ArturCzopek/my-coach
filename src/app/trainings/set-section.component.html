@@ -15,6 +15,9 @@
     <td>{{exercise.exerciseName}}
       <i *ngIf="exercise.exerciseDescription" class="material-button material-icons tooltipped" materialize="tooltip"
          data-position="bottom" data-delay="50" [attr.data-tooltip]="exercise.exerciseDescription">comment</i>
+      <i (click)="onEditExercise(exercise)" class="small material-icons material-button tooltipped hover-visible"
+         materialize="tooltip" data-position="bottom" data-delay="50"
+         [attr.data-tooltip]="'page.trainings.editExercise.tooltip' | dictionary">edit</i>
       <i (click)="onDeleteExercise(exercise)" class="small material-icons material-button tooltipped hover-visible"
          materialize="tooltip" data-position="bottom" data-delay="50"
          [attr.data-tooltip]="'page.trainings.deleteExercise.tooltip' | dictionary">delete</i>

@@ -32,4 +32,8 @@ export class SetSectionComponent {
   onDeleteTraining(training: Training) {
     this.trainingModalsService.callDeleteTraining(training);
   }
+
+  onEditExercise(exercise: Exercise) {
+    this.trainingModalsService.callEditExercise(exercise);
+  }
 }
