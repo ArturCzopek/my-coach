@@ -35,8 +35,8 @@ export class Price {
 export class Product {
   constructor(public productId: number,
               public productName: string,
-              public screenUrl: string,
-              public average: number) {
+              public imageUrl: string,
+              public average?: number) {
   }
 }
 

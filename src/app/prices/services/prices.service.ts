@@ -4,6 +4,7 @@ import {Inject} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Price, Product} from "../../shared/entities/get.entities";
 import {NewPrice, NewProduct, ShoppingList} from "../../shared/entities/add.entities";
+import {environment} from "../../../environments/environment";
 
 export abstract class PricesService {
   private dictionaryService: DictionaryService;
@@ -15,6 +16,8 @@ export abstract class PricesService {
   abstract getProductPreviews(): Observable<Product[]>;
 
   abstract getPrices(productPreview: Product): Observable<Price[]>;
+
+  abstract addProductImage(file: any, productId: number): Observable<number>;
 
   abstract addProduct(productToAdd: NewProduct): void;
 
@@ -29,4 +32,10 @@ export abstract class PricesService {
   abstract deletePrices(pricesToDelete: Price[]): void;
 
   abstract deleteProduct(productToDelete: Product): void;
+
+  abstract getProductImageUrl(productId: number): string;
+
+  public canFilesBeStored(): boolean {
+    return environment.isBackendServerAvailable;
+  }
 }

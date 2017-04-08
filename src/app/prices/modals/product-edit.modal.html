@@ -13,19 +13,24 @@
         </div>
         <div *ngIf="!canStoreFiles()" class="input-field col s12">
           <i class="material-icons prefix">perm_media</i>
-          <label for="screen-url">Screen link</label>
-          <input id="screen-url" type="text" [(ngModel)]="screen" name="screen"/>
+          <label for="image-url">{{'page.prices.modal.add.imageUrl.label'}}</label>
+          <input id="image-url" type="text" [(ngModel)]="imageUrl" name="image"/>
         </div>
-        <div *ngIf="canStoreFiles()" class="file-field input-field col s12">
+        <div *ngIf="canStoreFiles() && selectedProduct" class="file-field input-field col s12">
           <div class="btn blue">
-            <span>{{'page.prices.modal.add.selectPhoto.label' | dictionary}}</span>
-            <input type="file">
+            <span>{{'page.prices.modal.add.selectImage.label' | dictionary}}</span>
+            <input #imageFile type="file" accept="image/*" (change)="uploadImage()">
           </div>
           <div class="file-path-wrapper">
-            <input class="file-path" type="text" [(ngModel)]="screen" name="screen">
+            <input class="file-path validate" type="text">
           </div>
         </div>
       </form>
+    </div>
+    <div class="row" *ngIf="canStoreFiles() && imageUrl">
+      <div class="col s12 center">
+        <img [src]="imageUrl" style="height: 400px; width: 400px;"/>
+      </div>
     </div>
   </div>
 

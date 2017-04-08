@@ -4,7 +4,6 @@ import {PricesService} from "../services/prices.service";
 import {NewProduct} from "../../shared/entities/add.entities";
 import {PricesModalsService} from "../services/prices-modals.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
-import {environment} from "../../../environments/environment";
 import {BaseModal} from "../../shared/components/base.modal";
 import {Http} from "@angular/http";
 
@@ -18,10 +17,11 @@ declare var $: any;
 export class ProductAddModal extends BaseModal implements OnInit {
 
   public productToAdd: NewProduct;
+  public productId = -1;
+  public imageUrl = '';
 
-  @ViewChild("photoFile") photoFile: ElementRef;
-  public uploadUrl = "/product/uploadPhoto";
-  public imagesUrl = "/images/";
+  @ViewChild("imageFile")
+  public imageFile: ElementRef;
 
   private pricesService: PricesService;
 
@@ -43,29 +43,30 @@ export class ProductAddModal extends BaseModal implements OnInit {
   public initDataBeforeOpenModal() {
     super.initDataBeforeOpenModal();
     this.productToAdd = new NewProduct('', '');
+    this.productId = -1;
+    this.imageUrl = '';
   }
 
   public isDataValid(): boolean {
     if (this.productToAdd) {
       return this.productToAdd.productName.length > 0;
     }
+
     return false;
   }
 
-  public uploadPhoto() {
-    if (this.photoFile.nativeElement.files.length > 0) {
-      const file: File = this.photoFile.nativeElement.files[0];
+  public uploadImage() {
+    if (this.imageFile.nativeElement.files.length > 0) {
+      const file: File = this.imageFile.nativeElement.files[0];
 
       const input = new FormData();
       input.append("file", file);
+      input.append("productId", this.productId);
 
-      this.http.post(environment.url + this.uploadUrl, input).subscribe(
-        res => {
-          this.productToAdd.screen = environment.url + this.imagesUrl + res['_body'];
-        },
-        err => {
-          console.log("not ok");
-          console.log(err);
+      this.pricesService.addProductImage(file, this.productId).subscribe(
+        productId => {
+          this.productId = productId;
+          this.imageUrl = this.pricesService.getProductImageUrl(productId);
         }
       );
     }
@@ -78,6 +79,11 @@ export class ProductAddModal extends BaseModal implements OnInit {
   }
 
   public canStoreFiles() {
-    return true;
+    this.pricesService.canFilesBeStored();
+  }
+
+  public closeModal() {
+    super.closeModal();
+    this.imageFile.nativeElement.files = [];
   }
 }

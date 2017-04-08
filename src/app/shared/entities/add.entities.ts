@@ -28,10 +28,10 @@ export class NewPrice {
   }
 }
 
-// screen can be file or string, not sure how sending files will be implemented
+// image can be file or string, not sure how sending files will be implemented
 export class NewProduct {
   constructor(public productName: string,
-              public screen?: any) {
+              public image?: any) {
   }
 }
 

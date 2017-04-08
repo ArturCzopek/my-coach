@@ -1,6 +1,6 @@
-<div class="card medium grey lighten-3 hoverable">
+<div *ngIf="productPreview" class="card medium grey lighten-3 hoverable">
   <div class="card-image waves-effect waves-block waves-light">
-    <img class="activator" [src]="productPreview.screenUrl">
+    <img class="activator" [src]="getImageUrl(productPreview.productId)">
   </div>
   <div class="card-content prices-card-content">
     <span class="card-title grey-text activator text-darken-4">

@@ -27,6 +27,10 @@ export class PricesCardComponent extends BaseCardComponent implements OnInit {
     this.loadPrices();
   }
 
+  public getImageUrl(): string {
+    return this.pricesService.getProductImageUrl(this.productPreview.productId);
+  }
+
   private loadPrices() {
     this.isLoading = true;
     this.pricesService.getPrices(this.productPreview)

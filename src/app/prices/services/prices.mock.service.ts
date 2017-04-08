@@ -3,6 +3,7 @@ import {PricesService} from "./prices.service";
 import {PRODUCTS_LIST} from "../../shared/entities/mock-data/products.mock-data";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {Observable} from "rxjs/Observable";
+import "rxjs/add/operator/map";
 import {Price, Product} from "../../shared/entities/get.entities";
 import {NewPrice, NewProduct, ShoppingList} from "../../shared/entities/add.entities";
 import {PRICES_LIST} from "../../shared/entities/mock-data/prices.mock-data";
@@ -48,10 +49,15 @@ export class PricesMockService extends PricesService {
     });
   }
 
+  addProductImage(file: any, productId: number): Observable<number> {
+    console.log("PricesMockService#addProductImage not implemented");
+    return null;
+  }
+
   addProduct(productToAdd: NewProduct): void {
     const productId: number = this.newId;
     this.newId++;
-    const product: Product = new Product(productId, productToAdd.productName, productToAdd.screen, 0);
+    const product: Product = new Product(productId, productToAdd.productName, productToAdd.image, 0);
     PRICES_LIST.push([]);
     PRODUCTS_LIST.push(product);
   }
@@ -115,6 +121,10 @@ export class PricesMockService extends PricesService {
 
     PRODUCTS_LIST.splice(productIndex, 1);
     PRICES_LIST.splice(productIndex, 1);
+  }
+
+  getProductImageUrl(productId: number): string {
+    return PRODUCTS_LIST.find(product => product.productId === productId).imageUrl;
   }
 
   private reduce(prevVal, currVal): number {
