@@ -36,4 +36,8 @@ export class SetSectionComponent {
   onEditExercise(exercise: Exercise) {
     this.trainingModalsService.callEditExercise(exercise);
   }
+
+  onEditTraining(training: Training) {
+    this.trainingModalsService.callEditTraining(training);
+  }
 }

@@ -13,53 +13,64 @@ export class TrainingsBackEndService extends TrainingsService {
     super(injector.get(ServiceInjector), injector.get(NgZone));
   }
 
-  getCyclePreviews(): Observable<CyclePreview[]> {
-    console.log("TrainingsBackEndService#getCyclePreviews not implemented yet");
+  public getActiveCycle(): Cycle {
+    console.log("TrainingsBackEndService#getActiveCycle not implemented yet");
     return null;
   }
 
-  getCycle(cycleId: number): Observable<Cycle> {
+  public getCycle(cycleId: number): Observable<Cycle> {
     console.log("TrainingsBackEndService#getCycle not implemented yet");
     return null;
   }
 
-  addCycle(cycleToAdd: NewCycle): void {
-    console.log("TrainingsBackEndService#addCycle not implemented yet");
-  }
-
-  addExercises(exerciseToAdd: NewExercise[]): void {
-    console.log("TrainingsBackEndService#addExercises not implemented yet");
-  }
-
-  addTraining(trainingToAdd: NewTraining): void {
-    console.log("TrainingsBackEndService#addTraining not implemented yet");
-  }
-
-  deleteCycle(cycleToDelete: Cycle): void {
-    console.log("TrainingsBackEndService#deleteCycle not implemented yet");
-  }
-
-
-  deleteExercise(exerciseToDelete: Exercise): void {
-    console.log("TrainingsBackEndService#deleteExercise not implemented yet");
-  }
-
-
-  deleteTraining(trainingToDelete: Training): void {
-    console.log("TrainingsBackEndService#deleteTraining not implemented yet");
-  }
-
-  editCycle(cycleToEdit: Cycle): void {
-    console.log("TrainingsBackEndService#editCycle not implemented yet");
-  }
-
-  hasUserOnlyFinishedCycles(): boolean {
-    console.log("TrainingsBackEndService#hasUserOnlyFinishedCycles not implemented yet");
+  public getCyclePreviews(): Observable<CyclePreview[]> {
+    console.log("TrainingsBackEndService#getCyclePreviews not implemented yet");
     return null;
   }
 
-  getActiveCycle(): Cycle {
-    console.log("TrainingsBackEndService#getActiveCycle not implemented yet");
+  public getExercisesWithSessionForTraining(training: Training): Exercise[] {
+    console.log("TrainingsBackEndService#editExercise not implemented yet");
+    return null;
+  }
+
+  public addCycle(cycleToAdd: NewCycle): void {
+    console.log("TrainingsBackEndService#addCycle not implemented yet");
+  }
+
+  public addExercises(exerciseToAdd: NewExercise[]): void {
+    console.log("TrainingsBackEndService#addExercises not implemented yet");
+  }
+
+  public addTraining(trainingToAdd: NewTraining): void {
+    console.log("TrainingsBackEndService#addTraining not implemented yet");
+  }
+
+  public deleteCycle(cycleToDelete: Cycle): void {
+    console.log("TrainingsBackEndService#deleteCycle not implemented yet");
+  }
+
+  public deleteExercise(exerciseToDelete: Exercise): void {
+    console.log("TrainingsBackEndService#deleteExercise not implemented yet");
+  }
+
+  public deleteTraining(trainingToDelete: Training): void {
+    console.log("TrainingsBackEndService#deleteTraining not implemented yet");
+  }
+
+  public editCycle(cycleToEdit: Cycle): void {
+    console.log("TrainingsBackEndService#editCycle not implemented yet");
+  }
+
+  public editExercise(exerciseToEdit: Exercise): void {
+    console.log("TrainingsBackEndService#editExercise not implemented yet");
+  }
+
+  public editTraining(trainingToEdit: Training, exercisesToEdit: Exercise[]): void {
+    console.log("TrainingsBackEndService#editTraining not implemented yet");
+  }
+
+  public hasUserOnlyFinishedCycles(): boolean {
+    console.log("TrainingsBackEndService#hasUserOnlyFinishedCycles not implemented yet");
     return null;
   }
 }

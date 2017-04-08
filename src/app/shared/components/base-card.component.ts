@@ -1,5 +1,7 @@
 import {OnInit} from "@angular/core";
 
+declare var $: any;
+
 export abstract class BaseCardComponent implements OnInit {
 
   public previewTitle: string;
@@ -12,6 +14,12 @@ export abstract class BaseCardComponent implements OnInit {
     this.showData = false;
     this.isLoading = true;
     this.arrowImageClass = 'left-arrow';
+
+    // removing black garbages from modal and not needed click on FAB
+    $('.lean-overlay').remove();
+    if ($('#fab').hasClass('active')) {
+      $('#fab a').click();
+    }
   }
 
   public toggleShow() {

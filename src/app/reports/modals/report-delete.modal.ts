@@ -37,9 +37,6 @@ export class ReportDeleteModal extends BaseModal implements OnInit {
     );
   };
 
-  public initDataBeforeOpenModal() {
-  }
-
   public canModalBeOpened(): boolean {
     if (!this.selectedReport) {
       Materialize.toast(this.dictionaryService.getDictionaryValue('page.reports.loadFirst.tooltip'), 3000);

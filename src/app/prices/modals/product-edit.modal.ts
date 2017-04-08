@@ -38,6 +38,7 @@ export class ProductEditModal extends BaseModal implements OnInit {
   }
 
   public initDataBeforeOpenModal() {
+    super.initDataBeforeOpenModal();
     this.productName = this.selectedProduct.productName;
     this.screen = this.selectedProduct.screenUrl;
   }

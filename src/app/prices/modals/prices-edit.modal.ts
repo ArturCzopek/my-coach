@@ -38,6 +38,7 @@ export class PricesEditModal extends BaseModal implements OnInit {
   }
 
   public initDataBeforeOpenModal() {
+    super.initDataBeforeOpenModal();
     this.pricesToEditIndexes = [];
   }
 

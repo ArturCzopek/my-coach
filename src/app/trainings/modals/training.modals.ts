@@ -11,7 +11,8 @@ import {Component} from "@angular/core";
     <coach-exercise-delete-modal></coach-exercise-delete-modal>
     <coach-training-delete-modal></coach-training-delete-modal>
     <coach-cycle-edit-modal></coach-cycle-edit-modal>
-    <coach-exercise-edit-modal></coach-exercise-edit-modal>`
+    <coach-exercise-edit-modal></coach-exercise-edit-modal>
+    <coach-training-edit-modal></coach-training-edit-modal>`
 })
 export class TrainingModals {
 

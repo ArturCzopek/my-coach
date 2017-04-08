@@ -1,0 +1,82 @@
+<div id="training-edit" class="modal" materialize="modal" [materializeParams]="[modalParams]"
+     [materializeActions]="modalActions">
+  <div class="modal-content" *ngIf="exercisesForTraining">
+    <h3>{{'page.trainings.modal.editTraining.title' | dictionary}}</h3>
+    <form materialize class="col s12">
+      <div class="row">
+        <div class="col s12" style="padding-left: 0">
+          <div class="input-field inline full">
+            <i class="material-icons prefix">today</i>
+            <label for="training-date">{{'page.trainings.modal.addTraining.trainingDate.label' | dictionary}}</label>
+            <input id="training-date" type="date" class="datepicker" materialize="pickadate"
+                   [(ngModel)]="trainingDate" name="training-date" [materializeParams]="[datePickerParams]">
+          </div>
+        </div>
+      </div>
+
+      <table class="responsive-table striped fixed">
+        <thead>
+        <tr>
+          <th data-set="Exercise">{{'page.trainings.exercise.label' | dictionary}}</th>
+          <th data-set="Repeats">{{'page.trainings.repeats.label' | dictionary}}</th>
+          <th data-set="Comment">{{'page.trainings.comment.label' | dictionary}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let exercise of exercisesForTraining; let exId = index"
+            [ngClass]="exercise.exerciseSessions[0].isEmpty ? 'inactive' : ''">
+          <td class="exercise">
+            <div class="input-field inline">
+              <input type="checkbox" id="isActive_{{exId}}" name="isActive_{{exId}}" class="filled-in blue-checkbox"
+                     [(ngModel)]="!exercise.exerciseSessions[0].isEmpty"/>
+              <label class="asText" for="isActive_{{exId}}">{{exercise.exerciseName}}</label>
+            </div>
+            <i *ngIf="exercise.exerciseDescription" class="material-button material-icons tooltipped"
+               materialize="tooltip"
+               data-position="bottom" data-delay="50" [attr.data-tooltip]="exercise.exerciseDescription">comment</i>
+          </td>
+          <td class="repeats">
+            <div *ngFor="let series of exercise.exerciseSessions[0].series; let serId = index">
+              <div class="input-field inline short">
+                <input [disabled]="exercise.exerciseSessions[0].isEmpty" type="number" min="0" step="1" [(ngModel)]="series.repeats"
+                       name="{{'repeats_' + (selectedSetNr + 1) + '_' + (exId + 1) + '_' + (serId + 1)}}"
+                       id="{{'repeats_' + (selectedSetNr + 1) + '_' + (exId + 1) + '_' + (serId + 1)}}">
+              </div>
+              {{'global.multiply.label' | dictionary}}
+              <div class="input-field inline short">
+                <input [disabled]="exercise.exerciseSessions[0].isEmpty" type="number" min="0" step="0.25" [(ngModel)]="series.weight"
+                       name="{{'weight' + (selectedSetNr + 1) + '_' + (exId + 1) + '_' + (serId + 1)}}"
+                       id="{{'weight' + (selectedSetNr + 1) + '_' + (exId + 1) + '_' + (serId + 1)}}">
+              </div>
+              {{'global.weight.label' | dictionary}}
+              <i [ngClass]="exercise.exerciseSessions[0].isEmpty ? 'disabled': ''" (click)="onDeleteSeries(exId, serId)" class="material-button material-icons tooltipped small"
+                 materialize="tooltip" data-position="bottom" data-delay="50"
+                 [attr.data-tooltip]="'page.trainings.modal.deleteSeries.tooltip' | dictionary">delete</i>
+
+            </div>
+            <a class="add-link" (click)="onAddNewEmptySeriesToExercise(exId)">{{'page.trainings.modal.addSeries.label' |
+              dictionary}}</a>
+          </td>
+          <td>
+            <div *ngFor="let series of exercise.exerciseSessions[0].series; let serId = index">
+              <div class="input-field inline">
+                <input [disabled]="exercise.exerciseSessions[0].isEmpty" type="text" [(ngModel)]="series.comment"
+                       name="{{'comment' + (selectedSetNr + 1) + '_' + (exId + 1) + '_' + (serId + 1)}}"
+                       id="{{'comment' + (selectedSetNr + 1) + '_' + (exId + 1) + '_' + (serId + 1)}}">
+              </div>
+            </div>
+            <a style="visibility: hidden">padding</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+
+  <coach-modal-footer leftButtonLabel="{{'global.edit.label' | dictionary}}"
+                      rightButtonLabel="{{'global.close.label' | dictionary}}"
+                      (leftButtonAction)="onEditClick()"
+                      (rightButtonAction)="onCloseModal()"
+                      [isDataValid]="isDataValid()"></coach-modal-footer>
+
+</div>

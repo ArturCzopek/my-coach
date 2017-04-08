@@ -4,6 +4,9 @@
     <th data-field="Set">{{set.setName | uppercase}}</th>
     <th *ngFor="let training of set.trainings">
       {{ dateService.parseDateToString(training.trainingDate) }}
+      <i (click)="onEditTraining(training)" class="small material-icons material-button tooltipped hover-visible"
+         materialize="tooltip" data-position="bottom" data-delay="50"
+         [attr.data-tooltip]="'page.trainings.editTraining.tooltip' | dictionary">edit</i>
       <i (click)="onDeleteTraining(training)" class="small material-icons material-button tooltipped hover-visible"
          materialize="tooltip" data-position="bottom" data-delay="50"
          [attr.data-tooltip]="'page.trainings.deleteTraining.tooltip' | dictionary">delete</i>
@@ -13,7 +16,7 @@
   <tbody *ngIf="set.exercises.length > 0; else noExercises">
   <tr *ngFor="let exercise of set.exercises">
     <td>{{exercise.exerciseName}}
-      <i *ngIf="exercise.exerciseDescription" class="material-button material-icons tooltipped" materialize="tooltip"
+      <i *ngIf="exercise.exerciseDescription" class="material-button material-icons tooltipped no-pointer" materialize="tooltip"
          data-position="bottom" data-delay="50" [attr.data-tooltip]="exercise.exerciseDescription">comment</i>
       <i (click)="onEditExercise(exercise)" class="small material-icons material-button tooltipped hover-visible"
          materialize="tooltip" data-position="bottom" data-delay="50"

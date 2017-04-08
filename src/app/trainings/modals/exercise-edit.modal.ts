@@ -30,20 +30,21 @@ export class ExerciseEditModal extends BaseModal implements OnInit {
   public ngOnInit(): void {
     super.ngOnInit();
 
-    this.trainingModalsService.editExercise.subscribe(
-      (exercise: Exercise) => {
-        this.selectedExercise = exercise;
-        this.openModal();
-      }
-    );
+    this.ngZone.runOutsideAngular(() => {
+      this.trainingModalsService.editExercise.subscribe(
+        (exercise: Exercise) => {
+          this.selectedExercise = exercise;
+          this.openModal();
+        }
+      );
+    });
   };
 
-  public initDataBeforeOpenModal() {
+  public initDataBeforeOpenModal(): void {
     this.ngZone.runOutsideAngular(() => {
       this.previousExerciseName = this.selectedExercise.exerciseName;
       this.newExerciseName = this.selectedExercise.exerciseName;
       this.newExerciseDescription = this.selectedExercise.exerciseDescription;
-
     });
   }
 
@@ -58,7 +59,7 @@ export class ExerciseEditModal extends BaseModal implements OnInit {
     });
   }
 
-  public onEditClick() {
+  public onEditClick(): void {
     this.ngZone.runOutsideAngular(() => {
       this.trainingsService.editExercise(new Exercise(this.selectedExercise.exerciseId, this.newExerciseName, [], this.newExerciseDescription));
       this.trainingModalsService.callRefreshPage();

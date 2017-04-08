@@ -41,11 +41,8 @@ export class ProductAddModal extends BaseModal implements OnInit {
   }
 
   public initDataBeforeOpenModal() {
+    super.initDataBeforeOpenModal();
     this.productToAdd = new NewProduct('', '');
-
-    if ($('#fab').hasClass('active')) {
-      $('#fab a').click();
-    }
   }
 
   public isDataValid(): boolean {

@@ -30,6 +30,9 @@ export abstract class BaseModal implements OnInit, AfterViewChecked {
   }
 
   initDataBeforeOpenModal() {
+    if ($('#fab').hasClass('active')) {
+      $('#fab a').click();
+    }
   }
 
   openModal() {

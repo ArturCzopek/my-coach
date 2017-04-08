@@ -37,6 +37,7 @@ export class ProductDeleteModal extends BaseModal implements OnInit {
   };
 
   public initDataBeforeOpenModal() {
+    super.initDataBeforeOpenModal();
     this.modalTitle = this.selectedProduct.productName;
   }
 

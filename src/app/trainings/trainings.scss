@@ -31,6 +31,10 @@ table {
   }
 }
 
+i.no-pointer {
+  cursor: default;
+}
+
 .carousel.carousel-slider {
 
   min-height: 400px;
@@ -41,6 +45,10 @@ table {
     min-height: 300px;
     max-height: 350px;
     overflow-y: auto;
+
+    &:active {
+      overflow-y: hidden;
+    }
   }
 }
 

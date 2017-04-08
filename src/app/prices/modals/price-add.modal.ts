@@ -42,6 +42,8 @@ export class PriceAddModal extends BaseModal implements OnInit {
   }
 
   public initDataBeforeOpenModal() {
+    super.initDataBeforeOpenModal();
+
     this.place = '';
     this.priceDate = '';
     this.price = 0;

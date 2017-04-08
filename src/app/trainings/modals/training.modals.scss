@@ -49,20 +49,21 @@ table.responsive-table.striped.fixed {
   }
 
   td {
-    &.exercise {
-      i {
-        margin-left: 5px;
-        visibility: visible;
-        font-size: 1rem;
-        vertical-align: middle;
-        cursor: default;
+
+    i {
+      margin-left: 5px;
+      vertical-align: middle;
+      &.disabled {
+        pointer-events: none;
+        cursor: not-allowed;
       }
     }
 
-    &.repeats {
+    &.exercise {
       i {
-        margin-left: 5px;
-        vertical-align: middle;
+        visibility: visible;
+        font-size: 1rem;
+        cursor: default;
       }
     }
   }

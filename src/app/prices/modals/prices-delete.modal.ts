@@ -41,6 +41,8 @@ export class PricesDeleteModal extends BaseModal implements OnInit {
   }
 
   public initDataBeforeOpenModal() {
+    super.initDataBeforeOpenModal();
+
     this.pricesToDeleteIndexes = [];
     this.checkboxesForPrices = [];
 

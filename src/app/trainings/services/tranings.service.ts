@@ -17,9 +17,13 @@ export abstract class TrainingsService {
     this.dateService = serviceInjector.getDateService();
   }
 
-  abstract getCyclePreviews(): Observable<CyclePreview[]>
+  abstract getActiveCycle(): Cycle;
 
   abstract getCycle(cycleId: number): Observable<Cycle>;
+
+  abstract getCyclePreviews(): Observable<CyclePreview[]>
+
+  abstract getExercisesWithSessionForTraining(training: Training): Exercise[];
 
   abstract addCycle(cycleToAdd: NewCycle): void;
 
@@ -29,19 +33,19 @@ export abstract class TrainingsService {
 
   abstract deleteCycle(cycleToDelete: Cycle): void;
 
-  abstract editCycle(cycleToEdit: Cycle): void;
-
-  abstract hasUserOnlyFinishedCycles(): boolean;
-
-  abstract getActiveCycle(): Cycle;
-
   abstract deleteExercise(exerciseToDelete: Exercise): void;
 
   abstract deleteTraining(trainingToDelete: Training): void;
 
-  abstract editExercise(exerciseToEdit: Exercise);
+  abstract editCycle(cycleToEdit: Cycle): void;
 
-  getCyclePreviewTitle(cyclePreview: CyclePreview): string {
+  abstract editExercise(exerciseToEdit: Exercise): void;
+
+  abstract editTraining(trainingToEdit: Training, exercisesToEdit: Exercise[]): void;
+
+  abstract hasUserOnlyFinishedCycles(): boolean;
+
+  public getCyclePreviewTitle(cyclePreview: CyclePreview): string {
 
     return this.ngZone.runOutsideAngular(() => {
       let title: string = `${this.dictionaryService.getDictionaryValue('page.trainings.cycle.card.title')} `
@@ -57,7 +61,7 @@ export abstract class TrainingsService {
     });
   }
 
-  getFormattedRepeatsWithWeight(series: Series): string {
+  public getFormattedRepeatsWithWeight(series: Series): string {
 
     return this.ngZone.runOutsideAngular(() => {
       return `${series.repeats} ${this.dictionaryService.getDictionaryValue('global.multiply.label')} ` +

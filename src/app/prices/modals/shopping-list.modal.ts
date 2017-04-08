@@ -50,6 +50,8 @@ export class ShoppingListModal extends BaseModal implements OnInit {
   }
 
   public initDataBeforeOpenModal() {
+    super.initDataBeforeOpenModal();
+
     this.shoppingListToAdd = new ShoppingList('', []);
     this.addNewEmptyPriceToList();
     this.shoppingDate = '';
@@ -59,10 +61,6 @@ export class ShoppingListModal extends BaseModal implements OnInit {
 
     for (const product of this.products) {
       this.autoCompleteData.data[product.productName] = product.screenUrl;
-    }
-
-    if ($('#fab').hasClass('active')) {
-      $('#fab a').click();
     }
   }
 

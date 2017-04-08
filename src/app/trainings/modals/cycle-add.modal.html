@@ -12,7 +12,7 @@
                    [(ngModel)]="startDate" name="startDate" [materializeParams]="[datePickerParams]">
           </div>
           <div class="flex-cycle-actions">
-            <a (click)="addNewEmptySetToList()">{{'page.trainings.modal.addSet.label' | dictionary}}</a>
+            <a #emptySetLink>{{'page.trainings.modal.addSet.label' | dictionary}}</a>
           </div>
         </div>
 

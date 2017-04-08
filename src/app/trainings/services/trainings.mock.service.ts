@@ -9,6 +9,8 @@ import {CYCLES_LIST} from "../../shared/entities/mock-data/cycles.mock-data";
 import {DOES_NOT_CONTAIN} from "../../shared/global.values";
 import {NewCycle, NewExercise, NewTraining} from "../../shared/entities/add.entities";
 
+declare var $: any;
+
 @Injectable()
 export class TrainingsMockService extends TrainingsService {
 
@@ -56,23 +58,13 @@ export class TrainingsMockService extends TrainingsService {
     super(injector.get(ServiceInjector), injector.get(NgZone));
   }
 
-  getCyclePreviews(): Observable<CyclePreview[]> {
-
+  public getActiveCycle(): Cycle {
     return this.ngZone.runOutsideAngular(() => {
-      return Observable.create(observer => {
-        // timeout is simulation of 'getting from http'
-        setTimeout(() => {
-          observer.next(CYCLE_PREVIEWS_LIST);
-        }, 500);
-
-        setTimeout(() => {
-          observer.complete();
-        }, 600);
-      });
+      return CYCLES_LIST.find(cycle => !cycle.isFinished);
     });
   }
 
-  getCycle(cycleId: number): Observable<Cycle> {
+  public getCycle(cycleId: number): Observable<Cycle> {
 
     return this.ngZone.runOutsideAngular(() => {
       return Observable.create(observer => {
@@ -88,7 +80,47 @@ export class TrainingsMockService extends TrainingsService {
     });
   }
 
-  addCycle(cycleToAdd: NewCycle): void {
+  public getCyclePreviews(): Observable<CyclePreview[]> {
+
+    return this.ngZone.runOutsideAngular(() => {
+      return Observable.create(observer => {
+        // timeout is simulation of 'getting from http'
+        setTimeout(() => {
+          observer.next(CYCLE_PREVIEWS_LIST);
+        }, 500);
+
+        setTimeout(() => {
+          observer.complete();
+        }, 600);
+      });
+    });
+  }
+
+  public getExercisesWithSessionForTraining(training: Training): Exercise[] {
+    return this.ngZone.runOutsideAngular(() => {
+      let trainingIndex = DOES_NOT_CONTAIN;
+      let trainingSet: Set = null;
+
+      CYCLES_LIST.forEach(cycle => {
+        cycle.sets.forEach(set => {
+          const tmpTrainingIndex = set.trainings.findIndex(currentTraining => currentTraining.trainingId === training.trainingId);
+
+          if (tmpTrainingIndex !== DOES_NOT_CONTAIN) {
+            trainingIndex = tmpTrainingIndex;
+            trainingSet = set;
+            return;
+          }
+        })
+      })
+
+      const cutExercises: Exercise[] = trainingSet.exercises.map(exercise => new Exercise(exercise.exerciseId, exercise.exerciseName, [exercise.exerciseSessions[trainingIndex]]));
+
+      // workaround for deep copy...
+      return JSON.parse(JSON.stringify(cutExercises));
+    });
+  }
+
+  public addCycle(cycleToAdd: NewCycle): void {
     this.ngZone.runOutsideAngular(() => {
       const sets: Set[] = [];
       cycleToAdd.sets.map(set => sets.push(new Set(this.newSetId++, set.setName, [], [])));
@@ -100,7 +132,7 @@ export class TrainingsMockService extends TrainingsService {
     });
   }
 
-  addExercises(exercisesToAdd: NewExercise[]): void {
+  public addExercises(exercisesToAdd: NewExercise[]): void {
     this.ngZone.runOutsideAngular(() => {
       for (const exercise of exercisesToAdd) {
 
@@ -118,8 +150,7 @@ export class TrainingsMockService extends TrainingsService {
     });
   }
 
-
-  addTraining(trainingToAdd: NewTraining): void {
+  public addTraining(trainingToAdd: NewTraining): void {
     this.ngZone.runOutsideAngular(() => {
       const set: Set = this.getActiveCycle().sets.find(currentSet => currentSet.setId === trainingToAdd.setId);
 
@@ -158,7 +189,7 @@ export class TrainingsMockService extends TrainingsService {
     });
   }
 
-  deleteCycle(cycleToDelete: Cycle): void {
+  public deleteCycle(cycleToDelete: Cycle): void {
     this.ngZone.runOutsideAngular(() => {
       const cycleId = CYCLES_LIST.findIndex(cycle => cycle.cycleId === cycleToDelete.cycleId);
 
@@ -167,7 +198,7 @@ export class TrainingsMockService extends TrainingsService {
     });
   }
 
-  editCycle(cycleToEdit: Cycle): void {
+  public editCycle(cycleToEdit: Cycle): void {
     this.ngZone.runOutsideAngular(() => {
       const cycleIndex: number = CYCLES_LIST.findIndex(cycle => cycle.cycleId === cycleToEdit.cycleId);
 
@@ -191,8 +222,7 @@ export class TrainingsMockService extends TrainingsService {
     });
   }
 
-
-  deleteExercise(exerciseToDelete: Exercise): void {
+  public deleteExercise(exerciseToDelete: Exercise): void {
     this.ngZone.runOutsideAngular(() => {
       CYCLES_LIST.forEach(cycle => {
         cycle.sets.forEach(set => {
@@ -205,8 +235,7 @@ export class TrainingsMockService extends TrainingsService {
     });
   }
 
-
-  deleteTraining(trainingToDelete: Training): void {
+  public deleteTraining(trainingToDelete: Training): void {
     this.ngZone.runOutsideAngular(() => {
       CYCLES_LIST.forEach(cycle => {
           cycle.sets.forEach(set => {
@@ -222,8 +251,7 @@ export class TrainingsMockService extends TrainingsService {
     });
   }
 
-
-  editExercise(exerciseToEdit: Exercise) {
+  public editExercise(exerciseToEdit: Exercise): void {
     this.ngZone.runOutsideAngular(() => {
       CYCLES_LIST.forEach(cycle => {
         cycle.sets.forEach(set => {
@@ -232,21 +260,46 @@ export class TrainingsMockService extends TrainingsService {
           if (exerciseIndex !== DOES_NOT_CONTAIN) {
             set.exercises[exerciseIndex].exerciseName = exerciseToEdit.exerciseName;
             set.exercises[exerciseIndex].exerciseDescription = exerciseToEdit.exerciseDescription;
+            return;
           }
         })
       })
     });
   }
 
-  hasUserOnlyFinishedCycles(): boolean {
-    return this.ngZone.runOutsideAngular(() => {
-      return CYCLES_LIST.every(cycle => cycle.isFinished);
+  public editTraining(trainingToEdit: Training, exercisesToEdit: Exercise[]): void {
+    this.ngZone.runOutsideAngular(() => {
+      CYCLES_LIST.forEach(cycle => {
+        cycle.sets.forEach(set => {
+          let trainingIndex = set.trainings.findIndex(currentTraining => currentTraining.trainingId === trainingToEdit.trainingId);
+
+          if (trainingIndex !== DOES_NOT_CONTAIN) {
+            set.trainings[trainingIndex].trainingDate = trainingToEdit.trainingDate;
+
+            set.exercises.forEach((currentExercise, i) => {
+              currentExercise.exerciseSessions[trainingIndex].isEmpty = exercisesToEdit[i].exerciseSessions[0].isEmpty;
+
+              if (currentExercise.exerciseSessions[trainingIndex].isEmpty) {
+                currentExercise.exerciseSessions[trainingIndex].series = [];
+              } else {
+                currentExercise.exerciseSessions[trainingIndex].series = exercisesToEdit[i].exerciseSessions[0].series;
+                currentExercise.exerciseSessions[trainingIndex].series.forEach(series => {
+                  if (series.seriesId < 1) {
+                    series.seriesId = this.newSeriesId;
+                    this.newSeriesId++;
+                  }
+                })
+              }
+            });
+          }
+        });
+      });
     });
   }
 
-  public getActiveCycle(): Cycle {
+  public hasUserOnlyFinishedCycles(): boolean {
     return this.ngZone.runOutsideAngular(() => {
-      return CYCLES_LIST.find(cycle => !cycle.isFinished);
+      return CYCLES_LIST.every(cycle => cycle.isFinished);
     });
   }
 

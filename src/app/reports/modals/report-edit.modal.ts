@@ -43,6 +43,8 @@ export class ReportEditModal extends BaseModal implements OnInit {
   }
 
   public initDataBeforeOpenModal() {
+    super.initDataBeforeOpenModal();
+
     this.reportContent = this.selectedReport.content;
     this.startDate = this.dateService.parseDateToString(this.selectedReport.startDate);
     this.endDate = this.dateService.parseDateToString(this.selectedReport.endDate);

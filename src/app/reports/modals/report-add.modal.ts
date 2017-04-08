@@ -39,6 +39,7 @@ export class ReportAddModal extends BaseModal implements OnInit {
   }
 
   public initDataBeforeOpenModal() {
+    super.initDataBeforeOpenModal();
     this.reportContent = '';
     this.startDate = '';
     this.endDate = '';
