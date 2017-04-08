@@ -1,5 +1,5 @@
 import {CyclePreview} from "../../shared/entities/preview.entities";
-import {Cycle, Exercise, Series} from "../../shared/entities/get.entities";
+import {Cycle, Exercise, Series, Training} from "../../shared/entities/get.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {Inject, NgZone} from "@angular/core";
 import {DictionaryService} from "../../shared/services/dictionary.service";
@@ -37,6 +37,8 @@ export abstract class TrainingsService {
 
   abstract deleteExercise(exerciseToDelete: Exercise): void;
 
+  abstract deleteTraining(trainingToDelete: Training): void;
+
   getCyclePreviewTitle(cyclePreview: CyclePreview): string {
 
     return this.ngZone.runOutsideAngular(() => {
@@ -50,7 +52,7 @@ export abstract class TrainingsService {
       }
 
       return title;
-    })
+    });
   }
 
   getFormattedRepeatsWithWeight(series: Series): string {
@@ -58,6 +60,6 @@ export abstract class TrainingsService {
     return this.ngZone.runOutsideAngular(() => {
       return `${series.repeats} ${this.dictionaryService.getDictionaryValue('global.multiply.label')} ` +
         `${series.weight} ${this.dictionaryService.getDictionaryValue('global.weight.label')}`;
-    })
+    });
   }
 }

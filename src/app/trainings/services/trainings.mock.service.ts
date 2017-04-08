@@ -19,8 +19,11 @@ export class TrainingsMockService extends TrainingsService {
 
   private newExerciseId: number = CYCLES_LIST
       .map(cycle => cycle.sets)
-      .map(sets => sets.map(set => set.exercises.length).reduce(this.reduce))
-      .reduce(this.reduce) + 1;
+      .map(sets =>
+        sets.map(set =>
+          set.exercises.length
+        ).reduce(this.reduce)
+      ).reduce(this.reduce) + 1;
 
   private newTrainingId: number = CYCLES_LIST
       .map(cycle => cycle.sets)
@@ -29,13 +32,25 @@ export class TrainingsMockService extends TrainingsService {
 
   private newExerciseSessionId: number = CYCLES_LIST
       .map(cycle => cycle.sets)
-      .map(sets => sets.map(set => set.exercises.map(exercise => exercise.exerciseSessions.length).reduce(this.reduce)).reduce(this.reduce))
-      .reduce(this.reduce) + 1;
+      .map(sets =>
+        sets.map(set =>
+          set.exercises.map(exercise =>
+            exercise.exerciseSessions.length
+          ).reduce(this.reduce)
+        ).reduce(this.reduce)
+      ).reduce(this.reduce) + 1;
 
   private newSeriesId: number = CYCLES_LIST
       .map(cycle => cycle.sets)
-      .map(sets => sets.map(set => set.exercises.map(exercise => exercise.exerciseSessions.map(exerciseSession => exerciseSession.series.length).reduce(this.reduce)).reduce(this.reduce)).reduce(this.reduce))
-      .reduce(this.reduce) + 1;
+      .map(sets =>
+        sets.map(set =>
+          set.exercises.map(exercise =>
+            exercise.exerciseSessions.map(exerciseSession =>
+              exerciseSession.series.length
+            ).reduce(this.reduce)
+          ).reduce(this.reduce)
+        ).reduce(this.reduce)
+      ).reduce(this.reduce) + 1;
 
   constructor(private injector: Injector) {
     super(injector.get(ServiceInjector), injector.get(NgZone));
@@ -54,7 +69,7 @@ export class TrainingsMockService extends TrainingsService {
           observer.complete();
         }, 600);
       });
-    })
+    });
   }
 
   getCycle(cycleId: number): Observable<Cycle> {
@@ -70,7 +85,7 @@ export class TrainingsMockService extends TrainingsService {
           observer.complete();
         }, 600);
       });
-    })
+    });
   }
 
   addCycle(cycleToAdd: NewCycle): void {
@@ -82,7 +97,7 @@ export class TrainingsMockService extends TrainingsService {
 
       CYCLES_LIST.push(cycle);
       CYCLE_PREVIEWS_LIST.push(new CyclePreview(cycle.cycleId, false, cycle.startDate));
-    })
+    });
   }
 
   addExercises(exercisesToAdd: NewExercise[]): void {
@@ -100,13 +115,13 @@ export class TrainingsMockService extends TrainingsService {
 
         this.getActiveCycle().sets[setIdInArray].exercises.push(exerciseToAdd);
       }
-    })
+    });
   }
 
 
   addTraining(trainingToAdd: NewTraining): void {
     this.ngZone.runOutsideAngular(() => {
-      const set = this.getActiveCycle().sets.find(set => set.setId == trainingToAdd.setId);
+      const set: Set = this.getActiveCycle().sets.find(currentSet => currentSet.setId === trainingToAdd.setId);
 
       set.trainings.push(new Training(this.newTrainingId, trainingToAdd.date));
       this.newTrainingId++;
@@ -129,18 +144,18 @@ export class TrainingsMockService extends TrainingsService {
         }
 
 
-        const exercise = set.exercises.find(exercise => exercise.exerciseId === exerciseSession.exerciseId);
+        const exercise = set.exercises.find(currentExercise => currentExercise.exerciseId === exerciseSession.exerciseId);
         exercise.exerciseSessions.push(
           new ExerciseSession(
             this.newExerciseSessionId,
             seriesList,
             exerciseSession.isEmpty
           )
-        )
+        );
 
         this.newExerciseSessionId++;
       });
-    })
+    });
   }
 
   deleteCycle(cycleToDelete: Cycle): void {
@@ -149,7 +164,7 @@ export class TrainingsMockService extends TrainingsService {
 
       CYCLES_LIST.splice(cycleId, 1);
       CYCLE_PREVIEWS_LIST.splice(cycleId, 1);
-    })
+    });
   }
 
   editCycle(cycleToEdit: Cycle): void {
@@ -173,7 +188,7 @@ export class TrainingsMockService extends TrainingsService {
           break;
         }
       }
-    })
+    });
   }
 
 
@@ -181,25 +196,42 @@ export class TrainingsMockService extends TrainingsService {
     this.ngZone.runOutsideAngular(() => {
       CYCLES_LIST.forEach(cycle => {
         cycle.sets.forEach(set => {
-          const exerciseId = set.exercises.findIndex(exercise => exercise.exerciseId === exerciseToDelete.exerciseId);
-          if (exerciseId != DOES_NOT_CONTAIN) {
-            set.exercises.splice(exerciseId, 1);
+          const exerciseIndex = set.exercises.findIndex(exercise => exercise.exerciseId === exerciseToDelete.exerciseId);
+          if (exerciseIndex !== DOES_NOT_CONTAIN) {
+            set.exercises.splice(exerciseIndex, 1);
           }
-        })
-      })
-    })
+        });
+      });
+    });
+  }
+
+
+  deleteTraining(trainingToDelete: Training): void {
+    this.ngZone.runOutsideAngular(() => {
+      CYCLES_LIST.forEach(cycle => {
+          cycle.sets.forEach(set => {
+            const trainingIndex = set.trainings.findIndex(training => training.trainingId === trainingToDelete.trainingId);
+
+            if (trainingIndex !== DOES_NOT_CONTAIN) {
+              set.trainings.splice(trainingIndex, 1);
+              set.exercises.forEach(exercise => exercise.exerciseSessions.splice(trainingIndex, 1));
+            }
+          });
+        }
+      );
+    });
   }
 
   hasUserOnlyFinishedCycles(): boolean {
     return this.ngZone.runOutsideAngular(() => {
       return CYCLES_LIST.every(cycle => cycle.isFinished);
-    })
+    });
   }
 
   public getActiveCycle(): Cycle {
     return this.ngZone.runOutsideAngular(() => {
       return CYCLES_LIST.find(cycle => !cycle.isFinished);
-    })
+    });
   }
 
   private reduce(prevVal, currVal): number {

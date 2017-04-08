@@ -32,7 +32,9 @@ export class PricesMockService extends PricesService {
 
   getPrices(productPreview: Product): Observable<Price[]> {
 
-    let pricesToReturn: Price[] = PRICES_LIST.find(priceList => priceList.length > 0 && priceList[0].productId === productPreview.productId) || [];
+    const pricesToReturn: Price[] = PRICES_LIST.find(priceList =>
+      priceList.length > 0 && priceList[0].productId === productPreview.productId
+      ) || [];
 
     return Observable.create(observer => {
       // timeout is simulation of 'getting from http'
@@ -56,7 +58,7 @@ export class PricesMockService extends PricesService {
 
   addPrice(priceToAdd: NewPrice): void {
 
-    let prodIdInArray = PRODUCTS_LIST.findIndex(product => product.productId === priceToAdd.productId);
+    const prodIdInArray = PRODUCTS_LIST.findIndex(product => product.productId === priceToAdd.productId);
 
     const price: Price = new Price(this.newPriceId, priceToAdd.priceDate, priceToAdd.place, priceToAdd.quantity,
       priceToAdd.value, priceToAdd.productId);

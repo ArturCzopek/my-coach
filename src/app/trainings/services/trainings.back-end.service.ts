@@ -2,7 +2,7 @@ import {TrainingsService} from "./tranings.service";
 import {Injectable, Injector, NgZone} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {CyclePreview} from "../../shared/entities/preview.entities";
-import {Cycle, Exercise} from "../../shared/entities/get.entities";
+import {Cycle, Exercise, Training} from "../../shared/entities/get.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {NewCycle, NewExercise, NewTraining} from "../../shared/entities/add.entities";
 
@@ -41,8 +41,12 @@ export class TrainingsBackEndService extends TrainingsService {
 
 
   deleteExercise(exerciseToDelete: Exercise): void {
-    console.log("TrainingsBackEndService#exerciseToDelete not implemented yet");
+    console.log("TrainingsBackEndService#deleteExercise not implemented yet");
+  }
 
+
+  deleteTraining(trainingToDelete: Training): void {
+    console.log("TrainingsBackEndService#deleteTraining not implemented yet");
   }
 
   editCycle(cycleToEdit: Cycle): void {

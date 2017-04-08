@@ -1,14 +1,18 @@
 table {
   cursor: default;
 
-  .hover-visible {
-    visibility: hidden;
+  i {
     vertical-align: middle;
   }
 
-  th {
+  td, th {
+
+    i.hover-visible {
+      visibility: hidden;
+    }
+
     &:hover {
-      .hover-visible {
+      i {
         visibility: visible;
       }
     }
@@ -21,14 +25,7 @@ table {
         margin-left: 5px;
         visibility: visible;
         font-size: 1rem;
-        vertical-align: middle;
         cursor: default;
-      }
-    }
-
-    &:hover {
-      .hover-visible {
-        visibility: visible;
       }
     }
   }

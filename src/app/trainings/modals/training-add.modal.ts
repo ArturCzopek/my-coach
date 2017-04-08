@@ -21,8 +21,8 @@ export class TrainingAddModal extends BaseModal implements OnInit {
   public exerciseSessionsToAdd: NewExerciseSession[][] = [];
   public isExerciseActive: boolean[][] = [];
   public activeCycle: Cycle = null;
-  public selectedSetNr: number = 0;
-  public trainingDate: string = '';
+  public selectedSetNr = 0;
+  public trainingDate = '';
 
   private trainingsService: TrainingsService;
   private dateService: DateService;
@@ -110,7 +110,7 @@ export class TrainingAddModal extends BaseModal implements OnInit {
       set.exercises.forEach((exercise) => {
         this.isExerciseActive[i].push(true);
         this.exerciseSessionsToAdd[i].push(new NewExerciseSession(exercise.exerciseId, []));
-      })
+      });
     });
   }
 }

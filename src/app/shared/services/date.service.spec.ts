@@ -4,7 +4,7 @@ import {DictionaryMockService} from "./dictionary.mock.service";
 
 describe('DateService', () => {
 
-  const fakeServiceInjector = { getDictionaryService: () => new DictionaryMockService() }
+  const fakeServiceInjector = { getDictionaryService: () => new DictionaryMockService() };
   const fakeInjector =  { get: (ServiceInjector) => fakeServiceInjector};
 
   const dateService = new DateService(fakeInjector as Injector);
@@ -49,39 +49,39 @@ describe('DateService', () => {
   it('#isDateValid should return is valid date for 19 Kwi 2017 string', () => {
     const stringToParse = '19 Kwi 2017';
     expect(dateService.isDateValid(stringToParse)).toBe(true);
-  })
+  });
 
   it('#isDateValid should return is valid date for 10 Paz 2017 string', () => {
     const stringToParse = '10 Paz 2017';
     expect(dateService.isDateValid(stringToParse)).toBe(true);
-  })
+  });
 
   it('#isDateValid should return is invalid date for 10 Paź 2017 string', () => {
     const stringToParse = '10 Paź 2017';
     expect(dateService.isDateValid(stringToParse)).toBe(false);
-  })
+  });
 
   it('#isSecondDateLater should return that 19 Kwi 2017 is later than 01 Sty 2017', () => {
     const firstDate = '01 Sty 2017';
     const secondDate = '19 Kwi 2017';
     expect(dateService.isSecondDateLater(firstDate, secondDate)).toBe(true);
-  })
+  });
 
   it('#isSecondDateLater should return that 19 Kwi 2016 is not later than 19 Kwi 2017', () => {
     const firstDate = '19 Kwi 2017';
     const secondDate = '19 Kwi 2016';
     expect(dateService.isSecondDateLater(firstDate, secondDate)).toBe(false);
-  })
+  });
 
   it('#isSecondDateLater should return that current date passed as null is later than 19 Kwi 2017', () => {
     const firstDate = '19 Kwi 2017';
     const secondDate = null;
     expect(dateService.isSecondDateLater(firstDate, secondDate)).toBe(true);
-  })
+  });
 
   it('#isSecondDateLater should return that second date in wrong format is not later than 19 Kwi 2017', () => {
     const firstDate = '19 Kwi 2017';
     const secondDate = '199 Kwi 199';
     expect(dateService.isSecondDateLater(firstDate, secondDate)).toBe(false);
-  })
+  });
 });
