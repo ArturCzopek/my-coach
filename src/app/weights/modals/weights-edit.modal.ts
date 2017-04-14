@@ -6,6 +6,7 @@ import {WeightsService} from "../services/weights.service";
 import {DOES_NOT_CONTAIN} from "../../shared/global.values";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {BaseModal} from "../../shared/components/base.modal";
+import {DateService} from "../../shared/services/date.service";
 
 declare var Materialize: any;
 
@@ -21,11 +22,13 @@ export class WeightsEditModal extends BaseModal implements OnInit {
   public weightsToEditIndexes: number[] = [];
   public modalTitle: string;
 
+  private dateService: DateService;
   private weightsService: WeightsService;
 
   constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector) {
     super(serviceInjector);
     this.weightsService = serviceInjector.getWeightsService();
+    this.dateService = serviceInjector.getDateService();
   }
 
   public ngOnInit(): void {
@@ -63,11 +66,16 @@ export class WeightsEditModal extends BaseModal implements OnInit {
 
     this.weightsToEditIndexes.forEach(index => {
       weightsToEdit.push(this.selectedWeights[index]);
-      this.weightsService.editWeights(weightsToEdit);
     });
 
-    this.weightsModalsService.callRefreshPage();
-    this.closeModal();
+    weightsToEdit.forEach(weight => weight.measurementDate = this.dateService.updateTimeForPassedDate(weight.measurementDate));
+
+    this.weightsService.editWeights(weightsToEdit).first()
+      .subscribe(
+        ok => this.weightsModalsService.callRefreshPage(),
+        error => console.error('error', error),
+        () => this.closeModal()
+      );
   }
 
   public addDayIndexToChanged(dateIndex: number) {

@@ -17,7 +17,7 @@ import {DateService} from "./shared/services/date.service";
 import {AboutComponent} from "./about.component";
 import {ConfigService} from "./config.service";
 
-function loadInitialConfiguration(config: ConfigService) {
+export function loadInitialConfiguration(config: ConfigService) {
   return () => config.loadConfiguration();
 };
 

@@ -5,6 +5,7 @@ import {WeightsModalsService} from "../services/weights-modals.service";
 import {WeightsService} from "../services/weights.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {BaseModal} from "../../shared/components/base.modal";
+import {DateService} from "../../shared/services/date.service";
 
 declare var Materialize: any;
 
@@ -22,10 +23,12 @@ export class WeightsDeleteModal extends BaseModal implements OnInit {
   public modalTitle: string;
 
   private weightsService: WeightsService;
+  private dateService: DateService;
 
   constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector) {
     super(serviceInjector);
     this.weightsService = serviceInjector.getWeightsService();
+    this.dateService = serviceInjector.getDateService();
   }
 
   public ngOnInit(): void {
@@ -81,8 +84,13 @@ export class WeightsDeleteModal extends BaseModal implements OnInit {
       weightsToDelete.push(this.selectedWeights[index]);
     });
 
-    this.weightsService.deleteWeights(weightsToDelete);
-    this.weightsModalsService.callRefreshPage();
-    this.closeModal();
+    weightsToDelete.forEach(weight => weight.measurementDate = this.dateService.updateTimeForPassedDate(weight.measurementDate));
+
+    this.weightsService.deleteWeights(weightsToDelete).first()
+      .subscribe(
+        ok => this.weightsModalsService.callRefreshPage(),
+        error => console.error('error', error),
+        () => this.closeModal()
+      );
   }
 }

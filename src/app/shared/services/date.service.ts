@@ -19,8 +19,14 @@ export class DateService {
   }
 
   public parseStringToDate(dateString: string): Date {
-    const formattedDateObj: Date = moment(dateString, this.getDateFormat()).toDate();
+    const formattedDateObj: Date = this.updateTimeForPassedDate(moment(dateString, this.getDateFormat()).toDate());
     return formattedDateObj;
+  }
+
+  // temporary workaround for problem with zone times (different days sometimes...)
+  public updateTimeForPassedDate(dateObj: Date): Date {
+    dateObj.setHours(12);
+    return dateObj;
   }
 
   public isDateValid(date: string): boolean {
@@ -48,10 +54,19 @@ export class DateService {
     return this.dictionaryService.getDictionaryValue('calendar.format.momentjs');
   }
 
+  private getDateFromServerFormat(): string {
+    return this.dictionaryService.getDictionaryValue('calendar.format.fromServer');
+  }
+
   private configureMoment() {
     moment.updateLocale('en', {
       months: this.dictionaryService.getDateDictionarySettings().monthsFull,
       monthsShort: this.dictionaryService.getDateDictionarySettings().monthsShort
     });
+  }
+
+  parseStringFromServerToDate(dateObj: string): Date {
+    const formattedDateObj: Date = this.updateTimeForPassedDate(moment(dateObj, this.getDateFromServerFormat()).toDate());
+    return formattedDateObj;
   }
 }

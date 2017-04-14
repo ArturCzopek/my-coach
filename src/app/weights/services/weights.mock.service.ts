@@ -7,14 +7,15 @@ import {WEIGHTS_PREVIEWS_LIST} from "../../shared/entities/mock-data/previews/we
 import {WeightsService} from "./weights.service";
 import {NewWeight} from "../../shared/entities/add.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
+import {Http} from "@angular/http";
 
 @Injectable()
 export class WeightsMockService extends WeightsService {
 
   private newWeightId: number = WEIGHT_LIST[0].length + WEIGHT_LIST[1].length + 1;
 
-  constructor(private injector: Injector) {
-    super(injector.get(ServiceInjector));
+  constructor(private injector: Injector, http: Http) {
+    super(injector.get(ServiceInjector), http);
   }
 
   public getWeightsPreviews(): Observable<WeightsPreview[]> {
@@ -53,36 +54,32 @@ export class WeightsMockService extends WeightsService {
     });
   }
 
-  public getAllDays(weights: Weight[]): number[] {
-    return weights.map(weight => weight.measurementDate.getDate());
-  }
-
-  public getAllValues(weights: Weight[]): number[] {
-    return weights.map(weight => weight.value);
-  }
-
   // for mock we add only to second month
-  public addWeight(weightToAdd: NewWeight): void {
+  public addWeight(weightToAdd: NewWeight): Observable<any> {
     const weight: Weight = new Weight(this.newWeightId, weightToAdd.value, weightToAdd.measurementDate);
     this.newWeightId++;
     WEIGHT_LIST[1].push(weight);
+
+    return Observable.of(true);
   }
 
-  public editWeights(weights: Weight[]): void {
+  public editWeights(weightsToUpdate: Weight[]): Observable<any> {
 
-    for (const weightToUpdate of weights) {
+    for (const weight of weightsToUpdate) {
       for (const weightList of WEIGHT_LIST) {
         for (let i = 0; i < weightList.length; i++) {
-          if (weightList[i].weightId === weightToUpdate.weightId) {
-            weightList[i] = weightToUpdate;
+          if (weightList[i].weightId === weight.weightId) {
+            weightList[i] = weight;
             break;
           }
         }
       }
     }
+
+    return Observable.of(true);
   }
 
-  public deleteWeights(weights: Weight[]): void {
+  public deleteWeights(weights: Weight[]): Observable<any> {
 
     for (const weightToDelete of weights) {
       for (const weightList of WEIGHT_LIST) {
@@ -94,5 +91,12 @@ export class WeightsMockService extends WeightsService {
         }
       }
     }
+
+    return Observable.of(true);
+  }
+
+
+  public parseFromServer(weights: Weight[]): Weight[] {
+    return weights;
   }
 }

@@ -46,9 +46,12 @@ export class WeightAddModal extends BaseModal implements OnInit {
   }
 
   public onAddClick() {
-      this.weightToAdd = new NewWeight(this.weightValue, this.dateService.parseStringToDate(this.measurementDate));
-      this.weightsService.addWeight(this.weightToAdd);
-      this.weightsModalsService.callRefreshPage();
-      this.closeModal();
+    this.weightToAdd = new NewWeight(this.weightValue, this.dateService.parseStringToDate(this.measurementDate));
+    this.weightsService.addWeight(this.weightToAdd).first()
+      .subscribe(
+        ok => this.weightsModalsService.callRefreshPage(),
+        error => console.error('error', error),
+        () => this.closeModal()
+      );
   }
 }

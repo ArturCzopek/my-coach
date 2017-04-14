@@ -26,15 +26,11 @@ export class WeightsListComponent implements OnInit {
 
   private loadWeightsPreviews() {
     this.isLoading = true;
-    this.weightsService.getWeightsPreviews()
+    this.weightsService.getWeightsPreviews().first()
       .subscribe(
-        previews => {
-          this.weightsPreviews = previews.slice().reverse();
-        },
-        () => {},
-        () => {
-          this.isLoading = false;
-        }
+        previews => this.weightsPreviews = previews.slice().reverse(),
+        error => console.error('error', error),
+        () => this.isLoading = false
       );
   }
 

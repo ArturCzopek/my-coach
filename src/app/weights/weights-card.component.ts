@@ -6,6 +6,9 @@ import {WeightsModalsService} from "./services/weights-modals.service";
 import {ServiceInjector} from "../shared/services/service.injector";
 import {DictionaryService} from "../shared/services/dictionary.service";
 import {BaseCardComponent} from "../shared/components/base-card.component";
+import {DateService} from "../shared/services/date.service";
+
+declare var Materialize: any;
 
 @Component({
   selector: 'coach-weights-card',
@@ -25,11 +28,13 @@ export class WeightsCardComponent extends BaseCardComponent implements OnInit {
 
   private weightsService: WeightsService;
   private dictionaryService: DictionaryService;
+  private dateService: DateService;
 
   constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector) {
     super();
     this.weightsService = serviceInjector.getWeightsService();
     this.dictionaryService = serviceInjector.getDictionaryService();
+    this.dateService = serviceInjector.getDateService();
   }
 
   ngOnInit() {
@@ -43,10 +48,12 @@ export class WeightsCardComponent extends BaseCardComponent implements OnInit {
 
     if (this.showData) {
       if (this.weights == null) {
-        this.weightsService.getWeights(this.weightsPreview)
+        this.weightsService.getWeights(this.weightsPreview).first()
           .subscribe(
             weights => {
-              this.weights = weights;
+              this.weights = this.weightsService.parseFromServer(weights);
+
+
               this.weightsDays = this.weightsService.getAllDays(this.weights);
               this.weightsValues = this.weightsService.getAllValues(this.weights);
               this.chartData = [

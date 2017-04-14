@@ -5,28 +5,38 @@ import {Weight} from "../../shared/entities/get.entities";
 import {NewWeight} from "../../shared/entities/add.entities";
 import {DictionaryService} from "../../shared/services/dictionary.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
+import {Http} from "@angular/http";
+import {DateService} from "../../shared/services/date.service";
 
 export abstract class WeightsService {
 
   private dictionaryService: DictionaryService;
+  protected dateService: DateService;
 
-  constructor(@Inject(ServiceInjector) serviceInjector: ServiceInjector) {
+  constructor(@Inject(ServiceInjector) serviceInjector: ServiceInjector, protected http: Http) {
     this.dictionaryService = serviceInjector.getDictionaryService();
+    this.dateService = serviceInjector.getDateService();
   }
 
   abstract getWeightsPreviews(): Observable<WeightsPreview[]>;
 
   abstract getWeights(weightsPreview: WeightsPreview): Observable<Weight[]>;
 
-  abstract getAllDays(weights: Weight[]): number[];
+  abstract addWeight(weightToAdd: NewWeight): Observable<any>;
 
-  abstract getAllValues(weights: Weight[]): number[];
+  abstract editWeights(weightsToUpdate: Weight[]): Observable<any>;
 
-  abstract addWeight(weightToAdd: NewWeight): void;
+  abstract deleteWeights(weights: Weight[]): Observable<any>;
 
-  abstract editWeights(weights: Weight[]): void;
+  abstract parseFromServer(weights: Weight[]): Weight[];
 
-  abstract deleteWeights(weights: Weight[]): void;
+  public getAllDays(weights: Weight[]): number[] {
+    return weights.map(weight => weight.measurementDate.getDate());
+  }
+
+  public getAllValues(weights: Weight[]): number[] {
+    return weights.map(weight => weight.value);
+  }
 
   public getPreviewTitle(weightsPreview: WeightsPreview): string {
     return `${this.dictionaryService.getDateDictionarySettings().monthsFull[weightsPreview.month - 1]} ${weightsPreview.year}r.`;
