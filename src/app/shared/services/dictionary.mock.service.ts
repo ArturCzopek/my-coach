@@ -1,5 +1,7 @@
 import {DictionaryService} from "./dictionary.service";
 import {Injectable} from "@angular/core";
+import {Observable} from "rxjs";
+import {Http} from "@angular/http";
 
 @Injectable()
 export class DictionaryMockService extends DictionaryService {
@@ -7,8 +9,12 @@ export class DictionaryMockService extends DictionaryService {
   // Application for dev purposes is in english, but for date picker we have different rule. Mainly only for test
   // if we can really modify calendar values
 
-  getDictionaryFromDb(): any {
-    return {
+  constructor(http: Http) {
+    super(http);
+  }
+
+  getDictionaryFromDb(): Observable<any> {
+    return Observable.of({
       'page.weights.modal.add.title': 'Add weight',
       'calendar.nextDay.label': 'Następny',
       'calendar.prevDay.label': 'Poprzedni',
@@ -69,6 +75,6 @@ export class DictionaryMockService extends DictionaryService {
       'global.currency.label': 'zł',
       'global.weight.label': 'kg',
       'global.multiply.label': 'x'
-    };
+    });
   }
 }

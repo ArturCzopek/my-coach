@@ -44,6 +44,10 @@
 
 .card-reveal {
 
+  a {
+    cursor: pointer;
+  }
+
   &:hover {
     .row.icons-container {
       visibility: visible;

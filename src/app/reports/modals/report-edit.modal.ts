@@ -33,7 +33,7 @@ export class ReportEditModal extends BaseModal implements OnInit {
   public ngOnInit(): void {
     super.ngOnInit();
 
-    this.reportModalsService.editReport.subscribe(
+    this.initialization$ = this.reportModalsService.editReport.subscribe(
       (data: any) => {
         this.selectedReport = data.report;
         this.modalTitle = data.modalTitle;

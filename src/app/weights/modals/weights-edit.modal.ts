@@ -31,7 +31,7 @@ export class WeightsEditModal extends BaseModal implements OnInit {
   public ngOnInit(): void {
     super.ngOnInit();
 
-    this.weightsModalsService.editWeights.subscribe(
+    this.initialization$ = this.weightsModalsService.editWeights.subscribe(
       (data: any) => {
         this.selectedWeights = data.weights;
         this.modalTitle = data.modalTitle;

@@ -38,8 +38,8 @@ export class ShoppingListModal extends BaseModal implements OnInit {
   public ngOnInit(): void {
     super.ngOnInit();
 
-    this.pricesModalsService.addShoppingList.subscribe(
-      products => {
+    this.initialization$ = this.pricesModalsService.addShoppingList.subscribe(
+      (products: Product[]) => {
         this.products = products;
         this.openModal();
       }

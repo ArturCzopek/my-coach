@@ -33,7 +33,7 @@ export class ProductAddModal extends BaseModal implements OnInit {
   public ngOnInit(): void {
     super.ngOnInit();
 
-    this.pricesModalsService.addProduct.subscribe(
+    this.initialization$ = this.pricesModalsService.addProduct.subscribe(
       () => {
         this.openModal();
       }

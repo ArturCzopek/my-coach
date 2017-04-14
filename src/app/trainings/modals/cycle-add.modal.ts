@@ -37,7 +37,7 @@ export class CycleAddModal extends BaseModal implements OnInit, AfterViewInit {
     this.ngZone.runOutsideAngular(() => {
       super.ngOnInit();
 
-      this.trainingModalsService.addCycle.subscribe(
+      this.initialization$ = this.trainingModalsService.addCycle.subscribe(
         () => {
           this.openModal();
         }

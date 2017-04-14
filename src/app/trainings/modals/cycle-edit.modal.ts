@@ -36,7 +36,7 @@ export class CycleEditModal extends BaseModal implements OnInit {
     this.ngZone.runOutsideAngular(() => {
       super.ngOnInit();
 
-      this.trainingModalsService.editCycle.subscribe(
+      this.initialization$ = this.trainingModalsService.editCycle.subscribe(
         (data: any) => {
           this.selectedCycle = data.cycle;
           this.modalTitle = data.modalTitle;

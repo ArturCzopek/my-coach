@@ -1,17 +1,20 @@
+import {Observable} from "rxjs";
+import {Http} from "@angular/http";
+
 export abstract class DictionaryService {
 
   protected dictionary: any = null;
   protected dateDictionarySettings: any = null;
 
-  constructor() {
-    this.loadDictionary();
+  constructor(protected http: Http) {
+  }
+
+  public loadDictionary(dictionary: any) {
+    this.dictionary = dictionary;
+    this.dateDictionarySettings = this.createDateDictionarySettings();
   }
 
   public getDictionaryValue(key: string): string {
-    if (this.dictionary == null) {
-      this.dictionary = this.getDictionaryFromDb();
-    }
-
     return this.dictionary[key] || this.getFormattedKey(key);
   }
 
@@ -19,7 +22,7 @@ export abstract class DictionaryService {
     return this.dateDictionarySettings;
   }
 
-  private createDateDictionarySettings(): any {
+  public createDateDictionarySettings(): any {
     return {
       labelMonthNext: this.getDictionaryValue('calendar.nextDay.label'),
       labelMonthPrev: this.getDictionaryValue('calendar.prevDay.label'),
@@ -89,10 +92,6 @@ export abstract class DictionaryService {
     };
   }
 
-  private loadDictionary(): void {
-    this.dictionary = this.getDictionaryFromDb();
-    this.dateDictionarySettings = this.createDateDictionarySettings();
-  }
 
   private getFormattedKey(key: string): string {
     const stack = key.split(".");
@@ -102,5 +101,6 @@ export abstract class DictionaryService {
     return `${first}.${last}`;
   }
 
-  abstract getDictionaryFromDb(): any;
+  abstract getDictionaryFromDb(): Observable<any>;
+
 }

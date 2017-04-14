@@ -38,7 +38,7 @@ export class TrainingAddModal extends BaseModal implements OnInit {
     this.ngZone.runOutsideAngular(() => {
       super.ngOnInit();
 
-      this.trainingModalsService.addTraining.subscribe(
+      this.initialization$ = this.trainingModalsService.addTraining.subscribe(
         () => {
           this.openModal();
         }

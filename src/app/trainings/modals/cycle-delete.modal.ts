@@ -29,7 +29,7 @@ export class CycleDeleteModal extends BaseModal implements OnInit {
     this.ngZone.runOutsideAngular(() => {
       super.ngOnInit();
 
-      this.trainingModalsService.deleteCycle.subscribe(
+      this.initialization$ = this.trainingModalsService.deleteCycle.subscribe(
         (data: any) => {
           this.selectedCycle = data.cycle;
           this.modalTitle = data.modalTitle;

@@ -1,5 +1,5 @@
 import {BrowserModule} from "@angular/platform-browser";
-import {NgModule} from "@angular/core";
+import {APP_INITIALIZER, NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
@@ -15,6 +15,11 @@ import {DictionaryBackEndService} from "./shared/services/dictionary.back-end.se
 import {SharedModule} from "./shared/shared.module";
 import {DateService} from "./shared/services/date.service";
 import {AboutComponent} from "./about.component";
+import {ConfigService} from "./config.service";
+
+function loadInitialConfiguration(config: ConfigService) {
+  return () => config.loadConfiguration();
+};
 
 @NgModule({
   declarations: [
@@ -38,6 +43,13 @@ import {AboutComponent} from "./about.component";
     DateService,
     DictionaryMockService,
     DictionaryBackEndService,
+    ConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: loadInitialConfiguration,
+      deps: [ConfigService],
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,12 +1,17 @@
 import {DictionaryService} from "./dictionary.service";
 import {Injectable} from "@angular/core";
+import {Http} from "@angular/http";
+import {environment} from "../../../environments/environment";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class DictionaryBackEndService extends DictionaryService {
 
-  getDictionaryFromDb(): any {
-    console.log('DictionaryBackEndService#getDictionaryFromDb not implemented yet');
+  constructor(http: Http) {
+    super(http);
+  }
 
-    return {};
+  public getDictionaryFromDb(): Observable<any> {
+    return this.http.get(`${environment.url}/dictionary/1`).map(res => res.json());
   }
 }

@@ -31,7 +31,7 @@ export class ExerciseEditModal extends BaseModal implements OnInit {
     super.ngOnInit();
 
     this.ngZone.runOutsideAngular(() => {
-      this.trainingModalsService.editExercise.subscribe(
+      this.initialization$ = this.trainingModalsService.editExercise.subscribe(
         (exercise: Exercise) => {
           this.selectedExercise = exercise;
           this.openModal();

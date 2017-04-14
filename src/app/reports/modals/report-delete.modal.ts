@@ -28,7 +28,7 @@ export class ReportDeleteModal extends BaseModal implements OnInit {
   public ngOnInit(): void {
     super.ngOnInit();
 
-    this.reportModalsService.deleteReport.subscribe(
+    this.initialization$ = this.reportModalsService.deleteReport.subscribe(
       (data: any) => {
         this.selectedReport = data.report;
         this.modalTitle = data.modalTitle;

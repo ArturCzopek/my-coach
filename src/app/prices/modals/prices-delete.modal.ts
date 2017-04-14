@@ -30,7 +30,7 @@ export class PricesDeleteModal extends BaseModal implements OnInit {
   public ngOnInit(): void {
     super.ngOnInit();
 
-    this.pricesModalsService.deletePrices.subscribe(
+    this.initialization$ = this.pricesModalsService.deletePrices.subscribe(
       (data: any) => {
         this.selectedPrices = data.prices;
         this.modalTitle = data.modalTitle;

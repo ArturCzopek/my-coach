@@ -31,7 +31,7 @@ export class WeightsDeleteModal extends BaseModal implements OnInit {
   public ngOnInit(): void {
     super.ngOnInit();
 
-    this.weightsModalsService.deleteWeights.subscribe(
+    this.initialization$ = this.weightsModalsService.deleteWeights.subscribe(
       (data: any) => {
         this.selectedWeights = data.weights;
         this.modalTitle = data.modalTitle;

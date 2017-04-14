@@ -31,7 +31,7 @@ export class ReportAddModal extends BaseModal implements OnInit {
   public ngOnInit(): void {
     super.ngOnInit();
 
-    this.reportModalsService.addReport.subscribe(
+    this.initialization$ = this.reportModalsService.addReport.subscribe(
       () => {
         this.openModal();
       }

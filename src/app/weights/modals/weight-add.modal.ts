@@ -29,7 +29,7 @@ export class WeightAddModal extends BaseModal implements OnInit {
   public ngOnInit(): void {
     super.ngOnInit();
 
-    this.weightsModalsService.addWeight.subscribe(
+    this.initialization$ = this.weightsModalsService.addWeight.subscribe(
       () => {
         this.openModal();
       }

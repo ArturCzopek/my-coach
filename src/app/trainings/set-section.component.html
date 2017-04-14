@@ -14,7 +14,7 @@
   </tr>
   </thead>
   <tbody *ngIf="set.exercises.length > 0; else noExercises">
-  <tr *ngFor="let exercise of set.exercises">
+  <tr *ngFor="let exercise of set.exercises; trackBy: trackByExerciseId">
     <td>{{exercise.exerciseName}}
       <i *ngIf="exercise.exerciseDescription" class="material-button material-icons tooltipped no-pointer" materialize="tooltip"
          data-position="bottom" data-delay="50" [attr.data-tooltip]="exercise.exerciseDescription">comment</i>
@@ -25,8 +25,8 @@
          materialize="tooltip" data-position="bottom" data-delay="50"
          [attr.data-tooltip]="'page.trainings.deleteExercise.tooltip' | dictionary">delete</i>
     </td>
-    <td *ngFor="let session of exercise.exerciseSessions">
-      <div *ngFor="let series of session.series" class="series">
+    <td *ngFor="let session of exercise.exerciseSessions; trackBy: trackBySessionId">
+      <div *ngFor="let series of session.series; trackBy: trackBySeriesId" class="series">
         {{trainingsService.getFormattedRepeatsWithWeight(series)}}
         <i *ngIf="series.comment" class="material-button material-icons tooltipped" materialize="tooltip"
            data-position="bottom" data-delay="50" [attr.data-tooltip]="series.comment">comment</i>

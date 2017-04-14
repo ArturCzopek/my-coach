@@ -31,7 +31,7 @@ export class TrainingDeleteModal extends BaseModal implements OnInit {
     this.ngZone.runOutsideAngular(() => {
       super.ngOnInit();
 
-      this.trainingModalsService.deleteTraining.subscribe(
+      this.initialization$ = this.trainingModalsService.deleteTraining.subscribe(
         (training: Training) => {
           this.selectedTraining = training;
           this.openModal();

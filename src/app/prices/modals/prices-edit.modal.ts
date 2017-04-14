@@ -28,7 +28,7 @@ export class PricesEditModal extends BaseModal implements OnInit {
   public ngOnInit(): void {
     super.ngOnInit();
 
-    this.pricesModalsService.editPrices.subscribe(
+    this.initialization$ = this.pricesModalsService.editPrices.subscribe(
       (data: any) => {
         this.selectedPrices = data.prices;
         this.modalTitle = data.modalTitle;

@@ -28,7 +28,7 @@ export class ProductDeleteModal extends BaseModal implements OnInit {
   public ngOnInit(): void {
     super.ngOnInit();
 
-    this.pricesModalsService.deleteProduct.subscribe(
+    this.initialization$ = this.pricesModalsService.deleteProduct.subscribe(
       (product: Product) => {
         this.selectedProduct = product;
         this.openModal();
