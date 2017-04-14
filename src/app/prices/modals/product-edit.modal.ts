@@ -67,7 +67,7 @@ export class ProductEditModal extends BaseModal implements OnInit {
 
   public onEditClick() {
     this.selectedProduct.productName = this.productName;
-    this.selectedProduct.imageUrl = this.imageUrl;
+    this.selectedProduct.image = this.imageUrl;
     this.pricesService.editProduct(this.selectedProduct);
     this.pricesModalsService.callRefreshPage();
     this.closeModal();

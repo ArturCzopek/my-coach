@@ -44,7 +44,7 @@ export abstract class BaseModal implements OnInit, AfterViewChecked {
 
   closeModal() {
     this.modalActions.emit({action: "modal", params: ['close']});
-    $('.lean-overlay').remove();
+    $('.modal-overlay').remove();
   }
 
   // "on" only for style purposes in html

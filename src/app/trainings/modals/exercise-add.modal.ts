@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component, NgZone, OnInit, Renderer2, ViewChild} from "@angular/core";
+import {AfterViewInit, Component, NgZone, OnInit, Renderer2, ViewChild} from "@angular/core";
 import {NewExercise} from "../../shared/entities/add.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {BaseModal} from "../../shared/components/base.modal";
@@ -15,7 +15,7 @@ declare var $: any;
   templateUrl: 'exercise-add.modal.html',
   styleUrls: ['./training.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class ExerciseAddModal extends BaseModal implements OnInit {
+export class ExerciseAddModal extends BaseModal implements OnInit, AfterViewInit {
 
   public exercisesToAdd: NewExercise[] = [];
   public activeCycle: Cycle = null;
@@ -42,6 +42,10 @@ export class ExerciseAddModal extends BaseModal implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+    this.renderer.listen(this.addLink, 'click', () => this.addNewEmptyExerciseToList());
+  }
+
   public initDataBeforeOpenModal(): void {
     this.ngZone.runOutsideAngular(() => {
       super.initDataBeforeOpenModal();
@@ -49,7 +53,6 @@ export class ExerciseAddModal extends BaseModal implements OnInit {
       this.exercisesToAdd = [];
       this.activeCycle = this.trainingsService.getActiveCycle();
 
-      this.renderer.listen(this.addLink, 'click', () => this.addNewEmptyExerciseToList());
     });
   }
 

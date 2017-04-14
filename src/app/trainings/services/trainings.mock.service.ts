@@ -154,7 +154,7 @@ export class TrainingsMockService extends TrainingsService {
     this.ngZone.runOutsideAngular(() => {
       const set: Set = this.getActiveCycle().sets.find(currentSet => currentSet.setId === trainingToAdd.setId);
 
-      set.trainings.push(new Training(this.newTrainingId, trainingToAdd.date));
+      set.trainings.push(new Training(this.newTrainingId, trainingToAdd.trainingDate));
       this.newTrainingId++;
 
       trainingToAdd.exerciseSessions.forEach(exerciseSession => {

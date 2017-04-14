@@ -60,7 +60,7 @@ export class ShoppingListModal extends BaseModal implements OnInit {
     this.autoCompleteData = {data: {}};
 
     for (const product of this.products) {
-      this.autoCompleteData.data[product.productName] = product.imageUrl;
+      this.autoCompleteData.data[product.productName] = product.image;
     }
   }
 

@@ -35,7 +35,7 @@ export class Price {
 export class Product {
   constructor(public productId: number,
               public productName: string,
-              public imageUrl: string,
+              public image: string|any,
               public average?: number) {
   }
 }

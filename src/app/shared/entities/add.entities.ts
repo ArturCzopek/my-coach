@@ -31,21 +31,21 @@ export class NewPrice {
 // image can be file or string, not sure how sending files will be implemented
 export class NewProduct {
   constructor(public productName: string,
-              public image?: any) {
+              public image?: string|any) {
   }
 }
 
 export class NewReport {
   constructor(public content: string,
               public startDate: Date,
-              public endDate?: Date) {
+              public endDate: Date) {
   }
 }
 
 export class NewSeries {
   constructor(public weight: number,
               public repeats: number,
-              public comment: string) {
+              public comment?: string) {
   }
 }
 
@@ -58,7 +58,7 @@ export class NewSet {
 export class NewTraining {
   constructor(public setId: number,
               public exerciseSessions: NewExerciseSession[],
-              public date?: Date) {
+              public trainingDate: Date) {
   }
 }
 

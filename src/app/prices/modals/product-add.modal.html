@@ -13,7 +13,7 @@
         </div>
         <div *ngIf="!canStoreFiles()" class="input-field col s12">
           <i class="material-icons prefix">perm_media</i>
-          <label for="image-url">{{'page.prices.modal.add.imageUrl.label' | dictionary}}</label>
+          <label for="image-url">{{'page.prices.modal.add.image.label' | dictionary}}</label>
           <input id="image-url" type="text" [(ngModel)]="productToAdd.image" name="image"/>
         </div>
         <div *ngIf="canStoreFiles() && !productToAdd.image" class="file-field input-field col s12">

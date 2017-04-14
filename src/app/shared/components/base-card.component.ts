@@ -16,7 +16,7 @@ export abstract class BaseCardComponent implements OnInit {
     this.arrowImageClass = 'left-arrow';
 
     // removing black garbages from modal and not needed click on FAB
-    $('.lean-overlay').remove();
+    $('.modal-overlay').remove();
     if ($('#fab').hasClass('active')) {
       $('#fab a').click();
     }

@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component, ElementRef, NgZone, OnInit, Renderer2, ViewChild} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, NgZone, OnInit, Renderer2, ViewChild} from "@angular/core";
 import {NewCycle, NewSet} from "../../shared/entities/add.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {DateService} from "../../shared/services/date.service";
@@ -15,7 +15,7 @@ declare var $: any;
   templateUrl: 'cycle-add.modal.html',
   styleUrls: ['./training.modals.scss', '../../shared/materialize-upgrades.scss']
 })
-export class CycleAddModal extends BaseModal implements OnInit {
+export class CycleAddModal extends BaseModal implements OnInit, AfterViewInit {
 
   public cycleToAdd: NewCycle = null;
   public setsToAdd: NewSet[] = [];
@@ -45,13 +45,16 @@ export class CycleAddModal extends BaseModal implements OnInit {
     });
   }
 
+
+  ngAfterViewInit(): void {
+    this.renderer.listen(this.emptySetLink.nativeElement, 'click', () => this.addNewEmptySetToList());
+  }
+
   public initDataBeforeOpenModal(): void {
     this.ngZone.runOutsideAngular(() => {
       super.initDataBeforeOpenModal();
       this.setsToAdd = [];
       this.startDate = '';
-
-      this.renderer.listen(this.emptySetLink.nativeElement, 'click', () => this.addNewEmptySetToList());
     });
   }
 

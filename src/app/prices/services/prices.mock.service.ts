@@ -124,7 +124,7 @@ export class PricesMockService extends PricesService {
   }
 
   getProductImageUrl(productId: number): string {
-    return PRODUCTS_LIST.find(product => product.productId === productId).imageUrl;
+    return PRODUCTS_LIST.find(product => product.productId === productId).image;
   }
 
   private reduce(prevVal, currVal): number {
