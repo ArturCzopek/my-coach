@@ -52,10 +52,14 @@ export class TrainingAddModal extends BaseModal implements OnInit {
       this.exerciseSessionsToAdd = [];
       this.selectedSetNr = 0;
       this.trainingDate = this.dateService.getCurrentDateAsString();
-      this.activeCycle = this.trainingsService.getActiveCycle();
       this.isExerciseActive = [];
-      this.initPossibleSetsToDisplay();
-
+      this.trainingsService.getActiveCycle().first().subscribe(
+        cycle => {
+          this.activeCycle = cycle;
+          this.initPossibleSetsToDisplay();
+        },
+        error => console.error(error, 'error')
+      );
     });
   }
 
@@ -79,7 +83,8 @@ export class TrainingAddModal extends BaseModal implements OnInit {
 
       return this.exerciseSessionsToAdd.length > 0 &&
         this.exerciseSessionsToAdd[this.selectedSetNr].every(
-          (exerciseSession, i) => exerciseSession.series.length > 0 || !this.isExerciseActive[this.selectedSetNr][i]
+          (exerciseSession, i) => (exerciseSession.series.length > 0 && exerciseSession.series.every(series => series.repeats > 0))
+          || !this.isExerciseActive[this.selectedSetNr][i]
         )
         && !this.isExerciseActive[this.selectedSetNr].every(isActive => !isActive) && this.dateService.isDateValid(this.trainingDate);
     });
@@ -88,9 +93,12 @@ export class TrainingAddModal extends BaseModal implements OnInit {
 
   public onAddClick(): void {
     this.ngZone.runOutsideAngular(() => {
-      this.trainingsService.addTraining(this.createNewTraining());
-      this.trainingModalsService.callRefreshPage();
-      this.closeModal();
+      this.trainingsService.addTraining(this.createNewTraining()).first()
+        .subscribe(
+          ok => this.trainingModalsService.callRefreshPage(),
+          error => console.error(error, 'error'),
+          () => this.closeModal()
+        );
     });
   }
 

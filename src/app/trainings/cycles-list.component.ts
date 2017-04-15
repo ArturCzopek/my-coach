@@ -12,26 +12,34 @@ import {TrainingModalsService} from "./services/training-modals.service";
 export class CyclesListComponent implements OnInit {
 
   public isLoading: boolean;
+  public finishedCycles: boolean;
   private cyclePreviews: CyclePreview[];
-  private trainingService: TrainingsService;
+  private trainingsService: TrainingsService;
 
   constructor(private serviceInjector: ServiceInjector, private trainingModalsService: TrainingModalsService) {
-    this.trainingService = serviceInjector.getTrainingsService();
+    this.trainingsService = serviceInjector.getTrainingsService();
   }
 
   ngOnInit() {
     this.loadCyclePreviews();
     this.trainingModalsService.refreshPage.subscribe(() => this.ngOnInit());
+
+    this.trainingsService.hasUserOnlyFinishedCycles().first()
+      .subscribe(
+        finished => this.finishedCycles = finished,
+        error => console.error(error, 'error')
+      );
   }
 
   private loadCyclePreviews() {
     this.isLoading = true;
-    this.trainingService.getCyclePreviews()
+    this.trainingsService.getCyclePreviews()
       .subscribe(
         previews => {
           this.cyclePreviews = previews.slice().reverse();
         },
-        () => {},
+        () => {
+        },
         () => {
           this.isLoading = false;
         }
@@ -39,11 +47,11 @@ export class CyclesListComponent implements OnInit {
   }
 
   onAddExerciseClick() {
-    this.trainingModalsService.callAddExercise();
+    this.trainingModalsService.callAddExercise(this.finishedCycles);
   }
 
   onAddCycleClick() {
-    this.trainingModalsService.callAddCycle();
+    this.trainingModalsService.callAddCycle(this.finishedCycles);
   }
 
   onAddTrainingClick() {

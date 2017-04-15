@@ -17,33 +17,33 @@ export abstract class TrainingsService {
     this.dateService = serviceInjector.getDateService();
   }
 
-  abstract getActiveCycle(): Cycle;
-
-  abstract getCycle(cycleId: number): Observable<Cycle>;
+  abstract getActiveCycle(): Observable<Cycle>;
 
   abstract getCyclePreviews(): Observable<CyclePreview[]>
 
-  abstract getExercisesWithSessionForTraining(training: Training): Exercise[];
+  abstract getCycle(cycleId: number): Observable<Cycle>;
 
-  abstract addCycle(cycleToAdd: NewCycle): void;
+  abstract getExercisesWithSessionForTraining(trainingId: number): Observable<Exercise[]>;
 
-  abstract addExercises(exercisesToAdd: NewExercise[]): void;
+  abstract addCycle(cycleToAdd: NewCycle): Observable<any>;
 
-  abstract addTraining(trainingToAdd: NewTraining): void;
+  abstract addExercises(exercisesToAdd: NewExercise[]): Observable<any>;
 
-  abstract deleteCycle(cycleToDelete: Cycle): void;
+  abstract addTraining(trainingToAdd: NewTraining): Observable<any>;
 
-  abstract deleteExercise(exerciseToDelete: Exercise): void;
+  abstract deleteCycle(cycleToDelete: Cycle): Observable<any>;
 
-  abstract deleteTraining(trainingToDelete: Training): void;
+  abstract deleteExercise(exerciseToDelete: Exercise): Observable<any>;
 
-  abstract editCycle(cycleToEdit: Cycle): void;
+  abstract deleteTraining(trainingToDelete: Training): Observable<any>;
 
-  abstract editExercise(exerciseToEdit: Exercise): void;
+  abstract editCycle(cycleToEdit: Cycle): Observable<any>;
 
-  abstract editTraining(trainingToEdit: Training, exercisesToEdit: Exercise[]): void;
+  abstract editExercise(exerciseToEdit: Exercise): Observable<any>;
 
-  abstract hasUserOnlyFinishedCycles(): boolean;
+  abstract editTraining(trainingToEdit: Training, exercisesToEdit: Exercise[]): Observable<any>;
+
+  abstract hasUserOnlyFinishedCycles(): Observable<boolean>;
 
   public getCyclePreviewTitle(cyclePreview: CyclePreview): string {
 
@@ -51,7 +51,7 @@ export abstract class TrainingsService {
       let title: string = `${this.dictionaryService.getDictionaryValue('page.trainings.cycle.card.title')} `
         + `${this.dateService.parseDateToString(cyclePreview.startDate)} - `;
 
-      if (cyclePreview.isFinished && cyclePreview.endDate) {
+      if (cyclePreview.finished && cyclePreview.endDate) {
         title += `${this.dateService.parseDateToString(cyclePreview.endDate)}`;
       } else {
         title += `${this.dictionaryService.getDictionaryValue('page.trainings.cycle.current')}`;

@@ -39,9 +39,12 @@ export class ExerciseDeleteModal extends BaseModal implements OnInit {
 
   public onDeleteClick(): void {
     this.ngZone.runOutsideAngular(() => {
-      this.trainingsService.deleteExercise(this.selectedExercise);
-      this.trainingModalsService.callRefreshPage();
-      this.closeModal();
+      this.trainingsService.deleteExercise(this.selectedExercise).first()
+        .subscribe(
+          ok => this.trainingModalsService.callRefreshPage(),
+          error => console.error(error, 'error'),
+          () => this.closeModal()
+        );
     });
   }
 }

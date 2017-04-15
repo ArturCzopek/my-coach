@@ -16,12 +16,12 @@ export class TrainingModalsService {
   editTraining: Subject<any> = new Subject<any>();
   refreshPage: Subject<any> = new Subject<any>();
 
-  public callAddCycle() {
-    this.addCycle.next(null);
+  public callAddCycle(finishedCycles: boolean) {
+    this.addCycle.next(finishedCycles);
   }
 
-  public callAddExercise() {
-    this.addExercises.next(null);
+  public callAddExercise(finishedCycles: boolean) {
+    this.addExercises.next(finishedCycles);
   }
 
   public callAddTraining() {

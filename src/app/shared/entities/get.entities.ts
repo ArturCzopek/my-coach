@@ -1,7 +1,7 @@
 export class Cycle {
   constructor(public cycleId: number,
               public sets: Set[],
-              public isFinished: boolean,
+              public finished: boolean,
               public startDate: Date,
               public endDate?: Date) {
   }
@@ -16,9 +16,9 @@ export class Exercise {
 }
 
 export class ExerciseSession {
-  constructor(public exereciseSessionId: number,
+  constructor(public exerciseSessionId: number,
               public series?: Series[],
-              public isEmpty = false) {
+              public empty = false) {
   }
 }
 

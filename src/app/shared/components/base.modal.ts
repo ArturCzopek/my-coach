@@ -3,7 +3,7 @@ import {MaterializeAction} from "angular2-materialize";
 import {DictionaryService} from "../services/dictionary.service";
 import {MODAL_PARAMS} from "../global.values";
 import {ServiceInjector} from "../services/service.injector";
-import {Subscription} from "rxjs";
+import {Subscription} from "rxjs/Subscription";
 
 declare var $: any;
 declare var Materialize: any;

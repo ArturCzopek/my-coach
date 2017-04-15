@@ -48,7 +48,10 @@ export class TrainingEditModal extends BaseModal implements OnInit {
       super.initDataBeforeOpenModal();
       this.exercisesForTraining = [];
       this.trainingDate = this.dateService.parseDateToString(this.selectedTraining.trainingDate);
-      this.exercisesForTraining = this.trainingsService.getExercisesWithSessionForTraining(this.selectedTraining);
+      this.trainingsService.getExercisesWithSessionForTraining(this.selectedTraining.trainingId).first().subscribe(
+        exercises => this.exercisesForTraining = exercises,
+        error => console.error(error, 'error')
+      );
     });
   }
 
@@ -65,25 +68,26 @@ export class TrainingEditModal extends BaseModal implements OnInit {
   }
 
   public isDataValid(): boolean {
-    return this.ngZone.runOutsideAngular(() => {
-      if (!this.exercisesForTraining) {
-        return false;
-      }
+    if (!this.exercisesForTraining) {
+      return false;
+    }
 
-      return this.exercisesForTraining.every((exercise, i) =>
-          exercise.exerciseSessions[0].series.length > 0 &&
-          exercise.exerciseSessions[0].series.forEach(series => series.repeats > 0)
-          || exercise.exerciseSessions[0].isEmpty
-        ) && this.dateService.isDateValid(this.trainingDate);
-    });
+    return this.exercisesForTraining.every((exercise, i) =>
+        (exercise.exerciseSessions[0].series.length > 0 &&
+        exercise.exerciseSessions[0].series.every(series => series.repeats > 0))
+        || exercise.exerciseSessions[0].empty
+      ) && this.dateService.isDateValid(this.trainingDate);
   }
 
   public onEditClick(): void {
     this.ngZone.runOutsideAngular(() => {
       this.selectedTraining.trainingDate = this.dateService.parseStringToDate(this.trainingDate);
-      this.trainingsService.editTraining(this.selectedTraining, this.exercisesForTraining);
-      this.trainingModalsService.callRefreshPage();
-      this.closeModal();
+      this.trainingsService.editTraining(this.selectedTraining, this.exercisesForTraining).first()
+        .subscribe(
+          ok => this.trainingModalsService.callRefreshPage(),
+          error => console.error(error, 'error'),
+          () => this.closeModal()
+        );
     });
   }
 

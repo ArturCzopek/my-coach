@@ -20,6 +20,7 @@ export class CycleAddModal extends BaseModal implements OnInit, AfterViewInit {
   public cycleToAdd: NewCycle = null;
   public setsToAdd: NewSet[] = [];
   public startDate = '';
+  public finishedCycles: boolean;
 
   @ViewChild('emptySetLink')
   public emptySetLink: ElementRef;
@@ -38,13 +39,13 @@ export class CycleAddModal extends BaseModal implements OnInit, AfterViewInit {
       super.ngOnInit();
 
       this.initialization$ = this.trainingModalsService.addCycle.subscribe(
-        () => {
+        finishedCycles => {
+          this.finishedCycles = finishedCycles;
           this.openModal();
         }
       );
     });
   }
-
 
   ngAfterViewInit(): void {
     this.renderer.listen(this.emptySetLink.nativeElement, 'click', () => this.addNewEmptySetToList());
@@ -68,16 +69,19 @@ export class CycleAddModal extends BaseModal implements OnInit, AfterViewInit {
     this.ngZone.runOutsideAngular(() => {
       this.cycleToAdd = new NewCycle(this.dateService.parseStringToDate(this.startDate), this.setsToAdd);
 
-      this.trainingsService.addCycle(this.cycleToAdd);
-
-      this.trainingModalsService.callRefreshPage();
-      this.closeModal();
+      this.trainingsService.addCycle(this.cycleToAdd).first()
+        .subscribe(
+          ok => this.trainingModalsService.callRefreshPage(),
+          error => console.error(error, 'error'),
+          () => this.closeModal()
+        );
     });
   }
 
   public canModalBeOpened(): boolean {
     return this.ngZone.runOutsideAngular(() => {
-      if (!this.trainingsService.hasUserOnlyFinishedCycles()) {
+
+      if (!this.finishedCycles) {
         Materialize.toast(this.dictionaryService.getDictionaryValue('page.trainings.cycle.finishAll.tooltip'), 3000);
         return false;
       }

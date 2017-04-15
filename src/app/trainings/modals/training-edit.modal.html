@@ -24,11 +24,11 @@
         </thead>
         <tbody>
         <tr *ngFor="let exercise of exercisesForTraining; trackBy: trackByExerciseId let exId = index"
-            [ngClass]="exercise.exerciseSessions[0].isEmpty ? 'inactive' : ''">
+            [ngClass]="exercise.exerciseSessions[0].empty ? 'inactive' : ''">
           <td class="exercise">
             <div class="input-field inline">
               <input type="checkbox" id="isActive_{{exId}}" name="isActive_{{exId}}" class="filled-in blue-checkbox"
-                     [(ngModel)]="!exercise.exerciseSessions[0].isEmpty"/>
+                     [(ngModel)]="!exercise.exerciseSessions[0].empty"/>
               <label class="asText" for="isActive_{{exId}}">{{exercise.exerciseName}}</label>
             </div>
             <i *ngIf="exercise.exerciseDescription" class="material-button material-icons tooltipped"
@@ -38,18 +38,18 @@
           <td class="repeats">
             <div *ngFor="let series of exercise.exerciseSessions[0].series; trackBy: trackBySeriesId; let serId = index">
               <div class="input-field inline short">
-                <input [disabled]="exercise.exerciseSessions[0].isEmpty" type="number" min="0" step="1" [(ngModel)]="series.repeats"
+                <input [disabled]="exercise.exerciseSessions[0].empty" type="number" min="0" step="1" [(ngModel)]="series.repeats"
                        name="{{'repeats_' + (selectedSetNr + 1) + '_' + (exId + 1) + '_' + (serId + 1)}}"
                        id="{{'repeats_' + (selectedSetNr + 1) + '_' + (exId + 1) + '_' + (serId + 1)}}">
               </div>
               {{'global.multiply.label' | dictionary}}
               <div class="input-field inline short">
-                <input [disabled]="exercise.exerciseSessions[0].isEmpty" type="number" min="0" step="0.25" [(ngModel)]="series.weight"
+                <input [disabled]="exercise.exerciseSessions[0].empty" type="number" min="0" step="0.25" [(ngModel)]="series.weight"
                        name="{{'weight' + (selectedSetNr + 1) + '_' + (exId + 1) + '_' + (serId + 1)}}"
                        id="{{'weight' + (selectedSetNr + 1) + '_' + (exId + 1) + '_' + (serId + 1)}}">
               </div>
               {{'global.weight.label' | dictionary}}
-              <i [ngClass]="exercise.exerciseSessions[0].isEmpty ? 'disabled': ''" (click)="onDeleteSeries(exId, serId)" class="material-button material-icons tooltipped small"
+              <i [ngClass]="exercise.exerciseSessions[0].empty ? 'disabled': ''" (click)="onDeleteSeries(exId, serId)" class="material-button material-icons tooltipped small"
                  materialize="tooltip" data-position="bottom" data-delay="50"
                  [attr.data-tooltip]="'page.trainings.modal.deleteSeries.tooltip' | dictionary">delete</i>
 
@@ -60,7 +60,7 @@
           <td>
             <div *ngFor="let series of exercise.exerciseSessions[0].series; let serId = index">
               <div class="input-field inline">
-                <input [disabled]="exercise.exerciseSessions[0].isEmpty" type="text" [(ngModel)]="series.comment"
+                <input [disabled]="exercise.exerciseSessions[0].empty" type="text" [(ngModel)]="series.comment"
                        name="{{'comment' + (selectedSetNr + 1) + '_' + (exId + 1) + '_' + (serId + 1)}}"
                        id="{{'comment' + (selectedSetNr + 1) + '_' + (exId + 1) + '_' + (serId + 1)}}">
               </div>

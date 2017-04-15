@@ -22,7 +22,7 @@ export class ConfigService {
           console.error(error);
           resolve(error);
         }
-      )
+      );
     });
   }
 }

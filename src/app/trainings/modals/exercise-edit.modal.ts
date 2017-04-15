@@ -61,9 +61,15 @@ export class ExerciseEditModal extends BaseModal implements OnInit {
 
   public onEditClick(): void {
     this.ngZone.runOutsideAngular(() => {
-      this.trainingsService.editExercise(new Exercise(this.selectedExercise.exerciseId, this.newExerciseName, [], this.newExerciseDescription));
-      this.trainingModalsService.callRefreshPage();
-      this.closeModal();
+      this.trainingsService
+        .editExercise(
+          new Exercise(this.selectedExercise.exerciseId, this.newExerciseName, [], this.newExerciseDescription)
+        ).first()
+        .subscribe(
+          ok => this.trainingModalsService.callRefreshPage(),
+          error => console.error(error, 'error'),
+          () => this.closeModal()
+        );
     });
   }
 }

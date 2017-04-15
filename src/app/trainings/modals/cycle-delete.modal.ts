@@ -52,9 +52,12 @@ export class CycleDeleteModal extends BaseModal implements OnInit {
 
   public onDeleteClick(): void {
     this.ngZone.runOutsideAngular(() => {
-      this.trainingsService.deleteCycle(this.selectedCycle);
-      this.trainingModalsService.callRefreshPage();
-      this.closeModal();
+      this.trainingsService.deleteCycle(this.selectedCycle).first()
+        .subscribe(
+          ok => this.trainingModalsService.callRefreshPage(),
+          error => console.error(error, 'error'),
+          () => this.closeModal()
+        );
     });
   }
 }

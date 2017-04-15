@@ -7,7 +7,7 @@
 }
 
 .picker__day.picker__day--today, .picker__close, .picker__today {
- color: #1976D2;
+  color: #1976D2;
 }
 
 /*Styles for materialize forms*/
@@ -16,6 +16,7 @@
 .input-field input:focus + label {
   color: #1976D2;
 }
+
 /* label underline focus color */
 .input-field input:focus {
   border-bottom: 1px solid #1976D2;
@@ -42,6 +43,7 @@
 textarea.materialize-textarea:focus:not([readonly]) + label {
   color: #1976D2;
 }
+
 /* label underline focus color textarea */
 textarea.materialize-textarea:focus:not([readonly]) {
   border-bottom: 1px solid #1976D2;

@@ -23,9 +23,9 @@ export abstract class WeightsService {
 
   abstract addWeight(weightToAdd: NewWeight): Observable<any>;
 
-  abstract editWeights(weightsToEdit: Weight[]): Observable<any>;
-
   abstract deleteWeights(weights: Weight[]): Observable<any>;
+
+  abstract editWeights(weightsToEdit: Weight[]): Observable<any>;
 
   public getAllDays(weights: Weight[]): number[] {
     return weights.map(weight => weight.measurementDate.getDate());

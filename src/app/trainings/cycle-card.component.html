@@ -4,12 +4,12 @@
       <p>{{previewTitle}}</p>
       <div class="card-title-icons">
         <i (click)="onEditClick()" class="small material-icons tooltipped" materialize="tooltip"
-           data-position="bottom" data-delay="50" [attr.data-tooltip]="'page.reports.edit.tooltip' | dictionary">mode_edit</i>
+           data-position="bottom" data-delay="50" [attr.data-tooltip]="'page.trainings.cycle.edit.tooltip' | dictionary">mode_edit</i>
         <i (click)="onDeleteClick()" class="small material-icons tooltipped" materialize="tooltip"
-           data-position="bottom" data-delay="50" [attr.data-tooltip]="'page.reports.delete.tooltip' | dictionary">delete</i>
+           data-position="bottom" data-delay="50" [attr.data-tooltip]="'page.trainings.cycle.delete.tooltip' | dictionary">delete</i>
       </div>
     </span>
-    <img class="right tooltipped" [ngClass]="arrowImageClass" src="assets/img/arrow_down.png"
+    <img class="right" [ngClass]="arrowImageClass" src="assets/img/arrow_down.png"
          (click)="onCycleClick()"/>
   </div>
 
@@ -22,7 +22,7 @@
       <div materialize="carousel" [materializeParams]="[{full_width: true, no_wrap: true}]" class="carousel carousel-slider center"
            data-indicators="true">
         <div *ngFor="let set of cycle.sets; trackBy: trackBySetId" class="carousel-item">
-          <coach-set-section [set]="set"></coach-set-section>
+          <coach-set-section [set]="set" [finishedCycles]="finishedCycles"></coach-set-section>
         </div>
       </div>
     </ng-template>

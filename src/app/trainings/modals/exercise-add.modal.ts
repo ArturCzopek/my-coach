@@ -19,6 +19,7 @@ export class ExerciseAddModal extends BaseModal implements OnInit {
 
   public exercisesToAdd: NewExercise[] = [];
   public activeCycle: Cycle = null;
+  public finishedCycles: boolean;
 
   private trainingsService: TrainingsService;
 
@@ -32,7 +33,8 @@ export class ExerciseAddModal extends BaseModal implements OnInit {
       super.ngOnInit();
 
       this.initialization$ = this.trainingModalsService.addExercises.subscribe(
-        () => {
+        finishedCycles => {
+          this.finishedCycles = finishedCycles;
           this.openModal();
         }
       );
@@ -44,7 +46,10 @@ export class ExerciseAddModal extends BaseModal implements OnInit {
       super.initDataBeforeOpenModal();
 
       this.exercisesToAdd = [];
-      this.activeCycle = this.trainingsService.getActiveCycle();
+      this.trainingsService.getActiveCycle().first().subscribe(
+        cycle => this.activeCycle = cycle,
+        error => console.error('error', error)
+      );
 
     });
   }
@@ -69,15 +74,18 @@ export class ExerciseAddModal extends BaseModal implements OnInit {
 
   public onAddClick(): void {
     this.ngZone.runOutsideAngular(() => {
-      this.trainingsService.addExercises(this.exercisesToAdd);
-      this.trainingModalsService.callRefreshPage();
-      this.closeModal();
+      this.trainingsService.addExercises(this.exercisesToAdd).first()
+        .subscribe(
+          ok => this.trainingModalsService.callRefreshPage(),
+          error => console.error(error, 'error'),
+          () => this.closeModal()
+        );
     });
   }
 
   public canModalBeOpened(): boolean {
     return this.ngZone.runOutsideAngular(() => {
-      if (this.trainingsService.hasUserOnlyFinishedCycles()) {
+      if (this.finishedCycles) {
         Materialize.toast(this.dictionaryService.getDictionaryValue('page.trainings.cycle.notActive.tooltip'), 3000);
         return false;
       }

@@ -13,11 +13,13 @@ import {TrainingModalsService} from "./services/training-modals.service";
 })
 export class SetSectionComponent implements AfterViewInit {
   @Input() set: Set;
+  @Input() finishedCycles: boolean;
 
   private dateService: DateService;
   private trainingsService: TrainingsService;
 
-  constructor(serviceInjector: ServiceInjector, private trainingModalsService: TrainingModalsService, private changeDetectorRef: ChangeDetectorRef) {
+  constructor(serviceInjector: ServiceInjector, private trainingModalsService: TrainingModalsService,
+              private changeDetectorRef: ChangeDetectorRef) {
     this.dateService = serviceInjector.getDateService();
     this.trainingsService = serviceInjector.getTrainingsService();
   }
@@ -27,7 +29,7 @@ export class SetSectionComponent implements AfterViewInit {
   }
 
   onAddExercise() {
-    this.trainingModalsService.callAddExercise();
+    this.trainingModalsService.callAddExercise(this.finishedCycles);
   }
 
   onDeleteExercise(exercise: Exercise) {
@@ -51,7 +53,7 @@ export class SetSectionComponent implements AfterViewInit {
   }
 
   trackBySessionId(index, session: ExerciseSession) {
-    return session.exereciseSessionId;
+    return session.exerciseSessionId;
   }
 
   trackBySeriesId(index, series: Series) {

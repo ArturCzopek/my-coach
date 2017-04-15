@@ -22,11 +22,12 @@ export class WeightsBackEndService extends WeightsService {
   }
 
   public getWeights(weightsPreview: WeightsPreview): Observable<Weight[]> {
-    return this.http.get(`${environment.url}${this.weightUrl}/forDate/${weightsPreview.year}/${weightsPreview.month}`).map(res => res.json());
+    return this.http.get(`${environment.url}${this.weightUrl}/forDate/${weightsPreview.year}/${weightsPreview.month}`)
+      .map(res => res.json());
   }
 
   public addWeight(weightToAdd: NewWeight): Observable<any> {
-    return this.http.post(`${environment.url}${this.weightUrl}/add`,  weightToAdd);
+    return this.http.post(`${environment.url}${this.weightUrl}/add`, weightToAdd);
   }
 
   public deleteWeights(weightsToDelete: Weight[]): Observable<any> {

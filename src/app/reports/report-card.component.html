@@ -9,7 +9,7 @@
            data-position="bottom" data-delay="50" [attr.data-tooltip]="'page.reports.delete.tooltip' | dictionary">delete</i>
       </div>
     </span>
-    <img class="right tooltipped" [ngClass]="arrowImageClass" src="assets/img/arrow_down.png"
+    <img class="right" [ngClass]="arrowImageClass" src="assets/img/arrow_down.png"
          (click)="onReportClick()"/>
   </div>
   <div *ngIf="showData" class="card-action" [ngClass]="getLoadingStyle()">

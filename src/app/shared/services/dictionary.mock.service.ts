@@ -1,6 +1,6 @@
 import {DictionaryService} from "./dictionary.service";
 import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class DictionaryMockService extends DictionaryService {

@@ -62,13 +62,13 @@ export class WeightsMockService extends WeightsService {
     return Observable.of(true);
   }
 
-  public editWeights(weightsToEdit: Weight[]): Observable<any> {
+  public deleteWeights(weights: Weight[]): Observable<any> {
 
-    for (const weight of weightsToEdit) {
+    for (const weightToDelete of weights) {
       for (const weightList of WEIGHT_LIST) {
         for (let i = 0; i < weightList.length; i++) {
-          if (weightList[i].weightId === weight.weightId) {
-            weightList[i] = weight;
+          if (weightList[i].weightId === weightToDelete.weightId) {
+            weightList.splice(i, 1);
             break;
           }
         }
@@ -78,13 +78,13 @@ export class WeightsMockService extends WeightsService {
     return Observable.of(true);
   }
 
-  public deleteWeights(weights: Weight[]): Observable<any> {
+  public editWeights(weightsToEdit: Weight[]): Observable<any> {
 
-    for (const weightToDelete of weights) {
+    for (const weight of weightsToEdit) {
       for (const weightList of WEIGHT_LIST) {
         for (let i = 0; i < weightList.length; i++) {
-          if (weightList[i].weightId === weightToDelete.weightId) {
-            weightList.splice(i, 1);
+          if (weightList[i].weightId === weight.weightId) {
+            weightList[i] = weight;
             break;
           }
         }

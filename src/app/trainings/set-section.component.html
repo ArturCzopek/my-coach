@@ -16,7 +16,8 @@
   <tbody *ngIf="set.exercises.length > 0; else noExercises">
   <tr *ngFor="let exercise of set.exercises; trackBy: trackByExerciseId">
     <td>{{exercise.exerciseName}}
-      <i *ngIf="exercise.exerciseDescription" class="material-button material-icons tooltipped no-pointer" materialize="tooltip"
+      <i *ngIf="exercise.exerciseDescription" class="material-button material-icons tooltipped no-pointer"
+         materialize="tooltip"
          data-position="bottom" data-delay="50" [attr.data-tooltip]="exercise.exerciseDescription">comment</i>
       <i (click)="onEditExercise(exercise)" class="small material-icons material-button tooltipped hover-visible"
          materialize="tooltip" data-position="bottom" data-delay="50"
@@ -31,6 +32,9 @@
         <i *ngIf="series.comment" class="material-button material-icons tooltipped" materialize="tooltip"
            data-position="bottom" data-delay="50" [attr.data-tooltip]="series.comment">comment</i>
       </div>
+      <div *ngIf="!session.series || session.series.length === 0">
+        <p>-</p>
+      </div>
     </td>
   </tr>
   </tbody>
@@ -42,8 +46,8 @@
         <i class="medium material-icons">info_outline</i>
       </div>
       <div class="row">
-        <p>{{'page.trainings.set.noExercises.info' | dictionary}} <a class="click" (click)="onAddExercise()">{{'page.trainings.set.noExercises.click.info'
-          | dictionary}}</a></p>
+        <p>{{'page.trainings.set.noExercises.info' | dictionary}}</p>
+        <p><a class="click" (click)="onAddExercise()">{{'page.trainings.set.noExercises.click.info' | dictionary}}</a></p>
       </div>
     </div>
     </tbody>

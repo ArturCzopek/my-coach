@@ -50,8 +50,14 @@ export class CycleEditModal extends BaseModal implements OnInit {
     this.ngZone.runOutsideAngular(() => {
       super.initDataBeforeOpenModal();
       this.startDate = this.dateService.parseDateToString(this.selectedCycle.startDate);
-      this.endDate = this.dateService.parseDateToString(this.selectedCycle.endDate);
-      this.isFinished = this.selectedCycle.isFinished;
+
+      if (this.selectedCycle.endDate) {
+        this.endDate = this.dateService.parseDateToString(this.selectedCycle.endDate);
+      } else {
+        this.endDate = this.dateService.parseDateToString(new Date());
+
+      }
+      this.isFinished = this.selectedCycle.finished;
 
       this.isOtherCycleActive = this.isFinished;
     });
@@ -77,11 +83,20 @@ export class CycleEditModal extends BaseModal implements OnInit {
   public onEditClick(): void {
     this.ngZone.runOutsideAngular(() => {
       this.selectedCycle.startDate = this.dateService.parseStringToDate(this.startDate);
-      this.selectedCycle.endDate = this.dateService.parseStringToDate(this.endDate);
-      this.selectedCycle.isFinished = this.isFinished;
-      this.trainingsService.editCycle(this.selectedCycle);
-      this.trainingModalsService.callRefreshPage();
-      this.closeModal();
+      this.selectedCycle.finished = this.isFinished;
+
+      if (this.selectedCycle.finished) {
+        this.selectedCycle.endDate = this.dateService.parseStringToDate(this.endDate);
+      } else {
+        this.selectedCycle.endDate = null;
+      }
+
+      this.trainingsService.editCycle(this.selectedCycle).first()
+        .subscribe(
+          ok => this.trainingModalsService.callRefreshPage(),
+          error => console.error(error, 'error'),
+          () => this.closeModal()
+        );
     });
   }
 }

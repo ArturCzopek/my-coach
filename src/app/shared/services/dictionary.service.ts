@@ -1,4 +1,4 @@
-import {Observable} from "rxjs";
+import {Observable} from "rxjs/Observable";
 
 export abstract class DictionaryService {
 
@@ -23,12 +23,12 @@ export abstract class DictionaryService {
       this.getDictionaryFromDb().subscribe(
         dictionaryEntries => {
           this.loadDictionary(dictionaryEntries);
-          return this.dateDictionarySettings
+          return this.dateDictionarySettings;
         },
         error => {
           console.error(error);
         }
-      )
+      );
     }
 
     return this.dateDictionarySettings;
