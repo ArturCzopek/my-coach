@@ -53,7 +53,6 @@ export class WeightsCardComponent extends BaseCardComponent implements OnInit {
             weights => {
               this.weights = this.weightsService.parseFromServer(weights);
 
-
               this.weightsDays = this.weightsService.getAllDays(this.weights);
               this.weightsValues = this.weightsService.getAllValues(this.weights);
               this.chartData = [

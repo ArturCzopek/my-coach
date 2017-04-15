@@ -46,26 +46,31 @@ export class ReportMockService extends ReportService {
     });
   }
 
-  public addReport(reportToAdd: NewReport): void {
+  public addReport(reportToAdd: NewReport): Observable<any> {
     const report: Report = new Report(this.newReportId, reportToAdd.content, reportToAdd.startDate, reportToAdd.endDate);
     const reportPreview: ReportPreview = new ReportPreview(this.newReportId, reportToAdd.startDate, reportToAdd.endDate);
     this.newReportId++;
 
     REPORTS_LIST.push(report);
     REPORT_PREVIEWS_LIST.push(reportPreview);
+
+    return Observable.of(true);
   }
 
-  public deleteReport(reportToDelete: Report): void {
+  public deleteReport(reportToDelete: Report): Observable<any> {
     const reportId = REPORTS_LIST.findIndex(report => report.reportId === reportToDelete.reportId);
     REPORTS_LIST.splice(reportId, 1);
     REPORT_PREVIEWS_LIST.splice(reportId, 1);
+
+    return Observable.of(true);
   }
 
-
-  editReport(reportToEdit: Report): void {
+  public editReport(reportToEdit: Report): Observable<any> {
     const reportId: number = REPORTS_LIST.findIndex(report => report.reportId === reportToEdit.reportId);
     REPORTS_LIST[reportId] = reportToEdit;
     REPORT_PREVIEWS_LIST[reportId].startDate = reportToEdit.startDate;
     REPORT_PREVIEWS_LIST[reportId].endDate = reportToEdit.endDate;
+
+    return Observable.of(true);
   }
 }

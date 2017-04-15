@@ -9,8 +9,8 @@
         <i class="medium material-icons">info_outline</i>
       </div>
       <div class="row">
-        <p>{{'page.prices.list.noData.info' | dictionary}} <a (click)="onAddProductClick()">{{'page.prices.list.noData.click.info'
-          | dictionary}}</a></p>
+        <p>{{'page.prices.list.noData.info' | dictionary}}</p>
+        <p><a (click)="onAddProductClick()">{{'page.prices.list.noData.click.info' | dictionary}}</a></p>
       </div>
     </ng-template>
 
@@ -40,7 +40,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let price of shoppingListToAdd.prices; let i = index">
+        <tr *ngFor="let price of shoppingListToAdd.prices; trackBy: trackByPriceId; let i = index;">
           <td>
             <div class="input-field inline">
               <label for="{{'product_' + (i + 1)}}">{{'page.prices.product.label' | dictionary}} #{{(i + 1)}}</label>

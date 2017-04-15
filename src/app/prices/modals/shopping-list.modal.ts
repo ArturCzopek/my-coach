@@ -6,7 +6,7 @@ import {PricesModalsService} from "../services/prices-modals.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {DOES_NOT_CONTAIN} from "../../shared/global.values";
 import {DateService} from "../../shared/services/date.service";
-import {Product} from "../../shared/entities/get.entities";
+import {Price, Product} from "../../shared/entities/get.entities";
 import {BaseModal} from "../../shared/components/base.modal";
 
 declare var $: any;
@@ -92,6 +92,10 @@ export class ShoppingListModal extends BaseModal implements OnInit {
   public onDeletePrice(index: number) {
     this.shoppingListToAdd.prices.splice(index, 1);
     this.productNamesForPrices.splice(index, 1);
+  }
+
+  public trackByPriceId(index, price: Price) {
+    return price.priceId;
   }
 
   private getProductIdForName(productName: string): number {

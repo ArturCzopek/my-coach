@@ -11,7 +11,7 @@
       </thead>
 
       <tbody>
-      <tr *ngFor="let weight of selectedWeights; let i = index">
+      <tr *ngFor="let weight of selectedWeights; trackBy: trackByWeightId;  let i = index">
         <td class="half-width-cell">{{formattedDays[i]}}</td>
         <td class="half-width-cell">
           <div class="input-field inline">

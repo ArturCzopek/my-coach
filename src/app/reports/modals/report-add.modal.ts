@@ -53,8 +53,11 @@ export class ReportAddModal extends BaseModal implements OnInit {
     this.reportToAdd = new NewReport(this.reportContent, this.dateService.parseStringToDate(this.startDate),
       this.dateService.parseStringToDate(this.endDate));
 
-    this.reportService.addReport(this.reportToAdd);
-    this.reportModalsService.callRefreshPage();
-    this.closeModal();
+    this.reportService.addReport(this.reportToAdd).first()
+      .subscribe(
+        ok => this.reportModalsService.callRefreshPage(),
+        error => console.error('error', error),
+        () => this.closeModal()
+      );
   }
 }

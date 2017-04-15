@@ -37,4 +37,8 @@ export class WeightsListComponent implements OnInit {
   onAddClick() {
     this.weightsModalsService.callAddWeight();
   }
+
+  trackByWeightsPreviewId(index, weightsPreview: WeightsPreview) {
+    return `${weightsPreview.month} ${weightsPreview.year}`;
+  }
 }

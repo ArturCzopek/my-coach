@@ -66,4 +66,8 @@ export class PricesEditModal extends BaseModal implements OnInit {
       this.pricesToEditIndexes.push(price);
     }
   }
+
+  public trackByPriceId(index, price: Price) {
+    return price.priceId;
+  }
 }

@@ -9,7 +9,7 @@
             <div class="input-field inline full">
               <select id="{{'set_' + (i+1)}}" [(ngModel)]="selectedSetNr" name="{{'set_' + (i+1)}}"
                       style="display:inline;">
-                <option *ngFor="let set of activeCycle.sets; let i = index" [ngValue]="i">{{set.setName}}</option>
+                <option *ngFor="let set of activeCycle.sets; trackBy: trackBySetId; let i = index" [ngValue]="i">{{set.setName}}</option>
               </select>
             </div>
           </div>

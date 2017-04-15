@@ -1,12 +1,11 @@
 import {Observable} from "rxjs";
-import {Http} from "@angular/http";
 
 export abstract class DictionaryService {
 
   protected dictionary: any = null;
   protected dateDictionarySettings: any = null;
 
-  constructor(protected http: Http) {
+  constructor() {
   }
 
   public loadDictionary(dictionary: any) {
@@ -19,6 +18,19 @@ export abstract class DictionaryService {
   }
 
   public getDateDictionarySettings(): any {
+
+    if (!this.dateDictionarySettings) {
+      this.getDictionaryFromDb().subscribe(
+        dictionaryEntries => {
+          this.loadDictionary(dictionaryEntries);
+          return this.dateDictionarySettings
+        },
+        error => {
+          console.error(error);
+        }
+      )
+    }
+
     return this.dateDictionarySettings;
   }
 

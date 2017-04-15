@@ -7,8 +7,8 @@ import {Observable} from "rxjs";
 @Injectable()
 export class DictionaryBackEndService extends DictionaryService {
 
-  constructor(http: Http) {
-    super(http);
+  constructor(private http: Http) {
+    super();
   }
 
   public getDictionaryFromDb(): Observable<any> {

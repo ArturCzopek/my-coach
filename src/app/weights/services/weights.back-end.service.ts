@@ -13,8 +13,8 @@ export class WeightsBackEndService extends WeightsService {
 
   private weightUrl = '/weight';
 
-  constructor(private injector: Injector, http: Http) {
-    super(injector.get(ServiceInjector), http);
+  constructor(private injector: Injector, private http: Http)  {
+    super(injector.get(ServiceInjector));
   }
 
   public getWeightsPreviews(): Observable<WeightsPreview[]> {
@@ -26,24 +26,14 @@ export class WeightsBackEndService extends WeightsService {
   }
 
   public addWeight(weightToAdd: NewWeight): Observable<any> {
-    return this.http.post(`${environment.url}${this.weightUrl}/add`, new RequestOptions({body:  weightToAdd}));
-  }
-
-  public editWeights(weightsToUpdate: Weight[]): Observable<any> {
-    return this.http.put(`${environment.url}${this.weightUrl}/update`, new RequestOptions({body: weightsToUpdate}));
+    return this.http.post(`${environment.url}${this.weightUrl}/add`,  weightToAdd);
   }
 
   public deleteWeights(weightsToDelete: Weight[]): Observable<any> {
     return this.http.delete(`${environment.url}${this.weightUrl}/delete`, new RequestOptions({body: weightsToDelete}));
   }
 
-  public parseFromServer(weights: Weight[]): Weight[] {
-    weights.forEach(weight => {
-      if (typeof weight.measurementDate === "string") {
-        weight.measurementDate = this.dateService.parseStringFromServerToDate(weight.measurementDate);
-      }
-    });
-
-    return weights;
+  public editWeights(weightsToEdit: Weight[]): Observable<any> {
+    return this.http.put(`${environment.url}${this.weightUrl}/update`, weightsToEdit);
   }
 }

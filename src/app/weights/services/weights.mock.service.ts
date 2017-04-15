@@ -7,15 +7,14 @@ import {WEIGHTS_PREVIEWS_LIST} from "../../shared/entities/mock-data/previews/we
 import {WeightsService} from "./weights.service";
 import {NewWeight} from "../../shared/entities/add.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
-import {Http} from "@angular/http";
 
 @Injectable()
 export class WeightsMockService extends WeightsService {
 
   private newWeightId: number = WEIGHT_LIST[0].length + WEIGHT_LIST[1].length + 1;
 
-  constructor(private injector: Injector, http: Http) {
-    super(injector.get(ServiceInjector), http);
+  constructor(private injector: Injector)  {
+    super(injector.get(ServiceInjector));
   }
 
   public getWeightsPreviews(): Observable<WeightsPreview[]> {
@@ -63,9 +62,9 @@ export class WeightsMockService extends WeightsService {
     return Observable.of(true);
   }
 
-  public editWeights(weightsToUpdate: Weight[]): Observable<any> {
+  public editWeights(weightsToEdit: Weight[]): Observable<any> {
 
-    for (const weight of weightsToUpdate) {
+    for (const weight of weightsToEdit) {
       for (const weightList of WEIGHT_LIST) {
         for (let i = 0; i < weightList.length; i++) {
           if (weightList[i].weightId === weight.weightId) {
@@ -93,10 +92,5 @@ export class WeightsMockService extends WeightsService {
     }
 
     return Observable.of(true);
-  }
-
-
-  public parseFromServer(weights: Weight[]): Weight[] {
-    return weights;
   }
 }

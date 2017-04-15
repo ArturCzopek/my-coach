@@ -5,7 +5,7 @@
     </div>
 
     <ng-template #cycles>
-      <div *ngFor="let cyclePreview of cyclePreviews" class="col s12">
+      <div *ngFor="let cyclePreview of cyclePreviews; trackBy: trackByCyclePreviewId" class="col s12">
         <coach-cycle-card [cyclePreview]="cyclePreview"></coach-cycle-card>
       </div>
 
@@ -14,8 +14,8 @@
           <i class="large material-icons">info_outline</i>
         </div>
         <div class="row">
-          <p>{{'page.trainings.cycle.list.noData.info' | dictionary}} <a (click)="onAddClick()">{{'page.weights.list.noData.click.info'
-            | dictionary}}</a></p>
+          <p>{{'page.trainings.cycle.list.noData.info' | dictionary}}</p>
+          <p><a (click)="onAddClick()">{{'page.weights.list.noData.click.info' | dictionary}}</a></p>
         </div>
       </div>
     </ng-template>

@@ -15,7 +15,7 @@
       </thead>
 
       <tbody>
-      <tr *ngFor="let price of selectedPrices; let i = index">
+      <tr *ngFor="let price of selectedPrices; trackBy: trackByPriceId; let i = index">
         <!--<td>{{dateService.parseDateToString(price.priceDate)}} r.</td>-->
         <td>
           <div class="input-field inline">

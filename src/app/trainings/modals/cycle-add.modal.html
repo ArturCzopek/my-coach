@@ -16,7 +16,7 @@
           </div>
         </div>
 
-        <div *ngFor="let set of setsToAdd; let i = index" class="flex-cycle-add">
+        <div *ngFor="let set of setsToAdd; trackBy: trackByIndex; let i = index" class="flex-cycle-add">
 
           <div class="input-field flex-cycle-date">
             <i class="material-icons prefix">label</i>

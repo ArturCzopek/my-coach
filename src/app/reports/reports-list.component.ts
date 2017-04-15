@@ -26,20 +26,19 @@ export class ReportsListComponent implements OnInit {
 
   public loadReportPreviews() {
     this.isLoading = true;
-    this.reportService.getReportPreviews()
+    this.reportService.getReportPreviews().first()
       .subscribe(
-        previews => {
-          this.reportPreviews = previews.slice().reverse();
-        },
-        () => {
-        },
-        () => {
-          this.isLoading = false;
-        }
+        previews => this.reportPreviews = this.reportService.parsePreviewsFromServer(previews.slice().reverse()),
+        error => console.error('error', error),
+        () => this.isLoading = false
       );
   }
 
   onAddClick() {
     this.reportModalsService.callAddReport();
+  }
+
+  trackByReportPreviewId(index, reportPreview: ReportPreview) {
+    return reportPreview.reportId;
   }
 }

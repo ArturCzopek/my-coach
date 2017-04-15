@@ -55,3 +55,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .carousel .indicators .indicator-item:hover, .carousel .indicators .indicator-item:focus, .carousel .indicators .indicator-item:active, .carousel .indicators .indicator-item.active {
   background-color: black;
 }
+
+a {
+  cursor: pointer;
+}

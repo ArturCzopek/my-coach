@@ -5,7 +5,7 @@ import {ServiceInjector} from "../../shared/services/service.injector";
 import {BaseModal} from "../../shared/components/base.modal";
 import {TrainingsService} from "../services/tranings.service";
 import {TrainingModalsService} from "../services/training-modals.service";
-import {Cycle} from "../../shared/entities/get.entities";
+import {Cycle, Set} from "../../shared/entities/get.entities";
 import {DateService} from "../../shared/services/date.service";
 
 declare var Materialize: any;
@@ -112,6 +112,10 @@ export class TrainingAddModal extends BaseModal implements OnInit {
 
       return true;
     });
+  }
+
+  public trackBySetId(index, set: Set) {
+    return set.setId;
   }
 
   private initPossibleSetsToDisplay(): void {

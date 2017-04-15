@@ -1,8 +1,8 @@
-import {PipeTransform, Pipe} from "@angular/core";
+import {Pipe, PipeTransform} from "@angular/core";
 import {DictionaryService} from "../services/dictionary.service";
 import {ServiceInjector} from "../services/service.injector";
 
-@Pipe({name: 'dictionary'})
+@Pipe({name: 'dictionary', pure: true})
 export class DictionaryPipe implements PipeTransform {
 
   private dictionaryService: DictionaryService;

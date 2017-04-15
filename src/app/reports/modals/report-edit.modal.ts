@@ -18,9 +18,9 @@ export class ReportEditModal extends BaseModal implements OnInit {
 
   public selectedReport: Report = null;
   public modalTitle: string;
-  public reportContent= '';
-  public startDate= '';
-  public endDate= '';
+  public reportContent = '';
+  public startDate = '';
+  public endDate = '';
 
   private reportService: ReportService;
 
@@ -67,8 +67,11 @@ export class ReportEditModal extends BaseModal implements OnInit {
     this.selectedReport.startDate = this.dateService.parseStringToDate(this.startDate);
     this.selectedReport.endDate = this.dateService.parseStringToDate(this.endDate);
     this.selectedReport.content = this.reportContent;
-    this.reportService.editReport(this.selectedReport);
-    this.reportModalsService.callRefreshPage();
-    this.closeModal();
+    this.reportService.editReport(this.selectedReport).first()
+      .subscribe(
+        ok => this.reportModalsService.callRefreshPage(),
+        error => console.error('error', error),
+        () => this.closeModal()
+      );
   }
 }

@@ -51,8 +51,11 @@ export class ReportDeleteModal extends BaseModal implements OnInit {
   }
 
   public onDeleteClick() {
-    this.reportService.deleteReport(this.selectedReport);
-    this.reportModalsService.callRefreshPage();
-    this.closeModal();
+    this.reportService.deleteReport(this.selectedReport).first()
+      .subscribe(
+        ok => this.reportModalsService.callRefreshPage(),
+        error => console.error('error', error),
+        () => this.closeModal()
+      );
   }
 }

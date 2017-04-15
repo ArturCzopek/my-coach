@@ -31,19 +31,13 @@ export class ReportCardComponent extends BaseCardComponent implements OnInit {
   public onReportClick() {
     this.toggleShow();
 
-    if (this.showData) {
-      if (this.report == null) {
-        this.reportService.getReport(this.reportPreview.reportId)
-          .subscribe(
-            report => {
-              this.report = report;
-            },
-            () => {},
-            () => {
-              this.isLoading = false;
-            }
-          );
-      }
+    if (this.showData && this.report == null) {
+      this.reportService.getReport(this.reportPreview.reportId).first()
+        .subscribe(
+          report => this.report = this.reportService.parseFromServer(report),
+          error => console.error('error', error),
+          () => this.isLoading = false
+        );
     }
   }
 

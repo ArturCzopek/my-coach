@@ -4,7 +4,7 @@ import {ServiceInjector} from "../shared/services/service.injector";
 import {DictionaryService} from "../shared/services/dictionary.service";
 import {BaseCardComponent} from "../shared/components/base-card.component";
 import {TrainingsService} from "./services/tranings.service";
-import {Cycle} from "../shared/entities/get.entities";
+import {Cycle, Set} from "../shared/entities/get.entities";
 import {TrainingModalsService} from "./services/training-modals.service";
 
 @Component({
@@ -57,5 +57,9 @@ export class CycleCardComponent extends BaseCardComponent implements OnInit {
 
   public onDeleteClick() {
     this.trainingModalsService.callDeleteCycle(this.cycle, this.previewTitle);
+  }
+
+  public trackBySetId(index, set: Set) {
+    return set.setId;
   }
 }

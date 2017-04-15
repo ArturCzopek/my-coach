@@ -5,37 +5,35 @@ import {ReportService} from "./report.service";
 import {NewReport} from "../../shared/entities/add.entities";
 import {Injectable, Injector} from "@angular/core";
 import {ServiceInjector} from "../../shared/services/service.injector";
+import {Http, RequestOptions} from "@angular/http";
+import {environment} from "../../../environments/environment";
 
 @Injectable()
 export class ReportBackEndService extends ReportService {
 
-  constructor(private injector: Injector) {
+  private reportUrl = '/report';
+
+  constructor(private injector: Injector, private http: Http) {
     super(injector.get(ServiceInjector));
   }
 
   public getReportPreviews(): Observable<ReportPreview[]> {
-    console.log("ReportBackEndService#getReportPreviews not implemented yet");
-    return null;
+    return this.http.get(`${environment.url}${this.reportUrl}/previews`).map(res => res.json());
   }
 
   public getReport(reportId: number): Observable<Report> {
-    console.log("ReportBackEndService#getReport not implemented yet");
-    return null;
+    return this.http.get(`${environment.url}${this.reportUrl}/${reportId}`).map(res => res.json());
   }
 
-
-  addReport(reportToAdd: NewReport): void {
-    console.log("ReportBackEndService#addReport not implemented yet");
-    return null;
+  public addReport(reportToAdd: NewReport): Observable<any> {
+    return this.http.post(`${environment.url}${this.reportUrl}/add`,  reportToAdd);
   }
 
-  deleteReport(reportToDelete: Report): void {
-    console.log("ReportBackEndService#deleteReport not implemented yet");
-    return null;
+  public deleteReport(reportToDelete: Report): Observable<any> {
+    return this.http.delete(`${environment.url}${this.reportUrl}/delete`, new RequestOptions({body: reportToDelete}));
   }
 
-  editReport(reportToEdit: Report): void {
-    console.log("ReportBackEndService#editReport not implemented yet");
-    return null;
+  public editReport(reportToEdit: Report): Observable<any> {
+    return this.http.put(`${environment.url}${this.reportUrl}/update`, reportToEdit);
   }
 }

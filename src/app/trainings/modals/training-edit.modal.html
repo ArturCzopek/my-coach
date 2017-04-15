@@ -23,7 +23,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let exercise of exercisesForTraining; let exId = index"
+        <tr *ngFor="let exercise of exercisesForTraining; trackBy: trackByExerciseId let exId = index"
             [ngClass]="exercise.exerciseSessions[0].isEmpty ? 'inactive' : ''">
           <td class="exercise">
             <div class="input-field inline">
@@ -36,7 +36,7 @@
                data-position="bottom" data-delay="50" [attr.data-tooltip]="exercise.exerciseDescription">comment</i>
           </td>
           <td class="repeats">
-            <div *ngFor="let series of exercise.exerciseSessions[0].series; let serId = index">
+            <div *ngFor="let series of exercise.exerciseSessions[0].series; trackBy: trackBySeriesId; let serId = index">
               <div class="input-field inline short">
                 <input [disabled]="exercise.exerciseSessions[0].isEmpty" type="number" min="0" step="1" [(ngModel)]="series.repeats"
                        name="{{'repeats_' + (selectedSetNr + 1) + '_' + (exId + 1) + '_' + (serId + 1)}}"

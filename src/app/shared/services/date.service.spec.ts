@@ -4,8 +4,8 @@ import {DictionaryMockService} from "./dictionary.mock.service";
 
 describe('DateService', () => {
 
-  const fakeServiceInjector = { getDictionaryService: () => new DictionaryMockService() };
-  const fakeInjector =  { get: (ServiceInjector) => fakeServiceInjector};
+  const fakeServiceInjector = {getDictionaryService: () => new DictionaryMockService()};
+  const fakeInjector = {get: (ServiceInjector) => fakeServiceInjector};
 
   const dateService = new DateService(fakeInjector as Injector);
 
@@ -84,4 +84,5 @@ describe('DateService', () => {
     const secondDate = '199 Kwi 199';
     expect(dateService.isSecondDateLater(firstDate, secondDate)).toBe(false);
   });
+
 });

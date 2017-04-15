@@ -98,6 +98,10 @@ export class CycleAddModal extends BaseModal implements OnInit, AfterViewInit {
     });
   }
 
+  public trackByIndex(index, set: NewSet) {
+    return index;
+  }
+
   private hasEverySetName(): boolean {
     return this.ngZone.runOutsideAngular(() => {
       return this.setsToAdd.every(set => set.setName.length > 0);

@@ -68,8 +68,6 @@ export class WeightsEditModal extends BaseModal implements OnInit {
       weightsToEdit.push(this.selectedWeights[index]);
     });
 
-    weightsToEdit.forEach(weight => weight.measurementDate = this.dateService.updateTimeForPassedDate(weight.measurementDate));
-
     this.weightsService.editWeights(weightsToEdit).first()
       .subscribe(
         ok => this.weightsModalsService.callRefreshPage(),
@@ -82,5 +80,9 @@ export class WeightsEditModal extends BaseModal implements OnInit {
     if (this.weightsToEditIndexes.indexOf(dateIndex) === DOES_NOT_CONTAIN) {
       this.weightsToEditIndexes.push(dateIndex);
     }
+  }
+
+  public trackByWeightId(index, weight: Weight) {
+    return weight.weightId;
   }
 }

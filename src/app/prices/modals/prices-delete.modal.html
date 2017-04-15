@@ -6,7 +6,7 @@
 
     <form materialize class="col s12">
       <div class="row">
-        <p *ngFor="let price of selectedPrices; let i = index">
+        <p *ngFor="let price of selectedPrices; trackBy: trackByPriceId let i = index">
           <input type="checkbox" id="{{i}}" name="{{i}}" class="filled-in red-checkbox" [(ngModel)]="checkboxesForPrices[i]"/>
           <label for="{{i}}">{{getDateAsString(price.priceDate)}} - {{price.quantity}} x {{price.value}} {{'global.currency.label' | dictionary}}</label>
         </p>

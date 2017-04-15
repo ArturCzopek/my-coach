@@ -6,7 +6,7 @@
 
     <form materialize class="col s12">
       <div class="row">
-        <p *ngFor="let weight of selectedWeights; let i = index">
+        <p *ngFor="let weight of selectedWeights; trackBy: trackByWeightId; let i = index">
           <input type="checkbox" id="{{formattedDays[i]}}" name="{{formattedDays[i]}}" class="filled-in red-checkbox"
                  [(ngModel)]="checkboxesForWeights[i]"/>
           <label for="{{formattedDays[i]}}">{{formattedDays[i]}} - {{weight.value}}</label>

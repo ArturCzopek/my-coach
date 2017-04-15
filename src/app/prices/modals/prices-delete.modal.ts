@@ -86,4 +86,8 @@ export class PricesDeleteModal extends BaseModal implements OnInit {
   public getDateAsString(date: Date): string {
     return this.dateService.parseDateToString(date);
   }
+
+  public trackByPriceId(index, price: Price) {
+    return price.priceId;
+  }
 }

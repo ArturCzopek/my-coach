@@ -84,13 +84,15 @@ export class WeightsDeleteModal extends BaseModal implements OnInit {
       weightsToDelete.push(this.selectedWeights[index]);
     });
 
-    weightsToDelete.forEach(weight => weight.measurementDate = this.dateService.updateTimeForPassedDate(weight.measurementDate));
-
     this.weightsService.deleteWeights(weightsToDelete).first()
       .subscribe(
         ok => this.weightsModalsService.callRefreshPage(),
         error => console.error('error', error),
         () => this.closeModal()
       );
+  }
+
+  public trackByWeightId(index, weight: Weight) {
+    return weight.weightId;
   }
 }

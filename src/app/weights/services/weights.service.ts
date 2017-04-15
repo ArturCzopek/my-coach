@@ -5,15 +5,14 @@ import {Weight} from "../../shared/entities/get.entities";
 import {NewWeight} from "../../shared/entities/add.entities";
 import {DictionaryService} from "../../shared/services/dictionary.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
-import {Http} from "@angular/http";
 import {DateService} from "../../shared/services/date.service";
 
 export abstract class WeightsService {
 
   private dictionaryService: DictionaryService;
-  protected dateService: DateService;
+  private dateService: DateService;
 
-  constructor(@Inject(ServiceInjector) serviceInjector: ServiceInjector, protected http: Http) {
+  constructor(@Inject(ServiceInjector) protected serviceInjector: ServiceInjector) {
     this.dictionaryService = serviceInjector.getDictionaryService();
     this.dateService = serviceInjector.getDateService();
   }
@@ -24,11 +23,9 @@ export abstract class WeightsService {
 
   abstract addWeight(weightToAdd: NewWeight): Observable<any>;
 
-  abstract editWeights(weightsToUpdate: Weight[]): Observable<any>;
+  abstract editWeights(weightsToEdit: Weight[]): Observable<any>;
 
   abstract deleteWeights(weights: Weight[]): Observable<any>;
-
-  abstract parseFromServer(weights: Weight[]): Weight[];
 
   public getAllDays(weights: Weight[]): number[] {
     return weights.map(weight => weight.measurementDate.getDate());
@@ -56,6 +53,16 @@ export abstract class WeightsService {
     });
 
     return formattedDays;
+  }
+
+  public parseFromServer(weights: Weight[]): Weight[] {
+    weights.forEach(weight => {
+      if (typeof weight.measurementDate === "string") {
+        weight.measurementDate = this.dateService.parseStringFromServerToDate(weight.measurementDate);
+      }
+    });
+
+    return weights;
   }
 
   private formatDay(day: number): string {

@@ -86,4 +86,12 @@ export class TrainingEditModal extends BaseModal implements OnInit {
       this.closeModal();
     });
   }
+
+  public trackByExerciseId(index, exercise: Exercise) {
+    return exercise.exerciseId;
+  }
+
+  public trackBySeriesId(index, series: Series) {
+    return series.seriesId;
+  }
 }
