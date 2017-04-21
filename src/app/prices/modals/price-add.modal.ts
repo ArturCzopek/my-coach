@@ -57,9 +57,11 @@ export class PriceAddModal extends BaseModal implements OnInit {
   public onAddClick() {
     this.priceToAdd = new NewPrice(this.product.productId, this.price, this.quantity,
       this.place, this.dateService.parseStringToDate(this.priceDate));
-    this.pricesService.addPrice(this.priceToAdd);
-    this.pricesModalsService.callRefreshPage();
-    this.closeModal();
+    this.pricesService.addPrice(this.priceToAdd).first().subscribe(
+      ok => this.pricesModalsService.callRefreshPage(),
+      error => console.error(error, 'error'),
+      () => this.closeModal()
+    );
   }
 
   public getProductName(): string {

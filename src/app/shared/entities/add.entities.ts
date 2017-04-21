@@ -30,7 +30,7 @@ export class NewPrice {
 
 // image can be file or string, not sure how sending files will be implemented
 export class NewProduct {
-  constructor(public productName: string,
+  constructor(public productId: number = -1, public productName: string,
               public image?: string|any) {
   }
 }

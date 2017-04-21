@@ -5,7 +5,6 @@ import {NewProduct} from "../../shared/entities/add.entities";
 import {PricesModalsService} from "../services/prices-modals.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {BaseModal} from "../../shared/components/base.modal";
-import {Http} from "@angular/http";
 
 declare var $: any;
 
@@ -17,21 +16,25 @@ declare var $: any;
 export class ProductAddModal extends BaseModal implements OnInit {
 
   public productToAdd: NewProduct;
-  public productId = -1;
   public imageUrl = '';
+  public canStoreFiles: boolean;
 
   @ViewChild("imageFile")
   public imageFile: ElementRef;
 
+  @ViewChild("imageWrapper")
+  public imageWrapper: ElementRef;
+
   private pricesService: PricesService;
 
-  constructor(private pricesModalsService: PricesModalsService, private serviceInjector: ServiceInjector, private http: Http) {
+  constructor(private pricesModalsService: PricesModalsService, private serviceInjector: ServiceInjector) {
     super(serviceInjector);
     this.pricesService = serviceInjector.getPricesService();
   }
 
   public ngOnInit(): void {
     super.ngOnInit();
+    this.canStoreFiles = this.pricesService.canFilesBeStored();
 
     this.initialization$ = this.pricesModalsService.addProduct.subscribe(
       () => {
@@ -42,8 +45,7 @@ export class ProductAddModal extends BaseModal implements OnInit {
 
   public initDataBeforeOpenModal() {
     super.initDataBeforeOpenModal();
-    this.productToAdd = new NewProduct('', '');
-    this.productId = -1;
+    this.productToAdd = new NewProduct(-1, '', '');
     this.imageUrl = '';
   }
 
@@ -61,29 +63,31 @@ export class ProductAddModal extends BaseModal implements OnInit {
 
       const input = new FormData();
       input.append("file", file);
-      input.append("productId", this.productId);
+      input.append("productId", this.productToAdd.productId);
 
-      this.pricesService.addProductImage(file, this.productId).subscribe(
+      this.pricesService.addProductImage(file, this.productToAdd.productId).subscribe(
         productId => {
-          this.productId = productId;
-          this.imageUrl = this.pricesService.getProductImageUrl(productId);
+          this.productToAdd.productId = productId;
+          this.imageUrl = this.pricesService.getProductImageUrl(this.productToAdd.productId);
         }
       );
     }
   }
 
   public onAddClick() {
-    this.pricesService.addProduct(this.productToAdd);
-    this.pricesModalsService.callRefreshPage();
-    this.onCloseModal();
-  }
-
-  public canStoreFiles() {
-    this.pricesService.canFilesBeStored();
+    this.pricesService.addProduct(this.productToAdd).first().subscribe(
+      ok => this.pricesModalsService.callRefreshPage(),
+      error => console.error(error, 'error'),
+      () => this.onCloseModal()
+    );
   }
 
   public closeModal() {
     super.closeModal();
-    this.imageFile.nativeElement.files = [];
+
+    if (this.imageFile) {
+      this.imageFile.nativeElement.files[0] = null;
+      this.imageWrapper.nativeElement.value = '';
+    }
   }
 }

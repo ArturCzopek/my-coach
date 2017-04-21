@@ -4,10 +4,12 @@ import {CyclePreview} from "../../shared/entities/preview.entities";
 import {Cycle, Exercise, ExerciseSession, Series, Set, Training} from "../../shared/entities/get.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {CYCLE_PREVIEWS_LIST} from "../../shared/entities/mock-data/previews/cycle-previews.mock-data";
-import {Observable} from "rxjs";
+import {Observable} from "rxjs/Observable";
 import {CYCLES_LIST} from "../../shared/entities/mock-data/cycles.mock-data";
 import {DOES_NOT_CONTAIN} from "../../shared/global.values";
 import {NewCycle, NewExercise, NewTraining} from "../../shared/entities/add.entities";
+import "rxjs/add/operator/first";
+
 
 declare var $: any;
 
@@ -60,7 +62,11 @@ export class TrainingsMockService extends TrainingsService {
 
   public getActiveCycle(): Observable<Cycle> {
     return this.ngZone.runOutsideAngular(() => {
-      return Observable.of(CYCLES_LIST.find(cycle => !cycle.finished));
+      return Observable.create(observer => {
+        observer.next(
+          (CYCLES_LIST.find(cycle => !cycle.finished)));
+        observer.complete();
+      });
     });
   }
 
@@ -119,7 +125,10 @@ export class TrainingsMockService extends TrainingsService {
         );
 
       // workaround for deep copy...
-      return Observable.of(JSON.parse(JSON.stringify(cutExercises)));
+      return Observable.create(observer => {
+        observer.next(JSON.parse(JSON.stringify(cutExercises)));
+        observer.complete();
+      });
     });
   }
 
@@ -134,7 +143,10 @@ export class TrainingsMockService extends TrainingsService {
       CYCLE_PREVIEWS_LIST.push(new CyclePreview(cycle.cycleId, false, cycle.startDate));
     });
 
-    return Observable.of(true);
+    return Observable.create(observer => {
+      observer.next(true);
+      observer.complete();
+    });
   }
 
   public addExercises(exercisesToAdd: NewExercise[]): Observable<any> {
@@ -158,7 +170,10 @@ export class TrainingsMockService extends TrainingsService {
         );
       }
 
-      return Observable.of(true);
+      return Observable.create(observer => {
+        observer.next(true);
+        observer.complete();
+      });
     });
   }
 
@@ -201,7 +216,10 @@ export class TrainingsMockService extends TrainingsService {
             this.newExerciseSessionId++;
           });
 
-          return Observable.of(true);
+          return Observable.create(observer => {
+            observer.next(true);
+            observer.complete();
+          });
         },
         error => console.error(error, 'error')
       );
@@ -215,7 +233,10 @@ export class TrainingsMockService extends TrainingsService {
       CYCLES_LIST.splice(cycleId, 1);
       CYCLE_PREVIEWS_LIST.splice(cycleId, 1);
 
-      return Observable.of(true);
+      return Observable.create(observer => {
+        observer.next(true);
+        observer.complete();
+      });
     });
   }
 
@@ -230,7 +251,10 @@ export class TrainingsMockService extends TrainingsService {
         });
       });
 
-      return Observable.of(true);
+      return Observable.create(observer => {
+        observer.next(true);
+        observer.complete();
+      });
     });
   }
 
@@ -248,7 +272,10 @@ export class TrainingsMockService extends TrainingsService {
         }
       );
 
-      return Observable.of(true);
+      return Observable.create(observer => {
+        observer.next(true);
+        observer.complete();
+      });
     });
   }
 
@@ -274,7 +301,10 @@ export class TrainingsMockService extends TrainingsService {
         }
       }
 
-      return Observable.of(true);
+      return Observable.create(observer => {
+        observer.next(true);
+        observer.complete();
+      });
     });
   }
 
@@ -292,7 +322,10 @@ export class TrainingsMockService extends TrainingsService {
         });
       });
 
-      return Observable.of(true);
+      return Observable.create(observer => {
+        observer.next(true);
+        observer.complete();
+      });
     });
   }
 
@@ -324,13 +357,19 @@ export class TrainingsMockService extends TrainingsService {
         });
       });
 
-      return Observable.of(true);
+      return Observable.create(observer => {
+        observer.next(true);
+        observer.complete();
+      });
     });
   }
 
   public hasUserOnlyFinishedCycles(): Observable<boolean> {
     return this.ngZone.runOutsideAngular(() => {
-      return Observable.of(CYCLES_LIST.every(cycle => cycle.finished));
+      return Observable.create(observer => {
+        observer.next(CYCLES_LIST.every(cycle => cycle.finished));
+        observer.complete();
+      });
     });
   }
 

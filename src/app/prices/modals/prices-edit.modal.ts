@@ -6,6 +6,7 @@ import {PricesModalsService} from "../services/prices-modals.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {DOES_NOT_CONTAIN} from "../../shared/global.values";
 import {BaseModal} from "../../shared/components/base.modal";
+import {DateService} from "../../shared/services/date.service";
 
 @Component({
   selector: 'coach-prices-edit-modal',
@@ -17,12 +18,15 @@ export class PricesEditModal extends BaseModal implements OnInit {
   public selectedPrices: Price[] = [];
   public pricesToEditIndexes: number[] = [];
   public modalTitle: string;
+  public dates: string[] = [];
 
   private pricesService: PricesService;
+  private dateService: DateService;
 
   constructor(private pricesModalsService: PricesModalsService, private serviceInjector: ServiceInjector) {
     super(serviceInjector);
     this.pricesService = serviceInjector.getPricesService();
+    this.dateService = serviceInjector.getDateService();
   }
 
   public ngOnInit(): void {
@@ -40,6 +44,7 @@ export class PricesEditModal extends BaseModal implements OnInit {
   public initDataBeforeOpenModal() {
     super.initDataBeforeOpenModal();
     this.pricesToEditIndexes = [];
+    this.selectedPrices.forEach(price => this.dates.push(this.dateService.parseDateToString(price.priceDate)));
   }
 
   public isDataValid(): boolean {
@@ -47,18 +52,22 @@ export class PricesEditModal extends BaseModal implements OnInit {
   }
 
   public onEditClick() {
+
+    const pricesToEdit: Price[] = [];
+
     if (this.pricesToEditIndexes.length > 0) {
-      const pricesToEdit: Price[] = [];
 
       this.pricesToEditIndexes.forEach(index => {
+        this.selectedPrices[index].priceDate = this.dateService.parseStringToDate(this.dates[index]);
         pricesToEdit.push(this.selectedPrices[index]);
-        this.pricesService.editPrices(pricesToEdit);
       });
-
-      this.pricesModalsService.callRefreshPage();
     }
 
-    this.closeModal();
+    this.pricesService.editPrices(pricesToEdit).first().subscribe(
+      ok => this.pricesModalsService.callRefreshPage(),
+      error => console.error(error, 'error'),
+      () => this.closeModal()
+    );
   }
 
   public addPriceIndexToChanged(price: number) {

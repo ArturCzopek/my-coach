@@ -46,8 +46,10 @@ export class ProductDeleteModal extends BaseModal implements OnInit {
   }
 
   public onDeleteClick() {
-    this.pricesService.deleteProduct(this.selectedProduct);
-    this.pricesModalsService.callRefreshPage();
-    this.closeModal();
+    this.pricesService.deleteProduct(this.selectedProduct).first().subscribe(
+      ok => this.pricesModalsService.callRefreshPage(),
+      error => console.error(error, 'error'),
+      () => this.closeModal()
+    );
   }
 }

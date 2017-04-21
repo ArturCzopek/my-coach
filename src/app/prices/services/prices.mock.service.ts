@@ -7,6 +7,8 @@ import "rxjs/add/operator/map";
 import {Price, Product} from "../../shared/entities/get.entities";
 import {NewPrice, NewProduct, ShoppingList} from "../../shared/entities/add.entities";
 import {PRICES_LIST} from "../../shared/entities/mock-data/prices.mock-data";
+import "rxjs/add/operator/first";
+
 
 @Injectable()
 export class PricesMockService extends PricesService {
@@ -31,10 +33,10 @@ export class PricesMockService extends PricesService {
     });
   }
 
-  getPrices(productPreview: Product): Observable<Price[]> {
+  getPrices(productId: number): Observable<Price[]> {
 
     const pricesToReturn: Price[] = PRICES_LIST.find(priceList =>
-      priceList.length > 0 && priceList[0].productId === productPreview.productId
+        priceList.length > 0 && priceList[0].productId === productId
       ) || [];
 
     return Observable.create(observer => {
@@ -49,20 +51,28 @@ export class PricesMockService extends PricesService {
     });
   }
 
+  getProductImageUrl(productId: number): string {
+    return PRODUCTS_LIST.find(product => product.productId === productId).image;
+  }
+
   addProductImage(file: any, productId: number): Observable<number> {
     console.log("PricesMockService#addProductImage not implemented");
     return null;
   }
 
-  addProduct(productToAdd: NewProduct): void {
+  addProduct(productToAdd: NewProduct): Observable<any> {
     const productId: number = this.newId;
     this.newId++;
     const product: Product = new Product(productId, productToAdd.productName, productToAdd.image, 0);
     PRICES_LIST.push([]);
     PRODUCTS_LIST.push(product);
+    return Observable.create(observer => {
+      observer.next(true);
+      observer.complete();
+    });
   }
 
-  addPrice(priceToAdd: NewPrice): void {
+  addPrice(priceToAdd: NewPrice): Observable<any> {
 
     const prodIdInArray = PRODUCTS_LIST.findIndex(product => product.productId === priceToAdd.productId);
 
@@ -71,17 +81,64 @@ export class PricesMockService extends PricesService {
 
     this.newPriceId++;
     PRICES_LIST[prodIdInArray].push(price);
+    return Observable.create(observer => {
+      observer.next(true);
+      observer.complete();
+    });
   }
 
-  addShoppingList(shoppingList: ShoppingList): void {
+  addShoppingList(shoppingList: ShoppingList): Observable<any> {
     for (const price of shoppingList.prices) {
       price.priceDate = shoppingList.shoppingDate;
       price.place = shoppingList.place;
       this.addPrice(price);
     }
+
+    return Observable.create(observer => {
+      observer.next(true);
+      observer.complete();
+    });
   }
 
-  editPrices(pricesToEdit: Price[]): void {
+  deletePrices(pricesToDelete: Price[]): Observable<any> {
+    const prodIdInArray = PRODUCTS_LIST.findIndex(product => product.productId === pricesToDelete[0].productId);
+    const priceList: Price[] = PRICES_LIST[prodIdInArray];
+
+    for (const price of pricesToDelete) {
+      for (let i = 0; i < priceList.length; i++) {
+        if (price.priceId === priceList[i].priceId) {
+          priceList.splice(i, 1);
+          break;
+        }
+      }
+    }
+
+    return Observable.create(observer => {
+      observer.next(true);
+      observer.complete();
+    });
+  }
+
+  deleteProduct(productToDelete: Product): Observable<any> {
+    const productIndex = PRODUCTS_LIST.findIndex(product => product.productId === productToDelete.productId);
+
+    PRODUCTS_LIST.splice(productIndex, 1);
+    PRICES_LIST.splice(productIndex, 1);
+
+    return Observable.create(observer => {
+      observer.next(true);
+      observer.complete();
+    });
+  }
+
+  editPrices(pricesToEdit: Price[]): Observable<any> {
+
+    if (!pricesToEdit || pricesToEdit.length === 0) {
+      return Observable.create(observer => {
+        observer.next(false);
+        observer.complete();
+      });
+    }
 
     const prodIdInArray = PRODUCTS_LIST.findIndex(product => product.productId === pricesToEdit[0].productId);
 
@@ -95,36 +152,21 @@ export class PricesMockService extends PricesService {
         }
       }
     }
+
+    return Observable.create(observer => {
+      observer.next(true);
+      observer.complete();
+    });
   }
 
-  editProduct(productToEdit: Product): void {
+  editProduct(productToEdit: Product): Observable<any> {
     const prodIdInArray = PRODUCTS_LIST.findIndex(product => product.productId === productToEdit.productId);
     PRODUCTS_LIST[prodIdInArray] = productToEdit;
-  }
 
-  deletePrices(pricesToDelete: Price[]): void {
-    const prodIdInArray = PRODUCTS_LIST.findIndex(product => product.productId === pricesToDelete[0].productId);
-    const priceList: Price[] = PRICES_LIST[prodIdInArray];
-
-    for (const price of pricesToDelete) {
-      for (let i = 0; i < priceList.length; i++) {
-        if (price.priceId === priceList[i].priceId) {
-          priceList.splice(i, 1);
-          break;
-        }
-      }
-    }
-  }
-
-  deleteProduct(productToDelete: Product): void {
-    const productIndex = PRODUCTS_LIST.findIndex(product => product.productId === productToDelete.productId);
-
-    PRODUCTS_LIST.splice(productIndex, 1);
-    PRICES_LIST.splice(productIndex, 1);
-  }
-
-  getProductImageUrl(productId: number): string {
-    return PRODUCTS_LIST.find(product => product.productId === productId).image;
+    return Observable.create(observer => {
+      observer.next(true);
+      observer.complete();
+    });
   }
 
   private reduce(prevVal, currVal): number {

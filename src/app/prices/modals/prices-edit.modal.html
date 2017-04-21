@@ -7,7 +7,7 @@
     <table class="responsive-table striped">
       <thead>
       <tr>
-        <!--<th data-field="Day">{{'page.prices.day.label' | dictionary}}</th>-->
+        <th data-field="Day">{{'page.prices.day.label' | dictionary}}</th>
         <th data-field="Place">{{'page.prices.place.label' | dictionary}}</th>
         <th data-field="Price">{{'page.prices.price.label' | dictionary}}</th>
         <th data-field="Quantity">{{'page.prices.quantity.label' | dictionary}}</th>
@@ -16,7 +16,14 @@
 
       <tbody>
       <tr *ngFor="let price of selectedPrices; trackBy: trackByPriceId; let i = index">
-        <!--<td>{{dateService.parseDateToString(price.priceDate)}} r.</td>-->
+        <td>
+          <div class="input-field inline">
+            <input type="date" class="datepicker" materialize="pickadate"
+                   [(ngModel)]="dates[i]" name="priceDate"
+                   [materializeParams]="[datePickerParams]"
+                   (ngModelChange)="addPriceIndexToChanged(i)">
+          </div>
+        </td>
         <td>
           <div class="input-field inline">
             <input type="text" [(ngModel)]="price.place" (ngModelChange)="addPriceIndexToChanged(i)">

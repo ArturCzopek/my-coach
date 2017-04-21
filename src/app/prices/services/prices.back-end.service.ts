@@ -5,26 +5,30 @@ import {Observable} from "rxjs/Observable";
 import {Price, Product} from "../../shared/entities/get.entities";
 import {NewPrice, NewProduct, ShoppingList} from "../../shared/entities/add.entities";
 import {environment} from "../../../environments/environment";
-import {Http} from "@angular/http";
+import {Http, RequestOptions} from "@angular/http";
 
 @Injectable()
 export class PricesBackEndService extends PricesService {
 
-  private uploadUrl = "/product/image/upload";
-  private imageUrl = "/product/image/";
+  private imagesUrl = "/images";
+  private uploadUrl = "/upload";
+  private priceUrl = "/price";
+  private productUrl = "/product";
 
   constructor(private injector: Injector, private http: Http) {
     super(injector.get(ServiceInjector));
   }
 
   getProductPreviews(): Observable<Product[]> {
-    console.log('PricesBackEndService#getProductPreviews not implemented yet');
-    return null;
+    return this.http.get(`${environment.url}${this.priceUrl}${this.productUrl}/previews`).map(res => res.json());
   }
 
-  getPrices(productPreview: Product): Observable<Price[]> {
-    console.log('PricesBackEndService#getPrices not implemented yet');
-    return null;
+  getPrices(productId: number): Observable<Price[]> {
+    return this.http.get(`${environment.url}${this.priceUrl}/${productId}`).map(res => res.json());
+  }
+
+  getProductImageUrl(productId: number): string {
+    return `${environment.url}${this.imagesUrl}${this.productUrl}/${productId}`;
   }
 
   addProductImage(file: any, productId: number): Observable<number> {
@@ -32,38 +36,35 @@ export class PricesBackEndService extends PricesService {
     input.append("file", file);
     input.append("productId", productId);
 
-    return this.http.post(`${environment.url}${this.uploadUrl}`, input).map(res => res.json());
+    return this.http.post(`${environment.url}${this.imagesUrl}${this.productUrl}${this.uploadUrl}`, input).map(res => res.json());
   }
 
-  addProduct(productToAdd: NewProduct): void {
-    console.log('PricesBackEndService#addProduct not implemented yet');
+  addProduct(productToAdd: NewProduct): Observable<any> {
+    return this.http.post(`${environment.url}${this.priceUrl}${this.productUrl}/add`, productToAdd);
   }
 
-  addPrice(priceToAdd: NewPrice): void {
-    console.log('PricesBackEndService#addPrice not implemented yet');
+  addPrice(priceToAdd: NewPrice): Observable<any> {
+    return this.http.post(`${environment.url}${this.priceUrl}/add`, priceToAdd);
   }
 
-  addShoppingList(shoppingList: ShoppingList): void {
-    console.log('PricesBackEndService#addShopping list not implemented yet');
+  addShoppingList(shoppingList: ShoppingList): Observable<any> {
+    return this.http.post(`${environment.url}${this.priceUrl}/shopping/add`, shoppingList);
   }
 
-  editPrices(pricesToEdit: Price[]): void {
-    console.log('PricesBackEndService#editPrices not implemented yet');
+  deletePrices(pricesToDelete: Price[]): Observable<any> {
+    return this.http.delete(`${environment.url}${this.priceUrl}/delete`, new RequestOptions({body: pricesToDelete}));
   }
 
-  editProduct(product: Product): void {
-    console.log('PricesBackEndService#editProduct not implemented yet');
+  deleteProduct(productToDelete: Product): Observable<any> {
+    return this.http.delete(`${environment.url}${this.priceUrl}${this.productUrl}/delete`, new RequestOptions({body: productToDelete}));
+
   }
 
-  deletePrices(pricesToDelete: Price[]): void {
-    console.log('PricesBackEndService#deletePrices not implemented yet');
+  editPrices(pricesToEdit: Price[]): Observable<any> {
+    return this.http.put(`${environment.url}${this.priceUrl}/update`, pricesToEdit);
   }
 
-  deleteProduct(productToDelete: Product): void {
-    console.log('PricesBackEndService#deleteProduct not implemented yet');
-  }
-
-  getProductImageUrl(productId: number): string {
-    return `${environment.url}${this.imageUrl}${productId}`;
+  editProduct(productToEdit: Product): Observable<any> {
+    return this.http.put(`${environment.url}${this.priceUrl}${this.productUrl}/update`, productToEdit);
   }
 }

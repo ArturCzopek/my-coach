@@ -9,7 +9,7 @@
         <p *ngFor="let weight of selectedWeights; trackBy: trackByWeightId; let i = index">
           <input type="checkbox" id="{{formattedDays[i]}}" name="{{formattedDays[i]}}" class="filled-in red-checkbox"
                  [(ngModel)]="checkboxesForWeights[i]"/>
-          <label for="{{formattedDays[i]}}">{{formattedDays[i]}} - {{weight.value}}</label>
+          <label for="{{formattedDays[i]}}">{{formattedDays[i]}} - {{weight.value}} {{'global.weight.label' | dictionary}}</label>
         </p>
       </div>
     </form>

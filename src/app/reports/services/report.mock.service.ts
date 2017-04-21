@@ -54,7 +54,10 @@ export class ReportMockService extends ReportService {
     REPORTS_LIST.push(report);
     REPORT_PREVIEWS_LIST.push(reportPreview);
 
-    return Observable.of(true);
+    return Observable.create(observer => {
+      observer.next(true);
+      observer.complete();
+    });
   }
 
   public deleteReport(reportToDelete: Report): Observable<any> {
@@ -62,7 +65,10 @@ export class ReportMockService extends ReportService {
     REPORTS_LIST.splice(reportId, 1);
     REPORT_PREVIEWS_LIST.splice(reportId, 1);
 
-    return Observable.of(true);
+    return Observable.create(observer => {
+      observer.next(true);
+      observer.complete();
+    });
   }
 
   public editReport(reportToEdit: Report): Observable<any> {
@@ -71,6 +77,9 @@ export class ReportMockService extends ReportService {
     REPORT_PREVIEWS_LIST[reportId].startDate = reportToEdit.startDate;
     REPORT_PREVIEWS_LIST[reportId].endDate = reportToEdit.endDate;
 
-    return Observable.of(true);
+    return Observable.create(observer => {
+      observer.next(true);
+      observer.complete();
+    });
   }
 }

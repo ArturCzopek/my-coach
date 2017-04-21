@@ -18,9 +18,13 @@ export class ProductEditModal extends BaseModal implements OnInit {
   public selectedProduct: Product = null;
   public productName = '';
   public imageUrl = '';
+  public canStoreFiles: boolean;
 
   @ViewChild("imageFile")
   public imageFile: ElementRef;
+
+  @ViewChild("imageWrapper")
+  public imageWrapper: ElementRef;
 
   private pricesService: PricesService;
 
@@ -44,11 +48,13 @@ export class ProductEditModal extends BaseModal implements OnInit {
     super.initDataBeforeOpenModal();
     this.productName = this.selectedProduct.productName;
     this.imageUrl = this.pricesService.getProductImageUrl(this.selectedProduct.productId);
+    this.canStoreFiles = this.pricesService.canFilesBeStored();
   }
 
   public isDataValid(): boolean {
     return this.productName.length > 0;
   }
+
   public uploadImage() {
     if (this.imageFile.nativeElement.files.length > 0) {
       const file: File = this.imageFile.nativeElement.files[0];
@@ -68,17 +74,19 @@ export class ProductEditModal extends BaseModal implements OnInit {
   public onEditClick() {
     this.selectedProduct.productName = this.productName;
     this.selectedProduct.image = this.imageUrl;
-    this.pricesService.editProduct(this.selectedProduct);
-    this.pricesModalsService.callRefreshPage();
-    this.closeModal();
-  }
-
-  public canStoreFiles() {
-    this.pricesService.canFilesBeStored();
+    this.pricesService.editProduct(this.selectedProduct).first().subscribe(
+      ok => this.pricesModalsService.callRefreshPage(),
+      error => console.error(error, 'error'),
+      () => this.closeModal()
+    );
   }
 
   public closeModal() {
     super.closeModal();
-    this.imageFile.nativeElement.files = [];
+
+    if (this.imageFile) {
+      this.imageFile.nativeElement.files[0] = null;
+      this.imageWrapper.nativeElement.value = '';
+    }
   }
 }

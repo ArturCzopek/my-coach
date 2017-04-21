@@ -10,6 +10,7 @@ import {Price, Product} from "../../shared/entities/get.entities";
 import {BaseModal} from "../../shared/components/base.modal";
 
 declare var $: any;
+declare var Materialize: any;
 
 @Component({
   selector: 'coach-shopping-list-modal',
@@ -18,8 +19,8 @@ declare var $: any;
 })
 export class ShoppingListModal extends BaseModal implements OnInit {
 
-  public shoppingDate= '';
-  public place= '';
+  public shoppingDate = '';
+  public place = '';
   public products: Product[];
   public shoppingListToAdd: ShoppingList;
   public autoCompleteData: any = {data: {}};
@@ -60,7 +61,7 @@ export class ShoppingListModal extends BaseModal implements OnInit {
     this.autoCompleteData = {data: {}};
 
     for (const product of this.products) {
-      this.autoCompleteData.data[product.productName] = product.image;
+      this.autoCompleteData.data[product.productName] = this.pricesService.getProductImageUrl(product.productId);
     }
   }
 
@@ -74,10 +75,13 @@ export class ShoppingListModal extends BaseModal implements OnInit {
     this.shoppingListToAdd.shoppingDate = this.dateService.parseStringToDate(this.shoppingDate);
     this.shoppingListToAdd.place = this.place;
 
-    this.pricesService.addShoppingList(this.shoppingListToAdd);
+    this.shoppingListToAdd.prices.forEach((price, i) => price.productId = this.getProductIdForName(this.productNamesForPrices[i]));
 
-    this.pricesModalsService.callRefreshPage();
-    this.closeModal();
+    this.pricesService.addShoppingList(this.shoppingListToAdd).first().subscribe(
+      ok => this.pricesModalsService.callRefreshPage(),
+      error => console.error(error, 'error'),
+      () => this.closeModal()
+    );
   }
 
   public onAddProductClick() {
@@ -87,6 +91,7 @@ export class ShoppingListModal extends BaseModal implements OnInit {
   public addNewEmptyPriceToList() {
     this.shoppingListToAdd.prices.push(new NewPrice(-1, 0, 0));
     this.productNamesForPrices.push('');
+    setTimeout(() => Materialize.updateTextFields(), 100);
   };
 
   public onDeletePrice(index: number) {

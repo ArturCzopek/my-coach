@@ -7,6 +7,7 @@ import {ServiceInjector} from "../../shared/services/service.injector";
 import {DateService} from "../../shared/services/date.service";
 import {BaseModal} from "../../shared/components/base.modal";
 
+
 @Component({
   selector: 'coach-prices-delete-modal',
   templateUrl: 'prices-delete.modal.html',
@@ -76,11 +77,12 @@ export class PricesDeleteModal extends BaseModal implements OnInit {
         pricesToDelete.push(this.selectedPrices[index]);
       });
 
-      this.pricesService.deletePrices(pricesToDelete);
-      this.pricesModalsService.callRefreshPage();
+      this.pricesService.deletePrices(pricesToDelete).first().subscribe(
+        ok => this.pricesModalsService.callRefreshPage(),
+        error => console.error(error, 'error'),
+        () => this.closeModal()
+      );
     }
-
-    this.closeModal();
   }
 
   public getDateAsString(date: Date): string {

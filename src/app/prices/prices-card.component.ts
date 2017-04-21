@@ -15,6 +15,7 @@ export class PricesCardComponent extends BaseCardComponent implements OnInit {
 
   @Input() productPreview: Product;
   public prices: Price[] = [];
+  public imageUrl = '';
   private pricesService: PricesService;
 
   constructor(private pricesModalsService: PricesModalsService, private serviceInjector: ServiceInjector, public dateService: DateService) {
@@ -25,18 +26,15 @@ export class PricesCardComponent extends BaseCardComponent implements OnInit {
   ngOnInit() {
     super.ngOnInit();
     this.loadPrices();
-  }
-
-  public getImageUrl(): string {
-    return this.pricesService.getProductImageUrl(this.productPreview.productId);
+    this.imageUrl = this.pricesService.getProductImageUrl(this.productPreview.productId);
   }
 
   private loadPrices() {
     this.isLoading = true;
-    this.pricesService.getPrices(this.productPreview)
+    this.pricesService.getPrices(this.productPreview.productId)
       .subscribe(
         prices => {
-          this.prices = prices.slice().reverse();
+          this.prices = this.pricesService.parseFromServer(prices).slice().reverse();
         },
         () => {
         },

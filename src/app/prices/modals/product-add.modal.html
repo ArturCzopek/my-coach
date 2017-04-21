@@ -11,23 +11,23 @@
           <label for="product-name">{{'page.prices.modal.add.productName.label' | dictionary}}</label>
           <input id="product-name" type="text" [(ngModel)]="productToAdd.productName" name="productName"/>
         </div>
-        <div *ngIf="!canStoreFiles()" class="input-field col s12">
+        <div *ngIf="!canStoreFiles" class="input-field col s12">
           <i class="material-icons prefix">perm_media</i>
           <label for="image-url">{{'page.prices.modal.add.image.label' | dictionary}}</label>
           <input id="image-url" type="text" [(ngModel)]="productToAdd.image" name="image"/>
         </div>
-        <div *ngIf="canStoreFiles() && !productToAdd.image" class="file-field input-field col s12">
+        <div *ngIf="canStoreFiles && (!productToAdd.image || productToAdd.image.toLocaleString().length === 0)" class="file-field input-field col s12">
           <div class="btn blue">
             <span>{{'page.prices.modal.add.selectImage.label' | dictionary}}</span>
-            <input #imageFile type="file" accept="image/*" (change)="uploaImage()">
+            <input #imageFile type="file" accept="image/*" (change)="uploadImage()">
           </div>
           <div class="file-path-wrapper">
-            <input class="file-path validate" type="text">
+            <input #imageWrapper class="file-path validate" type="text">
           </div>
         </div>
       </form>
     </div>
-    <div class="row" *ngIf="canStoreFiles() && imageUrl">
+    <div class="row" *ngIf="canStoreFiles && imageUrl && imageUrl.length > 0">
       <div class="col s12 center">
         <img [src]="imageUrl" style="height: 400px; width: 400px;"/>
       </div>

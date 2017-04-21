@@ -13,7 +13,7 @@ export class WeightsMockService extends WeightsService {
 
   private newWeightId: number = WEIGHT_LIST[0].length + WEIGHT_LIST[1].length + 1;
 
-  constructor(private injector: Injector)  {
+  constructor(private injector: Injector) {
     super(injector.get(ServiceInjector));
   }
 
@@ -59,7 +59,11 @@ export class WeightsMockService extends WeightsService {
     this.newWeightId++;
     WEIGHT_LIST[1].push(weight);
 
-    return Observable.of(true);
+    return Observable.create(observer => {
+      observer.next(true);
+      observer.complete();
+    });
+
   }
 
   public deleteWeights(weights: Weight[]): Observable<any> {
@@ -75,7 +79,10 @@ export class WeightsMockService extends WeightsService {
       }
     }
 
-    return Observable.of(true);
+    return Observable.create(observer => {
+      observer.next(true);
+      observer.complete();
+    });
   }
 
   public editWeights(weightsToEdit: Weight[]): Observable<any> {
@@ -91,6 +98,9 @@ export class WeightsMockService extends WeightsService {
       }
     }
 
-    return Observable.of(true);
+    return Observable.create(observer => {
+      observer.next(true);
+      observer.complete();
+    });
   }
 }
