@@ -10,10 +10,11 @@ declare var Materialize: any;
 
 export abstract class BaseModal implements OnInit, OnDestroy {
 
-  public modalActions = new EventEmitter<string|MaterializeAction>();
+  public modalActions = new EventEmitter<string | MaterializeAction>();
   public modalParams: any;
   public datePickerParams: any;
   public dictionaryService: DictionaryService;
+  public errorMessage = '';
 
   public initialization$: Subscription;
 
@@ -35,6 +36,8 @@ export abstract class BaseModal implements OnInit, OnDestroy {
     if ($('#fab').hasClass('active')) {
       $('#fab a').click();
     }
+
+    this.errorMessage = '';
   }
 
   openModal() {

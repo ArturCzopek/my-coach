@@ -1,8 +1,13 @@
-import {Component, Input, Output, EventEmitter} from "@angular/core";
+import {Component, EventEmitter, Input, Output} from "@angular/core";
 
 @Component({
   selector: 'coach-modal-footer',
-  templateUrl: 'modal-footer.component.html',
+  template: `
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-red btn-flat" (click)="onRightButtonClick()">{{rightButtonLabel}}</a>
+      <a class="modal-action waves-effect waves-teal btn-flat" (click)="onLeftButtonClick()" [class.disabled]="!isDataValid">{{leftButtonLabel}}</a>
+    </div>
+  `,
   styleUrls: ['../materialize-upgrades.scss']
 })
 export class ModalFooterComponent {

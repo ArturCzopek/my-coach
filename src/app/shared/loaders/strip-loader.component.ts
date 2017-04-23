@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import {Component} from "@angular/core";
 
 @Component({
   selector: 'coach-strip-loader',
-  templateUrl: 'strip-loader.component.html',
+  template: `
+    <div class="progress">
+      <div class="indeterminate"></div>
+    </div>
+  `,
   styleUrls: ['../materialize-upgrades.scss']
 })
 export class StripLoaderComponent {

@@ -2,7 +2,18 @@ import {Component, Input, OnInit} from "@angular/core";
 
 @Component({
   selector: 'coach-line-chart',
-  templateUrl: 'line-chart.component.html',
+  template: `
+    <div style="display: block">
+      <canvas baseChart height="60"
+              [datasets]="chartData"
+              [labels]="chartLabels"
+              [options]="chartOptions"
+              [colors]="chartColors"
+              [legend]="isChartLegend"
+              [chartType]="chartType">
+      </canvas>
+    </div>
+  `,
   styleUrls: ['../materialize-upgrades.scss']
 })
 export class LineChartComponent implements OnInit {
