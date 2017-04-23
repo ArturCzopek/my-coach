@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {ChangeDetectorRef, Component, Input, OnInit} from "@angular/core";
 import {ReportPreview} from "../shared/entities/preview.entities";
 import {Report} from "../shared/entities/get.entities";
 import {ReportService} from "./services/report.service";
@@ -17,8 +17,9 @@ export class ReportCardComponent extends BaseCardComponent implements OnInit {
   public report: Report;
   private reportService: ReportService;
 
-  constructor(private reportModalsService: ReportModalsService, private serviceInjector: ServiceInjector) {
-    super();
+  constructor(private reportModalsService: ReportModalsService, private serviceInjector: ServiceInjector,
+              cdr: ChangeDetectorRef) {
+    super(cdr);
     this.reportService = serviceInjector.getReportService();
   }
 

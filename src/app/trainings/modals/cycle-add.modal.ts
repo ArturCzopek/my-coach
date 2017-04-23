@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {AfterViewInit, Component, ElementRef, NgZone, OnInit, Renderer2, ViewChild} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from "@angular/core";
 import {NewCycle, NewSet} from "../../shared/entities/add.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {DateService} from "../../shared/services/date.service";
@@ -28,23 +28,21 @@ export class CycleAddModal extends BaseModal implements OnInit, AfterViewInit {
   private trainingsService: TrainingsService;
 
   constructor(private trainingModalsService: TrainingModalsService, private serviceInjector: ServiceInjector,
-              private dateService: DateService, private ngZone: NgZone, private renderer: Renderer2) {
+              private dateService: DateService, private renderer: Renderer2) {
     super(serviceInjector);
     this.trainingsService = this.serviceInjector.getTrainingsService();
 
   }
 
   public ngOnInit(): void {
-    this.ngZone.runOutsideAngular(() => {
-      super.ngOnInit();
+    super.ngOnInit();
 
-      this.initialization$ = this.trainingModalsService.addCycle.subscribe(
-        finishedCycles => {
-          this.finishedCycles = finishedCycles;
-          this.openModal();
-        }
-      );
-    });
+    this.initialization$ = this.trainingModalsService.addCycle.subscribe(
+      finishedCycles => {
+        this.finishedCycles = finishedCycles;
+        this.openModal();
+      }
+    );
   }
 
   ngAfterViewInit(): void {
@@ -52,54 +50,43 @@ export class CycleAddModal extends BaseModal implements OnInit, AfterViewInit {
   }
 
   public initDataBeforeOpenModal(): void {
-    this.ngZone.runOutsideAngular(() => {
-      super.initDataBeforeOpenModal();
-      this.setsToAdd = [];
-      this.startDate = '';
-    });
+    super.initDataBeforeOpenModal();
+    this.setsToAdd = [];
+    this.startDate = '';
   }
 
   public isDataValid(): boolean {
-    return this.ngZone.runOutsideAngular(() => {
-      return this.setsToAdd.length > 0 && this.hasEverySetName() && this.dateService.isDateValid(this.startDate);
-    });
+    return this.setsToAdd.length > 0 && this.hasEverySetName() && this.dateService.isDateValid(this.startDate);
+
   }
 
   public onAddClick(): void {
-    this.ngZone.runOutsideAngular(() => {
-      this.cycleToAdd = new NewCycle(this.dateService.parseStringToDate(this.startDate), this.setsToAdd);
+    this.cycleToAdd = new NewCycle(this.dateService.parseStringToDate(this.startDate), this.setsToAdd);
 
-      this.trainingsService.addCycle(this.cycleToAdd).first()
-        .subscribe(
-          ok => this.trainingModalsService.callRefreshPage(),
-          error => console.error(error, 'error'),
-          () => this.closeModal()
-        );
-    });
+    this.trainingsService.addCycle(this.cycleToAdd).first()
+      .subscribe(
+        ok => this.trainingModalsService.callRefreshPage(),
+        error => console.error(error, 'error'),
+        () => this.closeModal()
+      );
   }
 
   public canModalBeOpened(): boolean {
-    return this.ngZone.runOutsideAngular(() => {
 
-      if (!this.finishedCycles) {
-        Materialize.toast(this.dictionaryService.getDictionaryValue('page.trainings.cycle.finishAll.tooltip'), 3000);
-        return false;
-      }
+    if (!this.finishedCycles) {
+      Materialize.toast(this.dictionaryService.getDictionaryValue('page.trainings.cycle.finishAll.tooltip'), 3000);
+      return false;
+    }
 
-      return true;
-    });
+    return true;
   }
 
   public addNewEmptySetToList(): void {
-    this.ngZone.runOutsideAngular(() => {
-      this.setsToAdd.push(new NewSet("", []));
-    });
+    this.setsToAdd.push(new NewSet("", []));
   }
 
   public onDeleteSet(index: number): void {
-    this.ngZone.runOutsideAngular(() => {
-      this.setsToAdd.splice(index, 1);
-    });
+    this.setsToAdd.splice(index, 1);
   }
 
   public trackByIndex(index, set: NewSet) {
@@ -107,8 +94,6 @@ export class CycleAddModal extends BaseModal implements OnInit, AfterViewInit {
   }
 
   private hasEverySetName(): boolean {
-    return this.ngZone.runOutsideAngular(() => {
-      return this.setsToAdd.every(set => set.setName.length > 0);
-    });
+    return this.setsToAdd.every(set => set.setName.length > 0);
   }
 }

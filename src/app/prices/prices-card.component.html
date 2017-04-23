@@ -61,11 +61,11 @@
     <ng-template #noData>
       <div class="col s12 center no-data small">
         <div class="row">
-          <i class="medium material-icons">info_outline</i>
+          <i class="small material-icons">info_outline</i>
         </div>
         <div class="row">
           <p>{{'page.prices.noData.info' | dictionary}}</p>
-            <p><a (click)="onAddPriceClick()">{{'page.prices.noData.click.info'
+            <p><a class="add-link" (click)="onAddPriceClick()">{{'page.prices.noData.click.info'
             | dictionary}}</a></p>
         </div>
       </div>

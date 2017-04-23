@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component, NgZone, OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {NewExerciseSession, NewSeries, NewTraining} from "../../shared/entities/add.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {BaseModal} from "../../shared/components/base.modal";
@@ -28,7 +28,7 @@ export class TrainingAddModal extends BaseModal implements OnInit {
   private trainingsService: TrainingsService;
   private dateService: DateService;
 
-  constructor(private trainingModalsService: TrainingModalsService, private serviceInjector: ServiceInjector, private ngZone: NgZone) {
+  constructor(private trainingModalsService: TrainingModalsService, private serviceInjector: ServiceInjector) {
     super(serviceInjector);
     this.trainingsService = this.serviceInjector.getTrainingsService();
     this.dateService = this.serviceInjector.getDateService();
@@ -36,73 +36,61 @@ export class TrainingAddModal extends BaseModal implements OnInit {
 
   public ngOnInit(): void {
 
-    this.ngZone.runOutsideAngular(() => {
-      super.ngOnInit();
+    super.ngOnInit();
 
-      this.initialization$ = this.trainingModalsService.addTraining.subscribe(
-        finishedCycles => {
-          this.finishedCycles = finishedCycles;
-          this.openModal();
-        }
-      );
-    });
+    this.initialization$ = this.trainingModalsService.addTraining.subscribe(
+      finishedCycles => {
+        this.finishedCycles = finishedCycles;
+        this.openModal();
+      }
+    );
   }
 
   public initDataBeforeOpenModal(): void {
-    this.ngZone.runOutsideAngular(() => {
-      super.initDataBeforeOpenModal();
-      this.exerciseSessionsToAdd = [];
-      this.selectedSetNr = 0;
-      this.trainingDate = this.dateService.getCurrentDateAsString();
-      this.isExerciseActive = [];
-      this.activeCycle = null;
-      this.trainingsService.getActiveCycle().first().subscribe(
-        cycle => {
-          this.activeCycle = cycle;
-          this.initPossibleSetsToDisplay();
-        },
-        error => console.error(error, 'error')
-      );
-    });
+    super.initDataBeforeOpenModal();
+    this.exerciseSessionsToAdd = [];
+    this.selectedSetNr = 0;
+    this.trainingDate = this.dateService.getCurrentDateAsString();
+    this.isExerciseActive = [];
+    this.activeCycle = null;
+    this.trainingsService.getActiveCycle().first().subscribe(
+      cycle => {
+        this.activeCycle = cycle;
+        this.initPossibleSetsToDisplay();
+      },
+      error => console.error(error, 'error')
+    );
   }
 
   public onAddNewEmptySeriesToExercise(index: number): void {
-    this.ngZone.runOutsideAngular(() => {
-      this.exerciseSessionsToAdd[this.selectedSetNr][index].series.push(new NewSeries(0, 0, ''));
-    });
+    this.exerciseSessionsToAdd[this.selectedSetNr][index].series.push(new NewSeries(0, 0, ''));
   }
 
   public onDeleteSeries(exerciseIndex: number, seriesIndex: number): void {
-    this.ngZone.runOutsideAngular(() => {
-      this.exerciseSessionsToAdd[this.selectedSetNr][exerciseIndex].series.splice(seriesIndex, 1);
-    });
+    this.exerciseSessionsToAdd[this.selectedSetNr][exerciseIndex].series.splice(seriesIndex, 1);
   }
 
   public isDataValid(): boolean {
-    return this.ngZone.runOutsideAngular(() => {
-      if (!this.exerciseSessionsToAdd[this.selectedSetNr]) {
-        return false;
-      }
+    if (!this.exerciseSessionsToAdd[this.selectedSetNr]) {
+      return false;
+    }
 
-      return this.exerciseSessionsToAdd.length > 0 &&
-        this.exerciseSessionsToAdd[this.selectedSetNr].every(
-          (exerciseSession, i) => (exerciseSession.series.length > 0 && exerciseSession.series.every(series => series.repeats > 0))
-          || !this.isExerciseActive[this.selectedSetNr][i]
-        )
-        && !this.isExerciseActive[this.selectedSetNr].every(isActive => !isActive) && this.dateService.isDateValid(this.trainingDate);
-    });
+    return this.exerciseSessionsToAdd.length > 0 &&
+      this.exerciseSessionsToAdd[this.selectedSetNr].every(
+        (exerciseSession, i) => (exerciseSession.series.length > 0 && exerciseSession.series.every(series => series.repeats > 0))
+        || !this.isExerciseActive[this.selectedSetNr][i]
+      )
+      && !this.isExerciseActive[this.selectedSetNr].every(isActive => !isActive) && this.dateService.isDateValid(this.trainingDate);
 
   }
 
   public onAddClick(): void {
-    this.ngZone.runOutsideAngular(() => {
-      this.trainingsService.addTraining(this.createNewTraining()).first()
-        .subscribe(
-          ok => this.trainingModalsService.callRefreshPage(),
-          error => console.error(error, 'error'),
-          () => this.closeModal()
-        );
-    });
+    this.trainingsService.addTraining(this.createNewTraining()).first()
+      .subscribe(
+        ok => this.trainingModalsService.callRefreshPage(),
+        error => console.error(error, 'error'),
+        () => this.closeModal()
+      );
   }
 
   public onAddCycleClick(): void {
@@ -111,23 +99,19 @@ export class TrainingAddModal extends BaseModal implements OnInit {
   }
 
   private createNewTraining(): NewTraining {
-    return this.ngZone.runOutsideAngular(() => {
-      return new NewTraining(
-        this.activeCycle.sets[this.selectedSetNr].setId,
-        this.exerciseSessionsToAdd[this.selectedSetNr],
-        this.dateService.parseStringToDate(this.trainingDate));
-    });
+    return new NewTraining(
+      this.activeCycle.sets[this.selectedSetNr].setId,
+      this.exerciseSessionsToAdd[this.selectedSetNr],
+      this.dateService.parseStringToDate(this.trainingDate));
   }
 
   public canModalBeOpened(): boolean {
-    return this.ngZone.runOutsideAngular(() => {
-      if (this.finishedCycles) {
-        Materialize.toast(this.dictionaryService.getDictionaryValue('page.trainings.cycle.notActive.tooltip'), 3000);
-        return false;
-      }
+    if (this.finishedCycles) {
+      Materialize.toast(this.dictionaryService.getDictionaryValue('page.trainings.cycle.notActive.tooltip'), 3000);
+      return false;
+    }
 
-      return true;
-    });
+    return true;
   }
 
   public trackBySetId(index, set: Set) {
@@ -135,15 +119,13 @@ export class TrainingAddModal extends BaseModal implements OnInit {
   }
 
   private initPossibleSetsToDisplay(): void {
-    this.ngZone.runOutsideAngular(() => {
-      this.activeCycle.sets.forEach((set, i) => {
-        this.exerciseSessionsToAdd.push([]);
-        this.isExerciseActive.push([]);
+    this.activeCycle.sets.forEach((set, i) => {
+      this.exerciseSessionsToAdd.push([]);
+      this.isExerciseActive.push([]);
 
-        set.exercises.forEach((exercise) => {
-          this.isExerciseActive[i].push(true);
-          this.exerciseSessionsToAdd[i].push(new NewExerciseSession(exercise.exerciseId, []));
-        });
+      set.exercises.forEach((exercise) => {
+        this.isExerciseActive[i].push(true);
+        this.exerciseSessionsToAdd[i].push(new NewExerciseSession(exercise.exerciseId, []));
       });
     });
   }

@@ -1,5 +1,5 @@
 import {TrainingsService} from "./tranings.service";
-import {Injectable, Injector, NgZone} from "@angular/core";
+import {Injectable, Injector} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {CyclePreview} from "../../shared/entities/preview.entities";
 import {Cycle, Exercise, Training} from "../../shared/entities/get.entities";
@@ -16,7 +16,7 @@ export class TrainingsBackEndService extends TrainingsService {
   private exerciseUrl = '/exercise';
 
   constructor(private injector: Injector, private http: Http) {
-    super(injector.get(ServiceInjector), injector.get(NgZone));
+    super(injector.get(ServiceInjector));
   }
 
   public getActiveCycle(): Observable<Cycle> {

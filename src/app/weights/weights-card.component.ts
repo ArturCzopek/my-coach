@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {ChangeDetectorRef, Component, Input, OnInit} from "@angular/core";
 import {WeightsPreview} from "../shared/entities/preview.entities";
 import {Weight} from "../shared/entities/get.entities";
 import {WeightsService} from "./services/weights.service";
@@ -30,8 +30,9 @@ export class WeightsCardComponent extends BaseCardComponent implements OnInit {
   private dictionaryService: DictionaryService;
   private dateService: DateService;
 
-  constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector) {
-    super();
+  constructor(private weightsModalsService: WeightsModalsService, private serviceInjector: ServiceInjector,
+              cdr: ChangeDetectorRef) {
+    super(cdr);
     this.weightsService = serviceInjector.getWeightsService();
     this.dictionaryService = serviceInjector.getDictionaryService();
     this.dateService = serviceInjector.getDateService();
@@ -63,11 +64,8 @@ export class WeightsCardComponent extends BaseCardComponent implements OnInit {
               ];
               this.chartLabels = this.weightsService.formatDaysToDisplayingValues(this.weightsDays);
             },
-            () => {
-            },
-            () => {
-              this.isLoading = false;
-            }
+            error => console.error(error, 'error'),
+            () => this.isLoading = false
           );
       }
     }

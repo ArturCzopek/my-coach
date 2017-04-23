@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component, NgZone, OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Exercise} from "../../shared/entities/get.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {BaseModal} from "../../shared/components/base.modal";
@@ -22,7 +22,7 @@ export class ExerciseEditModal extends BaseModal implements OnInit {
 
   private trainingsService: TrainingsService;
 
-  constructor(private trainingModalsService: TrainingModalsService, private serviceInjector: ServiceInjector, private ngZone: NgZone) {
+  constructor(private trainingModalsService: TrainingModalsService, private serviceInjector: ServiceInjector) {
     super(serviceInjector);
     this.trainingsService = serviceInjector.getTrainingsService();
   }
@@ -30,46 +30,38 @@ export class ExerciseEditModal extends BaseModal implements OnInit {
   public ngOnInit(): void {
     super.ngOnInit();
 
-    this.ngZone.runOutsideAngular(() => {
-      this.initialization$ = this.trainingModalsService.editExercise.subscribe(
-        (exercise: Exercise) => {
-          this.selectedExercise = exercise;
-          this.openModal();
-        }
-      );
-    });
+    this.initialization$ = this.trainingModalsService.editExercise.subscribe(
+      (exercise: Exercise) => {
+        this.selectedExercise = exercise;
+        this.openModal();
+      }
+    );
   };
 
   public initDataBeforeOpenModal(): void {
-    this.ngZone.runOutsideAngular(() => {
-      this.previousExerciseName = this.selectedExercise.exerciseName;
-      this.newExerciseName = this.selectedExercise.exerciseName;
-      this.newExerciseDescription = this.selectedExercise.exerciseDescription;
-    });
+    this.previousExerciseName = this.selectedExercise.exerciseName;
+    this.newExerciseName = this.selectedExercise.exerciseName;
+    this.newExerciseDescription = this.selectedExercise.exerciseDescription;
   }
 
   public isDataValid(): boolean {
-    return this.ngZone.runOutsideAngular(() => {
-      if (!this.selectedExercise) {
-        return false;
-      }
+    if (!this.selectedExercise) {
+      return false;
+    }
 
-      return this.selectedExercise.exerciseName !== this.newExerciseName
-        || this.selectedExercise.exerciseDescription !== this.newExerciseDescription;
-    });
+    return this.selectedExercise.exerciseName !== this.newExerciseName
+      || this.selectedExercise.exerciseDescription !== this.newExerciseDescription;
   }
 
   public onEditClick(): void {
-    this.ngZone.runOutsideAngular(() => {
-      this.trainingsService
-        .editExercise(
-          new Exercise(this.selectedExercise.exerciseId, this.newExerciseName, [], this.newExerciseDescription)
-        ).first()
-        .subscribe(
-          ok => this.trainingModalsService.callRefreshPage(),
-          error => console.error(error, 'error'),
-          () => this.closeModal()
-        );
-    });
+    this.trainingsService
+      .editExercise(
+        new Exercise(this.selectedExercise.exerciseId, this.newExerciseName, [], this.newExerciseDescription)
+      ).first()
+      .subscribe(
+        ok => this.trainingModalsService.callRefreshPage(),
+        error => console.error(error, 'error'),
+        () => this.closeModal()
+      );
   }
 }

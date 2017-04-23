@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {AfterViewInit, ChangeDetectorRef, Component} from "@angular/core";
 
 @Component({
   selector: 'coach-about',
@@ -56,6 +56,12 @@ import {Component} from "@angular/core";
     cursor: pointer;
   }`]
 })
-export class AboutComponent {
+export class AboutComponent implements AfterViewInit {
 
+  constructor(private cdr: ChangeDetectorRef) {
+  }
+
+  ngAfterViewInit() {
+    setTimeout(1000, () => this.cdr.detach());
+  }
 }

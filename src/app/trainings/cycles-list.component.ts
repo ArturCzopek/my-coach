@@ -35,14 +35,9 @@ export class CyclesListComponent implements OnInit {
     this.isLoading = true;
     this.trainingsService.getCyclePreviews()
       .subscribe(
-        previews => {
-          this.cyclePreviews = previews.slice().reverse();
-        },
-        () => {
-        },
-        () => {
-          this.isLoading = false;
-        }
+        previews => this.cyclePreviews = previews.slice().reverse(),
+        error => console.error(error, 'error'),
+        () => this.isLoading = false
       );
   }
 

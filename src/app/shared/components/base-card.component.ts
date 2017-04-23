@@ -1,13 +1,17 @@
-import {OnInit} from "@angular/core";
+import {AfterViewInit, ChangeDetectorRef, OnInit} from "@angular/core";
 
 declare var $: any;
 
-export abstract class BaseCardComponent implements OnInit {
+export abstract class BaseCardComponent implements OnInit, AfterViewInit {
 
   public previewTitle: string;
   public arrowImageClass: string;
   public isLoading: boolean;
   public showData: boolean;
+
+  constructor(private changeDetectorRef: ChangeDetectorRef) {
+
+  }
 
   ngOnInit(): void {
     // false showData because at first toggle we want to see true to load data
@@ -20,6 +24,11 @@ export abstract class BaseCardComponent implements OnInit {
     if ($('#fab').hasClass('active')) {
       $('#fab a').click();
     }
+  }
+
+
+  ngAfterViewInit(): void {
+    setTimeout(1000, () => this.changeDetectorRef.detach());
   }
 
   public toggleShow() {

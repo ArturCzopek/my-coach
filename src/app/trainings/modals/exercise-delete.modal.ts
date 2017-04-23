@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component, NgZone, OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Exercise} from "../../shared/entities/get.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {BaseModal} from "../../shared/components/base.modal";
@@ -19,32 +19,28 @@ export class ExerciseDeleteModal extends BaseModal implements OnInit {
 
   private trainingsService: TrainingsService;
 
-  constructor(private trainingModalsService: TrainingModalsService, private serviceInjector: ServiceInjector, private ngZone: NgZone) {
+  constructor(private trainingModalsService: TrainingModalsService, private serviceInjector: ServiceInjector) {
     super(serviceInjector);
     this.trainingsService = serviceInjector.getTrainingsService();
   }
 
   public ngOnInit(): void {
-    this.ngZone.runOutsideAngular(() => {
-      super.ngOnInit();
+    super.ngOnInit();
 
-      this.initialization$ = this.trainingModalsService.deleteExercise.subscribe(
-        (exercise: Exercise) => {
-          this.selectedExercise = exercise;
-          this.openModal();
-        }
-      );
-    });
+    this.initialization$ = this.trainingModalsService.deleteExercise.subscribe(
+      (exercise: Exercise) => {
+        this.selectedExercise = exercise;
+        this.openModal();
+      }
+    );
   };
 
   public onDeleteClick(): void {
-    this.ngZone.runOutsideAngular(() => {
-      this.trainingsService.deleteExercise(this.selectedExercise).first()
-        .subscribe(
-          ok => this.trainingModalsService.callRefreshPage(),
-          error => console.error(error, 'error'),
-          () => this.closeModal()
-        );
-    });
+    this.trainingsService.deleteExercise(this.selectedExercise).first()
+      .subscribe(
+        ok => this.trainingModalsService.callRefreshPage(),
+        error => console.error(error, 'error'),
+        () => this.closeModal()
+      );
   }
 }

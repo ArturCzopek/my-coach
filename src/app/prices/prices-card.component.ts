@@ -1,5 +1,5 @@
 import {BaseCardComponent} from "../shared/components/base-card.component";
-import {Component, Input, OnInit} from "@angular/core";
+import {ChangeDetectorRef, Component, Input, OnInit} from "@angular/core";
 import {Price, Product} from "../shared/entities/get.entities";
 import {PricesService} from "./services/prices.service";
 import {PricesModalsService} from "./services/prices-modals.service";
@@ -18,8 +18,9 @@ export class PricesCardComponent extends BaseCardComponent implements OnInit {
   public imageUrl = '';
   private pricesService: PricesService;
 
-  constructor(private pricesModalsService: PricesModalsService, private serviceInjector: ServiceInjector, public dateService: DateService) {
-    super();
+  constructor(private pricesModalsService: PricesModalsService, private serviceInjector: ServiceInjector,
+              public dateService: DateService, cdr: ChangeDetectorRef) {
+    super(cdr);
     this.pricesService = serviceInjector.getPricesService();
   }
 
@@ -33,14 +34,9 @@ export class PricesCardComponent extends BaseCardComponent implements OnInit {
     this.isLoading = true;
     this.pricesService.getPrices(this.productPreview.productId)
       .subscribe(
-        prices => {
-          this.prices = this.pricesService.parseFromServer(prices).slice().reverse();
-        },
-        () => {
-        },
-        () => {
-          this.isLoading = false;
-        }
+        prices => this.prices = this.pricesService.parseFromServer(prices).slice().reverse(),
+        error => console.error(error, 'error'),
+        () => this.isLoading = false
       );
   }
 

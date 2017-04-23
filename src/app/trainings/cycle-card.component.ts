@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {ChangeDetectorRef, Component, Input, OnInit} from "@angular/core";
 import {CyclePreview} from "../shared/entities/preview.entities";
 import {ServiceInjector} from "../shared/services/service.injector";
 import {DictionaryService} from "../shared/services/dictionary.service";
@@ -20,8 +20,9 @@ export class CycleCardComponent extends BaseCardComponent implements OnInit {
   private trainingsService: TrainingsService;
   private dictionaryService: DictionaryService;
 
-  constructor(private serviceInjector: ServiceInjector, private trainingModalsService: TrainingModalsService) {
-    super();
+  constructor(private serviceInjector: ServiceInjector, private trainingModalsService: TrainingModalsService,
+              cdr: ChangeDetectorRef) {
+    super(cdr);
     this.trainingsService = serviceInjector.getTrainingsService();
     this.dictionaryService = serviceInjector.getDictionaryService();
   }
@@ -31,6 +32,7 @@ export class CycleCardComponent extends BaseCardComponent implements OnInit {
     this.cycle = null;
     this.previewTitle = this.trainingsService.getCyclePreviewTitle(this.cyclePreview);
   }
+
 
   public onCycleClick() {
     this.toggleShow();
@@ -42,10 +44,8 @@ export class CycleCardComponent extends BaseCardComponent implements OnInit {
             cycle => {
               this.cycle = cycle;
             },
-            () => {},
-            () => {
-              this.isLoading = false;
-            }
+            error => console.error(error, 'error'),
+            () => this.isLoading = false
           );
       }
     }

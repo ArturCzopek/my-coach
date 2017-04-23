@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {AfterViewInit, ChangeDetectorRef, Component} from "@angular/core";
 
 @Component({
   selector: 'coach-not-found',
@@ -9,7 +9,7 @@ import {Component} from "@angular/core";
           <h1>{{'page.notFound.title' | dictionary}}</h1>
         </div>
       </div>
-      <div class="row"style="margin-bottom: 100px;">
+      <div class="row" style="margin-bottom: 100px;">
         <div class="col s12 center">
           <img src="assets/img/my-coach.png"/>
         </div>
@@ -21,7 +21,16 @@ import {Component} from "@angular/core";
         </div>
       </div>
     </div>`,
-  styles: [`a:hover { text-decoration: underline; }`]
+  styles: [`a:hover {
+    text-decoration: underline;
+  }`]
 })
-export class NotFoundComponent {
+export class NotFoundComponent implements AfterViewInit {
+
+  constructor(private cdr: ChangeDetectorRef) {
+  }
+
+  ngAfterViewInit() {
+    setTimeout(1000, () => this.cdr.detach());
+  }
 }

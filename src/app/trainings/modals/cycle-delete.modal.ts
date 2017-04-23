@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component, NgZone, OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Cycle} from "../../shared/entities/get.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {BaseModal} from "../../shared/components/base.modal";
@@ -20,44 +20,38 @@ export class CycleDeleteModal extends BaseModal implements OnInit {
 
   private trainingsService: TrainingsService;
 
-  constructor(private trainingModalsService: TrainingModalsService, private serviceInjector: ServiceInjector, private ngZone: NgZone) {
+  constructor(private trainingModalsService: TrainingModalsService, private serviceInjector: ServiceInjector) {
     super(serviceInjector);
     this.trainingsService = serviceInjector.getTrainingsService();
   }
 
   public ngOnInit(): void {
-    this.ngZone.runOutsideAngular(() => {
-      super.ngOnInit();
+    super.ngOnInit();
 
-      this.initialization$ = this.trainingModalsService.deleteCycle.subscribe(
-        (data: any) => {
-          this.selectedCycle = data.cycle;
-          this.modalTitle = data.modalTitle;
-          this.openModal();
-        }
-      );
-    });
+    this.initialization$ = this.trainingModalsService.deleteCycle.subscribe(
+      (data: any) => {
+        this.selectedCycle = data.cycle;
+        this.modalTitle = data.modalTitle;
+        this.openModal();
+      }
+    );
   };
 
   public canModalBeOpened(): boolean {
-    return this.ngZone.runOutsideAngular(() => {
-      if (!this.selectedCycle) {
-        Materialize.toast(this.dictionaryService.getDictionaryValue('page.trainings.loadFirst.tooltip'), 3000);
-        return false;
-      }
+    if (!this.selectedCycle) {
+      Materialize.toast(this.dictionaryService.getDictionaryValue('page.trainings.loadFirst.tooltip'), 3000);
+      return false;
+    }
 
-      return true;
-    });
+    return true;
   }
 
   public onDeleteClick(): void {
-    this.ngZone.runOutsideAngular(() => {
-      this.trainingsService.deleteCycle(this.selectedCycle).first()
-        .subscribe(
-          ok => this.trainingModalsService.callRefreshPage(),
-          error => console.error(error, 'error'),
-          () => this.closeModal()
-        );
-    });
+    this.trainingsService.deleteCycle(this.selectedCycle).first()
+      .subscribe(
+        ok => this.trainingModalsService.callRefreshPage(),
+        error => console.error(error, 'error'),
+        () => this.closeModal()
+      );
   }
 }

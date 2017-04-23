@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component, NgZone, OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {BaseModal} from "../../shared/components/base.modal";
 import {TrainingsService} from "../services/tranings.service";
@@ -24,14 +24,13 @@ export class TrainingEditModal extends BaseModal implements OnInit {
   private trainingsService: TrainingsService;
   private dateService: DateService;
 
-  constructor(private trainingModalsService: TrainingModalsService, private serviceInjector: ServiceInjector, private ngZone: NgZone) {
+  constructor(private trainingModalsService: TrainingModalsService, private serviceInjector: ServiceInjector) {
     super(serviceInjector);
     this.trainingsService = this.serviceInjector.getTrainingsService();
     this.dateService = this.serviceInjector.getDateService();
   }
 
   public ngOnInit(): void {
-    this.ngZone.runOutsideAngular(() => {
       super.ngOnInit();
 
       this.initialization$ = this.trainingModalsService.editTraining.subscribe(
@@ -40,11 +39,9 @@ export class TrainingEditModal extends BaseModal implements OnInit {
           this.openModal();
         }
       );
-    });
   }
 
   public initDataBeforeOpenModal(): void {
-    this.ngZone.runOutsideAngular(() => {
       super.initDataBeforeOpenModal();
       this.exercisesForTraining = [];
       this.trainingDate = this.dateService.parseDateToString(this.selectedTraining.trainingDate);
@@ -52,19 +49,14 @@ export class TrainingEditModal extends BaseModal implements OnInit {
         exercises => this.exercisesForTraining = exercises,
         error => console.error(error, 'error')
       );
-    });
   }
 
   public onAddNewEmptySeriesToExercise(index: number): void {
-    this.ngZone.runOutsideAngular(() => {
       this.exercisesForTraining[index].exerciseSessions[0].series.push(new Series(0, 0, 0, ''));
-    });
   }
 
   public onDeleteSeries(exerciseIndex: number, seriesIndex: number): void {
-    this.ngZone.runOutsideAngular(() => {
       this.exercisesForTraining[exerciseIndex].exerciseSessions[0].series.splice(seriesIndex, 1);
-    });
   }
 
   public isDataValid(): boolean {
@@ -80,7 +72,6 @@ export class TrainingEditModal extends BaseModal implements OnInit {
   }
 
   public onEditClick(): void {
-    this.ngZone.runOutsideAngular(() => {
       this.selectedTraining.trainingDate = this.dateService.parseStringToDate(this.trainingDate);
       this.trainingsService.editTraining(this.selectedTraining, this.exercisesForTraining).first()
         .subscribe(
@@ -88,7 +79,6 @@ export class TrainingEditModal extends BaseModal implements OnInit {
           error => console.error(error, 'error'),
           () => this.closeModal()
         );
-    });
   }
 
   public trackByExerciseId(index, exercise: Exercise) {

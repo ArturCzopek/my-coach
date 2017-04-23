@@ -94,7 +94,7 @@ $circle-size: 120px;
   }
 }
 
-.input-field{
+.input-field {
   .dropdown-content li > span {
     color: black;
   }
@@ -190,5 +190,12 @@ $circle-size: 120px;
     p {
       margin-bottom: 0px;
     }
+  }
+}
+
+a.add-link {
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
   }
 }

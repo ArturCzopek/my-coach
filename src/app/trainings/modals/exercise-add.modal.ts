@@ -1,5 +1,5 @@
 /* tslint:disable:component-class-suffix */
-import {Component, NgZone, OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {NewExercise} from "../../shared/entities/add.entities";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {BaseModal} from "../../shared/components/base.modal";
@@ -23,75 +23,60 @@ export class ExerciseAddModal extends BaseModal implements OnInit {
 
   private trainingsService: TrainingsService;
 
-  constructor(private trainingModalsService: TrainingModalsService, private serviceInjector: ServiceInjector, private ngZone: NgZone) {
+  constructor(private trainingModalsService: TrainingModalsService, private serviceInjector: ServiceInjector) {
     super(serviceInjector);
     this.trainingsService = this.serviceInjector.getTrainingsService();
   }
 
   public ngOnInit(): void {
-    this.ngZone.runOutsideAngular(() => {
-      super.ngOnInit();
+    super.ngOnInit();
 
-      this.initialization$ = this.trainingModalsService.addExercises.subscribe(
-        finishedCycles => {
-          this.finishedCycles = finishedCycles;
-          this.openModal();
-        }
-      );
-    });
+    this.initialization$ = this.trainingModalsService.addExercises.subscribe(
+      finishedCycles => {
+        this.finishedCycles = finishedCycles;
+        this.openModal();
+      }
+    );
   }
 
   public initDataBeforeOpenModal(): void {
-    this.ngZone.runOutsideAngular(() => {
-      super.initDataBeforeOpenModal();
+    super.initDataBeforeOpenModal();
 
-      this.exercisesToAdd = [];
-      this.trainingsService.getActiveCycle().first().subscribe(
-        cycle => this.activeCycle = cycle,
-        error => console.error('error', error)
-      );
-
-    });
+    this.exercisesToAdd = [];
+    this.trainingsService.getActiveCycle().first().subscribe(
+      cycle => this.activeCycle = cycle,
+      error => console.error('error', error)
+    );
   }
 
   public addNewEmptyExerciseToList(): void {
-    this.ngZone.runOutsideAngular(() => {
-      this.exercisesToAdd.push(new NewExercise(this.activeCycle.sets[0].setId, '', ''));
-    });
+    this.exercisesToAdd.push(new NewExercise(this.activeCycle.sets[0].setId, '', ''));
   }
 
   public onDeleteExercise(index: number): void {
-    this.ngZone.runOutsideAngular(() => {
-      this.exercisesToAdd.splice(index, 1);
-    });
+    this.exercisesToAdd.splice(index, 1);
   }
 
   public isDataValid(): boolean {
-    return this.ngZone.runOutsideAngular(() => {
-      return this.exercisesToAdd.length > 0 && this.exercisesToAdd.every(exercise => exercise.exerciseName.length > 0);
-    });
+    return this.exercisesToAdd.length > 0 && this.exercisesToAdd.every(exercise => exercise.exerciseName.length > 0);
   }
 
   public onAddClick(): void {
-    this.ngZone.runOutsideAngular(() => {
-      this.trainingsService.addExercises(this.exercisesToAdd).first()
-        .subscribe(
-          ok => this.trainingModalsService.callRefreshPage(),
-          error => console.error(error, 'error'),
-          () => this.closeModal()
-        );
-    });
+    this.trainingsService.addExercises(this.exercisesToAdd).first()
+      .subscribe(
+        ok => this.trainingModalsService.callRefreshPage(),
+        error => console.error(error, 'error'),
+        () => this.closeModal()
+      );
   }
 
   public canModalBeOpened(): boolean {
-    return this.ngZone.runOutsideAngular(() => {
-      if (this.finishedCycles) {
-        Materialize.toast(this.dictionaryService.getDictionaryValue('page.trainings.cycle.notActive.tooltip'), 3000);
-        return false;
-      }
+    if (this.finishedCycles) {
+      Materialize.toast(this.dictionaryService.getDictionaryValue('page.trainings.cycle.notActive.tooltip'), 3000);
+      return false;
+    }
 
-      return true;
-    });
+    return true;
   }
 
   public trackByIndex(index, exercise: NewExercise) {
