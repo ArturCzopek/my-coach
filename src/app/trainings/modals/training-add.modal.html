@@ -1,7 +1,7 @@
 <div id="training-add" class="modal" materialize="modal" [materializeParams]="[modalParams]"
      [materializeActions]="modalActions">
   <div class="modal-content">
-    <h3>{{'page.trainings.modal.addTraining.title' | dictionary}}</h3>
+    <h3>{{'page.trainings.modal.add.training.title' | dictionary}}</h3>
     <div class="row" *ngIf="activeCycle">
       <form materialize class="col s12">
         <div class="row">
@@ -16,7 +16,7 @@
           <div class="col s12 m6">
             <div class="input-field inline full">
               <i class="material-icons prefix">today</i>
-              <label for="training-date">{{'page.trainings.modal.addTraining.trainingDate.label' | dictionary}}</label>
+              <label for="training-date">{{'page.trainings.modal.add.training.trainingDate.label' | dictionary}}</label>
               <input id="training-date" type="date" class="datepicker" materialize="pickadate"
                      [(ngModel)]="trainingDate" name="training-date" [materializeParams]="[datePickerParams]">
             </div>
@@ -60,10 +60,10 @@
                 {{'global.weight.label' | dictionary}}
                 <i [ngClass]="isExerciseActive[selectedSetNr][exId] ? '': 'disabled'"  (click)="onDeleteSeries(exId, serId)" class="material-button material-icons tooltipped small"
                    materialize="tooltip" data-position="bottom" data-delay="50"
-                   [attr.data-tooltip]="'page.trainings.modal.deleteSeries.tooltip' | dictionary">delete</i>
+                   [attr.data-tooltip]="'page.trainings.modal.delete.series.tooltip' | dictionary">delete</i>
 
               </div>
-              <a class="add-link" (click)="onAddNewEmptySeriesToExercise(exId)">{{'page.trainings.modal.addSeries.label' |
+              <a class="add-link" (click)="onAddNewEmptySeriesToExercise(exId)">{{'page.trainings.modal.add.series.label' |
                 dictionary}}</a>
             </td>
             <td>

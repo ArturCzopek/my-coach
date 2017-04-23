@@ -13,10 +13,10 @@
     <div class="card-title-icons">
       <i (click)="onEditProductClick()" class="small material-icons tooltipped"
          materialize="tooltip" data-position="bottom" data-delay="50"
-         [attr.data-tooltip]="'page.prices.editProduct.tooltip' | dictionary">mode_edit</i>
+         [attr.data-tooltip]="'page.prices.edit.product.tooltip' | dictionary">mode_edit</i>
       <i (click)="onDeleteProductClick()" class="small material-icons tooltipped"
          materialize="tooltip" data-position="bottom" data-delay="50"
-         [attr.data-tooltip]="'page.prices.deleteProduct.tooltip' | dictionary">delete</i>
+         [attr.data-tooltip]="'page.prices.delete.product.tooltip' | dictionary">delete</i>
     </div>
   </div>
 
@@ -47,14 +47,14 @@
       <div class="col s12">
         <i (click)="onAddPriceClick()" class="edit-button small material-icons tooltipped" materialize="tooltip"
            data-position="bottom" data-delay="50"
-           [attr.data-tooltip]="'page.prices.addPrice.tooltip' | dictionary">note_add</i>
+           [attr.data-tooltip]="'page.prices.add.price.tooltip' | dictionary">note_add</i>
         <i (click)="onEditPricesClick()" class="edit-button small material-icons tooltipped" materialize="tooltip"
            data-position="bottom" data-delay="50"
-           [attr.data-tooltip]="'page.prices.editPrices.tooltip' | dictionary">mode_edit</i>
+           [attr.data-tooltip]="'page.prices.edit.prices.tooltip' | dictionary">mode_edit</i>
         <i (click)="onDeletePricesClick()" class="delete-button small material-icons tooltipped"
            materialize="tooltip"
            data-position="bottom" data-delay="50"
-           [attr.data-tooltip]="'page.prices.deletePrices.tooltip' | dictionary">delete</i>
+           [attr.data-tooltip]="'page.prices.delete.prices.tooltip' | dictionary">delete</i>
       </div>
     </div>
 
@@ -64,8 +64,8 @@
           <i class="medium material-icons">info_outline</i>
         </div>
         <div class="row">
-          <p>{{'page.prices.productPrices.noData.info' | dictionary}}</p>
-            <p><a (click)="onAddPriceClick()">{{'page.prices.productPrices.noData.click.info'
+          <p>{{'page.prices.noData.info' | dictionary}}</p>
+            <p><a (click)="onAddPriceClick()">{{'page.prices.noData.click.info'
             | dictionary}}</a></p>
         </div>
       </div>

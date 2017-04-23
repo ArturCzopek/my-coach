@@ -6,10 +6,10 @@
       {{ dateService.parseDateToString(training.trainingDate) }}
       <i (click)="onEditTraining(training)" class="small material-icons material-button tooltipped hover-visible"
          materialize="tooltip" data-position="bottom" data-delay="50"
-         [attr.data-tooltip]="'page.trainings.editTraining.tooltip' | dictionary">edit</i>
+         [attr.data-tooltip]="'page.trainings.edit.training.tooltip' | dictionary">edit</i>
       <i (click)="onDeleteTraining(training)" class="small material-icons material-button tooltipped hover-visible"
          materialize="tooltip" data-position="bottom" data-delay="50"
-         [attr.data-tooltip]="'page.trainings.deleteTraining.tooltip' | dictionary">delete</i>
+         [attr.data-tooltip]="'page.trainings.delete.training.tooltip' | dictionary">delete</i>
     </th>
   </tr>
   </thead>
@@ -21,10 +21,10 @@
          data-position="bottom" data-delay="50" [attr.data-tooltip]="exercise.exerciseDescription">comment</i>
       <i (click)="onEditExercise(exercise)" class="small material-icons material-button tooltipped hover-visible"
          materialize="tooltip" data-position="bottom" data-delay="50"
-         [attr.data-tooltip]="'page.trainings.editExercise.tooltip' | dictionary">edit</i>
+         [attr.data-tooltip]="'page.trainings.edit.exercise.tooltip' | dictionary">edit</i>
       <i (click)="onDeleteExercise(exercise)" class="small material-icons material-button tooltipped hover-visible"
          materialize="tooltip" data-position="bottom" data-delay="50"
-         [attr.data-tooltip]="'page.trainings.deleteExercise.tooltip' | dictionary">delete</i>
+         [attr.data-tooltip]="'page.trainings.delete.exercise.tooltip' | dictionary">delete</i>
     </td>
     <td *ngFor="let session of exercise.exerciseSessions; trackBy: trackBySessionId">
       <div *ngFor="let series of session.series; trackBy: trackBySeriesId" class="series">
@@ -43,7 +43,7 @@
     <tbody>
     <div class="col s12 center no-data small">
       <div class="row">
-        <i class="medium material-icons">info_outline</i>
+        <i class="small material-icons">info_outline</i>
       </div>
       <div class="row">
         <p>{{'page.trainings.set.noExercises.info' | dictionary}}</p>

@@ -24,8 +24,8 @@ export class TrainingModalsService {
     this.addExercises.next(finishedCycles);
   }
 
-  public callAddTraining() {
-    this.addTraining.next(null);
+  public callAddTraining(finishedCycles: boolean) {
+    this.addTraining.next(finishedCycles);
   }
 
   public callDeleteCycle(cycle: Cycle, modalTitle: string) {

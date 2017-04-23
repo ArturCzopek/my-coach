@@ -55,7 +55,7 @@ export class CyclesListComponent implements OnInit {
   }
 
   onAddTrainingClick() {
-    this.trainingModalsService.callAddTraining();
+    this.trainingModalsService.callAddTraining(this.finishedCycles);
   }
 
   public trackByCyclePreviewId(index, cyclePreview: CyclePreview) {

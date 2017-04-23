@@ -2,11 +2,11 @@
      [materializeActions]="modalActions">
   <div class="modal-content">
 
-    <h3 *ngIf="selectedTraining">{{'page.trainings.modal.deleteTraining.title' | dictionary}} - {{dateService.parseDateToString(selectedTraining.trainingDate)}}</h3>
+    <h3 *ngIf="selectedTraining">{{'page.trainings.modal.delete.training.title' | dictionary}} - {{dateService.parseDateToString(selectedTraining.trainingDate)}}</h3>
 
     <div class="col s12">
       <div class="row">
-        <p>{{'page.trainings.modal.deleteTraining.content' | dictionary}}</p>
+        <p>{{'page.trainings.modal.delete.training.content' | dictionary}}</p>
       </div>
     </div>
   </div>

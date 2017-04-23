@@ -1,7 +1,7 @@
 <div id="exercise-add" class="modal" materialize="modal" [materializeParams]="[modalParams]"
      [materializeActions]="modalActions">
   <div class="modal-content">
-    <h3>{{'page.trainings.modal.addExercises.title' | dictionary}}</h3>
+    <h3>{{'page.trainings.modal.add.exercises.title' | dictionary}}</h3>
     <div class="row">
       <form materialize class="col s12">
 
@@ -43,12 +43,12 @@
             <td class="icons">
               <i (click)="onDeleteExercise(i)" class="small material-icons material-button tooltipped"
                  materialize="tooltip" data-position="bottom" data-delay="50"
-                 [attr.data-tooltip]="'page.trainings.deleteExercise.tooltip' | dictionary">delete</i>
+                 [attr.data-tooltip]="'page.trainings.delete.exercise.tooltip' | dictionary">delete</i>
             </td>
           </tr>
           </tbody>
         </table>
-        <a (click)="addNewEmptyExerciseToList()" class="add-link">{{'page.trainings.modal.addExercise.label' | dictionary}}</a>
+        <a (click)="addNewEmptyExerciseToList()" class="add-link">{{'page.trainings.modal.add.exercise.label' | dictionary}}</a>
 
       </form>
     </div>
