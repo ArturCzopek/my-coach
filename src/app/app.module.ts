@@ -16,6 +16,7 @@ import {SharedModule} from "./shared/shared.module";
 import {DateService} from "./shared/services/date.service";
 import {AboutComponent} from "./about.component";
 import {ConfigService} from "./config.service";
+import {NotFoundComponent} from "./not-found.component";
 
 export function loadInitialConfiguration(config: ConfigService) {
   return () => config.loadConfiguration();
@@ -25,7 +26,8 @@ export function loadInitialConfiguration(config: ConfigService) {
   declarations: [
     AppComponent,
     HeaderComponent,
-    AboutComponent
+    AboutComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +52,9 @@ export function loadInitialConfiguration(config: ConfigService) {
       deps: [ConfigService],
       multi: true
     }
+  ],
+  exports: [
+    NotFoundComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -5,6 +5,7 @@ import {ReportsListComponent} from "./reports/reports-list.component";
 import {PricesListComponent} from "./prices/prices-list.component";
 import {AboutComponent} from "./about.component";
 import {CyclesListComponent} from "./trainings/cycles-list.component";
+import {NotFoundComponent} from "./not-found.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/weights', pathMatch: 'full'},
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'prices', component: PricesListComponent},
   {path: 'reports', component: ReportsListComponent},
   {path: 'trainings', component: CyclesListComponent},
-  {path: 'about', component: AboutComponent}
+  {path: 'about', component: AboutComponent},
+  {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
