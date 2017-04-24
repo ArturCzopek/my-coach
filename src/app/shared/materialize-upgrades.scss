@@ -204,3 +204,9 @@ p.error-message {
   color: red;
   font-weight: bold;
 }
+
+td {
+  .input-field.inline {
+    width: 90%;
+  }
+}

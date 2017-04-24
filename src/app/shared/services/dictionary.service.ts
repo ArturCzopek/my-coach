@@ -104,6 +104,13 @@ export abstract class DictionaryService {
     };
   }
 
+  public getErrorMessage(error: any): string {
+      if (error.status === 409 || error.status === 406) {
+        return JSON.parse(error._body).message;
+      } else {
+        return this.getDictionaryValue('global.error.message');
+      }
+  }
 
   private getFormattedKey(key: string): string {
     const stack = key.split(".");

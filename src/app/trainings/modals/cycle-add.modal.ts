@@ -70,15 +70,7 @@ export class CycleAddModal extends BaseModal implements OnInit, AfterViewInit {
           this.errorMessage = '';
           this.closeModal();
         },
-        error => {
-          if (error.status === 409) {
-            this.errorMessage = this.dictionaryService.getDictionaryValue('page.trainings.cycle.invalidDate.message');
-          } else if (error.status === 406) {
-            this.errorMessage = this.dictionaryService.getDictionaryValue('page.trainings.cycle.invalidSetNames.message');
-          } else {
-            this.errorMessage = this.dictionaryService.getDictionaryValue('global.error.message');
-          }
-        }
+        error => this.errorMessage = this.dictionaryService.getErrorMessage(error)
       );
   }
 

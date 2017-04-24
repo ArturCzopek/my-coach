@@ -84,9 +84,12 @@ export class CycleEditModal extends BaseModal implements OnInit {
 
     this.trainingsService.editCycle(this.selectedCycle).first()
       .subscribe(
-        ok => this.trainingModalsService.callRefreshPage(),
-        error => console.error(error, 'error'),
-        () => this.closeModal()
+        ok => {
+          this.trainingModalsService.callRefreshPage();
+          this.errorMessage = '';
+          this.closeModal();
+        },
+        error => this.errorMessage = this.dictionaryService.getErrorMessage(error)
       );
   }
 }
