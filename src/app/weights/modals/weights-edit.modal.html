@@ -21,6 +21,8 @@
       </tr>
       </tbody>
     </table>
+
+    <p *ngIf="errorMessage.length > 0" class="error-message">{{errorMessage}}</p>
   </div>
   <coach-modal-footer leftButtonLabel="{{'global.edit.label' | dictionary}}"
                       rightButtonLabel="{{'global.close.label' | dictionary}}"

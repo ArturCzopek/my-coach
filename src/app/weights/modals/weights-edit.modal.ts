@@ -70,9 +70,12 @@ export class WeightsEditModal extends BaseModal implements OnInit {
 
     this.weightsService.editWeights(weightsToEdit).first()
       .subscribe(
-        ok => this.weightsModalsService.callRefreshPage(),
-        error => console.error('error', error),
-        () => this.closeModal()
+        ok => {
+          this.weightsModalsService.callRefreshPage();
+          this.errorMessage = '';
+          this.closeModal();
+        },
+        error => this.errorMessage = this.dictionaryService.getErrorMessage(error)
       );
   }
 
