@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {AfterViewInit, ChangeDetectorRef, Component, OnInit} from "@angular/core";
 import {CyclePreview} from "../shared/entities/preview.entities";
 import {TrainingsService} from "./services/tranings.service";
 import {ServiceInjector} from "../shared/services/service.injector";
@@ -9,14 +9,15 @@ import {TrainingModalsService} from "./services/training-modals.service";
   templateUrl: './cycles-list.component.html',
   styleUrls: ['./trainings.scss', '../shared/materialize-upgrades.scss']
 })
-export class CyclesListComponent implements OnInit {
+export class CyclesListComponent implements OnInit, AfterViewInit {
 
   public isLoading: boolean;
   public finishedCycles: boolean;
   private cyclePreviews: CyclePreview[];
   private trainingsService: TrainingsService;
 
-  constructor(private serviceInjector: ServiceInjector, private trainingModalsService: TrainingModalsService) {
+  constructor(private serviceInjector: ServiceInjector, private trainingModalsService: TrainingModalsService,
+              private changeDetectorRef: ChangeDetectorRef) {
     this.trainingsService = serviceInjector.getTrainingsService();
   }
 
@@ -31,13 +32,20 @@ export class CyclesListComponent implements OnInit {
       );
   }
 
+  ngAfterViewInit(): void {
+    setTimeout(1000, () => this.changeDetectorRef.detach());
+  }
+
   private loadCyclePreviews() {
     this.isLoading = true;
     this.trainingsService.getCyclePreviews()
       .subscribe(
         previews => this.cyclePreviews = previews.slice().reverse(),
         error => console.error(error, 'error'),
-        () => this.isLoading = false
+        () => {
+          this.isLoading = false;
+          this.changeDetectorRef.detectChanges();
+        }
       );
   }
 

@@ -58,10 +58,10 @@ import {AfterViewInit, ChangeDetectorRef, Component} from "@angular/core";
 })
 export class AboutComponent implements AfterViewInit {
 
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor(private changeDetectorRef: ChangeDetectorRef) {
   }
 
   ngAfterViewInit() {
-    setTimeout(1000, () => this.cdr.detach());
+    setTimeout(1000, () => this.changeDetectorRef.detach());
   }
 }
