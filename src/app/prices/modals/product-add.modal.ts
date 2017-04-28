@@ -51,7 +51,7 @@ export class ProductAddModal extends BaseModal implements OnInit {
 
   public isDataValid(): boolean {
     if (this.productToAdd) {
-      return this.productToAdd.productName.length > 0;
+      return this.productToAdd.productName.length > 0 && this.errorMessage.length === 0;
     }
 
     return false;
@@ -68,17 +68,22 @@ export class ProductAddModal extends BaseModal implements OnInit {
       this.pricesService.addProductImage(file, this.productToAdd.productId).subscribe(
         productId => {
           this.productToAdd.productId = productId;
+          this.errorMessage = '';
           this.imageUrl = this.pricesService.getProductImageUrl(this.productToAdd.productId);
-        }
+        },
+        error => this.errorMessage = this.dictionaryService.getErrorMessage(error)
       );
     }
   }
 
   public onAddClick() {
     this.pricesService.addProduct(this.productToAdd).first().subscribe(
-      ok => this.pricesModalsService.callRefreshPage(),
-      error => console.error(error, 'error'),
-      () => this.onCloseModal()
+      ok => {
+        this.pricesModalsService.callRefreshPage();
+        this.errorMessage = '';
+        this.closeModal();
+      },
+      error => this.errorMessage = this.dictionaryService.getErrorMessage(error)
     );
   }
 

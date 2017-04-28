@@ -52,7 +52,7 @@ export class ProductEditModal extends BaseModal implements OnInit {
   }
 
   public isDataValid(): boolean {
-    return this.productName.length > 0;
+    return this.productName.length > 0 && this.errorMessage.length === 0;
   }
 
   public uploadImage() {
@@ -66,18 +66,21 @@ export class ProductEditModal extends BaseModal implements OnInit {
       this.pricesService.addProductImage(file, this.selectedProduct.productId).subscribe(
         productId => {
           this.imageUrl = this.pricesService.getProductImageUrl(productId);
-        }
+          this.errorMessage = '';
+        },
+        error => this.errorMessage = this.dictionaryService.getErrorMessage(error)
       );
     }
   }
 
   public onEditClick() {
-    this.selectedProduct.productName = this.productName;
-    this.selectedProduct.image = this.imageUrl;
-    this.pricesService.editProduct(this.selectedProduct).first().subscribe(
-      ok => this.pricesModalsService.callRefreshPage(),
-      error => console.error(error, 'error'),
-      () => this.closeModal()
+    this.pricesService.editProduct(new Product(this.selectedProduct.productId, this.productName, this.imageUrl)).first().subscribe(
+      ok => {
+        this.pricesModalsService.callRefreshPage();
+        this.errorMessage = '';
+        this.closeModal();
+      },
+      error => this.errorMessage = this.dictionaryService.getErrorMessage(error)
     );
   }
 
