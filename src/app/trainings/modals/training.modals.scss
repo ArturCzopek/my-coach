@@ -32,7 +32,7 @@ table.margin {
   }
 }
 
-table.responsive-table.striped.fixed {
+table.striped.fixed {
   table-layout: fixed;
 
   tr {
@@ -75,7 +75,7 @@ table.responsive-table.striped.fixed {
     width: 100%;
   }
   &.short {
-    width: 20%;
+    width: 20% !important;
   }
 }
 

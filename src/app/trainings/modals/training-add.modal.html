@@ -9,7 +9,9 @@
             <div class="input-field inline full">
               <select id="{{'set_' + (i+1)}}" [(ngModel)]="selectedSetNr" name="{{'set_' + (i+1)}}"
                       style="display:inline;">
-                <option *ngFor="let set of activeCycle.sets; trackBy: trackBySetId; let i = index" [ngValue]="i">{{set.setName}}</option>
+                <option *ngFor="let set of activeCycle.sets; trackBy: trackBySetId; let i = index" [ngValue]="i">
+                  {{set.setName}}
+                </option>
               </select>
             </div>
           </div>
@@ -23,26 +25,26 @@
           </div>
         </div>
 
-        <table class="responsive-table striped fixed">
+        <table class="striped fixed">
           <thead>
           <tr>
-            <th data-set="Exercise">{{'page.trainings.exercise.label' | dictionary}}</th>
-            <th data-set="Repeats">{{'page.trainings.repeats.label' | dictionary}}</th>
-            <th data-set="Comment">{{'page.trainings.comment.label' | dictionary}}</th>
+            <th data-field="Exercise">{{'page.trainings.exercise.label' | dictionary}}</th>
+            <th data-field="Repeats">{{'page.trainings.repeats.label' | dictionary}}</th>
+            <th data-field="Comment">{{'page.trainings.comment.label' | dictionary}}</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let exercise of activeCycle.sets[selectedSetNr].exercises; let exId = index"
+          <tr *ngFor="let exercise of activeCycle.sets[selectedSetNr].exercises; trackBy: trackByExerciseId; let exId = index"
               [ngClass]="isExerciseActive[selectedSetNr][exId] ? '' : 'inactive'">
             <td class="exercise">
               <div class="input-field inline">
                 <input type="checkbox" id="isActive_{{exId}}" name="isActive_{{exId}}" class="filled-in blue-checkbox"
                        [(ngModel)]="isExerciseActive[selectedSetNr][exId]"/>
                 <label class="asText" for="isActive_{{exId}}">{{exercise.exerciseName}}</label>
+                <i *ngIf="exercise.exerciseDescription" class="material-button material-icons tooltipped"
+                   materialize="tooltip"
+                   data-position="bottom" data-delay="50" [attr.data-tooltip]="exercise.exerciseDescription">comment</i>
               </div>
-              <i *ngIf="exercise.exerciseDescription" class="material-button material-icons tooltipped"
-                 materialize="tooltip"
-                 data-position="bottom" data-delay="50" [attr.data-tooltip]="exercise.exerciseDescription">comment</i>
             </td>
             <td class="repeats">
               <div *ngFor="let series of exerciseSessionsToAdd[selectedSetNr][exId].series; let serId = index">
@@ -83,6 +85,8 @@
 
       </form>
     </div>
+
+    <p *ngIf="errorMessage.length > 0" class="error-message">{{errorMessage}}</p>
   </div>
 
   <coach-modal-footer leftButtonLabel="{{'global.add.label' | dictionary}}"

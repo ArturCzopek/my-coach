@@ -21,6 +21,8 @@
         </form>
       </div>
     </div>
+
+    <p *ngIf="errorMessage.length > 0" class="error-message">{{errorMessage}}</p>
   </div>
 
   <coach-modal-footer leftButtonLabel="{{'global.edit.label' | dictionary}}"

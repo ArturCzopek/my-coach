@@ -31,32 +31,32 @@ export class TrainingEditModal extends BaseModal implements OnInit {
   }
 
   public ngOnInit(): void {
-      super.ngOnInit();
+    super.ngOnInit();
 
-      this.initialization$ = this.trainingModalsService.editTraining.subscribe(
-        (training: Training) => {
-          this.selectedTraining = training;
-          this.openModal();
-        }
-      );
+    this.initialization$ = this.trainingModalsService.editTraining.subscribe(
+      (training: Training) => {
+        this.selectedTraining = training;
+        this.openModal();
+      }
+    );
   }
 
   public initDataBeforeOpenModal(): void {
-      super.initDataBeforeOpenModal();
-      this.exercisesForTraining = [];
-      this.trainingDate = this.dateService.parseDateToString(this.selectedTraining.trainingDate);
-      this.trainingsService.getExercisesWithSessionForTraining(this.selectedTraining.trainingId).first().subscribe(
-        exercises => this.exercisesForTraining = exercises,
-        error => console.error(error, 'error')
-      );
+    super.initDataBeforeOpenModal();
+    this.exercisesForTraining = [];
+    this.trainingDate = this.dateService.parseDateToString(this.selectedTraining.trainingDate);
+    this.trainingsService.getExercisesWithSessionForTraining(this.selectedTraining.trainingId).first().subscribe(
+      exercises => this.exercisesForTraining = exercises,
+      error => console.error(error, 'error')
+    );
   }
 
   public onAddNewEmptySeriesToExercise(index: number): void {
-      this.exercisesForTraining[index].exerciseSessions[0].series.push(new Series(0, 0, 0, ''));
+    this.exercisesForTraining[index].exerciseSessions[0].series.push(new Series(0, 0, 0, ''));
   }
 
   public onDeleteSeries(exerciseIndex: number, seriesIndex: number): void {
-      this.exercisesForTraining[exerciseIndex].exerciseSessions[0].series.splice(seriesIndex, 1);
+    this.exercisesForTraining[exerciseIndex].exerciseSessions[0].series.splice(seriesIndex, 1);
   }
 
   public isDataValid(): boolean {
@@ -72,13 +72,17 @@ export class TrainingEditModal extends BaseModal implements OnInit {
   }
 
   public onEditClick(): void {
-      this.selectedTraining.trainingDate = this.dateService.parseStringToDate(this.trainingDate);
-      this.trainingsService.editTraining(this.selectedTraining, this.exercisesForTraining).first()
-        .subscribe(
-          ok => this.trainingModalsService.callRefreshPage(),
-          error => console.error(error, 'error'),
-          () => this.closeModal()
-        );
+    this.trainingsService.editTraining(new Training(this.selectedTraining.trainingId, this.dateService.parseStringToDate(this.trainingDate),
+      this.selectedTraining.setId), this.exercisesForTraining)
+      .first()
+      .subscribe(
+        ok => {
+          this.trainingModalsService.callRefreshPage();
+          this.errorMessage = '';
+          this.closeModal();
+        },
+        error => this.errorMessage = this.dictionaryService.getErrorMessage(error)
+      );
   }
 
   public trackByExerciseId(index, exercise: Exercise) {

@@ -5,7 +5,7 @@ import {ServiceInjector} from "../../shared/services/service.injector";
 import {BaseModal} from "../../shared/components/base.modal";
 import {TrainingsService} from "../services/tranings.service";
 import {TrainingModalsService} from "../services/training-modals.service";
-import {Cycle, Set} from "../../shared/entities/get.entities";
+import {Cycle, Exercise, Set} from "../../shared/entities/get.entities";
 import {DateService} from "../../shared/services/date.service";
 
 declare var Materialize: any;
@@ -87,9 +87,12 @@ export class TrainingAddModal extends BaseModal implements OnInit {
   public onAddClick(): void {
     this.trainingsService.addTraining(this.createNewTraining()).first()
       .subscribe(
-        ok => this.trainingModalsService.callRefreshPage(),
-        error => console.error(error, 'error'),
-        () => this.closeModal()
+        ok => {
+          this.trainingModalsService.callRefreshPage();
+          this.errorMessage = '';
+          this.closeModal();
+        },
+        error => this.errorMessage = this.dictionaryService.getErrorMessage(error)
       );
   }
 
@@ -117,6 +120,12 @@ export class TrainingAddModal extends BaseModal implements OnInit {
   public trackBySetId(index, set: Set) {
     return set.setId;
   }
+
+  public trackByExerciseId(index, exercise: Exercise) {
+    return exercise.exerciseId;
+  }
+
+
 
   private initPossibleSetsToDisplay(): void {
     this.activeCycle.sets.forEach((set, i) => {

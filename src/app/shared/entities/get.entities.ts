@@ -11,7 +11,8 @@ export class Exercise {
   constructor(public exerciseId: number,
               public exerciseName: string,
               public exerciseSessions: ExerciseSession[],
-              public exerciseDescription?: string) {
+              public exerciseDescription?: string,
+              public setId?: number) {
   }
 }
 
@@ -67,7 +68,8 @@ export class Set {
 
 export class Training {
   constructor(public trainingId: number,
-              public trainingDate: Date) {
+              public trainingDate: Date,
+              public setId?: number) {
   }
 }
 

@@ -64,9 +64,12 @@ export class ExerciseAddModal extends BaseModal implements OnInit {
   public onAddClick(): void {
     this.trainingsService.addExercises(this.exercisesToAdd).first()
       .subscribe(
-        ok => this.trainingModalsService.callRefreshPage(),
-        error => console.error(error, 'error'),
-        () => this.closeModal()
+        ok => {
+          this.trainingModalsService.callRefreshPage();
+          this.errorMessage = '';
+          this.closeModal();
+        },
+        error => this.errorMessage = this.dictionaryService.getErrorMessage(error)
       );
   }
 

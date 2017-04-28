@@ -14,12 +14,12 @@
         </div>
       </div>
 
-      <table class="responsive-table striped fixed">
+      <table class="striped fixed">
         <thead>
         <tr>
-          <th data-set="Exercise">{{'page.trainings.exercise.label' | dictionary}}</th>
-          <th data-set="Repeats">{{'page.trainings.repeats.label' | dictionary}}</th>
-          <th data-set="Comment">{{'page.trainings.comment.label' | dictionary}}</th>
+          <th data-field="Exercise">{{'page.trainings.exercise.label' | dictionary}}</th>
+          <th data-field="Repeats">{{'page.trainings.repeats.label' | dictionary}}</th>
+          <th data-field="Comment">{{'page.trainings.comment.label' | dictionary}}</th>
         </tr>
         </thead>
         <tbody>
@@ -30,10 +30,10 @@
               <input type="checkbox" id="isActive_{{exId}}" name="isActive_{{exId}}" class="filled-in blue-checkbox"
                      [(ngModel)]="!exercise.exerciseSessions[0].empty"/>
               <label class="asText" for="isActive_{{exId}}">{{exercise.exerciseName}}</label>
+              <i *ngIf="exercise.exerciseDescription" class="material-button material-icons tooltipped"
+                 materialize="tooltip"
+                 data-position="bottom" data-delay="50" [attr.data-tooltip]="exercise.exerciseDescription">comment</i>
             </div>
-            <i *ngIf="exercise.exerciseDescription" class="material-button material-icons tooltipped"
-               materialize="tooltip"
-               data-position="bottom" data-delay="50" [attr.data-tooltip]="exercise.exerciseDescription">comment</i>
           </td>
           <td class="repeats">
             <div *ngFor="let series of exercise.exerciseSessions[0].series; trackBy: trackBySeriesId; let serId = index">
@@ -71,6 +71,8 @@
         </tbody>
       </table>
     </form>
+
+    <p *ngIf="errorMessage.length > 0" class="error-message">{{errorMessage}}</p>
   </div>
 
   <coach-modal-footer leftButtonLabel="{{'global.edit.label' | dictionary}}"

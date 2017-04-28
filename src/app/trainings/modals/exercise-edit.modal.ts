@@ -56,12 +56,15 @@ export class ExerciseEditModal extends BaseModal implements OnInit {
   public onEditClick(): void {
     this.trainingsService
       .editExercise(
-        new Exercise(this.selectedExercise.exerciseId, this.newExerciseName, [], this.newExerciseDescription)
+        new Exercise(this.selectedExercise.exerciseId, this.newExerciseName, [], this.newExerciseDescription, this.selectedExercise.setId)
       ).first()
       .subscribe(
-        ok => this.trainingModalsService.callRefreshPage(),
-        error => console.error(error, 'error'),
-        () => this.closeModal()
+        ok => {
+          this.trainingModalsService.callRefreshPage();
+          this.errorMessage = '';
+          this.closeModal();
+        },
+        error => this.errorMessage = this.dictionaryService.getErrorMessage(error)
       );
   }
 }
