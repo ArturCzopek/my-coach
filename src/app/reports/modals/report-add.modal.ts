@@ -55,9 +55,12 @@ export class ReportAddModal extends BaseModal implements OnInit {
 
     this.reportService.addReport(this.reportToAdd).first()
       .subscribe(
-        ok => this.reportModalsService.callRefreshPage(),
-        error => console.error('error', error),
-        () => this.closeModal()
+        ok => {
+          this.reportModalsService.callRefreshPage();
+          this.errorMessage = '';
+          this.closeModal();
+        },
+        error => this.errorMessage = this.dictionaryService.getErrorMessage(error)
       );
   }
 }

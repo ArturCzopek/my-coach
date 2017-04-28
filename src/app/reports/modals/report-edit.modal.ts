@@ -69,9 +69,12 @@ export class ReportEditModal extends BaseModal implements OnInit {
     this.selectedReport.content = this.reportContent;
     this.reportService.editReport(this.selectedReport).first()
       .subscribe(
-        ok => this.reportModalsService.callRefreshPage(),
-        error => console.error('error', error),
-        () => this.closeModal()
+        ok => {
+          this.reportModalsService.callRefreshPage();
+          this.errorMessage = '';
+          this.closeModal();
+        },
+        error => this.errorMessage = this.dictionaryService.getErrorMessage(error)
       );
   }
 }
