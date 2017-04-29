@@ -30,7 +30,7 @@ cache:
    - $HOME/.nvm
 
 script:
- - ng build --env=amazon --base-href "https://arturczopek.github.io/my-coach/" -aot --stats-json
+ - ng build --env=github --base-href "https://arturczopek.github.io/my-coach/" -aot --stats-json
  - ng test --watch=false
 
 after_success:
