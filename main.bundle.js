@@ -837,8 +837,8 @@ var ShoppingList = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
     production: true,
-    isBackendServerAvailable: true,
-    url: "http://my-coach-jar.xupeijfv7x.eu-central-1.elasticbeanstalk.com"
+    isBackendServerAvailable: false,
+    url: "http://arturczopek.github.io/my-coach"
 };
 //# sourceMappingURL=environment.js.map
 
