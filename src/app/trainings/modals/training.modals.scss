@@ -22,6 +22,15 @@
 
 .add-link {
   padding-left: 6px;
+
+  &.inactive {
+    cursor: not-allowed;
+    color: gray;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 table.margin {
