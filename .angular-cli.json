@@ -33,7 +33,8 @@
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts",
         "github": "environments/environment.github.ts",
-        "amazon": "environments/environment.amazon.ts"
+        "amazon": "environments/environment.amazon.ts",
+        "integ": "environments/environment.integ.ts"
       }
     }
   ],

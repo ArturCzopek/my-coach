@@ -16,6 +16,7 @@ import {ProductEditModal} from "./modals/product-edit.modal";
 import {ProductDeleteModal} from "./modals/product-delete.modal";
 import {PricesDeleteModal} from "./modals/prices-delete.modal";
 import {ShoppingListModal} from "./modals/shopping-list.modal";
+import {LazyLoadImageModule} from "ng-lazyload-image";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {ShoppingListModal} from "./modals/shopping-list.modal";
     HttpModule,
     CommonModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    LazyLoadImageModule
   ],
   providers: [
     PricesMockService,

@@ -18,14 +18,14 @@
       <div class="row">
         <div class="input-field col s12 m6 l6">
           <i class="material-icons prefix">location_on</i>
-          <label for="place">{{'page.prices.modal.add.place.label' | dictionary}}</label>
-          <input id="place" type="text" [(ngModel)]="place" name="place"/>
+          <label for="shopping-place">{{'page.prices.modal.add.place.label' | dictionary}}</label>
+          <input id="shopping-place" type="text" [(ngModel)]="place" name="shopping-place"/>
         </div>
         <div class="input-field col s12 m6 l6">
           <i class="material-icons prefix">today</i>
           <label for="shopping-date">{{'page.prices.modal.add.date.label' | dictionary}}</label>
           <input id="shopping-date" type="date" class="datepicker" materialize="pickadate"
-                 [(ngModel)]="shoppingDate" name="priceDate"
+                 [(ngModel)]="shoppingDate" name="shopping-date"
                  [materializeParams]="[datePickerParams]">
         </div>
       </div>

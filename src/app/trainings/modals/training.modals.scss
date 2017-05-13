@@ -22,6 +22,15 @@
 
 .add-link {
   padding-left: 6px;
+
+  &.disabled {
+    cursor: not-allowed;
+    color: gray;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 table.margin {
@@ -39,7 +48,7 @@ table.striped.fixed {
     color: black;
   }
 
-  tr.inactive {
+  tr.disabled {
     color: gray;
     cursor: not-allowed;
 

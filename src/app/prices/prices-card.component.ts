@@ -15,7 +15,6 @@ export class PricesCardComponent extends BaseCardComponent implements OnInit {
 
   @Input() productPreview: Product;
   public prices: Price[] = [];
-  public imageUrl = '';
   private pricesService: PricesService;
 
   constructor(private pricesModalsService: PricesModalsService, private serviceInjector: ServiceInjector,
@@ -27,7 +26,6 @@ export class PricesCardComponent extends BaseCardComponent implements OnInit {
   ngOnInit() {
     super.ngOnInit();
     this.loadPrices();
-    this.imageUrl = this.pricesService.getProductImageUrl(this.productPreview.productId);
   }
 
   private loadPrices() {

@@ -85,6 +85,10 @@ export class TrainingEditModal extends BaseModal implements OnInit {
       );
   }
 
+  public changeExerciseActive(exercise: Exercise): void {
+    exercise.exerciseSessions[0].empty = !exercise.exerciseSessions[0].empty
+  }
+
   public trackByExerciseId(index, exercise: Exercise) {
     return exercise.exerciseId;
   }
