@@ -1,5 +1,5 @@
 import {BaseCardComponent} from "../shared/components/base-card.component";
-import {AfterViewInit, ChangeDetectorRef, Component, Input, OnInit, Renderer2, ViewChild} from "@angular/core";
+import {ChangeDetectorRef, Component, Input, OnInit} from "@angular/core";
 import {Price, Product} from "../shared/entities/get.entities";
 import {PricesService} from "./services/prices.service";
 import {PricesModalsService} from "./services/prices-modals.service";
@@ -11,17 +11,14 @@ import {DateService} from "../shared/services/date.service";
   templateUrl: 'prices-card.component.html',
   styleUrls: ['./prices.scss']
 })
-export class PricesCardComponent extends BaseCardComponent implements OnInit, AfterViewInit {
+export class PricesCardComponent extends BaseCardComponent implements OnInit {
 
   @Input() productPreview: Product;
   public prices: Price[] = [];
   private pricesService: PricesService;
 
-  @ViewChild('image')
-  private image;
-
   constructor(private pricesModalsService: PricesModalsService, private serviceInjector: ServiceInjector,
-              public dateService: DateService, cdr: ChangeDetectorRef, private renderer: Renderer2) {
+              public dateService: DateService, cdr: ChangeDetectorRef) {
     super(cdr);
     this.pricesService = serviceInjector.getPricesService();
   }
@@ -29,10 +26,6 @@ export class PricesCardComponent extends BaseCardComponent implements OnInit, Af
   ngOnInit() {
     super.ngOnInit();
     this.loadPrices();
-  }
-
-  ngAfterViewInit() {
-    setTimeout(() => this.renderer.setAttribute(this.image, 'src', this.pricesService.getProductImageUrl(this.productPreview.productId)), 3000);
   }
 
   private loadPrices() {
