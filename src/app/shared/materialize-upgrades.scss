@@ -36,6 +36,13 @@ $circle-size: 120px;
 
 //CARDS
 
+.card {
+  &:hover {
+    transform: scale(1.02);
+    cursor: default;
+  }
+}
+
 .card-content {
   display: flex;
   flex-direction: row;
