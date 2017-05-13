@@ -24,7 +24,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let exercise of exercisesForTraining; trackBy: trackByExerciseId let exId = index"
-            [ngClass]="exercise.exerciseSessions[0].empty ? 'inactive' : ''">
+            [ngClass]="exercise.exerciseSessions[0].empty ? 'disabled' : ''">
           <td class="exercise">
             <div class="input-field inline">
               <input type="checkbox" id="isActive_{{exId}}" name="isActive_{{exId}}" class="filled-in blue-checkbox"
@@ -59,7 +59,7 @@
                  [attr.data-tooltip]="'page.trainings.modal.delete.series.tooltip' | dictionary">delete</i>
 
             </div>
-            <a class="add-link" [ngClass]="exercise.exerciseSessions[0].empty ? 'inactive' : ''"
+            <a class="add-link" [ngClass]="exercise.exerciseSessions[0].empty ? 'disabled' : ''"
                (click)="exercise.exerciseSessions[0].empty ? '' : onAddNewEmptySeriesToExercise(exId)">{{'page.trainings.modal.add.series.label' | dictionary}}</a>
           </td>
           <td>

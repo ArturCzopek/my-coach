@@ -95,16 +95,10 @@ export class TrainingAddModal extends BaseModal implements OnInit {
         error => this.errorMessage = this.dictionaryService.getErrorMessage(error)
       );
   }
-
-  public onAddCycleClick(): void {
-    this.closeModal();
-    this.trainingModalsService.addCycle.next(true);
-  }
-
   private createNewTraining(): NewTraining {
     return new NewTraining(
       this.activeCycle.sets[this.selectedSetNr].setId,
-      this.exerciseSessionsToAdd[this.selectedSetNr],
+      this.formattedSessions(this.exerciseSessionsToAdd[this.selectedSetNr]),
       this.dateService.parseStringToDate(this.trainingDate));
   }
 
@@ -117,6 +111,10 @@ export class TrainingAddModal extends BaseModal implements OnInit {
     return true;
   }
 
+  public changeExerciseActive(exerciseId: number): void {
+    this.isExerciseActive[this.selectedSetNr][exerciseId] = !this.isExerciseActive[this.selectedSetNr][exerciseId];
+  }
+
   public trackBySetId(index, set: Set) {
     return set.setId;
   }
@@ -125,7 +123,13 @@ export class TrainingAddModal extends BaseModal implements OnInit {
     return exercise.exerciseId;
   }
 
+  private formattedSessions(sessions: NewExerciseSession[]): NewExerciseSession[] {
+    sessions.forEach((session, i) => {
+      session.empty = !this.isExerciseActive[this.selectedSetNr][i];
+    })
 
+    return sessions;
+  }
 
   private initPossibleSetsToDisplay(): void {
     this.activeCycle.sets.forEach((set, i) => {

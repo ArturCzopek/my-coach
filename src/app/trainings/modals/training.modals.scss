@@ -23,7 +23,7 @@
 .add-link {
   padding-left: 6px;
 
-  &.inactive {
+  &.disabled {
     cursor: not-allowed;
     color: gray;
 
@@ -48,7 +48,7 @@ table.striped.fixed {
     color: black;
   }
 
-  tr.inactive {
+  tr.disabled {
     color: gray;
     cursor: not-allowed;
 

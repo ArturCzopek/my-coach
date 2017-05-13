@@ -177,7 +177,7 @@ export class TrainingsMockService extends TrainingsService {
 
           const seriesList: Series[] = [];
 
-          if (!exerciseSession.isEmpty) {
+          if (!exerciseSession.empty) {
             exerciseSession.series.forEach(series => {
 
               if (series.comment && series.comment.length > 0) {
@@ -196,7 +196,7 @@ export class TrainingsMockService extends TrainingsService {
             new ExerciseSession(
               this.newExerciseSessionId,
               seriesList,
-              exerciseSession.isEmpty
+              exerciseSession.empty
             )
           );
 

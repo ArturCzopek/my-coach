@@ -35,11 +35,12 @@
           </thead>
           <tbody>
           <tr *ngFor="let exercise of activeCycle.sets[selectedSetNr].exercises; trackBy: trackByExerciseId; let exId = index"
-              [ngClass]="isExerciseActive[selectedSetNr][exId] ? '' : 'inactive'">
+              [ngClass]="isExerciseActive[selectedSetNr][exId] ? '' : 'disabled'">
             <td class="exercise">
               <div class="input-field inline">
                 <input type="checkbox" id="isActive_{{exId}}" name="isActive_{{exId}}" class="filled-in blue-checkbox"
-                       [(ngModel)]="isExerciseActive[selectedSetNr][exId]"/>
+                       [checked]="isExerciseActive[selectedSetNr][exId] === true ? true : false"
+                       (click)="changeExerciseActive(exId)">
                 <label class="asText" for="isActive_{{exId}}">{{exercise.exerciseName}}</label>
                 <i *ngIf="exercise.exerciseDescription" class="material-button material-icons tooltipped"
                    materialize="tooltip"
@@ -65,7 +66,7 @@
                    [attr.data-tooltip]="'page.trainings.modal.delete.series.tooltip' | dictionary">delete</i>
 
               </div>
-              <a class="add-link" (click)="onAddNewEmptySeriesToExercise(exId)">{{'page.trainings.modal.add.series.label' |
+              <a class="add-link" [ngClass]="isExerciseActive[selectedSetNr][exId] ? '': 'disabled'"  (click)="onAddNewEmptySeriesToExercise(exId)">{{'page.trainings.modal.add.series.label' |
                 dictionary}}</a>
             </td>
             <td>
