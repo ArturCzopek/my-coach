@@ -52,7 +52,7 @@ export class PricesMockService extends PricesService {
   }
 
   getProductImageUrl(productId: number): string {
-    return PRODUCTS_LIST.find(product => product.productId === productId).image;
+    return PRODUCTS_LIST.find(product => product.productId === productId).screen;
   }
 
   addProductImage(file: any, productId: number): Observable<number> {

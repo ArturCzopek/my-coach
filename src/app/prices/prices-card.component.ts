@@ -1,5 +1,5 @@
 import {BaseCardComponent} from "../shared/components/base-card.component";
-import {ChangeDetectorRef, Component, Input, OnInit, Renderer2, ViewChild} from "@angular/core";
+import {AfterViewInit, ChangeDetectorRef, Component, Input, OnInit, Renderer2, ViewChild} from "@angular/core";
 import {Price, Product} from "../shared/entities/get.entities";
 import {PricesService} from "./services/prices.service";
 import {PricesModalsService} from "./services/prices-modals.service";
@@ -11,7 +11,7 @@ import {DateService} from "../shared/services/date.service";
   templateUrl: 'prices-card.component.html',
   styleUrls: ['./prices.scss']
 })
-export class PricesCardComponent extends BaseCardComponent implements OnInit {
+export class PricesCardComponent extends BaseCardComponent implements OnInit, AfterViewInit {
 
   @Input() productPreview: Product;
   public prices: Price[] = [];
@@ -29,7 +29,10 @@ export class PricesCardComponent extends BaseCardComponent implements OnInit {
   ngOnInit() {
     super.ngOnInit();
     this.loadPrices();
-    this.renderer.setAttribute(this.image, 'src', this.pricesService.getProductImageUrl(this.productPreview.productId));
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => this.renderer.setAttribute(this.image, 'src', this.pricesService.getProductImageUrl(this.productPreview.productId)), 3000);
   }
 
   private loadPrices() {
