@@ -1,5 +1,5 @@
 import {BaseCardComponent} from "../shared/components/base-card.component";
-import {ChangeDetectorRef, Component, Input, OnInit} from "@angular/core";
+import {ChangeDetectorRef, Component, Input, OnInit, Renderer2, ViewChild} from "@angular/core";
 import {Price, Product} from "../shared/entities/get.entities";
 import {PricesService} from "./services/prices.service";
 import {PricesModalsService} from "./services/prices-modals.service";
@@ -15,11 +15,13 @@ export class PricesCardComponent extends BaseCardComponent implements OnInit {
 
   @Input() productPreview: Product;
   public prices: Price[] = [];
-  public imageUrl = '';
   private pricesService: PricesService;
 
+  @ViewChild('image')
+  private image;
+
   constructor(private pricesModalsService: PricesModalsService, private serviceInjector: ServiceInjector,
-              public dateService: DateService, cdr: ChangeDetectorRef) {
+              public dateService: DateService, cdr: ChangeDetectorRef, private renderer: Renderer2) {
     super(cdr);
     this.pricesService = serviceInjector.getPricesService();
   }
@@ -27,7 +29,7 @@ export class PricesCardComponent extends BaseCardComponent implements OnInit {
   ngOnInit() {
     super.ngOnInit();
     this.loadPrices();
-    this.imageUrl = this.pricesService.getProductImageUrl(this.productPreview.productId);
+    this.renderer.setAttribute(this.image, 'src', this.pricesService.getProductImageUrl(this.productPreview.productId));
   }
 
   private loadPrices() {
