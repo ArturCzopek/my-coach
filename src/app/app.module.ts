@@ -24,7 +24,7 @@ export function loadInitialConfiguration(config: ConfigService) {
   declarations: [
     AppComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
     NotFoundComponent
   ],
   imports: [
