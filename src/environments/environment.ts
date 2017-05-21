@@ -18,8 +18,13 @@ export const environment = {
   },
   client: {
     loginUrl: '/login',
-    app: {
-      url: '/dashboard'
+    dashboard: {
+      url: '/dashboard',
+      aboutUrl: '/dashboard/about',
+      pricesUrl: '/dashboard/prices',
+      reportsUrl: '/dashboard/reports',
+      trainingsUrl: '/dashboard/trainings',
+      weightsUrl: '/dashboard/weights',
     }
   }
 };

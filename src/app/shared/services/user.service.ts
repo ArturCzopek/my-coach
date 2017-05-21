@@ -6,7 +6,7 @@ import "rxjs/add/operator/catch";
 import "rxjs/add/observable/throw";
 import {Observable} from "rxjs/Observable";
 import {environment} from "../../../environments/environment";
-import {User} from "../model/user.model";
+import {User} from "../entities/get.entities";
 
 declare var window: any;
 
@@ -16,16 +16,6 @@ export class UserService {
 
   constructor(private http: Http) {
 
-  }
-
-  public getAllUsers(): Observable<User[]> {
-    return this.http.get(`${environment.server.userUrl}/all`, this.prepareAuthOptions())
-      .map(res => res.json())
-  }
-
-  public updateActiveUserStatus(id: number, active: boolean): Observable<any> {
-    return this.http.post(`${environment.server.userUrl}/updateStatus`, {id, active}, this.prepareAuthOptions())
-      .map(res => res.json())
   }
 
   public logIn() {
