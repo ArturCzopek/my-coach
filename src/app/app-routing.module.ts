@@ -6,9 +6,11 @@ import {PricesListComponent} from "./prices/prices-list.component";
 import {AboutComponent} from "./about.component";
 import {CyclesListComponent} from "./trainings/cycles-list.component";
 import {NotFoundComponent} from "./not-found.component";
+import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/weights', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
   {path: 'weights', component: WeightsListComponent},
   {path: 'prices', component: PricesListComponent},
   {path: 'reports', component: ReportsListComponent},
