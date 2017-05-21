@@ -6,5 +6,20 @@
 export const environment = {
   production: false,
   isBackendServerAvailable: true,
-  url: "http://localhost:8080"
+  url: "http://localhost:8080",
+  authToken: 'oauth_token',
+  facebookUrl: 'http://graph.facebook.com/v2.9',
+  server: {
+    url: 'http://localhost:8080',
+    logoutUrl: 'http://localhost:8080/logout',
+    userUrl: 'http://localhost:8080/user',
+    tokenUrl: 'http://localhost:8080/user/token',
+    loginUrl: 'http://localhost:8080/login',
+  },
+  client: {
+    loginUrl: '/login',
+    app: {
+      url: '/dashboard'
+    }
+  }
 };

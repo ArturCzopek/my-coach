@@ -18,23 +18,23 @@ export class WeightsBackEndService extends WeightsService {
   }
 
   public getWeightsPreviews(): Observable<WeightsPreview[]> {
-    return this.http.get(`${environment.url}${this.weightUrl}/previews`).map(res => res.json());
+    return this.http.get(`${environment.server.url}${this.weightUrl}/previews`).map(res => res.json());
   }
 
   public getWeights(weightsPreview: WeightsPreview): Observable<Weight[]> {
-    return this.http.get(`${environment.url}${this.weightUrl}/forDate/${weightsPreview.year}/${weightsPreview.month}`)
+    return this.http.get(`${environment.server.url}${this.weightUrl}/forDate/${weightsPreview.year}/${weightsPreview.month}`)
       .map(res => res.json());
   }
 
   public addWeight(weightToAdd: NewWeight): Observable<any> {
-    return this.http.post(`${environment.url}${this.weightUrl}/add`, weightToAdd);
+    return this.http.post(`${environment.server.url}${this.weightUrl}/add`, weightToAdd);
   }
 
   public deleteWeights(weightsToDelete: Weight[]): Observable<any> {
-    return this.http.delete(`${environment.url}${this.weightUrl}/delete`, new RequestOptions({body: weightsToDelete}));
+    return this.http.delete(`${environment.server.url}${this.weightUrl}/delete`, new RequestOptions({body: weightsToDelete}));
   }
 
   public editWeights(weightsToEdit: Weight[]): Observable<any> {
-    return this.http.put(`${environment.url}${this.weightUrl}/update`, weightsToEdit);
+    return this.http.put(`${environment.server.url}${this.weightUrl}/update`, weightsToEdit);
   }
 }

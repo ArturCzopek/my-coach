@@ -18,6 +18,7 @@ import {AboutComponent} from "./about.component";
 import {ConfigService} from "./config.service";
 import {NotFoundComponent} from "./not-found.component";
 import {LoginComponent} from "./login/login.component";
+import {UserService} from "./shared/services/user.service";
 
 export function loadInitialConfiguration(config: ConfigService) {
   return () => config.loadConfiguration();
@@ -43,6 +44,7 @@ export function loadInitialConfiguration(config: ConfigService) {
     MyCoachRoutingModule
   ],
   providers: [
+    UserService,
     ServiceInjector,
     DateService,
     DictionaryMockService,

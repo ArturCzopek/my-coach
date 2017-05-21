@@ -18,22 +18,22 @@ export class ReportBackEndService extends ReportService {
   }
 
   public getReportPreviews(): Observable<ReportPreview[]> {
-    return this.http.get(`${environment.url}${this.reportUrl}/previews`).map(res => res.json());
+    return this.http.get(`${environment.server.url}${this.reportUrl}/previews`).map(res => res.json());
   }
 
   public getReport(reportId: number): Observable<Report> {
-    return this.http.get(`${environment.url}${this.reportUrl}/${reportId}`).map(res => res.json());
+    return this.http.get(`${environment.server.url}${this.reportUrl}/${reportId}`).map(res => res.json());
   }
 
   public addReport(reportToAdd: NewReport): Observable<any> {
-    return this.http.post(`${environment.url}${this.reportUrl}/add`,  reportToAdd);
+    return this.http.post(`${environment.server.url}${this.reportUrl}/add`,  reportToAdd);
   }
 
   public deleteReport(reportToDelete: Report): Observable<any> {
-    return this.http.delete(`${environment.url}${this.reportUrl}/delete`, new RequestOptions({body: reportToDelete}));
+    return this.http.delete(`${environment.server.url}${this.reportUrl}/delete`, new RequestOptions({body: reportToDelete}));
   }
 
   public editReport(reportToEdit: Report): Observable<any> {
-    return this.http.put(`${environment.url}${this.reportUrl}/update`, reportToEdit);
+    return this.http.put(`${environment.server.url}${this.reportUrl}/update`, reportToEdit);
   }
 }

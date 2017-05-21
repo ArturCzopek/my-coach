@@ -20,15 +20,15 @@ export class PricesBackEndService extends PricesService {
   }
 
   getProductPreviews(): Observable<Product[]> {
-    return this.http.get(`${environment.url}${this.priceUrl}${this.productUrl}/previews`).map(res => res.json());
+    return this.http.get(`${environment.server.url}${this.priceUrl}${this.productUrl}/previews`).map(res => res.json());
   }
 
   getPrices(productId: number): Observable<Price[]> {
-    return this.http.get(`${environment.url}${this.priceUrl}/${productId}`).map(res => res.json());
+    return this.http.get(`${environment.server.url}${this.priceUrl}/${productId}`).map(res => res.json());
   }
 
   getProductImageUrl(productId: number): string {
-    return `${environment.url}${this.imagesUrl}${this.productUrl}/${productId}`;
+    return `${environment.server.url}${this.imagesUrl}${this.productUrl}/${productId}`;
   }
 
   addProductImage(file: any, productId: number): Observable<number> {
@@ -36,35 +36,35 @@ export class PricesBackEndService extends PricesService {
     input.append("file", file);
     input.append("productId", productId);
 
-    return this.http.post(`${environment.url}${this.imagesUrl}${this.productUrl}${this.uploadUrl}`, input).map(res => res.json());
+    return this.http.post(`${environment.server.url}${this.imagesUrl}${this.productUrl}${this.uploadUrl}`, input).map(res => res.json());
   }
 
   addProduct(productToAdd: NewProduct): Observable<any> {
-    return this.http.post(`${environment.url}${this.priceUrl}${this.productUrl}/add`, productToAdd);
+    return this.http.post(`${environment.server.url}${this.priceUrl}${this.productUrl}/add`, productToAdd);
   }
 
   addPrice(priceToAdd: NewPrice): Observable<any> {
-    return this.http.post(`${environment.url}${this.priceUrl}/add`, priceToAdd);
+    return this.http.post(`${environment.server.url}${this.priceUrl}/add`, priceToAdd);
   }
 
   addShoppingList(shoppingList: ShoppingList): Observable<any> {
-    return this.http.post(`${environment.url}${this.priceUrl}/shopping/add`, shoppingList);
+    return this.http.post(`${environment.server.url}${this.priceUrl}/shopping/add`, shoppingList);
   }
 
   deletePrices(pricesToDelete: Price[]): Observable<any> {
-    return this.http.delete(`${environment.url}${this.priceUrl}/delete`, new RequestOptions({body: pricesToDelete}));
+    return this.http.delete(`${environment.server.url}${this.priceUrl}/delete`, new RequestOptions({body: pricesToDelete}));
   }
 
   deleteProduct(productToDelete: Product): Observable<any> {
-    return this.http.delete(`${environment.url}${this.priceUrl}${this.productUrl}/delete`, new RequestOptions({body: productToDelete}));
+    return this.http.delete(`${environment.server.url}${this.priceUrl}${this.productUrl}/delete`, new RequestOptions({body: productToDelete}));
 
   }
 
   editPrices(pricesToEdit: Price[]): Observable<any> {
-    return this.http.put(`${environment.url}${this.priceUrl}/update`, pricesToEdit);
+    return this.http.put(`${environment.server.url}${this.priceUrl}/update`, pricesToEdit);
   }
 
   editProduct(productToEdit: Product): Observable<any> {
-    return this.http.put(`${environment.url}${this.priceUrl}${this.productUrl}/update`, productToEdit);
+    return this.http.put(`${environment.server.url}${this.priceUrl}${this.productUrl}/update`, productToEdit);
   }
 }

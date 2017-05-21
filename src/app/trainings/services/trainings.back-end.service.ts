@@ -20,62 +20,62 @@ export class TrainingsBackEndService extends TrainingsService {
   }
 
   public getActiveCycle(): Observable<Cycle> {
-    return this.http.get(`${environment.url}${this.trainingUrl}${this.cycleUrl}/active`).map(res => res.json());
+    return this.http.get(`${environment.server.url}${this.trainingUrl}${this.cycleUrl}/active`).map(res => res.json());
   }
 
   public getCyclePreviews(): Observable<CyclePreview[]> {
-    return this.http.get(`${environment.url}${this.trainingUrl}${this.cycleUrl}/previews`).map(res => res.json());
+    return this.http.get(`${environment.server.url}${this.trainingUrl}${this.cycleUrl}/previews`).map(res => res.json());
   }
 
   public getCycle(cycleId: number): Observable<Cycle> {
-    return this.http.get(`${environment.url}${this.trainingUrl}${this.cycleUrl}/${cycleId}`).map(res => res.json());
+    return this.http.get(`${environment.server.url}${this.trainingUrl}${this.cycleUrl}/${cycleId}`).map(res => res.json());
   }
 
   public getExercisesWithSessionForTraining(trainingId: number): Observable<Exercise[]> {
-    return this.http.get(`${environment.url}${this.trainingUrl}${this.exerciseUrl}/${trainingId}`).map(res => res.json());
+    return this.http.get(`${environment.server.url}${this.trainingUrl}${this.exerciseUrl}/${trainingId}`).map(res => res.json());
   }
 
   public addCycle(cycleToAdd: NewCycle): Observable<any> {
-    return this.http.post(`${environment.url}${this.trainingUrl}${this.cycleUrl}/add`, cycleToAdd);
+    return this.http.post(`${environment.server.url}${this.trainingUrl}${this.cycleUrl}/add`, cycleToAdd);
   }
 
   public addExercises(exerciseToAdd: NewExercise[]): Observable<any> {
-    return this.http.post(`${environment.url}${this.trainingUrl}${this.exerciseUrl}/add`, exerciseToAdd);
+    return this.http.post(`${environment.server.url}${this.trainingUrl}${this.exerciseUrl}/add`, exerciseToAdd);
   }
 
   public addTraining(trainingToAdd: NewTraining): Observable<any> {
-    return this.http.post(`${environment.url}${this.trainingUrl}/add`, trainingToAdd);
+    return this.http.post(`${environment.server.url}${this.trainingUrl}/add`, trainingToAdd);
   }
 
   public deleteCycle(cycleToDelete: Cycle): Observable<any> {
-    return this.http.delete(`${environment.url}${this.trainingUrl}${this.cycleUrl}/delete`,
+    return this.http.delete(`${environment.server.url}${this.trainingUrl}${this.cycleUrl}/delete`,
       new RequestOptions({body: cycleToDelete})
     );
   }
 
   public deleteExercise(exerciseToDelete: Exercise): Observable<any> {
-    return this.http.delete(`${environment.url}${this.trainingUrl}${this.exerciseUrl}/delete`,
+    return this.http.delete(`${environment.server.url}${this.trainingUrl}${this.exerciseUrl}/delete`,
       new RequestOptions({body: exerciseToDelete})
     );
   }
 
   public deleteTraining(trainingToDelete: Training): Observable<any> {
-    return this.http.delete(`${environment.url}${this.trainingUrl}/delete`, new RequestOptions({body: trainingToDelete}));
+    return this.http.delete(`${environment.server.url}${this.trainingUrl}/delete`, new RequestOptions({body: trainingToDelete}));
   }
 
   public editCycle(cycleToEdit: Cycle): Observable<any> {
-    return this.http.put(`${environment.url}${this.trainingUrl}${this.cycleUrl}/update`, cycleToEdit);
+    return this.http.put(`${environment.server.url}${this.trainingUrl}${this.cycleUrl}/update`, cycleToEdit);
   }
 
   public editExercise(exerciseToEdit: Exercise): Observable<any> {
-    return this.http.put(`${environment.url}${this.trainingUrl}${this.exerciseUrl}/update`, exerciseToEdit);
+    return this.http.put(`${environment.server.url}${this.trainingUrl}${this.exerciseUrl}/update`, exerciseToEdit);
   }
 
   public editTraining(trainingToEdit: Training, exercisesToEdit: Exercise[]): Observable<any> {
-    return this.http.put(`${environment.url}${this.trainingUrl}/update`, {training: trainingToEdit, exercises: exercisesToEdit});
+    return this.http.put(`${environment.server.url}${this.trainingUrl}/update`, {training: trainingToEdit, exercises: exercisesToEdit});
   }
 
   public hasUserOnlyFinishedCycles(): Observable<boolean> {
-    return this.http.get(`${environment.url}${this.trainingUrl}${this.cycleUrl}/finished`).map(res => res.json());
+    return this.http.get(`${environment.server.url}${this.trainingUrl}${this.cycleUrl}/finished`).map(res => res.json());
   }
 }

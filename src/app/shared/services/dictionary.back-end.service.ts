@@ -12,6 +12,6 @@ export class DictionaryBackEndService extends DictionaryService {
   }
 
   public getDictionaryFromDb(): Observable<any> {
-    return this.http.get(`${environment.url}/dictionary/1`).map(res => res.json());
+    return this.http.get(`${environment.server.url}/dictionary/1`).map(res => res.json());
   }
 }
