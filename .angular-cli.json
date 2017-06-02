@@ -20,6 +20,7 @@
       "prefix": "coach",
       "styles": [
         "../node_modules/materialize-css/dist/css/materialize.css",
+        "../node_modules/materialize-social/materialize-social.css",
         "styles.css"
       ],
       "scripts": [
