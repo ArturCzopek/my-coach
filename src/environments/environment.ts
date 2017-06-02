@@ -25,7 +25,11 @@ export const environment = {
       pricesUrl: '/dashboard/prices',
       reportsUrl: '/dashboard/reports',
       trainingsUrl: '/dashboard/trainings',
+      settingsUrl: '/dashboard/settings',
       weightsUrl: '/dashboard/weights',
+    },
+    admin: {
+      url: '/admin'
     }
   }
 };

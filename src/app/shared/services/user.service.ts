@@ -81,6 +81,11 @@ export class UserService {
     return `${environment.facebookUrl}/${fbId == null ? this.getLoggedInUser().fbId : fbId}/picture?type=${size == null ? 'large' : size}`;
   }
 
+  public isLoggedInUserAdmin(): boolean {
+    //TO DO GET ROLE FROM USER
+    return true;
+  }
+
   public prepareAuthOptions(): RequestOptions {
     const headers = new Headers();
     headers.append(environment.authToken, localStorage.getItem(environment.authToken));

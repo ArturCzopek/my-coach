@@ -8,6 +8,7 @@ const appRoutes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule'},
+  {path: 'admin', loadChildren: './admin/admin.module#AdminModule'},
   {path: 'logout', component: LogoutComponent},
   {path: '**', component: NotFoundComponent}
 ];

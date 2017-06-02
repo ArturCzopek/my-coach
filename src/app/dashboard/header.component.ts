@@ -8,13 +8,14 @@ declare var $: any;
   selector: 'coach-header',
   template: `    
     <ul id="user-dropdown" class="dropdown-content">
-      <li><a>{{'navbar.settings.label' | dictionary}}</a></li>
+      <li [routerLink]="[settingsUrl]"><a>{{'navbar.settings.label' | dictionary}}</a></li>
+      <li *ngIf="userService.isLoggedInUserAdmin()" [routerLink]="[adminUrl]"><a>{{'navbar.admin.label' | dictionary}}</a></li>
       <li><a (click)="userService.logOut()">{{'navbar.logout.label' | dictionary}}</a></li>
     </ul>
   <nav>
     <div class="nav-wrapper blue darken-2">
       <a href="{{dashboardUrl}}" class="brand-logo">{{'navbar.applicationName.label' | dictionary}}</a>
-      <a href="{{dashboardUrl}}" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
+      <a data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li [routerLink]="[weightsUrl]" routerLinkActive="active"><a>{{'navbar.weights.label' | dictionary}}</a></li>
         <li [routerLink]="[trainingsUrl]" routerLinkActive="active"><a>{{'navbar.trainings.label' | dictionary}}</a></li>
@@ -45,6 +46,8 @@ export class HeaderComponent implements OnInit {
   public pricesUrl = environment.client.dashboard.pricesUrl
   public reportsUrl = environment.client.dashboard.reportsUrl
   public aboutUrl = environment.client.dashboard.aboutUrl
+  public settingsUrl = environment.client.dashboard.settingsUrl
+  public adminUrl = environment.client.admin.url
 
   constructor(public userService: UserService) {
 

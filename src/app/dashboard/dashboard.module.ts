@@ -11,6 +11,7 @@ import {AboutComponent} from "./about.component";
 import {CommonModule} from "@angular/common";
 import {DashboardRouting} from "./dashboard.routing";
 import {DashboardComponent} from "./dashboard.component";
+import {SettingsComponent} from "./settings.component";
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {DashboardComponent} from "./dashboard.component";
     AboutComponent,
     DashboardComponent,
     HeaderComponent,
+    SettingsComponent
   ],
   imports: [
     CommonModule,
