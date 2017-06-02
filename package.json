@@ -25,10 +25,11 @@
     "core-js": "^2.4.1",
     "jquery": "3.1.1",
     "materialize-css": "0.97.8",
+    "materialize-social": "^1.0.0",
     "moment": "^2.17.1",
     "ng-lazyload-image": "^3.1.1",
     "ng2-charts": "^1.5.0",
-    "rxjs": "^5.1.0",
+    "rxjs": "^5.2.0",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {

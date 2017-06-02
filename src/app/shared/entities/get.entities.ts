@@ -79,3 +79,27 @@ export class Weight {
               public measurementDate: Date) {
   }
 }
+
+export class User {
+  constructor(public userId: number,
+              public fbId: string,
+              public name: string,
+              public userSetting: UserSetting) {
+
+  }
+}
+
+export class UserSetting {
+  constructor(public userSettingId: number,
+              public infoMail: string,
+              public language: Language) {
+
+  }
+}
+
+export class Language {
+  constructor(public languageId: number,
+              public shortName: string,
+              public fullName: string) {
+  }
+}
