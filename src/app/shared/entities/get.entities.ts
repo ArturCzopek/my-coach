@@ -36,7 +36,7 @@ export class Price {
 export class Product {
   constructor(public productId: number,
               public productName: string,
-              public screen: string | any,
+              public screen: string|any,
               public average?: number) {
   }
 }
