@@ -31,12 +31,12 @@
         </td>
         <td>
           <div class="input-field inline">
-            <input type="number" step="0.1" [(ngModel)]="price.value" (ngModelChange)="addPriceIndexToChanged(i)">
+            <input type="number" step="0.1" max="9999" [(ngModel)]="price.value" (ngModelChange)="addPriceIndexToChanged(i)">
           </div>
         </td>
         <td>
           <div class="input-field inline">
-            <input type="number" step="0.1" [(ngModel)]="price.quantity" (ngModelChange)="addPriceIndexToChanged(i)">
+            <input type="number" step="0.1" max="9999" [(ngModel)]="price.quantity" (ngModelChange)="addPriceIndexToChanged(i)">
           </div>
         </td>
       </tr>

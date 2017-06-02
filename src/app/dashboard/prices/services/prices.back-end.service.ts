@@ -5,7 +5,8 @@ import {Observable} from "rxjs/Observable";
 import {Price, Product} from "../../../shared/entities/get.entities";
 import {NewPrice, NewProduct, ShoppingList} from "../../../shared/entities/add.entities";
 import {environment} from "../../../../environments/environment";
-import {Http, RequestOptions} from "@angular/http";
+import {Http} from "@angular/http";
+import {UserService} from "../../../shared/services/user.service";
 
 @Injectable()
 export class PricesBackEndService extends PricesService {
@@ -15,16 +16,16 @@ export class PricesBackEndService extends PricesService {
   private priceUrl = "/price";
   private productUrl = "/product";
 
-  constructor(private injector: Injector, private http: Http) {
+  constructor(private injector: Injector, private http: Http, private userService: UserService) {
     super(injector.get(ServiceInjector));
   }
 
   getProductPreviews(): Observable<Product[]> {
-    return this.http.get(`${environment.server.url}${this.priceUrl}${this.productUrl}/previews`).map(res => res.json());
+    return this.http.get(`${environment.server.url}${this.priceUrl}${this.productUrl}/previews`, this.userService.prepareAuthOptions()).map(res => res.json());
   }
 
   getPrices(productId: number): Observable<Price[]> {
-    return this.http.get(`${environment.server.url}${this.priceUrl}/${productId}`).map(res => res.json());
+    return this.http.get(`${environment.server.url}${this.priceUrl}/${productId}`, this.userService.prepareAuthOptions()).map(res => res.json());
   }
 
   getProductImageUrl(productId: number): string {
@@ -36,35 +37,39 @@ export class PricesBackEndService extends PricesService {
     input.append("file", file);
     input.append("productId", productId);
 
-    return this.http.post(`${environment.server.url}${this.imagesUrl}${this.productUrl}${this.uploadUrl}`, input).map(res => res.json());
+    return this.http.post(`${environment.server.url}${this.imagesUrl}${this.productUrl}${this.uploadUrl}`, input, this.userService.prepareAuthOptions()).map(res => res.json());
   }
 
   addProduct(productToAdd: NewProduct): Observable<any> {
-    return this.http.post(`${environment.server.url}${this.priceUrl}${this.productUrl}/add`, productToAdd);
+    return this.http.post(`${environment.server.url}${this.priceUrl}${this.productUrl}/add`, productToAdd, this.userService.prepareAuthOptions());
   }
 
   addPrice(priceToAdd: NewPrice): Observable<any> {
-    return this.http.post(`${environment.server.url}${this.priceUrl}/add`, priceToAdd);
+    return this.http.post(`${environment.server.url}${this.priceUrl}/add`, priceToAdd, this.userService.prepareAuthOptions());
   }
 
   addShoppingList(shoppingList: ShoppingList): Observable<any> {
-    return this.http.post(`${environment.server.url}${this.priceUrl}/shopping/add`, shoppingList);
+    return this.http.post(`${environment.server.url}${this.priceUrl}/shopping/add`, shoppingList, this.userService.prepareAuthOptions());
   }
 
   deletePrices(pricesToDelete: Price[]): Observable<any> {
-    return this.http.delete(`${environment.server.url}${this.priceUrl}/delete`, new RequestOptions({body: pricesToDelete}));
+    let options = this.userService.prepareAuthOptions();
+    options.body = pricesToDelete;
+    return this.http.delete(`${environment.server.url}${this.priceUrl}/delete`, options);
   }
 
   deleteProduct(productToDelete: Product): Observable<any> {
-    return this.http.delete(`${environment.server.url}${this.priceUrl}${this.productUrl}/delete`, new RequestOptions({body: productToDelete}));
+    let options = this.userService.prepareAuthOptions();
+    options.body = productToDelete;
+    return this.http.delete(`${environment.server.url}${this.priceUrl}${this.productUrl}/delete`, options);
 
   }
 
   editPrices(pricesToEdit: Price[]): Observable<any> {
-    return this.http.put(`${environment.server.url}${this.priceUrl}/update`, pricesToEdit);
+    return this.http.put(`${environment.server.url}${this.priceUrl}/update`, pricesToEdit, this.userService.prepareAuthOptions());
   }
 
   editProduct(productToEdit: Product): Observable<any> {
-    return this.http.put(`${environment.server.url}${this.priceUrl}${this.productUrl}/update`, productToEdit);
+    return this.http.put(`${environment.server.url}${this.priceUrl}${this.productUrl}/update`, productToEdit, this.userService.prepareAuthOptions());
   }
 }

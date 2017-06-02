@@ -50,13 +50,13 @@
           <td>
             <div class="input-field inline">
               <label for="{{'price' + (i + 1)}}">{{'page.prices.price.label' | dictionary}} #{{(i + 1)}}</label>
-              <input type="number" step="0.1" min="0" [(ngModel)]="price.value" name="{{'price' + (i + 1)}}" id="{{'price' + (i + 1)}}">
+              <input type="number" step="0.1" min="0" max="9999" [(ngModel)]="price.value" name="{{'price' + (i + 1)}}" id="{{'price' + (i + 1)}}">
             </div>
           </td>
           <td>
             <div class="input-field inline">
               <label for="{{'quantity' + (i + 1)}}">{{'page.prices.quantity.label' | dictionary}} #{{(i + 1)}}</label>
-              <input type="number" step="0.1" min="0" [(ngModel)]="price.quantity" name="{{'quantity' + (i + 1)}}" id="{{'quantity' + (i + 1)}}">
+              <input type="number" step="0.1" min="0" max="9999" [(ngModel)]="price.quantity" name="{{'quantity' + (i + 1)}}" id="{{'quantity' + (i + 1)}}">
             </div>
           </td>
           <td class="icons">

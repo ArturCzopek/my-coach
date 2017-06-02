@@ -18,6 +18,7 @@ export const environment = {
   },
   client: {
     loginUrl: '/login',
+    logoutUrl: '/logout',
     dashboard: {
       url: '/dashboard',
       aboutUrl: '/dashboard/about',

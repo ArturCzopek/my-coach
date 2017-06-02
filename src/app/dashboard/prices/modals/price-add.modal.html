@@ -7,12 +7,12 @@
         <div class="input-field col s6 m6 l3">
           <i class="material-icons prefix">shop</i>
           <label for="quantity">{{'page.prices.modal.add.quantity.label' | dictionary}}</label>
-          <input id="quantity" type="number" step="0.1" min="0" [(ngModel)]="quantity" name="quantity">
+          <input id="quantity" type="number" step="0.1" min="0" max="9999" [(ngModel)]="quantity" name="quantity">
         </div>
         <div class="input-field col s6 m6 l3">
           <i class="material-icons prefix">payment</i>
           <label for="price">{{'page.prices.modal.add.price.label' | dictionary}}</label>
-          <input id="price" type="number" step="0.1" min="0" [(ngModel)]="price" name="quantity">
+          <input id="price" type="number" step="0.1" min="0" max="9999" [(ngModel)]="price" name="quantity">
         </div>
         <div class="input-field col s12 m12 l6">
           <i class="material-icons prefix">today</i>

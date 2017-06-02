@@ -15,7 +15,7 @@ export class UserService {
   private user: User = null;
 
   constructor(private http: Http) {
-
+    this.logIn();
   }
 
   public logIn() {
@@ -56,9 +56,13 @@ export class UserService {
   }
 
   public logOut() {
+    this.clearUser();
+    window.location = `${environment.server.logoutUrl}`;
+  }
+
+  public clearUser() {
     localStorage.removeItem(environment.authToken);
     this.user = null;
-    window.location = `${environment.server.logoutUrl}`;
   }
 
   public getTokenFromCookie(): string {
@@ -67,6 +71,7 @@ export class UserService {
 
     if (cookiesFromRegex && cookiesFromRegex.length >= 2) {
       token = cookiesFromRegex[1];
+      // this.removeCookie(environment.authToken);
     }
 
     return token;
@@ -99,6 +104,10 @@ export class UserService {
 
   private getToken(): Observable<any> {
     return this.http.get(`${environment.server.tokenUrl}`);
+  }
+
+  private removeCookie(cookieName: String): void {
+    document.cookie = cookieName + '=; Max-Age=0';
   }
 
   private handleInvalidToken() {

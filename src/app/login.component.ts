@@ -28,7 +28,7 @@ declare var window: any;
           <div class="s12 center" style="margin: 80px 0;">
             <img class="circle responsive-img" *ngIf="this.userService.getLoggedInUser()"
                  src="{{userService.getUserImgLink()}}"/>
-            <h4>{{'page.login.goToApp.hello.label' | dictionary}} {{userService.getLoggedInUser().name}}</h4>
+            <h4>{{'page.login.hello.label' | dictionary}} {{userService.getLoggedInUser().name}}</h4>
             
             <a (click)="goToApp()" class="waves-effect waves-light btn-large social facebook"
                style="padding: 0 2rem;">

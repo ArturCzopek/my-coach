@@ -5,11 +5,11 @@ import {AfterViewInit, ChangeDetectorRef, Component} from "@angular/core";
   template: `
     <div class="container">
       <div class="row">
-        <div class="s12 center" style="margin: 80px 0;">
+        <div class="s12 center" style="margin: 3.5rem 0;">
           <h1>{{'page.about.title' | dictionary}}</h1>
         </div>
       </div>
-      <div class="row" style="margin-bottom: 100px;">
+      <div class="row" style="margin-bottom: 3.5rem;">
         <div class="s12 center">
           <h4>{{'page.about.content.first' | dictionary}}</h4>
         </div>
