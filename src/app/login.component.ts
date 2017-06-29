@@ -15,9 +15,8 @@ declare var window: any;
         </div>
       </div>
       <div *ngIf="!userService.getLoggedInUser(); else goToPanel" class="row">
-        <div class="s12 center" style="margin: 80px 0;">
-          <a (click)="loginUser()" class="waves-effect waves-light btn-large social facebook"
-             style="padding: 0 2rem;">
+        <div class="s12 center log-in-data">
+          <a (click)="loginUser()" class="waves-effect waves-light btn-large social facebook log-in-button">
             {{'page.login.button.label' | dictionary}}
           </a>
         </div>
@@ -25,20 +24,29 @@ declare var window: any;
 
       <ng-template #goToPanel>
         <div class="row">
-          <div class="s12 center" style="margin: 80px 0;">
-            <img class="circle responsive-img" *ngIf="this.userService.getLoggedInUser()"
+          <div class="s12 center log-in-data">
+            <img class="circle responsive-img" *ngIf="userService.getLoggedInUser()"
                  src="{{userService.getUserImgLink()}}"/>
             <h4>{{'page.login.hello.label' | dictionary}} {{userService.getLoggedInUser().name}}</h4>
             
-            <a (click)="goToApp()" class="waves-effect waves-light btn-large social facebook"
-               style="padding: 0 2rem;">
+            <a (click)="goToApp()" class="waves-effect waves-light btn-large social facebook log-in-button">
               {{'page.login.goToApp.button.label' | dictionary}}
             </a>
           </div>
         </div>
       </ng-template>
     </div>
+  `,
+  styles: [`
+    .log-in-data {
+      margin: 15vh 0;
+    }
+    
+    .log-in-button {
+      padding: 0 1vw;
+    }
   `
+  ]
 })
 export class LoginComponent implements OnInit {
   constructor(public userService: UserService, public router: Router) {

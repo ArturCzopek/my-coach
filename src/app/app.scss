@@ -1,0 +1,28 @@
+.flex-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  justify-content: space-around;
+  text-align: center;
+
+  .flex-center-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .images {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 50vw;
+    img {
+      cursor: pointer;
+    }
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}

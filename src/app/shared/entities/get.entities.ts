@@ -36,7 +36,7 @@ export class Price {
 export class Product {
   constructor(public productId: number,
               public productName: string,
-              public screen: string|any,
+              public screen: string | any,
               public average?: number) {
   }
 }
@@ -84,7 +84,8 @@ export class User {
   constructor(public userId: number,
               public fbId: string,
               public name: string,
-              public userSetting: UserSetting) {
+              public userSetting: UserSetting,
+              public role: Role) {
 
   }
 }
@@ -101,5 +102,12 @@ export class Language {
   constructor(public languageId: number,
               public shortName: string,
               public fullName: string) {
+  }
+}
+
+export class Role {
+  constructor(public roleId: number,
+              public roleName: string) {
+
   }
 }
