@@ -84,6 +84,7 @@ export class User {
   constructor(public userId: number,
               public fbId: string,
               public name: string,
+              public active: boolean,
               public userSetting: UserSetting,
               public role: Role) {
 

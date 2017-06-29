@@ -13,6 +13,7 @@ declare var window: any;
 @Injectable()
 export class UserService {
   private user: User = null;
+  private userUrl = "/user";
 
   constructor(private http: Http) {
     this.logIn();

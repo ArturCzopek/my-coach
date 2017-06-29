@@ -1,6 +1,9 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {User} from "../../shared/entities/get.entities";
 import {UserService} from "../../shared/services/user.service";
+import {AdminService} from "../../shared/services/admin.service";
+
+declare var Materialize: any;
 
 @Component({
   selector: 'coach-admin-user-card',
@@ -32,7 +35,7 @@ export class AdminUserCardComponent implements OnInit {
   public isAdmin = false;
   public isActive = true;
 
-  constructor(public userService: UserService) {
+  constructor(public userService: UserService, public adminService: AdminService) {
   }
 
 
@@ -47,7 +50,14 @@ export class AdminUserCardComponent implements OnInit {
 
 
   public toggleActiveStatus() {
-    this.isActive = !this.isActive;
-    console.log("Changed active to: ", this.isActive);
+    this.adminService.toggleActiveUserStatus(this.user.userId)
+      .first()
+      .subscribe(
+        ok => {
+          this.user.active = !this.user.active;
+          Materialize.toast("Pomyślnie zmieniono status", 3000);
+        },
+        error => console.error(error)
+      )
   }
 }
