@@ -5,11 +5,13 @@ import {HttpModule} from "@angular/http";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {SharedModule} from "../../shared/shared.module";
+import {AdminUserCardComponent} from "./admin-user-card.component";
 
 @NgModule({
   declarations: [
     AdminComponent,
-    AdminUsersComponent
+    AdminUsersComponent,
+    AdminUserCardComponent
   ],
   imports: [
     HttpModule,
