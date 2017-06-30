@@ -6,7 +6,7 @@ import {AdminService} from "./services/admin.service";
   selector: 'coach-admin-users',
   template: `
     <div class="admin-users-list">
-      <h1>Users</h1>
+      <h1>{{'page.admin.users.title' | dictionary}}</h1>
       <div class="admin-users-list-content">
         <coach-admin-user-card *ngFor="let user of users; trackBy: trackByUserId"
                                [user]="user"></coach-admin-user-card>

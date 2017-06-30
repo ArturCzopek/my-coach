@@ -30,4 +30,8 @@ export class AdminService {
   public toggleUserRole(userId: number): Observable<any> {
     return this.http.post(`${environment.server.url}${this.adminUrl}/toggleRole?userId=${userId}`, {}, this.userService.prepareAuthOptions());
   }
+
+  public sendEmail(title: string, content: string): Observable<any> {
+    return this.http.post(`${environment.server.url}${this.adminUrl}/email`, {title, content}, this.userService.prepareAuthOptions());
+  }
 }

@@ -6,8 +6,8 @@ import {DictionaryService} from "../../shared/services/dictionary.service";
 @Component({
   selector: 'coach-admin-app-data',
   template: `
-    <h1>Data</h1>
-    <div class="app-data-row" *ngFor="let data of appData">
+    <h1>{{'page.admin.data.title' | dictionary}}</h1>
+    <div class="app-data-row" *ngFor="let data of appData; trackBy: trackByKey">
       <p class="key">{{getTranslatedKey(data.key)}}</p> <p>{{data.value}}</p>
     </div>
   `,
@@ -15,7 +15,7 @@ import {DictionaryService} from "../../shared/services/dictionary.service";
 })
 export class AdminAppDataComponent {
 
-  public appData = [];
+  public appData: any[] = [];
   private dictionaryService: DictionaryService;
 
   constructor(private adminService: AdminService, private serviceInjector: ServiceInjector) {
@@ -24,7 +24,6 @@ export class AdminAppDataComponent {
       .first()
       .subscribe(
         data => {
-          console.log("data", data);
           this.appData = [];
           for (let key in data) {
             this.appData.push({key, value: data[key]})
@@ -35,6 +34,10 @@ export class AdminAppDataComponent {
   }
 
   public getTranslatedKey(key: string): string {
-    return this.dictionaryService.getDictionaryValue(`page.admin.data.${key}`);
+    return this.dictionaryService.getDictionaryValue(`page.admin.data.${key}.label`);
+  }
+
+  public trackByKey(index, data: any) {
+    return data.key;
   }
 }

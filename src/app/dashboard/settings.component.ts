@@ -14,7 +14,7 @@ import {UserService} from "../shared/services/user.service";
       </div>
       <div class="row">
         <div class="col s6 center">
-          <p>Język</p>
+          <p>{{'page.settings.language.label' | dictionary}}</p>
         </div>
         <div class="input-field col s6">
           <select class="browser-default">
@@ -25,7 +25,7 @@ import {UserService} from "../shared/services/user.service";
       </div>
       <div class="row">
         <div class="col s6 center">
-          <p>Jednostka wagi</p>
+          <p>{{'page.settings.weightmeasure.label' | dictionary}}</p>
         </div>
         <div class="input-field col s6 center">
           <select class="browser-default">
@@ -36,7 +36,7 @@ import {UserService} from "../shared/services/user.service";
       </div>
       <div class="row">
         <div class="col s6 center">
-          <p>Waluta (Skrótowo)</p>
+          <p>{{'page.settings.currency.label' | dictionary}}</p>
         </div>
         <div class="input-field col s6 center">
           <input value="currency" id="currenty" type="text">

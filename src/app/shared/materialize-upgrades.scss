@@ -212,6 +212,11 @@ p.error-message {
   font-weight: bold;
 }
 
+p.success-message {
+  color: green;
+  font-weight: bold;
+}
+
 td {
   .input-field.inline {
     width: 90%;
