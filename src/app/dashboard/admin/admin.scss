@@ -1,5 +1,13 @@
+.container {
+  display: flex;
+}
+
+
 .admin-one-panel {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .admin-users-list {
@@ -49,6 +57,25 @@
           background-color: #1976D2;
         }
       }
+    }
+  }
+}
+
+
+coach-admin-app-data, coach-admin-email {
+  height: 50%;
+}
+
+.app-data-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  p {
+    font-size: 18px;
+
+    &.key {
+      font-weight: 600;
     }
   }
 }

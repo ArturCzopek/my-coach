@@ -7,6 +7,10 @@ import {Component} from "@angular/core";
       <div class="admin-one-panel">
         <coach-admin-users></coach-admin-users>
       </div>
+      <div class="admin-one-panel">
+        <coach-admin-app-data></coach-admin-app-data>
+        <coach-admin-email></coach-admin-email>
+      </div>
     </div>
   `,
   styleUrls: ['./admin.scss']

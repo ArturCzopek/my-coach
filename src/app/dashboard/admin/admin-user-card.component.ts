@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {User} from "../../shared/entities/get.entities";
 import {UserService} from "../../shared/services/user.service";
-import {AdminService} from "../../shared/services/admin.service";
+import {AdminService} from "./services/admin.service";
 
 declare var Materialize: any;
 
@@ -15,7 +15,7 @@ declare var Materialize: any;
         <p>
           <input type="checkbox" class="filled-in"
                  id="admin_{{user.userId}}" name="admin_{{user.userId}}" [ngModel]="isAdmin"
-                 (ngModelChange)="toggleAdminStatus()"/>
+                 (ngModelChange)="toggleUserRole()"/>
           <label for="admin_{{user.userId}}">Admin</label>
         </p>
         <p>
@@ -43,18 +43,24 @@ export class AdminUserCardComponent implements OnInit {
     this.imgSrc = this.userService.getUserImgLink(this.user.fbId, "small");
   }
 
-  public toggleAdminStatus() {
-    this.isAdmin = !this.isAdmin;
-    console.log("Changed admin to: ", this.isAdmin);
-  }
-
-
   public toggleActiveStatus() {
     this.adminService.toggleActiveUserStatus(this.user.userId)
       .first()
       .subscribe(
         ok => {
-          this.user.active = !this.user.active;
+          this.isActive = !this.isActive;
+          Materialize.toast("Pomyślnie zmieniono status", 3000);
+        },
+        error => console.error(error)
+      )
+  }
+
+  public toggleUserRole() {
+    this.adminService.toggleUserRole(this.user.userId)
+      .first()
+      .subscribe(
+        ok => {
+          this.isAdmin = !this.isAdmin;
           Materialize.toast("Pomyślnie zmieniono status", 3000);
         },
         error => console.error(error)

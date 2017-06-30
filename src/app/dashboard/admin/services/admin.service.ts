@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
-import {UserService} from "./user.service";
 import {Http} from "@angular/http";
 import {Observable} from "rxjs/Observable";
-import {environment} from "../../../environments/environment";
-import {User} from "../entities/get.entities";
+import {UserService} from "../../../shared/services/user.service";
+import {User} from "../../../shared/entities/get.entities";
+import {environment} from "../../../../environments/environment";
 
 @Injectable()
 export class AdminService {
@@ -18,7 +18,16 @@ export class AdminService {
     return this.http.get(`${environment.server.url}${this.adminUrl}/users`, this.userService.prepareAuthOptions()).map(res => res.json());
   }
 
+  public getAppData(): Observable<any> {
+    return this.http.get(`${environment.server.url}${this.adminUrl}/appData`, this.userService.prepareAuthOptions()).map(res => res.json());
+
+  }
+
   public toggleActiveUserStatus(userId: number): Observable<any> {
     return this.http.post(`${environment.server.url}${this.adminUrl}/toggleActive?userId=${userId}`, {}, this.userService.prepareAuthOptions());
+  }
+
+  public toggleUserRole(userId: number): Observable<any> {
+    return this.http.post(`${environment.server.url}${this.adminUrl}/toggleRole?userId=${userId}`, {}, this.userService.prepareAuthOptions());
   }
 }

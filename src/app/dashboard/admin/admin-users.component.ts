@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {User} from "../../shared/entities/get.entities";
-import {AdminService} from "../../shared/services/admin.service";
+import {AdminService} from "./services/admin.service";
 
 @Component({
   selector: 'coach-admin-users',

@@ -17,7 +17,6 @@ import {DashboardModule} from "./dashboard/dashboard.module";
 import {LogoutComponent} from "./logout.component";
 import {LoggedInUserGuard} from "./shared/guards/logged-in-user.guard";
 import {AdminUserGuard} from "./shared/guards/admin-user.guard";
-import {AdminService} from "./shared/services/admin.service";
 
 export function loadInitialConfiguration(config: ConfigService) {
   return () => config.loadConfiguration();
@@ -39,7 +38,6 @@ export function loadInitialConfiguration(config: ConfigService) {
     AppRouting
   ],
   providers: [
-    AdminService,
     UserService,
     ServiceInjector,
     DateService,

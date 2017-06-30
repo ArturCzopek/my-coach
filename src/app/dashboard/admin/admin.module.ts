@@ -6,12 +6,17 @@ import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {SharedModule} from "../../shared/shared.module";
 import {AdminUserCardComponent} from "./admin-user-card.component";
+import {AdminAppDataComponent} from "./admin-app-data.component";
+import {AdminEmailComponent} from "./admin-email.component";
+import {AdminService} from "./services/admin.service";
 
 @NgModule({
   declarations: [
     AdminComponent,
     AdminUsersComponent,
-    AdminUserCardComponent
+    AdminUserCardComponent,
+    AdminAppDataComponent,
+    AdminEmailComponent
   ],
   imports: [
     HttpModule,
@@ -19,7 +24,9 @@ import {AdminUserCardComponent} from "./admin-user-card.component";
     FormsModule,
     SharedModule,
   ],
-  providers: [],
+  providers: [
+    AdminService
+  ],
   exports: [
     AdminComponent
   ]
