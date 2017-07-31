@@ -30,11 +30,11 @@ cache:
    - $HOME/.nvm
 
 script:
- - ng build --env=github --base-href "https://arturczopek.github.io/my-coach/" -aot --stats-json
+ - ng build --env=prod --base-href "http://simplecoding.pl/my-coach/" -aot --stats-json
  - ng test --watch=false
 
-after_success:
- - angular-cli-ghpages --no-silent --repo=https://GH_TOKEN@github.com/arturczopek/my-coach.git
+#after_success:
+# - angular-cli-ghpages --no-silent --repo=https://GH_TOKEN@github.com/arturczopek/my-coach.git
 
 env:
   global:

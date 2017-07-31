@@ -16,6 +16,7 @@ import {UserService} from "./shared/services/user.service";
 import {DashboardModule} from "./dashboard/dashboard.module";
 import {LogoutComponent} from "./logout.component";
 import {LoggedInUserGuard} from "./shared/guards/logged-in-user.guard";
+import {AdminUserGuard} from "./shared/guards/admin-user.guard";
 
 export function loadInitialConfiguration(config: ConfigService) {
   return () => config.loadConfiguration();
@@ -43,6 +44,7 @@ export function loadInitialConfiguration(config: ConfigService) {
     DictionaryMockService,
     DictionaryBackEndService,
     LoggedInUserGuard,
+    AdminUserGuard,
     ConfigService,
     {
       provide: APP_INITIALIZER,

@@ -26,6 +26,8 @@ export const environment = {
       reportsUrl: '/dashboard/reports',
       trainingsUrl: '/dashboard/trainings',
       weightsUrl: '/dashboard/weights',
-    }
+      settingsUrl: '/dashboard/settings',
+      adminUrl: '/dashboard/admin'
+    },
   }
 };
