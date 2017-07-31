@@ -13,6 +13,7 @@ declare var window: any;
 @Injectable()
 export class UserService {
   private user: User = null;
+  private userUrl = "/user";
 
   constructor(private http: Http) {
     this.logIn();
@@ -71,7 +72,7 @@ export class UserService {
 
     if (cookiesFromRegex && cookiesFromRegex.length >= 2) {
       token = cookiesFromRegex[1];
-      // this.removeCookie(environment.authToken);
+      this.removeCookie(environment.authToken);
     }
 
     return token;
@@ -87,6 +88,10 @@ export class UserService {
     const options = new RequestOptions();
     options.headers = headers;
     return options;
+  }
+
+  public isLoggedInUserAdmin(): boolean {
+    return this.user.role.roleName === "Admin";
   }
 
   private getUserFromServer(): any {

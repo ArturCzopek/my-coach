@@ -11,6 +11,8 @@ import {AboutComponent} from "./about.component";
 import {CommonModule} from "@angular/common";
 import {DashboardRouting} from "./dashboard.routing";
 import {DashboardComponent} from "./dashboard.component";
+import {SettingsComponent} from "./settings.component";
+import {AdminModule} from "./admin/admin.module";
 
 
 @NgModule({
@@ -18,8 +20,10 @@ import {DashboardComponent} from "./dashboard.component";
     AboutComponent,
     DashboardComponent,
     HeaderComponent,
+    SettingsComponent,
   ],
   imports: [
+    AdminModule,
     CommonModule,
     DashboardRouting,
     FormsModule,

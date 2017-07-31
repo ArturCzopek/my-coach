@@ -1,0 +1,95 @@
+.container {
+  display: flex;
+}
+
+
+.admin-one-panel {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.admin-users-list {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  width: 100%;
+
+  .admin-users-list-content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+
+    :host-context(coach-admin-user-card) .admin-user-card {
+      align-items: center;
+      border: 1px solid #b9b9b9;
+      display: flex;
+      flex-direction: row;
+      height: 85px;
+      justify-content: space-between;
+      margin: 10px 0;
+      max-width: 50vw;
+      min-width: 30vw;
+      padding: 10px;
+      text-align: center;
+      width: 100%;
+
+      &:hover {
+        transform: scale(1.05);
+        background-color: darken(white, 7%);
+      }
+
+      p.username {
+        flex-grow: 2;
+        font-size: 18px;
+      }
+
+      form {
+        p {
+          margin: 10px 0;
+        }
+
+        label {
+          color: black;
+        }
+
+        [type="checkbox"].filled-in:checked + label:after {
+          border-color: #1976D2;
+          background-color: #1976D2;
+        }
+      }
+    }
+  }
+}
+
+
+coach-admin-app-data, coach-admin-email {
+  height: 50%;
+  overflow-y: auto;
+  .input-field {
+    text-align: left;
+  }
+}
+
+:host-context(coach-admin-email) .input-field {
+  text-align: left;
+}
+
+.app-data-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  p {
+    font-size: 18px;
+
+    &.key {
+      font-weight: 600;
+    }
+  }
+}

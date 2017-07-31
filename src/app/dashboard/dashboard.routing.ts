@@ -7,6 +7,9 @@ import {CyclesListComponent} from "./trainings/cycles-list.component";
 import {AboutComponent} from "./about.component";
 import {NgModule} from "@angular/core";
 import {LoggedInUserGuard} from "../shared/guards/logged-in-user.guard";
+import {SettingsComponent} from "./settings.component";
+import {AdminUserGuard} from "../shared/guards/admin-user.guard";
+import {AdminComponent} from "./admin/admin.component";
 
 const dashboardRoutes: Routes = [
   {
@@ -18,6 +21,8 @@ const dashboardRoutes: Routes = [
       {path: 'reports', component: ReportsListComponent},
       {path: 'trainings', component: CyclesListComponent},
       {path: 'about', component: AboutComponent},
+      {path: 'settings', component: SettingsComponent},
+      {path: 'admin', component: AdminComponent, canActivate: [AdminUserGuard]}
     ]
   }
 ]
