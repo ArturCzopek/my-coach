@@ -7,6 +7,7 @@ import "rxjs/add/observable/throw";
 import {Observable} from "rxjs/Observable";
 import {environment} from "../../../environments/environment";
 import {User} from "../entities/get.entities";
+import {ActivatedRoute} from "@angular/router";
 
 declare var window: any;
 
@@ -19,7 +20,7 @@ export class UserService {
     this.logIn();
   }
 
-  public logIn() {
+  public logIn(authToken?: string) {
 
     if (this.user) {
       return;
@@ -27,7 +28,7 @@ export class UserService {
 
     // if we want to log in user, we use received token,
     // otherwise, we check if user was logged in earlier by getting token from storage
-    const token = this.getTokenFromCookie() || localStorage.getItem(environment.authToken);
+    const token = localStorage.getItem(environment.authToken) || authToken;
 
     // we want to log new/earlier user
     if (token) {
@@ -66,18 +67,6 @@ export class UserService {
     this.user = null;
   }
 
-  public getTokenFromCookie(): string {
-    let token: string;
-    const cookiesFromRegex = document.cookie.match(new RegExp(environment.authToken + '=([^;]+)'));
-
-    if (cookiesFromRegex && cookiesFromRegex.length >= 2) {
-      token = cookiesFromRegex[1];
-      this.removeCookie(environment.authToken);
-    }
-
-    return token;
-  }
-
   public getUserImgLink(fbId?: string, size?: string): string {
     return `${environment.facebookUrl}/${fbId == null ? this.getLoggedInUser().fbId : fbId}/picture?type=${size == null ? 'large' : size}`;
   }
@@ -111,10 +100,6 @@ export class UserService {
     return this.http.get(`${environment.server.tokenUrl}`);
   }
 
-  private removeCookie(cookieName: String): void {
-    document.cookie = cookieName + '=; Max-Age=0';
-  }
-
   private handleInvalidToken() {
     localStorage.removeItem(environment.authToken);
     return Observable.throw('invalid token');
@@ -122,5 +107,10 @@ export class UserService {
 
   private handleMissingToken() {
     return Observable.throw('Not found token, log in by button');
+  }
+
+  public getTokenFromRouteParams(route: ActivatedRoute): string {
+    console.log('token', route.snapshot.params[environment.authToken])
+    return route.snapshot.params[environment.authToken];
   }
 }
