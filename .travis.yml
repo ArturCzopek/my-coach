@@ -30,7 +30,7 @@ cache:
    - $HOME/.nvm
 
 script:
- - ng build --env=prod --base-href "http://simplecoding.pl/my-coach/" -aot --stats-json
+ - ng build --env=prod --base-href "http://my-coach.simplecoding.pl/" -aot --stats-json
  - ng test --watch=false
 
 #after_success:

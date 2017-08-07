@@ -7,7 +7,7 @@ export const environment = {
   server: {
     url: 'http://my-coach-jar.xupeijfv7x.eu-central-1.elasticbeanstalk.com',
     logoutUrl: 'http://my-coach-jar.xupeijfv7x.eu-central-1.elasticbeanstalk.com/logout',
-    userUrl: 'http://my-coach-jar.xupeijfv7x.eu-central-1.elasticbeanstalk.com0/user',
+    userUrl: 'http://my-coach-jar.xupeijfv7x.eu-central-1.elasticbeanstalk.com/user',
     tokenUrl: 'http://my-coach-jar.xupeijfv7x.eu-central-1.elasticbeanstalk.com/user/token',
     loginUrl: 'http://my-coach-jar.xupeijfv7x.eu-central-1.elasticbeanstalk.com/login',
   },

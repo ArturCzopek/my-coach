@@ -14,7 +14,6 @@ declare var window: any;
 @Injectable()
 export class UserService {
   private user: User = null;
-  private userUrl = "/user";
 
   constructor(private http: Http) {
     this.logIn();
@@ -31,7 +30,7 @@ export class UserService {
     const token = localStorage.getItem(environment.authToken) || authToken;
 
     // we want to log new/earlier user
-    if (token) {
+    if (token && token.length > 0) {
       // maybe it is new token, so (re)set
       localStorage.setItem(environment.authToken, token);
 
@@ -84,7 +83,7 @@ export class UserService {
   }
 
   private getUserFromServer(): any {
-    this.http.get(`${environment.server.userUrl}/`, this.prepareAuthOptions())
+    this.http.get(`${environment.server.userUrl}/${localStorage.getItem(environment.authToken)}`)
       .map(res => res.json())
       // token is invalid
       .catch(this.handleInvalidToken)
@@ -102,15 +101,16 @@ export class UserService {
 
   private handleInvalidToken() {
     localStorage.removeItem(environment.authToken);
-    return Observable.throw('invalid token');
+    console.error('Invalid token');
+    return Observable.throw('Invalid token');
   }
 
   private handleMissingToken() {
+    console.error('Not found token, log in by button');
     return Observable.throw('Not found token, log in by button');
   }
 
   public getTokenFromRouteParams(route: ActivatedRoute): string {
-    console.log('token', route.snapshot.params[environment.authToken])
     return route.snapshot.params[environment.authToken];
   }
 }

@@ -54,12 +54,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem(environment.authToken)) {
-      this.userService.logIn();
-    }
-
-    if (this.userService.getTokenFromRouteParams(this.route)) {
+    if (this.userService.getTokenFromRouteParams(this.route) && this.userService.getTokenFromRouteParams(this.route).length > 0) {
       this.logInByRouteParam(this.userService.getTokenFromRouteParams(this.route));
+    } else if (localStorage.getItem(environment.authToken) && localStorage.getItem(environment.authToken).length > 0) {
+      this.userService.logIn();
     }
   }
 
@@ -72,7 +70,9 @@ export class LoginComponent implements OnInit {
   }
 
   private logInByRouteParam(tokenFromRouteParams: string) {
-    localStorage.setItem(environment.authToken, tokenFromRouteParams);
-    this.router.navigate([environment.client.loginUrl]);
+    if (tokenFromRouteParams.length > 0) {
+      localStorage.setItem(environment.authToken, tokenFromRouteParams);
+      this.router.navigate([environment.client.loginUrl]);
+    }
   }
 }
