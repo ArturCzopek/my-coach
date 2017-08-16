@@ -16,10 +16,9 @@ export class UserService {
   private user: User = null;
 
   constructor(private http: Http) {
-    this.logIn();
   }
 
-  public logIn(authToken?: string) {
+  public logIn() {
 
     if (this.user) {
       return;
@@ -27,7 +26,7 @@ export class UserService {
 
     // if we want to log in user, we use received token,
     // otherwise, we check if user was logged in earlier by getting token from storage
-    const token = localStorage.getItem(environment.authToken) || authToken;
+    const token = localStorage.getItem(environment.authToken);
 
     // we want to log new/earlier user
     if (token && token.length > 0) {
