@@ -17,6 +17,7 @@ import {DashboardModule} from "./dashboard/dashboard.module";
 import {LogoutComponent} from "./logout.component";
 import {LoggedInUserGuard} from "./shared/guards/logged-in-user.guard";
 import {AdminUserGuard} from "./shared/guards/admin-user.guard";
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 export function loadInitialConfiguration(config: ConfigService) {
   return () => config.loadConfiguration();
@@ -51,7 +52,8 @@ export function loadInitialConfiguration(config: ConfigService) {
       useFactory: loadInitialConfiguration,
       deps: [ConfigService],
       multi: true
-    }
+    },
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   exports: [
     NotFoundComponent

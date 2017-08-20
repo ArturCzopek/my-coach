@@ -100,7 +100,8 @@ export abstract class DictionaryService {
       close: this.getDictionaryValue('calendar.close.label'),
       format: this.getDictionaryValue('calendar.format'),
       max: true,
-      container: 'body'
+      container: 'body',
+      closeOnSelect: true
     };
   }
 

@@ -7,6 +7,7 @@ import {LogoutComponent} from "./logout.component";
 const appRoutes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
+  {path: 'login/:oauth-token', component: LoginComponent},
   {path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule'},
   {path: 'logout', component: LogoutComponent},
   {path: '**', component: NotFoundComponent}

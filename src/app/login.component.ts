@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {UserService} from "./shared/services/user.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {environment} from "./../environments/environment";
 
 declare var window: any;
@@ -28,7 +28,7 @@ declare var window: any;
             <img class="circle responsive-img" *ngIf="userService.getLoggedInUser()"
                  src="{{userService.getUserImgLink()}}"/>
             <h4>{{'page.login.hello.label' | dictionary}} {{userService.getLoggedInUser().name}}</h4>
-            
+
             <a (click)="goToApp()" class="waves-effect waves-light btn-large social facebook log-in-button">
               {{'page.login.goToApp.button.label' | dictionary}}
             </a>
@@ -41,7 +41,7 @@ declare var window: any;
     .log-in-data {
       margin: 15vh 0;
     }
-    
+
     .log-in-button {
       padding: 0 1vw;
     }
@@ -49,12 +49,14 @@ declare var window: any;
   ]
 })
 export class LoginComponent implements OnInit {
-  constructor(public userService: UserService, public router: Router) {
+  constructor(public userService: UserService, public router: Router, private route: ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem(environment.authToken) || this.userService.getTokenFromCookie()) {
+    if (this.userService.getTokenFromRouteParams(this.route) && this.userService.getTokenFromRouteParams(this.route).length > 0) {
+      this.logInByRouteParam(this.userService.getTokenFromRouteParams(this.route));
+    } else if (localStorage.getItem(environment.authToken) && localStorage.getItem(environment.authToken).length > 0) {
       this.userService.logIn();
     }
   }
@@ -65,5 +67,12 @@ export class LoginComponent implements OnInit {
 
   public goToApp() {
     this.router.navigate([environment.client.dashboard.url]);
+  }
+
+  private logInByRouteParam(tokenFromRouteParams: string) {
+    if (tokenFromRouteParams.length > 0) {
+      localStorage.setItem(environment.authToken, tokenFromRouteParams);
+      this.router.navigate([environment.client.loginUrl]);
+    }
   }
 }

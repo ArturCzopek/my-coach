@@ -6,7 +6,7 @@ node_js:
 
 branches:
   only:
-   - master
+   - release
 
 addons:
 apt:
@@ -30,7 +30,7 @@ cache:
    - $HOME/.nvm
 
 script:
- - ng build --env=prod --base-href "http://simplecoding.pl/my-coach/" -aot --stats-json
+ - ng build --env=prod --base-href "http://my-coach.simplecoding.pl/" -aot
  - ng test --watch=false
 
 #after_success:

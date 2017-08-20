@@ -8,7 +8,8 @@ declare var $: any;
   selector: 'coach-header',
   template: `
     <ul id="user-dropdown" class="dropdown-content">
-      <li [routerLink]="[settingsUrl]" routerLinkActive="active"><a>{{'navbar.settings.label' | dictionary}}</a></li>
+      <!--TODO: unlock when works-->
+      <!--<li [routerLink]="[settingsUrl]" routerLinkActive="active"><a>{{'navbar.settings.label' | dictionary}}</a></li>-->
       <li *ngIf="userService.isLoggedInUserAdmin()" [routerLink]="[adminUrl]" routerLinkActive="active">
         <a>{{'navbar.admin.label' | dictionary}}</a></li>
       <li><a (click)="userService.logOut()">{{'navbar.logout.label' | dictionary}}</a></li>

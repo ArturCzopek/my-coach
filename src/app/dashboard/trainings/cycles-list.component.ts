@@ -1,20 +1,22 @@
-import {AfterViewInit, ChangeDetectorRef, Component, OnInit} from "@angular/core";
+import {AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit} from "@angular/core";
 import {CyclePreview} from "../../shared/entities/preview.entities";
 import {TrainingsService} from "./services/tranings.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {TrainingModalsService} from "./services/training-modals.service";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'coach-cycles-list',
   templateUrl: './cycles-list.component.html',
   styleUrls: ['./trainings.scss', '../../shared/materialize-upgrades.scss']
 })
-export class CyclesListComponent implements OnInit, AfterViewInit {
+export class CyclesListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public isLoading: boolean;
   public finishedCycles: boolean;
   private cyclePreviews: CyclePreview[];
   private trainingsService: TrainingsService;
+  private refresh$: Subscription = null;
 
   constructor(private serviceInjector: ServiceInjector, private trainingModalsService: TrainingModalsService,
               private changeDetectorRef: ChangeDetectorRef) {
@@ -23,8 +25,9 @@ export class CyclesListComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.loadCyclePreviews();
-    this.trainingModalsService.refreshPage.subscribe(() => this.ngOnInit());
-
+    if (this.refresh$ == null) {
+      this.refresh$ = this.trainingModalsService.refreshPage.subscribe(() => this.ngOnInit());
+    }
     this.trainingsService.hasUserOnlyFinishedCycles().first()
       .subscribe(
         finished => this.finishedCycles = finished,
@@ -34,6 +37,11 @@ export class CyclesListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     setTimeout(1000, () => this.changeDetectorRef.detach());
+  }
+
+  ngOnDestroy() {
+    this.refresh$.unsubscribe();
+    this.refresh$ = null;
   }
 
   private loadCyclePreviews() {
