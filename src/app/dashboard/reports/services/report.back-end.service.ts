@@ -19,24 +19,40 @@ export class ReportBackEndService extends ReportService {
   }
 
   public getReportPreviews(): Observable<ReportPreview[]> {
-    return this.http.get(`${environment.server.url}${this.reportUrl}/previews`, this.userService.prepareAuthOptions()).map(res => res.json());
+    return this.http.get(
+      `${environment.server.url}${this.reportUrl}/previews`,
+      this.userService.prepareAuthOptions()
+    )
+      .map(res => res.json());
   }
 
   public getReport(reportId: number): Observable<Report> {
-    return this.http.get(`${environment.server.url}${this.reportUrl}/${reportId}`, this.userService.prepareAuthOptions()).map(res => res.json());
+    return this.http.get(
+      `${environment.server.url}${this.reportUrl}/${reportId}`,
+      this.userService.prepareAuthOptions()
+    )
+      .map(res => res.json());
   }
 
   public addReport(reportToAdd: NewReport): Observable<any> {
-    return this.http.post(`${environment.server.url}${this.reportUrl}/add`, reportToAdd, this.userService.prepareAuthOptions());
+    return this.http.post(
+      `${environment.server.url}${this.reportUrl}/add`,
+      reportToAdd,
+      this.userService.prepareAuthOptions()
+    );
   }
 
   public deleteReport(reportToDelete: Report): Observable<any> {
-    let options = this.userService.prepareAuthOptions();
+    const options = this.userService.prepareAuthOptions();
     options.body = reportToDelete;
     return this.http.delete(`${environment.server.url}${this.reportUrl}/delete`, options);
   }
 
   public editReport(reportToEdit: Report): Observable<any> {
-    return this.http.put(`${environment.server.url}${this.reportUrl}/update`, reportToEdit, this.userService.prepareAuthOptions());
+    return this.http.put(
+      `${environment.server.url}${this.reportUrl}/update`,
+      reportToEdit,
+      this.userService.prepareAuthOptions()
+    );
   }
 }

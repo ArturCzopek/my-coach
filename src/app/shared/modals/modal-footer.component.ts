@@ -4,8 +4,15 @@ import {Component, EventEmitter, Input, Output} from "@angular/core";
   selector: 'coach-modal-footer',
   template: `
     <div class="modal-footer">
-      <a class="modal-action modal-close waves-effect waves-red btn-flat" (click)="onRightButtonClick()">{{rightButtonLabel}}</a>
-      <a class="modal-action waves-effect waves-teal btn-flat" (click)="onLeftButtonClick()" [class.disabled]="!isDataValid">{{leftButtonLabel}}</a>
+      <a
+        class="modal-action modal-close waves-effect waves-red btn-flat"
+        (click)="onRightButtonClick()"
+      >{{rightButtonLabel}}</a>
+      <a
+        class="modal-action waves-effect waves-teal btn-flat"
+        (click)="onLeftButtonClick()"
+        [class.disabled]="!isDataValid"
+      >{{leftButtonLabel}}</a>
     </div>
   `,
   styleUrls: ['../materialize-upgrades.scss']

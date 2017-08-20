@@ -25,7 +25,7 @@ export class AdminAppDataComponent {
       .subscribe(
         data => {
           this.appData = [];
-          for (let key in data) {
+          for (const key in data) {
             this.appData.push({key, value: data[key]})
           }
         },

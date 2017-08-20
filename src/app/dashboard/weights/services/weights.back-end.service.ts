@@ -19,20 +19,31 @@ export class WeightsBackEndService extends WeightsService {
   }
 
   public getWeightsPreviews(): Observable<WeightsPreview[]> {
-    return this.http.get(`${environment.server.url}${this.weightUrl}/previews`, this.userService.prepareAuthOptions()).map(res => res.json());
+    return this.http.get(
+      `${environment.server.url}${this.weightUrl}/previews`,
+      this.userService.prepareAuthOptions()
+    )
+      .map(res => res.json());
   }
 
   public getWeights(weightsPreview: WeightsPreview): Observable<Weight[]> {
-    return this.http.get(`${environment.server.url}${this.weightUrl}/forDate/${weightsPreview.year}/${weightsPreview.month}`, this.userService.prepareAuthOptions())
+    return this.http.get(
+      `${environment.server.url}${this.weightUrl}/forDate/${weightsPreview.year}/${weightsPreview.month}`,
+      this.userService.prepareAuthOptions()
+    )
       .map(res => res.json());
   }
 
   public addWeight(weightToAdd: NewWeight): Observable<any> {
-    return this.http.post(`${environment.server.url}${this.weightUrl}/add`, weightToAdd, this.userService.prepareAuthOptions());
+    return this.http.post(
+      `${environment.server.url}${this.weightUrl}/add`,
+      weightToAdd,
+      this.userService.prepareAuthOptions()
+    );
   }
 
   public deleteWeights(weightsToDelete: Weight[]): Observable<any> {
-    let options = this.userService.prepareAuthOptions();
+    const options = this.userService.prepareAuthOptions();
     options.body = weightsToDelete;
     return this.http.delete(`${environment.server.url}${this.weightUrl}/delete`, options);
   }

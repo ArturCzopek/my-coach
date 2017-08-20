@@ -61,7 +61,7 @@ export class ProductEditModal extends BaseModal implements OnInit {
 
       const input = new FormData();
       input.append("file", file);
-      input.append("productId", this.selectedProduct.productId);
+      input.append("productId", '' + this.selectedProduct.productId);
 
       this.pricesService.addProductImage(file, this.selectedProduct.productId).subscribe(
         productId => {

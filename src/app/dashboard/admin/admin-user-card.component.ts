@@ -10,7 +10,7 @@ declare var Materialize: any;
 @Component({
   selector: 'coach-admin-user-card',
   template: `
-    <div class="admin-user-card" *ngIf="user && user?.userId !== userService.getLoggedInUser()?.userId">
+    <div class="admin-user-card" *ngIf="user && user?.userId !== userService.getLoggedInUserId()">
       <img class="responsive-img circle" src="{{imgSrc}}"/>
       <p class="username">{{user.name}}</p>
       <form>

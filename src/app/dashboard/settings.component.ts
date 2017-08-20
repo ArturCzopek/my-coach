@@ -7,9 +7,9 @@ import {UserService} from "../shared/services/user.service";
     <div class="container">
       <div class="row">
         <div class="col s12 center user-image">
-          <img class="circle responsive-img" *ngIf="userService.getLoggedInUser()"
+          <img class="circle responsive-img" *ngIf="userService.isLoggedInUser()"
                src="{{userService.getUserImgLink()}}"/>
-          <h2>{{userService.getLoggedInUser().name}}</h2>
+          <h2>{{userService.getLoggedInUserName()}}</h2>
         </div>
       </div>
       <div class="row">

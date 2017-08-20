@@ -21,11 +21,19 @@ export class PricesBackEndService extends PricesService {
   }
 
   getProductPreviews(): Observable<Product[]> {
-    return this.http.get(`${environment.server.url}${this.priceUrl}${this.productUrl}/previews`, this.userService.prepareAuthOptions()).map(res => res.json());
+    return this.http.get(
+      `${environment.server.url}${this.priceUrl}${this.productUrl}/previews`,
+      this.userService.prepareAuthOptions()
+    )
+      .map(res => res.json());
   }
 
   getPrices(productId: number): Observable<Price[]> {
-    return this.http.get(`${environment.server.url}${this.priceUrl}/${productId}`, this.userService.prepareAuthOptions()).map(res => res.json());
+    return this.http.get(
+      `${environment.server.url}${this.priceUrl}/${productId}`,
+      this.userService.prepareAuthOptions()
+    )
+      .map(res => res.json());
   }
 
   getProductImageUrl(productId: number): string {
@@ -35,41 +43,65 @@ export class PricesBackEndService extends PricesService {
   addProductImage(file: any, productId: number): Observable<number> {
     const input = new FormData();
     input.append("file", file);
-    input.append("productId", productId);
+    input.append("productId", '' + productId);
 
-    return this.http.post(`${environment.server.url}${this.imagesUrl}${this.productUrl}${this.uploadUrl}`, input, this.userService.prepareAuthOptions()).map(res => res.json());
+    return this.http.post(
+      `${environment.server.url}${this.imagesUrl}${this.productUrl}${this.uploadUrl}`,
+      input,
+      this.userService.prepareAuthOptions()
+    )
+      .map(res => res.json());
   }
 
   addProduct(productToAdd: NewProduct): Observable<any> {
-    return this.http.post(`${environment.server.url}${this.priceUrl}${this.productUrl}/add`, productToAdd, this.userService.prepareAuthOptions());
+    return this.http.post(
+      `${environment.server.url}${this.priceUrl}${this.productUrl}/add`,
+      productToAdd,
+      this.userService.prepareAuthOptions()
+    );
   }
 
   addPrice(priceToAdd: NewPrice): Observable<any> {
-    return this.http.post(`${environment.server.url}${this.priceUrl}/add`, priceToAdd, this.userService.prepareAuthOptions());
+    return this.http.post(
+      `${environment.server.url}${this.priceUrl}/add`,
+      priceToAdd,
+      this.userService.prepareAuthOptions()
+    );
   }
 
   addShoppingList(shoppingList: ShoppingList): Observable<any> {
-    return this.http.post(`${environment.server.url}${this.priceUrl}/shopping/add`, shoppingList, this.userService.prepareAuthOptions());
+    return this.http.post(
+      `${environment.server.url}${this.priceUrl}/shopping/add`,
+      shoppingList,
+      this.userService.prepareAuthOptions()
+    );
   }
 
   deletePrices(pricesToDelete: Price[]): Observable<any> {
-    let options = this.userService.prepareAuthOptions();
+    const options = this.userService.prepareAuthOptions();
     options.body = pricesToDelete;
     return this.http.delete(`${environment.server.url}${this.priceUrl}/delete`, options);
   }
 
   deleteProduct(productToDelete: Product): Observable<any> {
-    let options = this.userService.prepareAuthOptions();
+    const options = this.userService.prepareAuthOptions();
     options.body = productToDelete;
     return this.http.delete(`${environment.server.url}${this.priceUrl}${this.productUrl}/delete`, options);
-
   }
 
   editPrices(pricesToEdit: Price[]): Observable<any> {
-    return this.http.put(`${environment.server.url}${this.priceUrl}/update`, pricesToEdit, this.userService.prepareAuthOptions());
+    return this.http.put(
+      `${environment.server.url}${this.priceUrl}/update`,
+      pricesToEdit,
+      this.userService.prepareAuthOptions()
+    );
   }
 
   editProduct(productToEdit: Product): Observable<any> {
-    return this.http.put(`${environment.server.url}${this.priceUrl}${this.productUrl}/update`, productToEdit, this.userService.prepareAuthOptions());
+    return this.http.put(
+      `${environment.server.url}${this.priceUrl}${this.productUrl}/update`,
+      productToEdit,
+      this.userService.prepareAuthOptions()
+    );
   }
 }

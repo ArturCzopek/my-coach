@@ -27,7 +27,7 @@ declare var $: any;
           </li>
           <li [routerLink]="[reportsUrl]" routerLinkActive="active"><a>{{'navbar.reports.label' | dictionary}}</a></li>
           <li [routerLink]="[aboutUrl]" routerLinkActive="active"><a>{{'navbar.about.label' | dictionary}}</a></li>
-          <li><a class="dropdown-button" data-activates="user-dropdown">{{userService.getLoggedInUser()?.name}}<i
+          <li><a class="dropdown-button" data-activates="user-dropdown">{{userService.getLoggedInUserName()}}<i
             class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
         <ul class="side-nav" id="mobile-nav">

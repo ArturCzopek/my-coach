@@ -115,6 +115,11 @@ export abstract class DictionaryService {
 
   private getFormattedKey(key: string): string {
     const stack = key.split(".");
+
+    if (stack.length < 2) {
+      return stack.pop();
+    }
+
     const last: string = stack.pop();
     const first: string = stack.pop();
 

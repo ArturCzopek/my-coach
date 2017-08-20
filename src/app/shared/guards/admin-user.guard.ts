@@ -12,7 +12,7 @@ export class AdminUserGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
 
-    if (this.userService.getLoggedInUser() !== null && this.userService.isLoggedInUserAdmin()) {
+    if (this.userService.isLoggedInUserAdmin()) {
       return true;
     }
 

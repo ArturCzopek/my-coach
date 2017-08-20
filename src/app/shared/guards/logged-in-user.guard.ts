@@ -12,7 +12,7 @@ export class LoggedInUserGuard implements CanActivateChild {
 
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
 
-    if (this.userService.getLoggedInUser() !== null) {
+    if (this.userService.isLoggedInUser()) {
       return true;
     }
 

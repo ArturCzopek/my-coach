@@ -1,7 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {environment} from "./../environments/environment";
-import {UserService} from "./shared/services/user.service";
 
 
 @Component({
@@ -23,12 +22,11 @@ import {UserService} from "./shared/services/user.service";
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(public router: Router, private userService: UserService) {
+  constructor(public router: Router) {
 
   }
 
   ngOnInit() {
-    this.userService.clearUser();
     setTimeout(() => this.router.navigate([environment.client.loginUrl]), 3000);
   }
 }

@@ -84,5 +84,4 @@ describe('DateService', () => {
     const secondDate = '199 Kwi 199';
     expect(dateService.isSecondDateLater(firstDate, secondDate)).toBe(false);
   });
-
 });
