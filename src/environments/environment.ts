@@ -7,7 +7,7 @@ export const environment = {
   production: false,
   isBackendServerAvailable: true,
   url: "http://localhost:8080",
-  authToken: 'oauth_token',
+  authToken: 'oauth-token',
   facebookUrl: 'http://graph.facebook.com/v2.9',
   server: {
     url: 'http://localhost:8080',

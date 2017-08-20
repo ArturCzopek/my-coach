@@ -1,19 +1,22 @@
-import {AfterViewInit, ChangeDetectorRef, Component, OnInit} from "@angular/core";
+import {AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit} from "@angular/core";
 import {ReportPreview} from "../../shared/entities/preview.entities";
 import {ReportService} from "./services/report.service";
 import {ServiceInjector} from "../../shared/services/service.injector";
 import {ReportModalsService} from "./services/report-modals.service";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'coach-reports-list',
   templateUrl: './reports-list.component.html',
   styleUrls: ['./reports.scss', '../../shared/materialize-upgrades.scss']
 })
-export class ReportsListComponent implements OnInit, AfterViewInit {
+export class ReportsListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public isLoading: boolean;
   private reportPreviews: ReportPreview[];
   private reportService: ReportService;
+  private refresh$: Subscription = null;
+
 
   constructor(private reportModalsService: ReportModalsService, private serviceInjector: ServiceInjector,
               private changeDetectorRef: ChangeDetectorRef) {
@@ -22,11 +25,18 @@ export class ReportsListComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.loadReportPreviews();
-    this.reportModalsService.refreshPage.subscribe(() => this.ngOnInit());
+    if (this.refresh$ == null) {
+      this.refresh$ = this.reportModalsService.refreshPage.subscribe(() => this.ngOnInit());
+    }
   }
 
   ngAfterViewInit(): void {
     setTimeout(1000, () => this.changeDetectorRef.detach());
+  }
+
+  ngOnDestroy() {
+    this.refresh$.unsubscribe();
+    this.refresh$ = null;
   }
 
   public loadReportPreviews() {

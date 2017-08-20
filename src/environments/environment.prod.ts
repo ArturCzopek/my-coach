@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   isBackendServerAvailable: true,
   url: "http://my-coach-jar.xupeijfv7x.eu-central-1.elasticbeanstalk.com",
-  authToken: 'oauth_token',
+  authToken: 'oauth-token',
   facebookUrl: 'http://graph.facebook.com/v2.9',
   server: {
     url: 'http://my-coach-jar.xupeijfv7x.eu-central-1.elasticbeanstalk.com',
