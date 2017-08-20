@@ -82,7 +82,7 @@ export class UserService {
   }
 
   private getUserFromServer(): any {
-    this.http.get(`${environment.server.userUrl}/${localStorage.getItem(environment.authToken)}`)
+    this.http.get(`${environment.server.userUrl}/`, this.prepareAuthOptions())
       .map(res => res.json())
       // token is invalid
       .catch(this.handleInvalidToken)
