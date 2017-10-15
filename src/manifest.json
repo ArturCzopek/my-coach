@@ -1,0 +1,13 @@
+{
+  "author": "Artur Czopek",
+  "background": "blue",
+  "default_title": "My Coach",
+  "default_locale": "pl",
+  "description": "Application for monitoring your gym progress",
+  "icons": {
+    "48": "favicon.ico",
+    "96": "favicon.ico"
+  },
+  "manifest_version": 1,
+  "version": "1.3.0"
+}
