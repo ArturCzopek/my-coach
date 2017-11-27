@@ -1,0 +1,19 @@
+<div id="cycle-delete" class="modal" materialize="modal"
+     [materializeParams]="[modalParams]" [materializeActions]="modalActions">
+    <div class="modal-content">
+
+        <h3>{{ modalTitle }}</h3>
+
+        <div class="col s12">
+            <div class="row">
+                <p>{{ 'page.trainings.modal.delete.cycle.content' | dictionary }}</p>
+            </div>
+        </div>
+    </div>
+
+    <coach-modal-footer leftButtonLabel="{{ 'global.delete.label' | dictionary }}"
+                        rightButtonLabel="{{ 'global.close.label' | dictionary }}"
+                        (leftButtonAction)="onDeleteClick()"
+                        (rightButtonAction)="onCloseModal()"
+                        [isDataValid]="isDataValid()"></coach-modal-footer>
+</div>

@@ -53,7 +53,7 @@ export class WeightsMockService extends WeightsService {
     });
   }
 
-  // for mock we add only to second month
+  // for mock we prices-add only to second month
   public addWeight(weightToAdd: NewWeight): Observable<any> {
     const weight: Weight = new Weight(this.newWeightId, weightToAdd.value, weightToAdd.measurementDate);
     this.newWeightId++;

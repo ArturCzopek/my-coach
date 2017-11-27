@@ -1,40 +1,41 @@
 <div id="report-edit" class="modal" materialize="modal" [materializeParams]="[modalParams]"
      [materializeActions]="modalActions">
-  <div class="modal-content">
-    <h3>{{modalTitle}}</h3>
-    <div class="row">
-      <form materialize class="col s12">
+    <div class="modal-content">
+        <h3>{{modalTitle}}</h3>
         <div class="row">
-          <div class="input-field col s6">
-            <i class="material-icons prefix">today</i>
-            <label for="start-date">{{'global.startDate.label' | dictionary}}</label>
-            <input id="start-date" type="date" class="datepicker" materialize="pickadate"
-                   [(ngModel)]="startDate" name="startDate" [materializeParams]="[datePickerParams]">
-          </div>
-          <div class="input-field col s6">
-            <i class="material-icons prefix">today</i>
-            <label for="end-date">{{'global.endDate.label' | dictionary}}</label>
-            <input id="end-date" type="date" class="datepicker" materialize="pickadate"
-                   [(ngModel)]="endDate" name="endDate" [materializeParams]="[datePickerParams]">
-          </div>
+            <form materialize class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">today</i>
+                        <label for="start-date">{{'global.startDate.label' | dictionary}}</label>
+                        <input id="start-date" type="date" class="datepicker" materialize="pickadate"
+                               [(ngModel)]="startDate" name="startDate" [materializeParams]="[datePickerParams]">
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">today</i>
+                        <label for="end-date">{{'global.endDate.label' | dictionary}}</label>
+                        <input id="end-date" type="date" class="datepicker" materialize="pickadate"
+                               [(ngModel)]="endDate" name="endDate" [materializeParams]="[datePickerParams]">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">receipt</i>
+                        <textarea id="report-content" class="materialize-textarea active" [(ngModel)]="reportContent"
+                                  name="reportContent" length="2000" materialize="characterCounter"></textarea>
+                        <label for="report-content">{{'page.reports.modal.reportContent.label' | dictionary}}</label>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">receipt</i>
-            <textarea id="report-content" class="materialize-textarea active" [(ngModel)]="reportContent" name="reportContent" length="2000" materialize="characterCounter"></textarea>
-            <label for="report-content">{{'page.reports.modal.reportContent.label' | dictionary}}</label>
-          </div>
-        </div>
-      </form>
+
+        <p *ngIf="errorMessage.length > 0" class="error-message">{{errorMessage}}</p>
     </div>
 
-    <p *ngIf="errorMessage.length > 0" class="error-message">{{errorMessage}}</p>
-  </div>
-
-  <coach-modal-footer leftButtonLabel="{{'global.edit.label' | dictionary}}"
-                      rightButtonLabel="{{'global.close.label' | dictionary}}"
-                      (leftButtonAction)="onEditClick()"
-                      (rightButtonAction)="onCloseModal()"
-                      [isDataValid]="isDataValid()"></coach-modal-footer>
+    <coach-modal-footer leftButtonLabel="{{'global.edit.label' | dictionary}}"
+                        rightButtonLabel="{{'global.close.label' | dictionary}}"
+                        (leftButtonAction)="onEditClick()"
+                        (rightButtonAction)="onCloseModal()"
+                        [isDataValid]="isDataValid()"></coach-modal-footer>
 
 </div>

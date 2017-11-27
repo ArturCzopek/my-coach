@@ -10,11 +10,11 @@ import {DictionaryBackEndService} from "./shared/services/dictionary.back-end.se
 import {SharedModule} from "./shared/shared.module";
 import {DateService} from "./shared/services/date.service";
 import {ConfigService} from "./config.service";
-import {NotFoundComponent} from "./not-found.component";
-import {LoginComponent} from "./login.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
+import { LoginComponent } from "./auth/login/login.component";
 import {UserService} from "./shared/services/user.service";
 import {DashboardModule} from "./dashboard/dashboard.module";
-import {LogoutComponent} from "./logout.component";
+import {LogoutComponent} from "./auth/logout/logout.component";
 import {LoggedInUserGuard} from "./shared/guards/logged-in-user.guard";
 import {AdminUserGuard} from "./shared/guards/admin-user.guard";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";

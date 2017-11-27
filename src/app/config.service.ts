@@ -1,28 +1,29 @@
-import {Injectable} from "@angular/core";
-import {ServiceInjector} from "./shared/services/service.injector";
-import {DictionaryService} from "./shared/services/dictionary.service";
+import { Injectable } from '@angular/core';
+import { ServiceInjector } from './shared/services/service.injector';
+import { DictionaryService } from './shared/services/dictionary.service';
 
 @Injectable()
 export class ConfigService {
 
-  private dictionaryService: DictionaryService;
+    private dictionaryService: DictionaryService;
 
-  constructor(private serviceInjector: ServiceInjector) {
-    this.dictionaryService = this.serviceInjector.getDictionaryService();
-  }
+    constructor(private serviceInjector: ServiceInjector) {
+        this.dictionaryService = this.serviceInjector.getDictionaryService();
+    }
 
-  public loadConfiguration() {
-    return new Promise((resolve) => {
-      this.dictionaryService.getDictionaryFromDb().subscribe(
-        dictionaryEntries => {
-          this.dictionaryService.loadDictionary(dictionaryEntries);
-          resolve(true);
-        },
-        error => {
-          console.error(error);
-          resolve(error);
-        }
-      );
-    });
-  }
+    public loadConfiguration() {
+        return new Promise((resolve) => {
+            this.dictionaryService.getDictionaryFromDb()
+                .subscribe(
+                    dictionaryEntries => {
+                        this.dictionaryService.loadDictionary(dictionaryEntries);
+                        resolve(true);
+                    },
+                    error => {
+                        console.error(error);
+                        resolve(error);
+                    }
+                );
+        });
+    }
 }

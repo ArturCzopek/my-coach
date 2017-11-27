@@ -1,66 +1,71 @@
 /* tslint:disable:component-class-suffix */
-import {Component, OnInit} from "@angular/core";
-import {ReportService} from "../services/report.service";
-import {NewReport} from "../../../shared/entities/add.entities";
-import {ReportModalsService} from "../services/report-modals.service";
-import {ServiceInjector} from "../../../shared/services/service.injector";
-import {DateService} from "../../../shared/services/date.service";
-import {BaseModal} from "../../../shared/components/base.modal";
+import { Component, OnInit } from '@angular/core';
+
+import { ReportService } from '../services/report.service';
+import { NewReport } from '../../../shared/entities/add.entities';
+import { ReportModalsService } from '../services/report-modals.service';
+import { ServiceInjector } from '../../../shared/services/service.injector';
+import { DateService } from '../../../shared/services/date.service';
+import { BaseModal } from '../../../shared/components/base.modal';
 
 @Component({
-  selector: 'coach-report-add-modal',
-  templateUrl: 'report-add.modal.html',
-  styleUrls: ['./report.modals.scss', '../../../shared/materialize-upgrades.scss']
+    selector: 'coach-report-add-modal',
+    templateUrl: 'report-add.modal.html',
+    styleUrls: ['../../../shared/materialize-upgrades.scss']
 })
 export class ReportAddModal extends BaseModal implements OnInit {
 
-  public reportContent = '';
-  public startDate = '';
-  public endDate = '';
+    public reportContent = '';
+    public startDate = '';
+    public endDate = '';
+    public reportToAdd: NewReport;
+    private reportService: ReportService;
 
-  public reportToAdd: NewReport;
+    constructor(
+        public serviceInjector: ServiceInjector,
+        private reportModalsService: ReportModalsService,
+        private dateService: DateService
+    ) {
+        super(serviceInjector);
+        this.reportService = serviceInjector.getReportService();
+    }
 
-  private reportService: ReportService;
+    public ngOnInit(): void {
+        super.ngOnInit();
 
-  constructor(private reportModalsService: ReportModalsService, private serviceInjector: ServiceInjector,
-              private dateService: DateService) {
-    super(serviceInjector);
-    this.reportService = serviceInjector.getReportService();
-  }
+        this.initialization$ = this.reportModalsService
+            .addReport
+            .subscribe(() => this.openModal());
+    }
 
-  public ngOnInit(): void {
-    super.ngOnInit();
+    public initDataBeforeOpenModal() {
+        super.initDataBeforeOpenModal();
+        this.reportContent = '';
+        this.startDate = '';
+        this.endDate = '';
+    }
 
-    this.initialization$ = this.reportModalsService.addReport.subscribe(
-      () => {
-        this.openModal();
-      }
-    );
-  }
+    public isDataValid(): boolean {
+        return this.reportContent.length > 0 && this.dateService.isSecondDateLater(this.startDate, this.endDate);
+    }
 
-  public initDataBeforeOpenModal() {
-    super.initDataBeforeOpenModal();
-    this.reportContent = '';
-    this.startDate = '';
-    this.endDate = '';
-  }
+    public onAddClick(): void {
+        this.reportToAdd = new NewReport(
+            this.reportContent,
+            this.dateService.parseStringToDate(this.startDate),
+            this.dateService.parseStringToDate(this.endDate)
+        );
 
-  public isDataValid(): boolean {
-    return this.reportContent.length > 0 && this.dateService.isSecondDateLater(this.startDate, this.endDate);
-  }
-
-  public onAddClick() {
-    this.reportToAdd = new NewReport(this.reportContent, this.dateService.parseStringToDate(this.startDate),
-      this.dateService.parseStringToDate(this.endDate));
-
-    this.reportService.addReport(this.reportToAdd).first()
-      .subscribe(
-        ok => {
-          this.reportModalsService.callRefreshPage();
-          this.errorMessage = '';
-          this.closeModal();
-        },
-        error => this.errorMessage = this.dictionaryService.getErrorMessage(error)
-      );
-  }
+        this.reportService
+            .addReport(this.reportToAdd)
+            .first()
+            .subscribe(
+                ok => {
+                    this.reportModalsService.callRefreshPage();
+                    this.errorMessage = '';
+                    this.closeModal();
+                },
+                error => this.errorMessage = this.dictionaryService.getErrorMessage(error)
+            );
+    }
 }

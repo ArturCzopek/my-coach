@@ -1,46 +1,53 @@
 <div class="container">
-  <div class="row">
-    <div *ngIf="isLoading; else cycles">
-      <coach-circle-loader></coach-circle-loader>
-    </div>
-
-    <ng-template #cycles>
-      <div *ngFor="let cyclePreview of cyclePreviews; trackBy: trackByCyclePreviewId" class="col s12">
-        <coach-cycle-card [cyclePreview]="cyclePreview"></coach-cycle-card>
-      </div>
-
-      <div *ngIf="cyclePreviews.length === 0" class="col s12 center no-data">
-        <div class="row">
-          <i class="large material-icons">info_outline</i>
+    <div class="row">
+        <div *ngIf="isLoading; else cycles">
+            <coach-circle-loader></coach-circle-loader>
         </div>
-        <div class="row">
-          <p>{{'page.trainings.cycle.list.noData.info' | dictionary}}</p>
-          <p><a (click)="onAddCycleClick()">{{'page.trainings.cycle.list.noData.click.info' | dictionary}}</a></p>
+
+        <ng-template #cycles>
+            <div *ngFor="let cyclePreview of cyclePreviews; trackBy: trackByCyclePreviewId"
+                 class="col s12">
+                <coach-cycle-card [cyclePreview]="cyclePreview"></coach-cycle-card>
+            </div>
+
+            <div *ngIf="cyclePreviews.length === 0" class="col s12 center no-data">
+                <div class="row">
+                    <i class="large material-icons">info_outline</i>
+                </div>
+                <div class="row">
+                    <p>{{'page.trainings.cycle.list.noData.info' | dictionary}}</p>
+                    <p>
+                        <a (click)="onAddCycleClick()">
+                            {{ 'page.trainings.cycle.list.noData.click.info' | dictionary }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </ng-template>
+
+        <div id="fab" class="fixed-action-btn vertical click-to-toggle"
+             style="bottom: 45px; right: 24px;">
+            <a class="btn-floating btn-large waves-effect waves-light blue">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul>
+                <li materialize="tooltip" data-position="left" data-delay="50"
+                    [attr.data-tooltip]="'page.trainings.add.exercises.tooltip' | dictionary"
+                    (click)="onAddExerciseClick()"><a class="btn-floating yellow darken-1"><i
+                    class="material-icons">add</i></a>
+                </li>
+
+                <li materialize="tooltip" data-position="left" data-delay="50"
+                    [attr.data-tooltip]="'page.trainings.add.training.tooltip' | dictionary"
+                    (click)="onAddTrainingClick()"><a class="btn-floating green darken-1"><i class="material-icons">playlist_add</i></a>
+                </li>
+                <li materialize="tooltip" data-position="left" data-delay="50"
+                    [attr.data-tooltip]="'page.trainings.add.cycle.tooltip' | dictionary"
+                    (click)="onAddCycleClick()"><a class="btn-floating red"><i class="material-icons">toc</i></a>
+                </li>
+            </ul>
         </div>
-      </div>
-    </ng-template>
-
-    <div id="fab" class="fixed-action-btn vertical click-to-toggle" style="bottom: 45px; right: 24px;">
-      <a class="btn-floating btn-large waves-effect waves-light blue">
-        <i class="material-icons">menu</i>
-      </a>
-      <ul>
-        <li materialize="tooltip" data-position="left" data-delay="50"
-            [attr.data-tooltip]="'page.trainings.add.exercises.tooltip' | dictionary"
-            (click)="onAddExerciseClick()"><a class="btn-floating yellow darken-1"><i class="material-icons">add</i></a>
-        </li>
-
-        <li materialize="tooltip" data-position="left" data-delay="50"
-            [attr.data-tooltip]="'page.trainings.add.training.tooltip' | dictionary"
-            (click)="onAddTrainingClick()"><a class="btn-floating green darken-1"><i class="material-icons">playlist_add</i></a>
-        </li>
-        <li materialize="tooltip" data-position="left" data-delay="50"
-            [attr.data-tooltip]="'page.trainings.add.cycle.tooltip' | dictionary"
-            (click)="onAddCycleClick()"><a class="btn-floating red"><i class="material-icons">toc</i></a>
-        </li>
-      </ul>
     </div>
-  </div>
 </div>
 
 <coach-training-modals></coach-training-modals>

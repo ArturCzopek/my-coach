@@ -1,47 +1,49 @@
-import {Subject} from "rxjs/Subject";
-import {Injectable} from "@angular/core";
-import {Price, Product} from "../../../shared/entities/get.entities";
+import { Subject } from 'rxjs/Subject';
+import { Injectable } from '@angular/core';
+
+import { Price, Product } from '../../../shared/entities/get.entities';
 
 @Injectable()
 export class PricesModalsService {
 
-  addProduct: Subject<any> = new Subject<any>();
-  addPrice: Subject<any> = new Subject<any>();
-  addShoppingList: Subject<any> = new Subject<any>();
-  editProduct: Subject<any> = new Subject<any>();
-  editPrices: Subject<any> = new Subject<any>();
-  deleteProduct: Subject<any> = new Subject<any>();
-  deletePrices: Subject<any> = new Subject<any>();
-  refreshPage: Subject<any> = new Subject<any>();
+    addProduct: Subject<any> = new Subject<any>();
+    addPrice: Subject<any> = new Subject<any>();
+    addShoppingList: Subject<any> = new Subject<any>();
+    editProduct: Subject<any> = new Subject<any>();
+    editPrices: Subject<any> = new Subject<any>();
+    deleteProduct: Subject<any> = new Subject<any>();
+    deletePrices: Subject<any> = new Subject<any>();
+    refreshPage: Subject<any> = new Subject<any>();
 
-  public callAddProduct() {
-    this.addProduct.next(null);
-  }
-  public callAddPrice(product: Product) {
-    this.addPrice.next(product);
-  }
+    public callAddProduct(): void {
+        this.addProduct.next(null);
+    }
 
-  public callAddShoppingList(products: Product[]) {
-    this.addShoppingList.next(products);
-  }
+    public callAddPrice(product: Product): void {
+        this.addPrice.next(product);
+    }
 
-  public callEditProduct(product: Product) {
-    this.editProduct.next(product);
-  }
+    public callAddShoppingList(products: Product[]): void {
+        this.addShoppingList.next(products);
+    }
 
-  public callEditPrices(prices: Price[], modalTitle: string) {
-    this.editPrices.next({prices: prices, modalTitle: modalTitle});
-  }
+    public callEditProduct(product: Product): void {
+        this.editProduct.next(product);
+    }
 
-  public callDeleteProduct(product: Product) {
-    this.deleteProduct.next(product);
-  }
+    public callEditPrices(prices: Price[], modalTitle: string): void {
+        this.editPrices.next({prices: prices, modalTitle: modalTitle});
+    }
 
-  public callDeletePrices(prices: Price[], modalTitle: string) {
-    this.deletePrices.next({prices: prices, modalTitle: modalTitle});
-  }
+    public callDeleteProduct(product: Product): void {
+        this.deleteProduct.next(product);
+    }
 
-  public callRefreshPage() {
-    this.refreshPage.next(null);
-  }
+    public callDeletePrices(prices: Price[], modalTitle: string): void {
+        this.deletePrices.next({prices: prices, modalTitle: modalTitle});
+    }
+
+    public callRefreshPage(): void {
+        this.refreshPage.next(null);
+    }
 }

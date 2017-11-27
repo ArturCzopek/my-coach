@@ -1,97 +1,97 @@
 .flex-cycle-add {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .flex-cycle-date {
-  order: 1;
-  flex-basis: 75%;
+    order: 1;
+    flex-basis: 75%;
 }
 
 .flex-cycle-actions {
-  order: 200;
-  flex-basis: 25%;
-  display: flex;
-  justify-content: center;
+    order: 200;
+    flex-basis: 25%;
+    display: flex;
+    justify-content: center;
 
-  a {
-    cursor: pointer;
-  }
+    a {
+        cursor: pointer;
+    }
 }
 
 .add-link {
-  padding-left: 6px;
+    padding-left: 6px;
 
-  &.disabled {
-    cursor: not-allowed;
-    color: gray;
+    &.disabled {
+        cursor: not-allowed;
+        color: gray;
 
-    &:hover {
-      text-decoration: none;
+        &:hover {
+            text-decoration: none;
+        }
     }
-  }
 }
 
 table.margin {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
 
-  td.icons, th.icons {
-    text-align: center;
-  }
+    td.icons, th.icons {
+        text-align: center;
+    }
 }
 
 table.striped.fixed {
-  table-layout: fixed;
+    table-layout: fixed;
 
-  tr {
-    color: black;
-  }
-
-  tr.disabled {
-    color: gray;
-    cursor: not-allowed;
-
-    .input-field label.asText {
-      color: grey;
+    tr {
+        color: black;
     }
-  }
 
-  td {
-
-    i {
-      margin-left: 5px;
-      vertical-align: middle;
-      &.disabled {
-        pointer-events: none;
+    tr.disabled {
+        color: gray;
         cursor: not-allowed;
-      }
+
+        .input-field label.asText {
+            color: grey;
+        }
     }
 
-    &.exercise {
-      i {
-        visibility: visible;
-        font-size: 1rem;
-        cursor: default;
-      }
+    td {
+
+        i {
+            margin-left: 5px;
+            vertical-align: middle;
+            &.disabled {
+                pointer-events: none;
+                cursor: not-allowed;
+            }
+        }
+
+        &.exercise {
+            i {
+                visibility: visible;
+                font-size: 1rem;
+                cursor: default;
+            }
+        }
     }
-  }
 }
 
 .input-field.inline {
 
-  &.full {
-    width: 100%;
-  }
-  &.short {
-    width: 20% !important;
-  }
+    &.full {
+        width: 100%;
+    }
+    &.short {
+        width: 20% !important;
+    }
 }
 
 .input-field label.asText {
-  top: 0;
-  color: black;
-  margin-bottom: 1rem;
+    top: 0;
+    color: black;
+    margin-bottom: 1rem;
 }
 
 

@@ -1,0 +1,65 @@
+<div id="prices-edit" class="modal" materialize="modal" [materializeParams]="[modalParams]"
+     [materializeActions]="modalActions">
+    <div class="modal-content">
+
+        <h3>{{ modalTitle }}</h3>
+
+        <table class="striped">
+            <thead>
+            <tr>
+                <th data-field="Day">{{ 'page.prices.day.label' | dictionary }}</th>
+                <th data-field="Place">{{ 'page.prices.place.label' | dictionary }}</th>
+                <th data-field="Price">{{ 'page.prices.price.label' | dictionary }}</th>
+                <th data-field="Quantity">{{ 'page.prices.quantity.label' | dictionary }}</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr *ngFor="let price of selectedPrices; trackBy: trackByPriceId; let i = index">
+                <td>
+                    <div class="input-field inline">
+                        <input type="date"
+                               class="datepicker"
+                               materialize="pickadate"
+                               [(ngModel)]="dates[i]"
+                               name="priceDate"
+                               [materializeParams]="[datePickerParams]"
+                               (ngModelChange)="addPriceIndexToChanged(i)">
+                    </div>
+                </td>
+                <td>
+                    <div class="input-field inline">
+                        <input type="text"
+                               [(ngModel)]="price.place"
+                               (ngModelChange)="addPriceIndexToChanged(i)">
+                    </div>
+                </td>
+                <td>
+                    <div class="input-field inline">
+                        <input type="number"
+                               step="0.1"
+                               max="9999"
+                               [(ngModel)]="price.value"
+                               (ngModelChange)="addPriceIndexToChanged(i)">
+                    </div>
+                </td>
+                <td>
+                    <div class="input-field inline">
+                        <input type="number"
+                               step="0.1"
+                               max="9999"
+                               [(ngModel)]="price.quantity"
+                               (ngModelChange)="addPriceIndexToChanged(i)">
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <coach-modal-footer leftButtonLabel="{{ 'global.edit.label' | dictionary }}"
+                        rightButtonLabel="{{ 'global.close.label' | dictionary }}"
+                        (leftButtonAction)="onEditClick()"
+                        (rightButtonAction)="onCloseModal()"
+                        [isDataValid]="isDataValid()"></coach-modal-footer>
+</div>

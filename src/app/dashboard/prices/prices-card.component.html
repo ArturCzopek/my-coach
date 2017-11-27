@@ -1,74 +1,87 @@
 <div *ngIf="productPreview" class="card medium grey lighten-3">
-  <div class="card-image waves-effect waves-block waves-light">
-    <img [lazyLoad]="pricesService.getProductImageUrl(productPreview.productId)" class="activator">
-  </div>
-  <div class="card-content prices-card-content">
+    <div class="card-image waves-effect waves-block waves-light">
+        <img [lazyLoad]="pricesService.getProductImageUrl(productPreview.productId)" class="activator">
+    </div>
+    <div class="card-content prices-card-content">
     <span class="card-title grey-text activator text-darken-4">
-      <p>{{productPreview.productName}}</p>
+      <p>{{ productPreview.productName }}</p>
       <i class="material-icons right">more_vert</i>
     </span>
-    <span class="card-subtitle">
-      <p>{{'page.prices.avgPrice.label' | dictionary}} {{productPreview.average}} {{'global.currency.label' | dictionary}}</p>
+        <span class="card-subtitle">
+      <p>{{ 'page.prices.avgPrice.label' | dictionary }} {{ productPreview.average }} {{ 'global.currency.label' | dictionary }}</p>
     </span>
-    <div class="card-title-icons">
-      <i (click)="onEditProductClick()" class="small material-icons tooltipped"
-         materialize="tooltip" data-position="bottom" data-delay="50"
-         [attr.data-tooltip]="'page.prices.edit.product.tooltip' | dictionary">mode_edit</i>
-      <i (click)="onDeleteProductClick()" class="small material-icons tooltipped"
-         materialize="tooltip" data-position="bottom" data-delay="50"
-         [attr.data-tooltip]="'page.prices.delete.product.tooltip' | dictionary">delete</i>
+        <div class="card-title-icons">
+            <i (click)="onEditProductClick()"
+               class="small material-icons tooltipped"
+               materialize="tooltip"
+               data-position="bottom"
+               data-delay="50"
+               [attr.data-tooltip]="'page.prices.edit.product.tooltip' | dictionary">mode_edit</i>
+            <i (click)="onDeleteProductClick()"
+               class="small material-icons tooltipped"
+               materialize="tooltip"
+               data-position="bottom"
+               data-delay="50"
+               [attr.data-tooltip]="'page.prices.delete.product.tooltip' | dictionary">delete</i>
+        </div>
     </div>
-  </div>
 
-  <div class="card-reveal">
-    <span class="card-title grey-text text-darken-4">{{productPreview.productName}}
+    <div class="card-reveal">
+    <span class="card-title grey-text text-darken-4">{{ productPreview.productName }}
       <i class="material-icons right">close</i>
     </span>
-    <table *ngIf="prices.length > 0">
-      <thead>
-      <tr>
-        <th data-field="Day">{{'page.prices.day.label' | dictionary}}</th>
-        <th data-field="Place">{{'page.prices.place.label' | dictionary}}</th>
-        <th data-field="Price">{{'page.prices.price.label' | dictionary}}</th>
-        <th data-field="Quantity">{{'page.prices.quantity.label' | dictionary}}</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let price of prices">
-        <td>{{dateService.parseDateToString(price.priceDate)}} r.</td>
-        <td>{{price.place}}</td>
-        <td>{{price.value}} {{'global.currency.label' | dictionary}}</td>
-        <td>{{price.quantity}}</td>
-      </tr>
-      </tbody>
-    </table>
+        <table *ngIf="prices.length > 0">
+            <thead>
+            <tr>
+                <th data-field="Day">{{ 'page.prices.day.label' | dictionary }}</th>
+                <th data-field="Place">{{ 'page.prices.place.label' | dictionary }}</th>
+                <th data-field="Price">{{ 'page.prices.price.label' | dictionary }}</th>
+                <th data-field="Quantity">{{ 'page.prices.quantity.label' | dictionary }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let price of prices">
+                <td>{{ dateService.parseDateToString(price.priceDate) }} r.</td>
+                <td>{{ price.place }}</td>
+                <td>{{ price.value }} {{'global.currency.label' | dictionary }}</td>
+                <td>{{ price.quantity }}</td>
+            </tr>
+            </tbody>
+        </table>
 
-    <div class="row icons-container" *ngIf="prices.length > 0; else noData">
-      <div class="col s12">
-        <i (click)="onAddPriceClick()" class="edit-button small material-icons tooltipped" materialize="tooltip"
-           data-position="bottom" data-delay="50"
-           [attr.data-tooltip]="'page.prices.add.price.tooltip' | dictionary">note_add</i>
-        <i (click)="onEditPricesClick()" class="edit-button small material-icons tooltipped" materialize="tooltip"
-           data-position="bottom" data-delay="50"
-           [attr.data-tooltip]="'page.prices.edit.prices.tooltip' | dictionary">mode_edit</i>
-        <i (click)="onDeletePricesClick()" class="delete-button small material-icons tooltipped"
-           materialize="tooltip"
-           data-position="bottom" data-delay="50"
-           [attr.data-tooltip]="'page.prices.delete.prices.tooltip' | dictionary">delete</i>
-      </div>
+        <div class="row icons-container" *ngIf="prices.length > 0; else noData">
+            <div class="col s12">
+                <i (click)="onAddPriceClick()"
+                   class="edit-button small material-icons tooltipped"
+                   materialize="tooltip"
+                   data-position="bottom"
+                   data-delay="50"
+                   [attr.data-tooltip]="'page.prices.add.price.tooltip' | dictionary">note_add</i>
+                <i (click)="onEditPricesClick()"
+                   class="edit-button small material-icons tooltipped"
+                   materialize="tooltip"
+                   data-position="bottom"
+                   data-delay="50"
+                   [attr.data-tooltip]="'page.prices.edit.prices.tooltip' | dictionary">mode_edit</i>
+                <i (click)="onDeletePricesClick()"
+                   class="delete-button small material-icons tooltipped"
+                   materialize="tooltip"
+                   data-position="bottom"
+                   data-delay="50"
+                   [attr.data-tooltip]="'page.prices.delete.prices.tooltip' | dictionary">delete</i>
+            </div>
+        </div>
+
+        <ng-template #noData>
+            <div class="col s12 center no-data small">
+                <div class="row">
+                    <i class="small material-icons">info_outline</i>
+                </div>
+                <div class="row">
+                    <p>{{ 'page.prices.noData.info' | dictionary }}</p>
+                    <p><a class="add-link" (click)="onAddPriceClick()">{{ 'page.prices.noData.click.info' | dictionary }}</a></p>
+                </div>
+            </div>
+        </ng-template>
     </div>
-
-    <ng-template #noData>
-      <div class="col s12 center no-data small">
-        <div class="row">
-          <i class="small material-icons">info_outline</i>
-        </div>
-        <div class="row">
-          <p>{{'page.prices.noData.info' | dictionary}}</p>
-            <p><a class="add-link" (click)="onAddPriceClick()">{{'page.prices.noData.click.info'
-            | dictionary}}</a></p>
-        </div>
-      </div>
-    </ng-template>
-  </div>
 </div>

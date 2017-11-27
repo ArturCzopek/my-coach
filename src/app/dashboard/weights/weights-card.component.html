@@ -1,7 +1,7 @@
 <div class="card grey lighten-3">
-  <div class="card-content">
+    <div class="card-content">
     <span class="card-title">
-      <p>{{previewTitle}}</p>
+      <p>{{ previewTitle }}</p>
       <div class="card-title-icons">
         <i (click)="onEditClick()" class="small material-icons tooltipped" materialize="tooltip"
            data-position="bottom" data-delay="50"
@@ -11,15 +11,15 @@
            [attr.data-tooltip]="'page.weights.delete.tooltip' | dictionary">delete</i>
       </div>
     </span>
-    <img class="right" [ngClass]="arrowImageClass" src="assets/img/arrow_down.png"
-         (click)="onWeightsClick()"/>
-  </div>
-  <div *ngIf="showData" class="center card-action" [ngClass]="getLoadingStyle()">
-    <div *ngIf="isLoading; else chart">
-      <coach-strip-loader></coach-strip-loader>
+        <img class="right" [ngClass]="arrowImageClass" src="assets/img/arrow_down.png"
+             (click)="onWeightsClick()"/>
     </div>
-    <ng-template #chart>
-      <coach-line-chart [chartData]="chartData" [chartLabels]="chartLabels"></coach-line-chart>
-    </ng-template>
-  </div>
+    <div *ngIf="showData" class="center card-action" [ngClass]="getLoadingStyle()">
+        <div *ngIf="isLoading; else chart">
+            <coach-strip-loader></coach-strip-loader>
+        </div>
+        <ng-template #chart>
+            <coach-line-chart [chartData]="chartData" [chartLabels]="chartLabels"></coach-line-chart>
+        </ng-template>
+    </div>
 </div>

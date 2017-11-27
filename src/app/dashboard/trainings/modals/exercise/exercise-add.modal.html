@@ -1,0 +1,70 @@
+<div id="exercise-add" class="modal" materialize="modal"
+     [materializeParams]="[modalParams]" [materializeActions]="modalActions">
+    <div class="modal-content">
+        <h3>{{ 'page.trainings.modal.add.exercises.title' | dictionary }}</h3>
+        <div class="row">
+            <form materialize class="col s12">
+
+                <table class="striped margin">
+                    <thead>
+                    <tr>
+                        <th data-field="Set">{{ 'page.trainings.set.label' | dictionary }}</th>
+                        <th data-field="Name">{{ 'page.trainings.exercise.label' | dictionary }}</th>
+                        <th data-field="Description">{{ 'page.trainings.exerciseDesc.label' | dictionary }}</th>
+                        <th data-field="Delete" class="icons">{{ 'global.delete.label' | dictionary }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let exercise of exercisesToAdd; trackBy: trackByIndex; let i = index">
+                        <td>
+                            <div class="input-field inline">
+                                <select [id]="'set_' + (i+1)" [(ngModel)]="exercise.setId" [name]="'set_' + (i+1)"
+                                        style="display:inline;">
+                                    <option *ngFor="let set of activeCycle.sets; trackBy: trackBySetId" [ngValue]="set.setId">
+                                        {{set.setName}}
+                                    </option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-field inline">
+                                <label [for]="'exercise_' + (i + 1)">
+                                    {{ 'page.trainings.exercise.label' | dictionary }}#{{ (i + 1) }}
+                                </label>
+                                <input type="text" [(ngModel)]="exercise.exerciseName"
+                                       [name]="'exercise_' + (i + 1)" [id]="'exercise_' + (i + 1)">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-field inline">
+                                <label [for]="'exerciseDesc_' + (i + 1)">
+                                    {{ 'page.trainings.exerciseDesc.label' | dictionary }} #{{ (i + 1) }}
+                                </label>
+                                <input type="text" [(ngModel)]="exercise.exerciseDescription"
+                                       [name]="'exerciseDesc_' + (i + 1)" [id]="'exerciseDesc_' + (i + 1)">
+                            </div>
+                        </td>
+
+                        <td class="icons">
+                            <i (click)="onDeleteExercise(i)" class="small material-icons material-button tooltipped"
+                               materialize="tooltip" data-position="bottom" data-delay="50"
+                               [attr.data-tooltip]="'page.trainings.delete.exercise.tooltip' | dictionary">delete</i>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a (click)="addNewEmptyExerciseToList()" class="add-link">{{ 'page.trainings.modal.add.exercise.label' | dictionary }}</a>
+
+            </form>
+        </div>
+
+        <p *ngIf="errorMessage.length > 0" class="error-message">{{ errorMessage }}</p>
+    </div>
+
+    <coach-modal-footer leftButtonLabel="{{ 'global.add.label' | dictionary }}"
+                        rightButtonLabel="{{ 'global.close.label' | dictionary }}"
+                        (leftButtonAction)="onAddClick()"
+                        (rightButtonAction)="onCloseModal()"
+                        [isDataValid]="isDataValid()"></coach-modal-footer>
+
+</div>

@@ -1,62 +1,75 @@
-import {Exercise, ExerciseSession, Series, Set, Training} from "../../shared/entities/get.entities";
-import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input} from "@angular/core";
-import {DateService} from "../../shared/services/date.service";
-import {ServiceInjector} from "../../shared/services/service.injector";
-import {TrainingsService} from "./services/tranings.service";
-import {TrainingModalsService} from "./services/training-modals.service";
+import {
+    AfterViewInit, ChangeDetectionStrategy,
+    ChangeDetectorRef, Component, Input
+} from '@angular/core';
+import {
+    Exercise, ExerciseSession,
+    Series, Set, Training
+} from '../../shared/entities/get.entities';
+import { DateService } from '../../shared/services/date.service';
+import { ServiceInjector } from '../../shared/services/service.injector';
+import { TrainingsService } from './services/tranings.service';
+import { TrainingModalsService } from './services/training-modals.service';
 
 @Component({
-  selector: 'coach-set-section',
-  templateUrl: 'set-section.component.html',
-  styleUrls: ['./trainings.scss', '../../shared/materialize-upgrades.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'coach-set-section',
+    templateUrl: 'set-section.component.html',
+    styleUrls: ['./trainings.scss', '../../shared/materialize-upgrades.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SetSectionComponent implements AfterViewInit {
-  @Input() set: Set;
-  @Input() finishedCycles: boolean;
 
-  private dateService: DateService;
-  private trainingsService: TrainingsService;
+    @Input()
+    public set: Set;
 
-  constructor(serviceInjector: ServiceInjector, private trainingModalsService: TrainingModalsService,
-              private changeDetectorRef: ChangeDetectorRef) {
-    this.dateService = serviceInjector.getDateService();
-    this.trainingsService = serviceInjector.getTrainingsService();
-  }
+    @Input()
+    public finishedCycles: boolean;
 
-  ngAfterViewInit(): void {
-    this.changeDetectorRef.detach();
-  }
+    private dateService: DateService;
+    private trainingsService: TrainingsService;
 
-  onAddExercise() {
-    this.trainingModalsService.callAddExercise(this.finishedCycles);
-  }
+    constructor(
+        public serviceInjector: ServiceInjector,
+        private trainingModalsService: TrainingModalsService,
+        private changeDetectorRef: ChangeDetectorRef
+    ) {
+        this.dateService = serviceInjector.getDateService();
+        this.trainingsService = serviceInjector.getTrainingsService();
+    }
 
-  onDeleteExercise(exercise: Exercise) {
-    this.trainingModalsService.callDeleteExercise(exercise);
-  }
+    ngAfterViewInit(): void {
+        this.changeDetectorRef.detach();
+    }
 
-  onDeleteTraining(training: Training) {
-    this.trainingModalsService.callDeleteTraining(training);
-  }
+    public onAddExercise(): void {
+        this.trainingModalsService.callAddExercise(this.finishedCycles);
+    }
 
-  onEditExercise(exercise: Exercise) {
-    this.trainingModalsService.callEditExercise(exercise);
-  }
+    public onDeleteExercise(exercise: Exercise): void {
+        this.trainingModalsService.callDeleteExercise(exercise);
+    }
 
-  onEditTraining(training: Training) {
-    this.trainingModalsService.callEditTraining(training);
-  }
+    public onDeleteTraining(training: Training): void {
+        this.trainingModalsService.callDeleteTraining(training);
+    }
 
-  trackByExerciseId(index, exercise: Exercise) {
-    return exercise.exerciseId;
-  }
+    public onEditExercise(exercise: Exercise): void {
+        this.trainingModalsService.callEditExercise(exercise);
+    }
 
-  trackBySessionId(index, session: ExerciseSession) {
-    return session.exerciseSessionId;
-  }
+    public onEditTraining(training: Training): void {
+        this.trainingModalsService.callEditTraining(training);
+    }
 
-  trackBySeriesId(index, series: Series) {
-    return series.seriesId;
-  }
+    public trackByExerciseId(index, exercise: Exercise): number {
+        return exercise.exerciseId;
+    }
+
+    public trackBySessionId(index, session: ExerciseSession): number {
+        return session.exerciseSessionId;
+    }
+
+    public trackBySeriesId(index, series: Series): number {
+        return series.seriesId;
+    }
 }

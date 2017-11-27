@@ -1,56 +1,67 @@
 <table class="striped">
-  <thead>
-  <tr>
-    <th data-field="Set">{{set.setName | uppercase}}</th>
-    <th *ngFor="let training of set.trainings">
-      {{ dateService.parseDateToString(training.trainingDate) }}
-      <i (click)="onEditTraining(training)" class="small material-icons material-button tooltipped hover-visible"
-         materialize="tooltip" data-position="bottom" data-delay="50"
-         [attr.data-tooltip]="'page.trainings.edit.training.tooltip' | dictionary">edit</i>
-      <i (click)="onDeleteTraining(training)" class="small material-icons material-button tooltipped hover-visible"
-         materialize="tooltip" data-position="bottom" data-delay="50"
-         [attr.data-tooltip]="'page.trainings.delete.training.tooltip' | dictionary">delete</i>
-    </th>
-  </tr>
-  </thead>
-  <tbody *ngIf="set.exercises.length > 0; else noExercises">
-  <tr *ngFor="let exercise of set.exercises; trackBy: trackByExerciseId">
-    <td>{{exercise.exerciseName}}
-      <i *ngIf="exercise.exerciseDescription" class="material-button material-icons tooltipped no-pointer"
-         materialize="tooltip"
-         data-position="bottom" data-delay="50" [attr.data-tooltip]="exercise.exerciseDescription">comment</i>
-      <i (click)="onEditExercise(exercise)" class="small material-icons material-button tooltipped hover-visible"
-         materialize="tooltip" data-position="bottom" data-delay="50"
-         [attr.data-tooltip]="'page.trainings.edit.exercise.tooltip' | dictionary">edit</i>
-      <i (click)="onDeleteExercise(exercise)" class="small material-icons material-button tooltipped hover-visible"
-         materialize="tooltip" data-position="bottom" data-delay="50"
-         [attr.data-tooltip]="'page.trainings.delete.exercise.tooltip' | dictionary">delete</i>
-    </td>
-    <td *ngFor="let session of exercise.exerciseSessions; trackBy: trackBySessionId">
-      <div *ngFor="let series of session.series; trackBy: trackBySeriesId" class="series">
-        {{trainingsService.getFormattedRepeatsWithWeight(series)}}
-        <i *ngIf="series.comment" class="material-button material-icons tooltipped" materialize="tooltip"
-           data-position="bottom" data-delay="50" [attr.data-tooltip]="series.comment">comment</i>
-      </div>
-      <div *ngIf="!session.series || session.series.length === 0">
-        <p>-</p>
-      </div>
-    </td>
-  </tr>
-  </tbody>
-
-  <ng-template #noExercises>
-    <tbody>
-    <div class="col s12 center no-data small">
-      <div class="row">
-        <i class="small material-icons">info_outline</i>
-      </div>
-      <div class="row">
-        <p>{{'page.trainings.set.noExercises.info' | dictionary}}</p>
-        <p><a class="click" (click)="onAddExercise()">{{'page.trainings.set.noExercises.click.info' | dictionary}}</a></p>
-      </div>
-    </div>
+    <thead>
+    <tr>
+        <th data-field="Set">{{ set.setName | uppercase }}</th>
+        <th *ngFor="let training of set.trainings">
+            {{ dateService.parseDateToString(training.trainingDate) }}
+            <i (click)="onEditTraining(training)"
+               class="small material-icons material-button tooltipped hover-visible"
+               materialize="tooltip" data-position="bottom" data-delay="50"
+               [attr.data-tooltip]="'page.trainings.edit.training.tooltip' | dictionary">edit</i>
+            <i (click)="onDeleteTraining(training)"
+               class="small material-icons material-button tooltipped hover-visible"
+               materialize="tooltip" data-position="bottom" data-delay="50"
+               [attr.data-tooltip]="'page.trainings.delete.training.tooltip' | dictionary">delete</i>
+        </th>
+    </tr>
+    </thead>
+    <tbody *ngIf="set.exercises.length > 0; else noExercises">
+    <tr *ngFor="let exercise of set.exercises; trackBy: trackByExerciseId">
+        <td>{{ exercise.exerciseName }}
+            <i *ngIf="exercise.exerciseDescription"
+               class="material-button material-icons tooltipped no-pointer"
+               materialize="tooltip"
+               data-position="bottom" data-delay="50"
+               [attr.data-tooltip]="exercise.exerciseDescription">comment</i>
+            <i (click)="onEditExercise(exercise)"
+               class="small material-icons material-button tooltipped hover-visible"
+               materialize="tooltip" data-position="bottom" data-delay="50"
+               [attr.data-tooltip]="'page.trainings.edit.exercise.tooltip' | dictionary">edit</i>
+            <i (click)="onDeleteExercise(exercise)"
+               class="small material-icons material-button tooltipped hover-visible"
+               materialize="tooltip" data-position="bottom" data-delay="50"
+               [attr.data-tooltip]="'page.trainings.delete.exercise.tooltip' | dictionary">delete</i>
+        </td>
+        <td *ngFor="let session of exercise.exerciseSessions; trackBy: trackBySessionId">
+            <div *ngFor="let series of session.series; trackBy: trackBySeriesId" class="series">
+                {{ trainingsService.getFormattedRepeatsWithWeight(series) }}
+                <i *ngIf="series.comment" class="material-button material-icons tooltipped"
+                   materialize="tooltip" data-position="bottom"
+                   data-delay="50" [attr.data-tooltip]="series.comment">comment</i>
+            </div>
+            <div *ngIf="!session.series || session.series.length === 0">
+                <p>-</p>
+            </div>
+        </td>
+    </tr>
     </tbody>
-  </ng-template>
+
+    <ng-template #noExercises>
+        <tbody>
+        <div class="col s12 center no-data small">
+            <div class="row">
+                <i class="small material-icons">info_outline</i>
+            </div>
+            <div class="row">
+                <p>{{ 'page.trainings.set.noExercises.info' | dictionary }}</p>
+                <p>
+                    <a class="click" (click)="onAddExercise()">
+                        {{ 'page.trainings.set.noExercises.click.info' | dictionary }}
+                    </a>
+                </p>
+            </div>
+        </div>
+        </tbody>
+    </ng-template>
 
 </table>

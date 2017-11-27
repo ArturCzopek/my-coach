@@ -1,34 +1,36 @@
 <div class="container">
-  <div class="row">
-    <div *ngIf="isLoading; else weights">
-      <coach-circle-loader></coach-circle-loader>
-    </div>
-
-    <ng-template #weights>
-      <div *ngFor="let weightsPreview of weightsPreviews; trackBy: trackByWeightsPreviewId" class="col s12">
-        <coach-weights-card [weightsPreview]="weightsPreview"></coach-weights-card>
-      </div>
-
-      <div *ngIf="weightsPreviews.length === 0" class="col s12 center no-data">
-        <div class="row">
-          <i class="large material-icons">info_outline</i>
+    <div class="row">
+        <div *ngIf="isLoading; else weights">
+            <coach-circle-loader></coach-circle-loader>
         </div>
-        <div class="row">
-          <p>{{'page.weights.list.noData.info' | dictionary}}</p>
-          <p><a (click)="onAddClick()">{{'page.weights.list.noData.click.info' | dictionary}}</a></p>
-        </div>
-      </div>
-    </ng-template>
 
-    <div class="fixed-action-btn tooltipped" materialize="tooltip"
-         data-position="left" data-delay="50" [attr.data-tooltip]="'page.weights.add.tooltip' | dictionary"
-         style="bottom: 45px; right: 24px;"
-         (click)="onAddClick()">
-      <a class="btn-floating btn-large waves-effect waves-light blue">
-        <i class="large material-icons">add</i>
-      </a>
+        <ng-template #weights>
+            <div *ngFor="let weightsPreview of weightsPreviews; trackBy: trackByWeightsPreviewId" class="col s12">
+                <coach-weights-card [weightsPreview]="weightsPreview"></coach-weights-card>
+            </div>
+
+            <div *ngIf="weightsPreviews.length === 0" class="col s12 center no-data">
+                <div class="row">
+                    <i class="large material-icons">info_outline</i>
+                </div>
+                <div class="row">
+                    <p>{{ 'page.weights.list.noData.info' | dictionary }}</p>
+                    <p><a (click)="onAddClick()">
+                        {{ 'page.weights.list.noData.click.info' | dictionary }}
+                    </a></p>
+                </div>
+            </div>
+        </ng-template>
+
+        <div class="fixed-action-btn tooltipped" materialize="tooltip"
+             data-position="left" data-delay="50" [attr.data-tooltip]="'page.weights.add.tooltip' | dictionary"
+             style="bottom: 45px; right: 24px;"
+             (click)="onAddClick()">
+            <a class="btn-floating btn-large waves-effect waves-light blue">
+                <i class="large material-icons">add</i>
+            </a>
+        </div>
     </div>
-  </div>
 </div>
 
 <coach-weights-modals></coach-weights-modals>

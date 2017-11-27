@@ -1,36 +1,33 @@
-import {Component, EventEmitter, Input, Output} from "@angular/core";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'coach-modal-footer',
-  template: `
-    <div class="modal-footer">
-      <a
-        class="modal-action modal-close waves-effect waves-red btn-flat"
-        (click)="onRightButtonClick()"
-      >{{rightButtonLabel}}</a>
-      <a
-        class="modal-action waves-effect waves-teal btn-flat"
-        (click)="onLeftButtonClick()"
-        [class.disabled]="!isDataValid"
-      >{{leftButtonLabel}}</a>
-    </div>
-  `,
-  styleUrls: ['../materialize-upgrades.scss']
+    selector: 'coach-modal-footer',
+    templateUrl: './modal-footer.component.html',
+    styleUrls: ['../materialize-upgrades.scss']
 })
 export class ModalFooterComponent {
-  @Input() public rightButtonLabel: string;
-  @Input() public leftButtonLabel: string;
-  @Input() public isDataValid: boolean;
 
-  @Output() public rightButtonAction = new EventEmitter();
-  @Output() public leftButtonAction = new EventEmitter();
+    @Input()
+    public rightButtonLabel: string;
 
-  onRightButtonClick() {
-    this.rightButtonAction.emit(null);
-  }
+    @Input()
+    public leftButtonLabel: string;
 
-  onLeftButtonClick() {
-    this.leftButtonAction.emit(null);
-  }
+    @Input()
+    public isDataValid: boolean;
+
+    @Output()
+    public rightButtonAction: EventEmitter<null> = new EventEmitter();
+
+    @Output()
+    public leftButtonAction: EventEmitter<null> = new EventEmitter();
+
+    public onRightButtonClick(): void {
+        this.rightButtonAction.emit(null);
+    }
+
+    public onLeftButtonClick(): void {
+        this.leftButtonAction.emit(null);
+    }
 
 }
