@@ -15,8 +15,7 @@ export class LoginComponent implements OnInit {
     constructor(
         public userService: UserService,
         public router: Router,
-        private route: ActivatedRoute,
-        private location: Location
+        private route: ActivatedRoute
     ) {}
 
     ngOnInit(): void {
@@ -31,7 +30,7 @@ export class LoginComponent implements OnInit {
     }
 
     public loginUser(): void {
-        this.location.go(environment.server.loginUrl);
+        window.location.href = environment.server.loginUrl;
     }
 
     public goToApp(): void {
