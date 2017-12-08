@@ -50,7 +50,6 @@ export abstract class BaseModal implements OnInit, OnDestroy {
 
     public closeModal(): void {
         this.modalActions.emit({action: 'modal', params: ['close']});
-        $('.modal-overlay').remove();
     }
 
     // "on" only for style purposes in html
